@@ -1,0 +1,9 @@
+.section :global(.why-photo) {
+  background-image: url('/images/termite-difference-specialist-v2.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.section :global(.why-point > .point-photo) {
+  border-radius: 50%;
+}

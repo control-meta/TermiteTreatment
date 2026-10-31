@@ -1,0 +1,40 @@
+.section { padding-block: 88px; scroll-margin-top: 105px; }
+.heading { text-align: center; max-width: 670px; margin-inline: auto; }
+.heading > :global(.eyebrow) { justify-content: center; margin-bottom: 19px; }
+.heading h2 { font-size: clamp(32px, 3.4vw, 47px); line-height: 1.2; letter-spacing: -1.8px; }
+.heading > p:last-child { color: var(--muted); font-size: 13px; line-height: 1.8; margin: 20px auto 0; max-width: 460px; }
+.steps { --step-gap: 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--step-gap); padding: 0; margin: 52px auto 0; max-width: 1160px; list-style: none; }
+.step { text-align: center; min-width: 0; }
+.visual { position: relative; }
+.photo { position: relative; display: block; width: 106px; height: 106px; margin-inline: auto; padding: 6px; border: 1px solid #dfe9d7; border-radius: 50%; background: #f4f8ed; box-shadow: 0 6px 20px #2d51220b; transition: transform .3s ease, box-shadow .3s ease; }
+.photo > img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.photo > img[src*="termiguard-family"] { object-position: 65% center; }
+.number { position: absolute; top: 0; right: -2px; display: grid; place-items: center; width: 29px; height: 29px; border: 3px solid white; border-radius: 50%; background: var(--green); color: white; font-size: 9px; font-weight: 600; box-shadow: 0 2px 7px #17351c14; }
+.connector { position: absolute; top: 53px; left: calc(50% + 77px); width: calc(100% + var(--step-gap) - 154px); border-top: 1px dashed #c7d7bd; }
+.connector > svg { position: absolute; right: -2px; top: -10px; background: white; color: #8ba47b; padding-left: 3px; }
+.step h3 { margin-top: 25px; font-size: 19px; line-height: 1.4; letter-spacing: -.55px; }
+.step > p { max-width: 288px; margin: 11px auto 0; color: var(--muted); font-size: 12px; line-height: 1.9; text-wrap: pretty; }
+.step:hover .photo { transform: translateY(-4px); box-shadow: 0 10px 24px #2d512218; }
+.action { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 42px; text-align: center; }
+.action > button { min-height: 49px; font-size: 13px; padding-inline: 27px; }
+.action > span { color: #8a9382; font-size: 10px; }
+@media (max-width: 1000px) { .steps { --step-gap: 25px; } .step h3 { font-size: 17px; } .step > p { font-size: 11px; } }
+@media (max-width: 760px) {
+  .section { padding-block: 54px; }
+  .heading > :global(.eyebrow) { font-size: 7px; letter-spacing: 1.8px; margin-bottom: 15px; }
+  .heading h2 { font-size: 32px; letter-spacing: -1.4px; }
+  .heading > p:last-child { max-width: 295px; font-size: 12px; margin-top: 17px; }
+  .steps { grid-template-columns: 1fr; gap: 0; margin-top: 33px; }
+  .photo { width: 92px; height: 92px; padding: 5px; }
+  .number { width: 27px; height: 27px; font-size: 8px; }
+  .connector { display: none; }
+  .step { padding-bottom: 30px; }
+  .step + .step { padding-top: 28px; border-top: 1px solid #edf1e8; }
+  .step:last-child { padding-bottom: 0; }
+  .step h3 { margin-top: 18px; font-size: 18px; }
+  .step > p { margin-top: 9px; font-size: 12px; max-width: 285px; }
+  .action { margin-top: 30px; }
+  .action > button { font-size: 11px; padding-inline: 20px; }
+  .action > span { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) { .photo { transition: none; } .step:hover .photo { transform: none; } }

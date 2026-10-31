@@ -1,0 +1,48 @@
+.section { padding-block: 80px 65px; background: rgba(244, 247, 238, 0.74); border-block: 1px solid #e8eee0; scroll-margin-top: 105px; }
+.heading { text-align: center; max-width: 660px; margin: 0 auto 38px; }
+.heading > :global(.eyebrow) { justify-content: center; margin-bottom: 17px; }
+.heading h2 { font-size: clamp(33px, 3.4vw, 48px); line-height: 1.18; letter-spacing: -1.8px; }
+.heading > p:last-child { color: #798271; font-size: 13px; line-height: 1.85; margin-top: 18px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; max-width: 1120px; margin-inline: auto; }
+.card { border: 1px solid #dfe7d5; border-radius: 23px; overflow: hidden; background: white; box-shadow: 0 7px 20px #28412005; transition: box-shadow .3s ease, border-color .3s ease; }
+.card:hover { border-color: #c6d7b6; box-shadow: 0 14px 32px #2841200e; }
+.image { position: relative; height: 225px; overflow: hidden; background: #dfe8d4; }
+.image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #0d321924, transparent 55%, #183c2126); pointer-events: none; }
+.image > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; transition: transform .6s ease; }
+.card:hover .image > img { transform: scale(1.035); }
+.imageLabel { position: absolute; top: 19px; left: 20px; z-index: 1; display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid #ffffffbd; border-radius: 30px; color: #2c5330; background: #fffffff0; font-size: 8px; font-weight: 650; letter-spacing: 1.1px; }
+.content { padding: 26px 29px 20px; }
+.detail { display: flex; align-items: center; gap: 7px; color: #718764; font-size: 10px; }
+.content h3 { color: #233d2a; font-size: clamp(20px, 2.1vw, 27px); line-height: 1.3; letter-spacing: -.9px; margin-top: 13px; }
+.content > p { margin-top: 12px; color: #7b8375; font-size: 12px; line-height: 1.85; max-width: 440px; }
+.content > ul { list-style: none; padding: 0; margin: 22px 0; display: grid; gap: 11px; }
+.content li { display: flex; align-items: center; gap: 9px; font-size: 11px; color: #55664c; line-height: 1.6; }
+.content li > svg { color: #72955b; }
+.cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; border-top: 1px solid #e9eee2; padding: 17px 0 0; background: transparent; color: var(--green); text-align: left; font-size: 12px; font-weight: 650; }
+.cta > span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #eef4e6; transition: background .2s, color .2s, transform .2s; }
+.cta:hover > span { color: white; background: var(--green); transform: translateX(3px); }
+.cta:focus-visible { outline: 2px solid #719459; outline-offset: 5px; border-radius: 4px; }
+.footnote { display: flex; align-items: center; justify-content: center; gap: 8px; color: #7a8970; font-size: 10px; line-height: 1.7; margin: 25px auto 0; text-align: center; }
+@media (max-width: 1000px) { .grid { gap: 20px; } .content { padding: 24px 22px 19px; } .image { height: 195px; } }
+@media (max-width: 760px) {
+  .section { padding-block: 50px 40px; }
+  .heading { margin-bottom: 28px; }
+  .heading h2 { font-size: 32px; letter-spacing: -1.4px; }
+  .heading > p:last-child { font-size: 12px; margin-top: 15px; }
+  .heading > :global(.eyebrow) { letter-spacing: 1.7px; font-size: 7px; gap: 8px; margin-bottom: 14px; }
+  .heading :global(.tiny-line) { width: 18px; }
+  .desktopBreak { display: none; }
+  .grid { grid-template-columns: 1fr; gap: 22px; max-width: 480px; }
+  .card { border-radius: 19px; }
+  .image { height: 210px; }
+  .imageLabel { top: 16px; left: 17px; font-size: 7px; }
+  .content { padding: 23px 22px 18px; }
+  .content h3 { font-size: 23px; letter-spacing: -.7px; }
+  .content > p { font-size: 12px; }
+  .content > ul { gap: 11px; margin-block: 21px; }
+  .content li { font-size: 11px; }
+  .cta { font-size: 11px; }
+  .footnote { max-width: 300px; align-items: flex-start; font-size: 9px; gap: 7px; margin-top: 22px; }
+  .footnote > svg { margin-top: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { .card, .image > img, .cta > span { transition: none; } .card:hover .image > img, .cta:hover > span { transform: none; } }

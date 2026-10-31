@@ -1,0 +1,608 @@
+/* ==========================================================================
+   Homepage ambient backdrop (begins below the hero, carries through to footer)
+   A calmer, minimal continuation of the hero's botanical light treatment.
+   ========================================================================== */
+
+.page-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 6% 0%, rgba(207, 233, 190, 0.5), transparent 68%),
+    radial-gradient(ellipse 55% 50% at 96% 18%, rgba(249, 238, 205, 0.42), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 24% 92%, rgba(210, 235, 196, 0.46), transparent 72%),
+    radial-gradient(ellipse 50% 45% at 78% 70%, rgba(233, 244, 220, 0.4), transparent 75%),
+    linear-gradient(180deg, #fbfdf8 0%, #f8fbf3 48%, #fbfdf8 100%);
+}
+
+/* Layer 0: soft luminous washes ------------------------------------------- */
+.page-ambient-orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.page-orb {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.62;
+  filter: blur(78px);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.page-orb-sage {
+  top: -14%;
+  left: -9%;
+  width: clamp(340px, 45vw, 680px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 42% 42%, rgba(197, 231, 178, 0.58) 0%, rgba(229, 246, 218, 0.24) 55%, transparent 74%);
+  animation: pageOrbA 34s ease-in-out infinite alternate;
+}
+
+.page-orb-honey {
+  top: 10%;
+  right: -13%;
+  width: clamp(300px, 38vw, 600px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 48% 48%, rgba(249, 234, 187, 0.48) 0%, rgba(238, 245, 214, 0.22) 55%, transparent 74%);
+  animation: pageOrbB 42s -8s ease-in-out infinite alternate;
+}
+
+.page-orb-mint {
+  bottom: -18%;
+  left: 14%;
+  width: clamp(320px, 42vw, 660px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 46% 46%, rgba(176, 224, 190, 0.42) 0%, rgba(220, 242, 221, 0.2) 56%, transparent 75%);
+  animation: pageOrbC 38s -14s ease-in-out infinite alternate;
+}
+
+.page-orb-cream {
+  bottom: 16%;
+  right: 12%;
+  width: clamp(240px, 30vw, 440px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 50%, rgba(244, 236, 201, 0.38) 0%, rgba(238, 246, 224, 0.16) 58%, transparent 76%);
+  animation: pageOrbD 30s -5s ease-in-out infinite alternate;
+}
+
+/* Layer 1: organic contour lines ----------------------------------------- */
+.page-ambient-contours {
+  position: absolute;
+  inset: -8% -4%;
+  width: 108%;
+  height: 116%;
+  opacity: 0.62;
+  animation: pageContourDrift 38s ease-in-out infinite alternate;
+}
+
+.page-contour {
+  fill: none;
+  stroke: url(#page-contour-gradient);
+  stroke-width: 1.1;
+  stroke-dasharray: 5 9;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Layer 2: floating botanical leaves ------------------------------------- */
+.page-ambient-leaves {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.page-leaf {
+  position: absolute;
+  display: block;
+  width: 34px;
+  height: 52px;
+  color: #6f9e5d;
+  opacity: 0.28;
+  filter: drop-shadow(0 6px 12px rgba(35, 75, 30, 0.1));
+  rotate: var(--leaf-rotate, 0deg);
+  animation: pageLeafFloat var(--leaf-duration, 22s) var(--leaf-delay, 0s) ease-in-out infinite;
+  will-change: translate;
+}
+
+.page-leaf svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.page-leaf-1 {
+  top: 14%;
+  left: 4.5%;
+  --leaf-rotate: 14deg;
+  --leaf-duration: 21s;
+  --leaf-delay: -4s;
+}
+
+.page-leaf-2 {
+  top: 38%;
+  right: 5.5%;
+  width: 27px;
+  height: 43px;
+  color: #83ac6d;
+  opacity: 0.24;
+  --leaf-rotate: -24deg;
+  --leaf-duration: 25s;
+  --leaf-delay: -12s;
+}
+
+.page-leaf-3 {
+  bottom: 23%;
+  left: 8%;
+  width: 29px;
+  height: 40px;
+  color: #7ba361;
+  opacity: 0.24;
+  --leaf-rotate: 28deg;
+  --leaf-duration: 19s;
+  --leaf-delay: -7s;
+}
+
+.page-leaf-4 {
+  right: 14%;
+  bottom: 8%;
+  width: 38px;
+  height: 56px;
+  color: #6f9e5d;
+  opacity: 0.2;
+  --leaf-rotate: -12deg;
+  --leaf-duration: 27s;
+  --leaf-delay: -16s;
+}
+
+/* Layer 3: sunlit pollen ------------------------------------------------- */
+.page-ambient-motes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.page-mote {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: pageMoteDrift var(--mote-duration, 28s) var(--mote-delay, 0s) linear infinite;
+  will-change: transform, opacity;
+}
+
+.page-mote-gold {
+  background: radial-gradient(circle, #fff7d6 0%, #f0cc75 60%, rgba(240, 204, 117, 0.25) 100%);
+  box-shadow: 0 0 7px 2px rgba(243, 207, 112, 0.38);
+}
+
+.page-mote-emerald {
+  background: radial-gradient(circle, #effde9 0%, #8fd283 60%, rgba(143, 210, 131, 0.25) 100%);
+  box-shadow: 0 0 7px 1px rgba(120, 215, 110, 0.32);
+}
+
+.page-mote-white {
+  background: #ffffff;
+  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.75), 0 0 10px 2px rgba(210, 245, 195, 0.3);
+}
+
+/* ==========================================================================
+   Motion accents across the post-hero homepage
+   ========================================================================== */
+
+.home-page .reveal.is-visible {
+  animation: homeReveal 0.85s cubic-bezier(0.22, 0.68, 0.32, 1) both;
+}
+
+.home-page .reveal:nth-child(2).is-visible {
+  animation-delay: 0.08s;
+}
+
+.home-page .reveal:nth-child(3).is-visible {
+  animation-delay: 0.16s;
+}
+
+.home-page .reveal:nth-child(4).is-visible {
+  animation-delay: 0.24s;
+}
+
+/* Slow, almost imperceptible pan across the difference photograph. */
+.home-page .why-photo {
+  animation: homePhotoPan 30s ease-in-out infinite alternate;
+}
+
+.home-page .image-top-tag .status-dot {
+  animation: homeStatusPulse 3.6s ease-in-out infinite;
+}
+
+.home-page .photo-accent {
+  animation: homeAccentSway 10s ease-in-out infinite;
+}
+
+.home-page .why-point .point-photo {
+  animation: homeIconFloat 7s ease-in-out infinite;
+}
+
+.home-page .why-point:nth-child(2) .point-photo {
+  animation-delay: -2.4s;
+}
+
+.home-page .why-point:nth-child(3) .point-photo {
+  animation-delay: -4.8s;
+}
+
+.home-page .faq-contact .stat-icon {
+  animation: homeIconPulse 5s ease-in-out infinite;
+}
+
+.home-page .motion-photo {
+  animation: homePhotoBreathe 24s ease-in-out infinite alternate;
+}
+
+.home-page .motion-badge {
+  animation: homeBadgeFloat 7s ease-in-out infinite;
+}
+
+.home-page .motion-tag {
+  animation: homeTagFloat 8s ease-in-out infinite;
+}
+
+.home-page .motion-connector > svg {
+  animation: homeArrowNudge 3.4s ease-in-out infinite;
+}
+
+.home-page .motion-step-badge {
+  animation: homeStepPulse 4.5s ease-in-out infinite;
+}
+
+.home-footer .footer-note > svg {
+  transform-origin: 50% 90%;
+  animation: homeLeafSway 7s ease-in-out infinite;
+}
+
+.home-footer .footer-note > a {
+  animation: homeArrowBob 4.5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+
+@keyframes pageOrbA {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4vw, 3vh, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-2vw, 5vh, 0) scale(0.95);
+  }
+}
+
+@keyframes pageOrbB {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  45% {
+    transform: translate3d(-4vw, -2vh, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(2vw, 4vh, 0) scale(0.94);
+  }
+}
+
+@keyframes pageOrbC {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  55% {
+    transform: translate3d(3vw, -3vh, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(-3vw, 2vh, 0) scale(0.96);
+  }
+}
+
+@keyframes pageOrbD {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-3vw, -4vh, 0) scale(1.09);
+  }
+  100% {
+    transform: translate3d(3vw, 2vh, 0) scale(0.94);
+  }
+}
+
+@keyframes pageContourDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(1.5%, -1%, 0) scale(1.02);
+    opacity: 0.68;
+  }
+  100% {
+    transform: translate3d(-1%, 1.2%, 0) scale(0.99);
+    opacity: 0.54;
+  }
+}
+
+@keyframes pageLeafFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  30% {
+    translate: 10px -16px;
+  }
+  65% {
+    translate: -9px -7px;
+  }
+  85% {
+    translate: 5px 5px;
+  }
+}
+
+@keyframes pageMoteDrift {
+  0% {
+    transform: translate3d(0, 24px, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  55% {
+    transform: translate3d(var(--mote-x, 16px), -38px, 0);
+    opacity: 0.72;
+  }
+  82% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(calc(var(--mote-x, 16px) * 1.7), -88px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes homeReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes homePhotoPan {
+  0% {
+    background-position: 67% 55%;
+  }
+  50% {
+    background-position: 60% 48%;
+  }
+  100% {
+    background-position: 72% 61%;
+  }
+}
+
+@keyframes homePhotoBreathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes homeStatusPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px #dbe8cd;
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(219, 232, 205, 0.25);
+  }
+}
+
+@keyframes homeAccentSway {
+  0%,
+  100% {
+    transform: rotate(8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(13deg) translateY(-5px);
+  }
+}
+
+@keyframes homeIconFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-3deg);
+  }
+}
+
+@keyframes homeIconPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(112, 153, 88, 0);
+  }
+  45% {
+    box-shadow: 0 0 0 6px rgba(112, 153, 88, 0.12);
+  }
+}
+
+@keyframes homeBadgeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes homeTagFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes homeArrowNudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes homeStepPulse {
+  0%,
+  100% {
+    box-shadow: 0 2px 7px #17351c14, 0 0 0 0 rgba(7, 92, 36, 0.14);
+  }
+  50% {
+    box-shadow: 0 2px 7px #17351c14, 0 0 0 5px rgba(7, 92, 36, 0);
+  }
+}
+
+@keyframes homeLeafSway {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes homeArrowBob {
+  0%,
+  100% {
+    transform: rotate(-90deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-90deg) translateY(-3px);
+  }
+}
+
+/* ==========================================================================
+   Responsive tuning
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+  .page-orb {
+    filter: blur(64px);
+  }
+
+  .page-ambient-contours {
+    opacity: 0.5;
+  }
+
+  .page-leaf-2 {
+    right: 3%;
+  }
+}
+
+@media (max-width: 760px) {
+  .page-orb {
+    filter: blur(54px);
+    opacity: 0.5;
+  }
+
+  .page-orb-sage {
+    width: 300px;
+    top: -10%;
+    left: -16%;
+  }
+
+  .page-orb-honey {
+    width: 260px;
+    top: 22%;
+    right: -20%;
+  }
+
+  .page-orb-mint {
+    width: 300px;
+    bottom: -14%;
+    left: 4%;
+  }
+
+  .page-orb-cream {
+    display: none;
+  }
+
+  .page-ambient-contours {
+    opacity: 0.36;
+  }
+
+  .page-leaf-1 {
+    left: 2%;
+    top: 18%;
+  }
+
+  .page-leaf-2,
+  .page-leaf-4 {
+    display: none;
+  }
+
+  .page-leaf-3 {
+    bottom: 12%;
+    left: 4%;
+    opacity: 0.18;
+  }
+
+  .page-mote:nth-child(n + 9) {
+    display: none;
+  }
+
+  .home-page .why-photo {
+    animation-duration: 42s;
+  }
+
+  .home-page .photo-accent {
+    animation-duration: 14s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-orb,
+  .page-ambient-contours,
+  .page-leaf,
+  .page-mote,
+  .home-page .why-photo,
+  .home-page .image-top-tag .status-dot,
+  .home-page .photo-accent,
+  .home-page .why-point .point-photo,
+  .home-page .faq-contact .stat-icon,
+  .home-page .motion-photo,
+  .home-page .motion-badge,
+  .home-page .motion-tag,
+  .home-page .motion-connector > svg,
+  .home-page .motion-step-badge,
+  .home-footer .footer-note > svg,
+  .home-footer .footer-note > a {
+    animation: none !important;
+  }
+
+  .home-page .reveal.is-visible {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}

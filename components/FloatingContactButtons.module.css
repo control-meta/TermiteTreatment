@@ -1,0 +1,169 @@
+.container {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+  position: relative;
+}
+
+.tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  background: rgba(14, 38, 20, 0.94);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  font-family: inherit;
+}
+
+.actionItem:hover .tooltip,
+.actionItem:focus-within .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  outline-offset: 4px;
+}
+
+.button:focus-visible {
+  outline: 3px solid #25D366;
+}
+
+.button:hover {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.button:active {
+  transform: scale(0.96) translateY(0);
+}
+
+/* Phone Call button styling */
+.phoneButton {
+  background: linear-gradient(135deg, #16a34a 0%, #0f7638 100%);
+  box-shadow: 0 6px 18px rgba(22, 163, 74, 0.4), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.phoneButton:hover {
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.55), 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* WhatsApp button styling */
+.whatsappButton {
+  background: linear-gradient(135deg, #25D366 0%, #1ea952 100%);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.42), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.whatsappButton:hover {
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.58), 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Soft pulse ring around WhatsApp button to attract attention */
+.pulseRing {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.65);
+  animation: pulse-ring 2.6s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 760px) {
+  .container {
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .actionItem {
+    gap: 0;
+  }
+
+  .button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .tooltip {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .tooltip {
+    transition: none;
+  }
+
+  .pulseRing {
+    animation: none;
+    display: none;
+  }
+}

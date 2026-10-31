@@ -1,0 +1,587 @@
+/* ==========================================================================
+   Hero Ambient Nature & Light Background Animations
+   TermiteTreatment - Multi-Layered Organic Living Backdrop
+   ========================================================================== */
+
+.hero-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -2;
+  contain: layout paint;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+/* Layer 0: Ambient Luminous Orbs */
+.ambient-orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.85;
+  mix-blend-mode: normal;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Top-left / center behind the main heading */
+.orb-sage {
+  top: 4%;
+  left: 12%;
+  width: 540px;
+  height: 480px;
+  background: radial-gradient(
+    circle at 45% 45%,
+    rgba(178, 226, 162, 0.45) 0%,
+    rgba(214, 242, 198, 0.3) 38%,
+    rgba(240, 252, 235, 0.15) 60%,
+    transparent 75%
+  );
+  filter: blur(65px);
+  animation: floatOrbOne 18s ease-in-out infinite alternate;
+}
+
+/* Warm sunlight behind middle copy and actions */
+.orb-sunlight {
+  top: 18%;
+  left: 32%;
+  width: 520px;
+  height: 460px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(252, 232, 168, 0.42) 0%,
+    rgba(245, 218, 142, 0.24) 42%,
+    rgba(235, 245, 210, 0.1) 65%,
+    transparent 78%
+  );
+  filter: blur(75px);
+  animation: floatOrbTwo 22s ease-in-out infinite alternate;
+  animation-delay: -6s;
+}
+
+/* Fresh mint / dewdrop orb near left boundary */
+.orb-mint {
+  top: 45%;
+  left: 2%;
+  width: 440px;
+  height: 420px;
+  background: radial-gradient(
+    circle at 40% 50%,
+    rgba(152, 218, 172, 0.32) 0%,
+    rgba(198, 236, 210, 0.18) 45%,
+    transparent 72%
+  );
+  filter: blur(70px);
+  animation: floatOrbThree 25s ease-in-out infinite alternate;
+  animation-delay: -11s;
+}
+
+/* Lower warmth near customer review & trust strip */
+.orb-honey {
+  bottom: 8%;
+  left: 22%;
+  width: 480px;
+  height: 380px;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(248, 225, 170, 0.35) 0%,
+    rgba(220, 240, 195, 0.2) 48%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  animation: floatOrbFour 20s ease-in-out infinite alternate;
+  animation-delay: -4s;
+}
+
+/* Gentle central ambient breathing halo */
+.orb-halo {
+  top: 20%;
+  left: 18%;
+  width: 620px;
+  height: 520px;
+  background: radial-gradient(
+    ellipse at 48% 48%,
+    rgba(228, 247, 215, 0.38) 0%,
+    rgba(245, 252, 238, 0.18) 50%,
+    transparent 75%
+  );
+  filter: blur(85px);
+  animation: haloBreathe 10s ease-in-out infinite alternate;
+}
+
+/* Layer 1: Sunlit Komorebi Dappling (Sunbeams through foliage) */
+.ambient-komorebi {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 75%;
+  height: 120%;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: overlay;
+  animation: komorebiSway 16s ease-in-out infinite alternate;
+}
+
+/* Layer 2: Organic Growth Contour Wave Lines */
+.ambient-contours {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 65%;
+  height: 80%;
+  pointer-events: none;
+  opacity: 0.42;
+  animation: contourDrift 24s ease-in-out infinite alternate;
+}
+
+.contour-path {
+  fill: none;
+  stroke: url(#contour-gradient);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 6;
+  opacity: 0.55;
+  transition: opacity 0.5s ease;
+}
+
+.contour-path-solid {
+  fill: none;
+  stroke: url(#contour-gradient-soft);
+  stroke-width: 1;
+  opacity: 0.35;
+}
+
+/* Layer 3: Floating Botanical Leaves */
+.ambient-leaves {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.floating-leaf {
+  position: absolute;
+  transform-origin: center center;
+  pointer-events: none;
+  will-change: transform;
+  filter: drop-shadow(0 6px 14px rgba(35, 75, 30, 0.12));
+}
+
+.floating-leaf svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual Leaf Positions & Animations */
+.leaf-pos-1 {
+  top: 11%;
+  left: 28%;
+  width: 32px;
+  height: 48px;
+  opacity: 0.62;
+  animation: leafFloat1 15s ease-in-out infinite;
+}
+
+.leaf-pos-2 {
+  display: none;
+}
+
+.leaf-pos-3 {
+  top: 22%;
+  left: 8%;
+  width: 38px;
+  height: 56px;
+  opacity: 0.42;
+  filter: blur(1.5px) drop-shadow(0 4px 10px rgba(35, 75, 30, 0.08));
+  animation: leafFloat3 22s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+.leaf-pos-4 {
+  top: 56%;
+  left: 38%;
+  width: 28px;
+  height: 44px;
+  opacity: 0.58;
+  animation: leafFloat4 17s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.leaf-pos-5 {
+  top: 68%;
+  left: 14%;
+  width: 34px;
+  height: 50px;
+  opacity: 0.48;
+  animation: leafFloat5 24s ease-in-out infinite;
+  animation-delay: -12s;
+}
+
+.leaf-pos-6 {
+  top: 44%;
+  left: 22%;
+  width: 22px;
+  height: 34px;
+  opacity: 0.5;
+  animation: leafFloat6 14s ease-in-out infinite;
+  animation-delay: -7s;
+}
+
+.leaf-pos-7 {
+  top: 15%;
+  left: 45%;
+  width: 20px;
+  height: 32px;
+  opacity: 0.38;
+  filter: blur(1px);
+  animation: leafFloat2 21s ease-in-out infinite;
+  animation-delay: -14s;
+}
+
+/* Layer 4: Floating Sunlit Pollen / Light Dust Motes */
+.ambient-pollen-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.pollen-mote {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.pollen-gold {
+  background: radial-gradient(circle, #fff7d6 0%, #f4cd68 55%, rgba(244, 205, 104, 0.3) 100%);
+  box-shadow: 0 0 10px 2px rgba(245, 205, 100, 0.55), 0 0 20px 4px rgba(245, 205, 100, 0.25);
+}
+
+.pollen-emerald {
+  background: radial-gradient(circle, #ebfde5 0%, #89d97c 55%, rgba(137, 217, 124, 0.3) 100%);
+  box-shadow: 0 0 8px 1.5px rgba(120, 215, 110, 0.5), 0 0 16px 3px rgba(120, 215, 110, 0.2);
+}
+
+.pollen-white {
+  background: #ffffff;
+  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.8), 0 0 12px 2px rgba(210, 245, 195, 0.4);
+}
+
+/* Interactive Cursor Breeze container */
+.hero-ambient-interactive {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(
+    calc(var(--cursor-x, 0) * 1px),
+    calc(var(--cursor-y, 0) * 1px),
+    0
+  );
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.hero-ambient-leaves-interactive {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(
+    calc(var(--cursor-x, 0) * 1.8px),
+    calc(var(--cursor-y, 0) * 1.8px),
+    0
+  );
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.hero-ambient-pollen-interactive {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(
+    calc(var(--cursor-x, 0) * 2.6px),
+    calc(var(--cursor-y, 0) * 2.6px),
+    0
+  );
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+/* ==========================================================================
+   Keyframe Animations
+   ========================================================================== */
+
+/* Orb floating paths */
+@keyframes floatOrbOne {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(35px, 25px, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-20px, 45px, 0) scale(0.95);
+  }
+}
+
+@keyframes floatOrbTwo {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(-40px, -20px, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(25px, 35px, 0) scale(0.92);
+  }
+}
+
+@keyframes floatOrbThree {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  60% {
+    transform: translate3d(30px, -30px, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(15px, 20px, 0) scale(0.96);
+  }
+}
+
+@keyframes floatOrbFour {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-25px, -35px, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(30px, 15px, 0) scale(0.94);
+  }
+}
+
+@keyframes haloBreathe {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 0.48;
+  }
+}
+
+/* Komorebi light rays sway */
+@keyframes komorebiSway {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0) scale(1);
+    opacity: 0.26;
+  }
+  50% {
+    transform: rotate(1.5deg) translate3d(18px, 12px, 0) scale(1.03);
+    opacity: 0.38;
+  }
+  100% {
+    transform: rotate(-1deg) translate3d(-12px, 20px, 0) scale(0.98);
+    opacity: 0.28;
+  }
+}
+
+/* Contour line drift */
+@keyframes contourDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(15px, -10px, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(-10px, 15px, 0) scale(0.98);
+  }
+}
+
+/* Botanical Leaves Flutter & Float Animations */
+@keyframes leafFloat1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(12deg) rotateY(0deg) scale(1);
+  }
+  25% {
+    transform: translate3d(16px, 18px, 0) rotate(22deg) rotateY(25deg) scale(1.02);
+  }
+  50% {
+    transform: translate3d(-12px, 32px, 0) rotate(6deg) rotateY(45deg) scale(0.98);
+  }
+  75% {
+    transform: translate3d(-22px, 14px, 0) rotate(-4deg) rotateY(15deg) scale(1.01);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(12deg) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes leafFloat2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-18deg) rotateX(0deg);
+  }
+  30% {
+    transform: translate3d(-18px, 20px, 0) rotate(-8deg) rotateX(30deg);
+  }
+  60% {
+    transform: translate3d(14px, 42px, 0) rotate(-28deg) rotateX(55deg);
+  }
+  85% {
+    transform: translate3d(24px, 18px, 0) rotate(-14deg) rotateX(20deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-18deg) rotateX(0deg);
+  }
+}
+
+@keyframes leafFloat3 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(35deg) scale(0.95);
+  }
+  40% {
+    transform: translate3d(25px, -18px, 0) rotate(48deg) scale(1.02);
+  }
+  75% {
+    transform: translate3d(35px, 15px, 0) rotate(28deg) scale(0.98);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(35deg) scale(0.95);
+  }
+}
+
+@keyframes leafFloat4 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-5deg) rotateY(0deg);
+  }
+  35% {
+    transform: translate3d(15px, -24px, 0) rotate(8deg) rotateY(35deg);
+  }
+  70% {
+    transform: translate3d(-20px, -12px, 0) rotate(-16deg) rotateY(60deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-5deg) rotateY(0deg);
+  }
+}
+
+@keyframes leafFloat5 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(40deg);
+  }
+  50% {
+    transform: translate3d(-22px, -25px, 0) rotate(25deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(40deg);
+  }
+}
+
+@keyframes leafFloat6 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-30deg) scale(1);
+  }
+  50% {
+    transform: translate3d(20px, 22px, 0) rotate(-15deg) scale(1.08);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-30deg) scale(1);
+  }
+}
+
+/* Pollen Rising & Twinkling Animation */
+@keyframes pollenDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.15;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(var(--drift-x, 20px), -45px, 0);
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate3d(calc(var(--drift-x, 20px) * 1.8), -90px, 0);
+    opacity: 0;
+  }
+}
+
+/* Media queries for fine-tuning on various viewports */
+@media (max-width: 1000px) {
+  .orb-sage {
+    width: 420px;
+    height: 380px;
+    left: 5%;
+  }
+  .orb-sunlight {
+    width: 380px;
+    height: 340px;
+    left: 20%;
+  }
+  .ambient-komorebi {
+    width: 90%;
+  }
+  .leaf-pos-2 {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-ambient {
+    opacity: 0.9;
+  }
+  .ambient-orbs {
+    opacity: 0.85;
+  }
+  .orb-sage {
+    width: 320px;
+    height: 300px;
+    top: 2%;
+    left: 0;
+    filter: blur(50px);
+  }
+  .orb-sunlight {
+    width: 280px;
+    height: 280px;
+    top: 25%;
+    left: 15%;
+    filter: blur(55px);
+  }
+  .orb-honey {
+    display: none;
+  }
+  .leaf-pos-3, .leaf-pos-7 {
+    display: none;
+  }
+  .ambient-contours {
+    display: none;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb,
+  .ambient-komorebi,
+  .ambient-contours,
+  .floating-leaf,
+  .pollen-mote {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hero-ambient-interactive,
+  .hero-ambient-leaves-interactive,
+  .hero-ambient-pollen-interactive {
+    transform: none !important;
+    transition: none !important;
+  }
+}

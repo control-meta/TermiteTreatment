@@ -1,0 +1,464 @@
+/* Container fixed on bottom-left */
+.container {
+  position: fixed;
+  left: 26px;
+  bottom: 26px;
+  z-index: 99;
+}
+
+/* Trigger button matching user reference screenshot */
+.trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  outline-offset: 4px;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.trigger:hover {
+  transform: translateY(-3px) scale(1.06);
+}
+
+.trigger:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.trigger:focus-visible {
+  outline: 3px solid #16a34a;
+  border-radius: 9999px;
+}
+
+/* "Book Now" Pill label */
+.pill {
+  background: #14532d;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(20, 83, 45, 0.4);
+  z-index: 2;
+  margin-bottom: -10px;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+
+.trigger:hover .pill {
+  background: #0f3f22;
+}
+
+/* Outer translucent halo ring */
+.outerHalo {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(20, 83, 45, 0.24), 0 0 0 1px rgba(20, 83, 45, 0.08);
+  transition: box-shadow 0.25s ease;
+}
+
+.trigger:hover .outerHalo {
+  box-shadow: 0 12px 28px rgba(20, 83, 45, 0.32), 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+/* Inner dark green circle */
+.innerCircle {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #166534 0%, #14532d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(20, 83, 45, 0.35);
+}
+
+/* Center document icon */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* Bright green notification badge on top-right of inner circle */
+.badgeDot {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #00d26a;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+/* Small Popover Box in Bottom Left */
+.popoverCard {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 0;
+  width: 330px;
+  max-width: calc(100vw - 32px);
+  background: #ffffff;
+  border: 1px solid #dce8d8;
+  border-radius: 20px;
+  padding: 20px 18px 18px;
+  box-shadow: 0 14px 44px rgba(12, 45, 25, 0.22), 0 4px 12px rgba(0, 0, 0, 0.06);
+  color: #1a2e20;
+  z-index: 100;
+  transform-origin: bottom left;
+  animation: popoverIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Close button inside small popover */
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f1f6ed;
+  color: #2e5939;
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.closeBtn:hover {
+  background: #e2edd9;
+  color: #14532d;
+  transform: rotate(90deg);
+}
+
+/* Popover Header */
+.popoverHeader {
+  margin-bottom: 14px;
+  padding-right: 28px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 1.5px;
+  color: #16a34a;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 19px;
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: #143520;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #647466;
+  margin: 4px 0 0;
+}
+
+/* Form inputs */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 650;
+  color: #2c4433;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  color: #708575;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.input,
+.select {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px 8px 38px;
+  background: #f8faf6;
+  border: 1px solid #dbe5d4;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #172a1e;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  font-family: inherit;
+}
+
+.input:focus,
+.select:focus {
+  background: #ffffff;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.14);
+}
+
+.submitBtn {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  background: linear-gradient(135deg, #16a34a 0%, #14532d 100%);
+  color: #ffffff;
+  border: 0;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(20, 83, 45, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(20, 83, 45, 0.35);
+}
+
+.submitBtn:active {
+  transform: translateY(0);
+}
+
+.privacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 10px;
+  color: #7d8b80;
+  margin: 2px 0 0;
+  text-align: center;
+}
+
+/* Success Card in small box */
+.successCard {
+  text-align: center;
+  padding: 8px 0 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e8f5e9;
+  color: #16a34a;
+  display: grid;
+  place-items: center;
+  margin-bottom: 10px;
+}
+
+.successTitle {
+  font-size: 18px;
+  font-weight: 750;
+  letter-spacing: -0.4px;
+  color: #143520;
+  margin: 0 0 6px;
+}
+
+.successText {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #5c6e61;
+  margin: 0 0 14px;
+}
+
+.successDetails {
+  width: 100%;
+  background: #f7faf4;
+  border: 1px solid #e2ebe0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid #e8f0e5;
+}
+
+.detailRow:last-child {
+  border-bottom: 0;
+}
+
+.detailLabel {
+  color: #7b8c7f;
+}
+
+.detailValue {
+  font-weight: 600;
+  color: #1b3523;
+}
+
+.successActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.whatsappAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  border-radius: 30px;
+  background: #25D366;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.whatsappAction:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(37, 211, 102, 0.4);
+}
+
+.doneBtn {
+  height: 34px;
+  border-radius: 30px;
+  background: transparent;
+  color: #4b6351;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #d4dfce;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.doneBtn:hover {
+  background: #f2f7ef;
+}
+
+@keyframes popoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 760px) {
+  .container {
+    left: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .pill {
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2.5px 8px;
+    margin-bottom: -6px;
+    letter-spacing: -0.2px;
+  }
+
+  .outerHalo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .innerCircle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .badgeDot {
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+    top: 0;
+    right: 0;
+  }
+
+  .popoverCard {
+    width: min(320px, calc(100vw - 24px));
+    padding: 16px 14px 14px;
+    border-radius: 16px;
+    bottom: calc(100% + 8px);
+    left: 0;
+  }
+
+  .title {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .popoverCard,
+  .closeBtn,
+  .submitBtn {
+    animation: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,24 @@
+/* One-time entrances: transform and opacity keep document layout stable. */
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .home-page .reveal[data-scroll-reveal],
+  .company-pages [data-scroll-reveal] {
+    animation: none;
+    transition: opacity 520ms cubic-bezier(.22,.75,.25,1), transform 520ms cubic-bezier(.22,.75,.25,1);
+  }
+  [data-scroll-reveal='pending'] { opacity: 0; transform: translateY(14px); }
+  [data-scroll-reveal='shown'] { opacity: 1; transform: none; }
+
+  /* Keep the botanical artwork while avoiding continuously repainted mobile accents. */
+  .home-page .why-photo,
+  .home-page .image-top-tag .status-dot,
+  .home-page .faq-contact .stat-icon,
+  .home-page .motion-step-badge { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal.is-visible, .home-page .reveal.is-visible,
+  .company-pages [data-scroll-reveal] {
+    opacity: 1; transform: none; animation: none; transition: none;
+  }
+}
