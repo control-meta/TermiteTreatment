@@ -1,5 +1,7 @@
 # Hero asset provenance
 
+Cleanup note, 31 October 2026: original PNG files are no longer stored in this project. The website retains the optimized WebP versions it currently uses. Original-output paths below document generation history; the complete removal list is in `docs/project-cleanup-report.md`.
+
 ## Mobile reference redesign — 31 October 2026
 
 Built-in `image_gen.imagegen`, opaque generation. Optimized project asset: `public/images/mobile-hero-family.webp` (1000 × 1250, approximately 107 KiB). Desktop keeps its existing photograph. References: the supplied `Modern Green Termite Control Hero.png` for composition and the existing `termiguard-family.webp` for photographic style. The generated asset is illustrative, not a photograph of an actual service visit.

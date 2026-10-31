@@ -66,16 +66,28 @@ export default function Page() {
         <div className="hero-foliage" aria-hidden="true"><img src="/images/hero-left-foliage.webp" alt="Decorative green foliage" width={320} height={480} /></div><div className="leaf-blur leaf-two" />
         <div className="hero-layout container">
           <div className="hero-copy">
-            <p className="eyebrow hero-eyebrow">PROTECT WHAT MATTERS MOST <span /></p>
+            <p className="eyebrow hero-eyebrow">
+              <ShieldCheck size={13} className="hero-eyebrow-icon" />
+              <span>PROTECT WHAT MATTERS MOST</span>
+              <span className="hero-eyebrow-line" />
+            </p>
             <h1 id="hero-title">Reliable Termite<br />Control for<br /><span>Homes &amp; Businesses</span></h1>
-            <p className="hero-description">Protect your property from termites with expert inspections, proven treatments and preventive care. A safer, healthier space for your family, your business and a stronger tomorrow.</p>
+            <p className="hero-description">Fast inspections, eco-friendly treatments, and guaranteed protection for your home and business.</p>
             <div className="hero-benefits">
               {[
-                ['termiguard-family', 'A family at home', 'Safe for', 'Families'],
-                ['home-inspection', 'A specialist inspecting a home', 'Expert', 'Inspection'],
-                ['commercial-care', 'Professional property care', 'Preventive', 'Care'],
-                ['termiguard-family', 'A protected family home', 'Guaranteed', 'Protection'],
-              ].map(([photo, alt, one, two]) => <div className="benefit" key={one}><span className="benefit-icon"><img src={`/images/${photo}.webp`} alt={alt} width={60} height={60} /></span><span>{one}<br />{two}</span></div>)}
+                { label: 'Safe for Families', Icon: ShieldCheck, photo: 'termiguard-family', alt: 'Safe for families' },
+                { label: 'Expert Inspection', Icon: Search, photo: 'home-inspection', alt: 'Expert inspection' },
+                { label: 'Preventive Care', Icon: Leaf, photo: 'commercial-care', alt: 'Preventive care' },
+                { label: 'Guaranteed Protection', Icon: BadgeCheck, photo: 'termiguard-family', alt: 'Guaranteed protection' },
+              ].map(({ label, Icon, photo, alt }) => (
+                <div className="benefit" key={label}>
+                  <span className="benefit-icon">
+                    <img src={`/images/${photo}.webp`} alt={alt} width={60} height={60} className="benefit-img" />
+                    <Icon size={16} className="benefit-svg" />
+                  </span>
+                  <span className="benefit-label">{label}</span>
+                </div>
+              ))}
             </div>
             <div className="hero-actions"><button className="button button-primary" onClick={() => inspect()}>Get a Free Inspection <ArrowRight size={21} /></button><a href="/services" className="button button-outline">View Our Services</a></div>
             <div className="mobile-photo"><span><ShieldCheck size={15} /> Your home. In caring hands.</span></div>

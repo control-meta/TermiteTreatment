@@ -1,6 +1,6 @@
 # Termite difference section: generated images
 
-Generated using the built-in image-generation tool on 30 October 2026. All four images are illustrative generated photography, not photographs of actual customer properties. Original PNGs and optimized WebP versions are retained under `public/images/`.
+Generated using the built-in image-generation tool on 30 October 2026. All four images are illustrative generated photography, not photographs of actual customer properties. The output paths below are historical. The 31 October cleanup removed the original PNGs and the superseded main, treatment and timber WebP images; the inspection WebP remains in use on the About page.
 
 The large image replaces only this homepage section’s background. The three new circular point images use the inspection, treatment and timber images respectively; the inspection image is also used in the small caption card.
 

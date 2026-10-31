@@ -28,6 +28,11 @@
 .hero-actions .button { min-width: 0; max-width: 100%; }
 .hero-benefits { max-width: 100%; }
 .benefit { white-space: normal; }
+.hero-eyebrow-icon { display: none; }
+.hero-eyebrow-line { width: 40px; height: 1px; background: #66866c; margin-left: 1px; display: inline-block; }
+.benefit-img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.benefit-svg { display: none; }
+.benefit-label { line-height: 1.4; }
 .privacy-note { line-height: 1.5; text-align: center; }
 .quote-submit { height: auto; }
 .input-wrap { flex-shrink: 0; }
@@ -644,46 +649,210 @@ html { scroll-padding-top: 88px; }
   .header-inner .brand-sub { font-size: 6px; letter-spacing: 2.4px; margin-top: 4px; }
   .header-call, .menu-toggle { width: 38px; height: 38px; }
   .header-call .header-phone-icon svg { width: 19px; height: 19px; }
-  .home-page .hero { padding-top: 94px; background: #f3f8ef; }
+  /* Clean, Minimal, Modern Mobile Hero Section */
+  .home-page .hero {
+    padding-top: 92px;
+    padding-bottom: 20px;
+    background: radial-gradient(120% 70% at 50% 0%, #f4f9f0 0%, #ffffff 88%);
+    position: relative;
+    overflow: hidden;
+  }
   .home-page .hero-layout { gap: 0; }
-  .home-page .hero-copy { position: relative; isolation: isolate; padding-top: 0; }
+  .home-page .hero-copy {
+    position: relative;
+    padding-top: 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .home-page .hero-copy > :not(.mobile-photo) { position: relative; z-index: 1; }
-  .home-page .hero-eyebrow { gap: 8px; margin-bottom: 10px; font-size: 8px; letter-spacing: .15em; color: #4c5b53; }
-  .home-page .hero-eyebrow::before { content: ''; width: 3px; height: 12px; background: #08632d; border-radius: 2px; }
-  .home-page .hero-eyebrow > span { display: none; }
-  .home-page .hero h1 { font-size: clamp(25px, 3.6svh, 36px); line-height: 1.04; letter-spacing: -.045em; color: #091014; text-shadow: none; }
-  .home-page .hero h1 > span { display: block; width: max-content; max-width: 100%; margin-top: 2px; font-size: .92em; color: #075c2a; }
-  .home-page .hero-description { max-width: 70%; margin-top: 10px; padding: 0; border-radius: 0; background: transparent; font-size: clamp(12px, 1.65svh, 14px); line-height: 1.45; font-weight: 500; color: #263e30; text-wrap: pretty; }
-  .home-page .hero-benefits { width: 78%; max-width: 365px; margin-top: 10px; gap: 8px 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .home-page .benefit { width: auto; gap: 7px; font-size: 10.5px; line-height: 1.35; color: #122b1c; font-weight: 550; }
-  .home-page .benefit > span:last-child { padding: 0; background: transparent; border-radius: 0; }
-  .home-page .benefit-icon { width: clamp(30px, 4.3svh, 38px); height: clamp(30px, 4.3svh, 38px); border: 2px solid #fff; box-shadow: 0 3px 12px #153b1f0c; }
-  .home-page .hero-actions { width: 100%; margin-top: 12px; display: grid; grid-template-columns: 1.12fr 1fr; gap: 10px; }
-  .home-page .hero-actions .button { min-height: 42px; padding: 9px; gap: 7px; font-size: clamp(10.5px, 3vw, 14px); white-space: nowrap; font-weight: 650; }
-  .home-page .hero-actions .button svg { width: 17px; height: 17px; }
-  .home-page .hero-actions .button-primary { background: linear-gradient(110deg, #07602c, #075b29); box-shadow: 0 6px 18px #0c5d2810; }
-  .home-page .hero-actions .button-outline { background: #ffffffdb; border-color: #0a602d; }
+
+  /* Eyebrow Pill Badge */
+  .home-page .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 14px;
+    padding: 6px 13px;
+    border-radius: 999px;
+    background: #edf6ea;
+    border: 1px solid #d4e8cd;
+    color: #075c24;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba(7, 92, 36, 0.05);
+  }
+  .home-page .hero-eyebrow::before { display: none; }
+  .home-page .hero-eyebrow-icon {
+    display: block;
+    width: 13px;
+    height: 13px;
+    color: #075c24;
+    flex-shrink: 0;
+  }
+  .home-page .hero-eyebrow-line { display: none; }
+  .home-page .hero-eyebrow > span { display: inline; }
+
+  /* Headline H1 */
+  .home-page .hero h1 {
+    font-size: clamp(28px, 7.8vw, 36px);
+    line-height: 1.14;
+    letter-spacing: -.035em;
+    color: #0b1410;
+    font-weight: 800;
+    text-shadow: none;
+    margin: 0;
+  }
+  .home-page .hero h1 > span {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 4px;
+    font-size: .95em;
+    color: #075c24;
+    font-weight: 800;
+  }
+
+  /* Description: Clean, crisp, easy to read */
+  .home-page .hero-description {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 13px;
+    padding: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    font-weight: 450;
+    color: #445147;
+    text-wrap: pretty;
+  }
+
+  /* Minimal Trust Chips / Benefits Grid */
+  .home-page .hero-benefits {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 16px;
+    gap: 8px 10px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .home-page .benefit {
+    width: 100%;
+    gap: 9px;
+    padding: 9px 11px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e1ebe0;
+    box-shadow: 0 2px 7px rgba(10, 45, 18, 0.035);
+    display: flex;
+    align-items: center;
+  }
+  .home-page .benefit-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: #edf6ea;
+    border: 1px solid #d8e8d3;
+    box-shadow: none;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .home-page .benefit-img { display: none; }
+  .home-page .benefit-svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    color: #075c24;
+  }
+  .home-page .benefit-label {
+    font-size: 11.5px;
+    line-height: 1.25;
+    color: #122b1c;
+    font-weight: 650;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Hero Actions (Touch-friendly & beautifully spaced) */
+  .home-page .hero-actions {
+    width: 100%;
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .home-page .hero-actions .button {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 18px;
+    gap: 9px;
+    font-size: 14.5px;
+    white-space: nowrap;
+    font-weight: 700;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .home-page .hero-actions .button svg { width: 18px; height: 18px; }
+  .home-page .hero-actions .button-primary {
+    background: linear-gradient(110deg, #07602c, #06491e);
+    box-shadow: 0 4px 16px rgba(7, 96, 44, 0.25);
+    color: #ffffff;
+    border: none;
+  }
+  .home-page .hero-actions .button-outline {
+    background: #ffffff;
+    border: 1.5px solid #075c24;
+    color: #075c24;
+  }
+
+  /* Dedicated Mobile Image Showcase (Placed IN-FLOW after buttons, NOT behind text) */
   .home-page .mobile-photo {
     display: block;
-    position: absolute;
-    z-index: 0;
-    top: -26px;
-    left: calc(-1 * var(--page-gutter));
-    right: calc(-1 * var(--page-gutter));
-    bottom: 12px;
-    height: auto;
-    margin: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 200px;
+    margin: 20px 0 16px;
     background-image: url('/images/mobile-hero-family.webp');
     background-size: cover;
-    background-position: right bottom;
-    border-radius: 0;
+    background-position: center 32%;
+    border-radius: 18px;
     overflow: hidden;
-    pointer-events: none;
+    pointer-events: auto;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 28px rgba(10, 45, 20, 0.08);
   }
   .home-page .mobile-photo:after {
-    background: linear-gradient(0deg, #f3f8ef 0%, #f3f8ef4d 18%, transparent 38%), linear-gradient(90deg, #f9fbf4fc 0%, #f9fbf4f2 40%, #f9fbf4cc 60%, #f9fbf45c 73%, #f9fbf419 85%, transparent 100%);
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 45%, rgba(6, 40, 20, 0.65) 100%);
   }
-  .home-page .mobile-photo > span { display: none; }
+  .home-page .mobile-photo > span {
+    display: inline-flex;
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 7px 13px;
+    font-size: 11px;
+    font-weight: 650;
+    color: #075c24;
+    gap: 7px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+  }
   .home-page .hero .hero-ambient { opacity: .2; }
   .home-page .hero .ambient-orbs, .home-page .hero .ambient-pollen-field,
   .home-page .hero-foliage, .home-page .hero .leaf-blur { display: none; }
@@ -706,29 +875,26 @@ html { scroll-padding-top: 88px; }
   .mobile-bottom-bar.mobile-bar-after-hero { transform: translateY(110%); visibility: hidden; pointer-events: none; }
 }
 @media (max-width: 760px) and (max-height: 760px) {
-  .home-page .hero { padding-top: 90px; }
-  .home-page .hero-eyebrow { margin-bottom: 8px; }
-  .home-page .hero-description { margin-top: 8px; padding: 0; }
-  .home-page .hero-benefits { margin-top: 6px; }
-  .home-page .hero-actions { margin-top: 8px; }
-  .home-page .hero .quote-card { margin-top: 10px; padding-block: 8px; }
+  .home-page .hero { padding-top: 88px; }
+  .home-page .hero-eyebrow { margin-bottom: 10px; }
+  .home-page .hero-description { margin-top: 10px; }
+  .home-page .hero-benefits { margin-top: 12px; }
+  .home-page .hero-actions { margin-top: 14px; }
+  .home-page .hero .quote-card { margin-top: 10px; padding-block: 10px; }
   .home-page .quote-heading { margin-bottom: 8px; }
   .home-page .quote-card form { gap: 7px; }
 }
-@media (max-width: 350px) and (max-height: 740px) {
-  .home-page .hero-benefits { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
-  .home-page .benefit { flex-direction: column; gap: 3px; text-align: center; font-size: 9px; }
-  .home-page .benefit-icon { width: 28px; height: 28px; }
-  .home-page .benefit > span:last-child { padding: 0; }
-}
 @media (max-width: 350px) {
-  .home-page .hero-description { max-width: 100%; }
-  .home-page .hero-benefits { width: 100%; }
-  .home-page .hero-actions { gap: 7px; }
-  .home-page .hero-actions .button { font-size: 10px; gap: 4px; padding-inline: 6px; }
-  .home-page .hero-actions .button svg { width: 14px; }
+  .home-page .hero-description { max-width: 100%; font-size: 13.5px; }
+  .home-page .hero-benefits { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .home-page .benefit { padding: 7px 8px; gap: 6px; }
+  .home-page .benefit-icon { width: 28px; height: 28px; }
+  .home-page .benefit-icon svg { width: 14px; height: 14px; }
+  .home-page .benefit-label { font-size: 10.5px; }
+  .home-page .hero-actions { gap: 8px; }
+  .home-page .hero-actions .button { font-size: 13.5px; min-height: 46px; }
   .home-page .quote-heading { gap: 9px; }
-  .home-page .quote-heading h2 { font-size: 23px; }
+  .home-page .quote-heading h2 { font-size: 22px; }
   .home-page .quote-heading p { font-size: 10px; }
 }
 @media (max-width: 340px) {
