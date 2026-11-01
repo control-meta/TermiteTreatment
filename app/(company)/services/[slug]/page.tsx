@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowRight, ArrowUpRight, Building2, CalendarCheck2, Check, Drill, HardHat, House, Phone, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Building2, CalendarCheck2, Check, ChevronRight, Drill, HardHat, House, Phone, ShieldCheck } from 'lucide-react';
 import SiteHeader from '../../../../components/SiteHeader';
 import SiteFooter from '../../../../components/SiteFooter';
 import { company, termiteServices } from '../../../../lib/company';
+import { serviceVisuals } from '../../../../lib/service-presentation';
+import styles from './service-detail.module.css';
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -17,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const title = service.title;
   const description = `${service.headline} ${service.text} Suited for: ${service.suited}`;
+  const visual = serviceVisuals[service.slug];
 
   return {
     title,
@@ -31,10 +34,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'TermiteTreatment',
       images: [
         {
-          url: `/images/${service.image}.webp`,
-          width: 1200,
-          height: 630,
-          alt: service.alt,
+          url: visual.src,
+          width: 900,
+          height: 600,
+          alt: visual.alt,
         },
       ],
     },
@@ -42,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title,
       description,
-      images: [`/images/${service.image}.webp`],
+      images: [visual.src],
     },
   };
 }
@@ -51,6 +54,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const service = termiteServices.find(item => item.slug === slug);
   if (!service) notFound();
+  const visual = serviceVisuals[service.slug];
+  const enquiryHref = `/contact-us?service=${service.slug}#enquiry`;
 
   const ServiceIcon =
     service.slug === 'residential-termite-control'
@@ -120,157 +125,75 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <SiteHeader />
-      <main id="main" className="inner-page service-detail-page service-detail-redesign">
-        <section className="page-container service-hero-new">
-          <nav className="breadcrumb service-crumb" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span>/</span>
-            <a href="/services">Services</a>
-            <span>/</span>
+      <main id="main" className={styles.page}>
+        <div className={styles.ambient} aria-hidden="true"><span /><span /><i /></div>
+        <div className={styles.shell}>
+          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+            <a href="/">Home</a><ChevronRight size={12} aria-hidden="true" />
+            <a href="/services">Services</a><ChevronRight size={12} aria-hidden="true" />
             <span aria-current="page">{service.shortTitle}</span>
           </nav>
-          <div className="service-hero-copy">
-            <span className="service-icon-badge">
-              <ServiceIcon size={22} strokeWidth={1.8} />
-            </span>
-            <p className="eyebrow">{service.label}</p>
-            <h1>{service.title}</h1>
-            <p className="page-lead">{service.text}</p>
-            <div className="service-hero-tags">
-              {service.tags.map(tag => (
-                <span key={tag}>
-                  <Check size={14} />
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="service-hero-actions">
-              <a
-                href={`/contact-us?service=${service.slug}#enquiry`}
-                className="button button-primary"
-              >
-                Plan an inspection <ArrowRight size={18} />
-              </a>
-              <a className="service-call-link" href={company.telephone}>
-                <Phone size={17} /> Talk to our team
-              </a>
-            </div>
-          </div>
-          <figure className="service-hero-art">
-            <img
-              src={`/images/${service.image}.webp`}
-              alt={service.alt}
-              width={1440}
-              height={960}
-              fetchPriority="high"
-            />
-            <figcaption>
-              <span className="service-art-icon">
-                <ShieldCheck size={19} />
-              </span>
-              <span>
-                <strong>A thoughtful first step</strong>
-                <small>Understand the property before choosing a plan.</small>
-              </span>
-            </figcaption>
-          </figure>
-        </section>
 
-        <section className="service-plan-section">
-          <div className="page-container service-plan-inner">
-            <header className="service-section-heading">
-              <p className="eyebrow">CARE THAT FITS YOUR PROPERTY</p>
-              <h2>{service.headline}</h2>
-              <p>{service.detail}</p>
+          <section className={styles.hero} aria-labelledby="service-title">
+            <div className={styles.heroCopy}>
+              <div className={styles.serviceLabel}>
+                <span className={styles.serviceIcon}><ServiceIcon size={18} strokeWidth={1.6} aria-hidden="true" /></span>
+                <p>{service.label}</p>
+              </div>
+              <h1 id="service-title">{service.title}</h1>
+              <p className={styles.lead}>{service.text}</p>
+              <div className={styles.tags}>{service.tags.map(tag => <span key={tag}><Check size={12} aria-hidden="true" />{tag}</span>)}</div>
+              <div className={styles.heroActions}>
+                <a href={enquiryHref} className={styles.primaryButton}>Book a free inspection <ArrowUpRight size={17} aria-hidden="true" /></a>
+                <a className={styles.callLink} href={company.telephone}><Phone size={14} aria-hidden="true" />Talk to our team</a>
+              </div>
+            </div>
+            <figure className={styles.heroVisual}>
+              <img src={visual.src} alt={visual.alt} width={900} height={600} fetchPriority="high" style={{ objectPosition: visual.position }} />
+              <figcaption><ShieldCheck size={16} aria-hidden="true" /><span>Care starts with a closer look.</span></figcaption>
+            </figure>
+          </section>
+
+          <section className={styles.plan} aria-labelledby="plan-title">
+            <header className={styles.sectionHeading}>
+              <p className={styles.kicker}>PROPERTY-FIRST PROTECTION</p>
+              <h2 id="plan-title">{service.headline}</h2>
+              <p className={styles.sectionDescription}>{service.detail}</p>
             </header>
-            <div className="service-detail-cards">
-              <article className="service-includes-card">
-                <p className="eyebrow">WHAT TO EXPECT</p>
-                <h3>Care with a clear plan.</h3>
-                <ul className="service-inclusions">
-                  {service.includes.map(item => (
-                    <li key={item}>
-                      <span>
-                        <Check size={15} />
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+            <div className={styles.planGrid}>
+              <article className={styles.includesCard}>
+                <span className={styles.cardLabel}>WHAT’S INCLUDED</span>
+                <h3>A clear, considered plan.</h3>
+                <ul className={styles.inclusions}>{service.includes.map(item => <li key={item}><Check size={15} aria-hidden="true" /><span>{item}</span></li>)}</ul>
               </article>
-              <aside className="service-fit-card">
-                <span className="service-fit-icon">
-                  <ServiceIcon size={23} />
-                </span>
-                <p className="eyebrow">A GOOD FIT FOR</p>
-                <h3>Your kind of property.</h3>
+              <aside className={styles.fitCard}>
+                <div className={styles.fitHeading}><span className={styles.fitIcon}><ServiceIcon size={20} aria-hidden="true" /></span><span className={styles.cardLabel}>MADE FOR YOUR SPACE</span></div>
+                <h3>A good fit for</h3>
                 <p>{service.suited}</p>
-                <a href={company.telephone}>
-                  <span>
-                    Talk through your space<strong>{company.phone}</strong>
-                  </span>
-                  <ArrowUpRight size={18} />
-                </a>
+                <a href={company.telephone}>Discuss your property <ArrowUpRight size={16} aria-hidden="true" /></a>
               </aside>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="service-journey-section">
-          <div className="page-container service-journey-inner">
-            <header className="service-section-heading">
-              <p className="eyebrow">A CLEAR WAY FORWARD</p>
-              <h2>
-                Three considered steps.<br />
-                <span>One less thing to wonder about.</span>
-              </h2>
-            </header>
-            <ol className="service-journey">
-              {service.steps.map(([title, text], index) => (
-                <li key={title}>
-                  <span className="journey-index">0{index + 1}</span>
-                  <span className="journey-icon">
-                    <ServiceIcon size={20} />
-                  </span>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </li>
-              ))}
-            </ol>
-            <a
-              href={`/contact-us?service=${service.slug}#enquiry`}
-              className="button button-primary service-journey-cta"
-            >
-              Start with an inspection <ArrowRight size={18} />
-            </a>
-          </div>
-        </section>
+          <section className={styles.journey} aria-labelledby="journey-title">
+            <header className={styles.inlineHeading}><div><p className={styles.kicker}>HOW IT WORKS</p><h2 id="journey-title">Simple steps. Thoughtful care.</h2></div><span>From first visit to follow-up.</span></header>
+            <ol className={styles.steps}>{service.steps.map(([title, text], index) => <li key={title}><span className={styles.stepNumber}>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
+          </section>
 
-        <section className="page-container related-services related-services-new">
-          <header className="service-section-heading">
-            <p className="eyebrow">EXPLORE SPECIALIST CARE</p>
-            <h2>
-              More ways to<br />
-              <span>protect your property.</span>
-            </h2>
-            <a className="text-link" href="/services">
-              See all services <ArrowRight size={18} />
-            </a>
-          </header>
-          <div>
-            {termiteServices
-              .filter(item => item.slug !== slug)
-              .map(item => (
-                <a href={`/services/${item.slug}`} key={item.slug}>
-                  <span>
-                    {item.title}
-                    <small>{item.shortTitle}</small>
-                  </span>
-                  <ArrowUpRight size={18} />
-                </a>
-              ))}
-          </div>
-        </section>
+          <section className={styles.related} aria-labelledby="related-title">
+            <header className={styles.inlineHeading}><div><p className={styles.kicker}>ALSO EXPLORE</p><h2 id="related-title">Care for every stage.</h2></div><a href="/services">All services <ArrowRight size={15} aria-hidden="true" /></a></header>
+            <div className={styles.relatedGrid}>{termiteServices.filter(item => item.slug !== slug).map(item => {
+              const relatedVisual = serviceVisuals[item.slug];
+              return <a className={styles.relatedCard} href={`/services/${item.slug}`} key={item.slug}><img src={relatedVisual.src} alt={relatedVisual.alt} width={64} height={64} loading="lazy" style={{ objectPosition: relatedVisual.position }} /><span><small>{item.shortTitle}</small><strong>{item.title}</strong></span><ArrowUpRight size={17} aria-hidden="true" /></a>;
+            })}</div>
+          </section>
+
+          <section className={styles.closing} aria-labelledby="inspection-title">
+            <span className={styles.closingIcon}><ShieldCheck size={24} strokeWidth={1.5} aria-hidden="true" /></span>
+            <div><p className={styles.kicker}>LET’S TAKE A CLOSER LOOK</p><h2 id="inspection-title">The right care starts here.</h2><p>A free inspection. A clear next step.</p></div>
+            <a className={styles.primaryButton} href={enquiryHref}>Plan an inspection <ArrowUpRight size={17} aria-hidden="true" /></a>
+          </section>
+        </div>
       </main>
       <SiteFooter />
     </>
