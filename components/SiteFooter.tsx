@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, Leaf, MapPin, Phone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Brand from './Brand';
 import { company } from '../lib/company';
+import styles from './SiteFooter.module.css';
 
 export default function SiteFooter({ onInspect }: { onInspect?: () => void }) {
   const isHome = Boolean(onInspect);
@@ -19,7 +20,7 @@ export default function SiteFooter({ onInspect }: { onInspect?: () => void }) {
   }, [isHome]);
 
   return <>
-    <footer className="footer container home-footer">
+    <footer className={`footer container home-footer ${styles.footer}`}>
       <div className="footer-top">
         <div className="footer-brand"><Brand href={isHome ? '#home' : '/#home'} /><p>Thoughtful pest care.<br />For the spaces and people you love.</p></div>
         <div className="footer-links"><span>EXPLORE</span><a href="/services">Our services</a><a href={isHome ? '#why-us' : '/#why-us'}>Why TermiteTreatment</a><a href="/about-us">Our approach</a></div>

@@ -7,3 +7,42 @@
 .section :global(.why-point > .point-photo) {
   border-radius: 50%;
 }
+
+@media (max-width: 760px) {
+  .section:global(.why-section) {
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
+
+  .section :global(.why-visual) {
+    height: 220px;
+  }
+
+  .section :global(.why-photo) {
+    right: 0;
+    border-radius: 0;
+  }
+
+  .section :global(.photo-accent) {
+    top: 52px;
+    width: 64px;
+    height: 64px;
+    border-width: 4px;
+    gap: 3px;
+  }
+
+  .section :global(.photo-accent > svg) {
+    width: 22px;
+    height: 22px;
+  }
+
+  .section :global(.photo-accent > span) {
+    font-size: 6px;
+  }
+}
+
+@media (min-width: 761px) {
+  .section:global(.why-section) {
+    padding-top: 37px;
+  }
+}

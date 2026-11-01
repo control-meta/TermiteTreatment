@@ -69,6 +69,109 @@
   animation: pageOrbD 30s -5s ease-in-out infinite alternate;
 }
 
+/* About page tailored orbs ----------------------------------------------- */
+.page-orb-about-sage {
+  top: -8%;
+  left: -6%;
+  width: clamp(380px, 48vw, 700px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 45% 45%, rgba(186, 228, 168, 0.55) 0%, rgba(220, 243, 206, 0.25) 55%, transparent 74%);
+  animation: pageOrbA 32s ease-in-out infinite alternate;
+}
+
+.page-orb-about-sunlight {
+  top: 4%;
+  right: -10%;
+  width: clamp(340px, 44vw, 640px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 50%, rgba(252, 233, 172, 0.5) 0%, rgba(240, 245, 210, 0.22) 58%, transparent 75%);
+  animation: pageOrbB 38s -6s ease-in-out infinite alternate;
+}
+
+.page-orb-about-emerald {
+  top: 36%;
+  left: -8%;
+  width: clamp(320px, 40vw, 600px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 48% 48%, rgba(162, 222, 178, 0.44) 0%, rgba(212, 242, 218, 0.2) 56%, transparent 75%);
+  animation: pageOrbC 35s -12s ease-in-out infinite alternate;
+}
+
+.page-orb-about-honey {
+  top: 56%;
+  right: -8%;
+  width: clamp(340px, 42vw, 620px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 48% 48%, rgba(248, 228, 175, 0.46) 0%, rgba(235, 244, 218, 0.2) 56%, transparent 75%);
+  animation: pageOrbD 40s -8s ease-in-out infinite alternate;
+}
+
+.page-orb-about-halo {
+  bottom: -6%;
+  left: 20%;
+  width: clamp(360px, 46vw, 660px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 45%, rgba(195, 233, 178, 0.48) 0%, rgba(230, 246, 222, 0.22) 55%, transparent 74%);
+  animation: pageOrbA 36s -16s ease-in-out infinite alternate;
+}
+
+/* Contact page tailored orbs ---------------------------------------------- */
+.page-orb-contact-hero {
+  top: -10%;
+  left: 15%;
+  width: clamp(400px, 50vw, 720px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 45%, rgba(200, 236, 182, 0.52) 0%, rgba(246, 235, 195, 0.26) 52%, transparent 74%);
+  animation: pageOrbA 34s ease-in-out infinite alternate;
+}
+
+.page-orb-contact-aside {
+  top: 22%;
+  left: -10%;
+  width: clamp(340px, 42vw, 620px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 46% 46%, rgba(174, 224, 188, 0.46) 0%, rgba(220, 242, 222, 0.22) 55%, transparent 75%);
+  animation: pageOrbC 36s -10s ease-in-out infinite alternate;
+}
+
+.page-orb-contact-form {
+  top: 28%;
+  right: -10%;
+  width: clamp(360px, 46vw, 660px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 52% 48%, rgba(250, 236, 185, 0.48) 0%, rgba(228, 244, 214, 0.22) 56%, transparent 75%);
+  animation: pageOrbB 40s -15s ease-in-out infinite alternate;
+}
+
+.page-orb-contact-offices {
+  top: 58%;
+  left: 8%;
+  width: clamp(360px, 45vw, 640px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 46% 48%, rgba(182, 228, 172, 0.45) 0%, rgba(230, 245, 220, 0.2) 55%, transparent 74%);
+  animation: pageOrbD 35s -5s ease-in-out infinite alternate;
+}
+
+.page-orb-contact-faq {
+  bottom: -8%;
+  right: 12%;
+  width: clamp(320px, 38vw, 560px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 50%, rgba(244, 232, 190, 0.42) 0%, rgba(224, 242, 212, 0.18) 55%, transparent 75%);
+  animation: pageOrbA 38s -18s ease-in-out infinite alternate;
+}
+
+/* Komorebi dappled sunlight rays ------------------------------------------ */
+.page-ambient-komorebi {
+  position: absolute;
+  inset: -5% -5%;
+  width: 110%;
+  height: 110%;
+  opacity: 0.45;
+  pointer-events: none;
+  animation: pageKomorebiShimmer 28s ease-in-out infinite alternate;
+}
+
 /* Layer 1: organic contour lines ----------------------------------------- */
 .page-ambient-contours {
   position: absolute;
@@ -155,6 +258,46 @@
   --leaf-rotate: -12deg;
   --leaf-duration: 27s;
   --leaf-delay: -16s;
+}
+
+.page-leaf-5 {
+  top: 58%;
+  left: 3.5%;
+  width: 32px;
+  height: 50px;
+  color: #72a563;
+  opacity: 0.24;
+  --leaf-rotate: 35deg;
+  --leaf-duration: 23s;
+  --leaf-delay: -9s;
+}
+
+.page-leaf-6 {
+  top: 78%;
+  right: 5%;
+  width: 34px;
+  height: 46px;
+  color: #8bb270;
+  opacity: 0.24;
+  --leaf-rotate: -18deg;
+  --leaf-duration: 26s;
+  --leaf-delay: -14s;
+}
+
+/* Interactive cursor parallax --------------------------------------------- */
+.page-ambient-interactive {
+  transform: translate3d(calc(var(--cursor-x, 0) * 0.8px), calc(var(--cursor-y, 0) * 0.8px), 0);
+  transition: transform 0.12s linear;
+}
+
+.page-ambient-leaves-interactive {
+  transform: translate3d(calc(var(--cursor-x, 0) * 1.5px), calc(var(--cursor-y, 0) * 1.5px), 0);
+  transition: transform 0.12s linear;
+}
+
+.page-ambient-motes-interactive {
+  transform: translate3d(calc(var(--cursor-x, 0) * 0.6px), calc(var(--cursor-y, 0) * 0.6px), 0);
+  transition: transform 0.12s linear;
 }
 
 /* Layer 3: sunlit pollen ------------------------------------------------- */

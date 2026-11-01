@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { ArrowRight, ArrowUpRight, Building2, CalendarCheck, ChevronDown, ChevronRight, Hammer, Home, Info, Layers3, Menu, MessageCircle, Phone, ShieldCheck, X } from 'lucide-react';
+import { ArrowRight, Building2, CalendarCheck, ChevronDown, ChevronRight, Hammer, Home, Info, Layers3, Menu, MessageCircle, Phone, ShieldCheck, X } from 'lucide-react';
 import Brand from './Brand';
 import { company, termiteServices } from '../lib/company';
 import styles from './SiteHeader.module.css';
@@ -79,19 +79,32 @@ export default function SiteHeader({ menuOpen, onMenuChange }: HeaderProps) {
     return () => document.removeEventListener('pointerdown', closeOutside);
   }, [servicesOpen, servicesMenuRef]);
   const closeMenus = () => { setServicesOpen(false); setMobileServicesOpen(false); setOpen(false); };
-  const serviceLinks = <>
-    <a href="/services" className="service-menu-overview" onClick={closeMenus}>All services <ArrowUpRight size={16} /></a>
-    {termiteServices.map(service => <a href={`/services/${service.slug}`} key={service.slug} onClick={closeMenus}>
-      <span>{service.title}<small>{service.shortTitle}</small></span><ArrowUpRight size={16} />
-    </a>)}
-  </>;
+  const serviceLinks = (
+    <div className="services-dropdown-inner">
+      <p className="services-dropdown-label">Services</p>
+      <ul className="services-dropdown-list">
+        {termiteServices.map((service, index) => {
+          const Icon = mobileServiceIcons[index];
+          return (
+            <li key={service.slug}>
+              <a href={`/services/${service.slug}`} onClick={closeMenus} aria-current={path === `/services/${service.slug}` ? 'page' : undefined}>
+                <span className="services-dropdown-icon"><Icon size={15} aria-hidden="true" /></span>
+                <span>{service.title}</span><ChevronRight size={14} aria-hidden="true" />
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <a href="/services" className="services-dropdown-all" onClick={closeMenus}>View all services <ArrowRight size={14} aria-hidden="true" /></a>
+    </div>
+  );
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header" ref={headerRef}><div className={`header-inner ${styles.headerInner}`}>
       <Brand href={isHome ? '#home' : '/#home'} />
-      <nav className="desktop-nav" aria-label="Main navigation">{navigation.map(([label, id]) => id === 'services' ? <div className="nav-service-group" key={id} ref={setServicesMenuRef}>
-        <button type="button" className={`nav-service-trigger ${active === id ? 'active' : ''}`} aria-expanded={servicesOpen} aria-controls="services-dropdown" aria-current={active === id ? 'location' : undefined} onClick={() => setServicesOpen(value => !value)}>{label}<ChevronDown size={14} /></button>
-        {servicesOpen && <div className="services-dropdown" id="services-dropdown" role="group" aria-label="Service pages">{serviceLinks}</div>}
+      <nav className="desktop-nav" aria-label="Main navigation">{navigation.map(([label, id]) => id === 'services' ? <div className="nav-service-group" key={id} ref={setServicesMenuRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
+        <button type="button" className={`nav-service-trigger ${active === id ? 'active' : ''}`} aria-expanded={servicesOpen} aria-haspopup="true" aria-controls="services-dropdown" aria-current={active === id ? 'location' : undefined} onClick={() => setServicesOpen(value => !value)} onFocus={() => setServicesOpen(true)}>{label}<ChevronDown size={14} /></button>
+        {servicesOpen && <div className="services-dropdown" id="services-dropdown" role="menu" aria-label="Service pages">{serviceLinks}</div>}
       </div> : <a key={id} className={active === id ? 'active' : ''} href={destination(id)} aria-current={active === id ? 'location' : undefined}>{label}</a>)}</nav>
       <a className={`header-call ${styles.headerCall}`} href={company.telephone} aria-label={`Call TermiteTreatment on ${company.phone}`}><span className="header-phone-icon"><Phone size={17} /></span><span className="header-call-copy"><small>Talk to an expert</small><strong>{company.phone}</strong></span></a>
       <button type="button" ref={menuButtonRef} className={`menu-toggle ${styles.menuToggle}`} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
@@ -110,7 +123,7 @@ export default function SiteHeader({ menuOpen, onMenuChange }: HeaderProps) {
               <span className={styles.servicesIcon}><ShieldCheck size={21} /></span><span><strong>Termite services</strong><small>Find the right protection</small></span><ChevronDown size={18} />
             </button>
             <div id="mobile-service-links" className={styles.serviceLinks} hidden={!mobileServicesOpen}>
-              <a className={styles.overviewLink} href="/services" onClick={closeMenus}>Explore all services <ArrowUpRight size={15} /></a>
+              <a className={styles.overviewLink} href="/services" onClick={closeMenus}>Explore all services <ArrowRight size={15} /></a>
               {termiteServices.map((service, index) => {
                 const Icon = mobileServiceIcons[index];
                 return <a className={styles.serviceLink} key={service.slug} href={`/services/${service.slug}`} aria-label={service.title} aria-current={path === `/services/${service.slug}` ? 'page' : undefined} onClick={closeMenus}>

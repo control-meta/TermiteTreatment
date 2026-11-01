@@ -1,0 +1,83 @@
+path,category,bytes
+.gitignore,Root configuration/documentation,82
+.openai/hosting.json,Hosting metadata,105
+AGENTS.md,Root configuration/documentation,679
+ASSET-PROMPT.md,Root configuration/documentation,7137
+README.md,Root configuration/documentation,3122
+app/(company)/about-us/page.tsx,Application source/style,8672
+app/(company)/contact-us/page.tsx,Application source/style,9975
+app/(company)/layout.tsx,Application source/style,168
+app/(company)/pages.css,Application source/style,48767
+app/(company)/services/[slug]/page.tsx,Application source/style,9354
+app/(company)/services/page.tsx,Application source/style,4334
+app/globals.css,Application source/style,39410
+app/layout.tsx,Application source/style,4243
+app/mobile-motion.css,Application source/style,1004
+app/nature-ambient.css,Application source/style,12228
+app/page-ambient.css,Application source/style,12196
+app/page.tsx,Application source/style,15171
+app/responsive.css,Application source/style,54243
+app/robots.ts,Application source/style,340
+app/sitemap.ts,Application source/style,1089
+components/BookNowButton.module.css,Shared component,8294
+components/BookNowButton.tsx,Shared component,9677
+components/Brand.tsx,Shared component,382
+components/ContactForm.tsx,Shared component,5407
+components/Coverage.tsx,Shared component,762
+components/FloatingContactButtons.module.css,Shared component,3144
+components/FloatingContactButtons.tsx,Shared component,3074
+components/HeroAmbientBackground.tsx,Shared component,13583
+components/HomeCareOverview.module.css,Shared component,5370
+components/HomeCareOverview.tsx,Shared component,2578
+components/PageAmbientBackground.tsx,Shared component,5479
+components/ProcessSteps.module.css,Shared component,3361
+components/ProcessSteps.tsx,Shared component,2130
+components/ProtectedSpaces.module.css,Shared component,4253
+components/ProtectedSpaces.tsx,Shared component,3015
+components/ReviewMarquee.module.css,Shared component,4813
+components/ReviewMarquee.tsx,Shared component,9531
+components/ScrollMotion.tsx,Shared component,2467
+components/ServiceCards.tsx,Shared component,1987
+components/ServicePicker.tsx,Shared component,4002
+components/SiteFooter.tsx,Shared component,2801
+components/SiteHeader.module.css,Shared component,5414
+components/SiteHeader.tsx,Shared component,9093
+components/TermiteDifference.module.css,Shared component,235
+components/TermiteField.tsx,Shared component,1086
+components/TermiteLogoMark.tsx,Shared component,934
+docs/legacy-site-review.md,Documentation/report,6815
+docs/mobile-motion-performance.md,Documentation/report,2387
+docs/project-cleanup-report.md,Documentation/report,9025
+docs/project-file-inventory.csv,Documentation/report,4632
+docs/service-page-image-refresh.md,Documentation/report,2850
+docs/termite-difference-image-prompts.md,Documentation/report,5248
+docs/termite-image-prompt.md,Documentation/report,1994
+docs/termite-image-refresh-v2.md,Documentation/report,5185
+lib/company.ts,Library/data,7894
+lib/termiteMotion.ts,Library/data,4213
+lib/termiteScene.ts,Library/data,11313
+next-env.d.ts,Root configuration/documentation,288
+next.config.mjs,Root configuration/documentation,187
+package-lock.json,Root configuration/documentation,37037
+package.json,Root configuration/documentation,637
+public/images/booking-termite.webp,Runtime image,13776
+public/images/commercial-care.webp,Runtime image,147120
+public/images/customer-family.webp,Runtime image,77454
+public/images/hero-left-foliage.webp,Runtime image,41320
+public/images/home-inspection.webp,Runtime image,103610
+public/images/mobile-hero-family.webp,Runtime image,109378
+public/images/protected-home.webp,Runtime image,129332
+public/images/service-commercial-v1.webp,Runtime image,144034
+public/images/service-maintenance-v1.webp,Runtime image,159216
+public/images/service-postconstruction-v1.webp,Runtime image,98774
+public/images/service-preconstruction-v1.webp,Runtime image,289776
+public/images/service-residential-v1.webp,Runtime image,137740
+public/images/termiguard-family.webp,Runtime image,214218
+public/images/termite-difference-identification-v2.webp,Runtime image,22538
+public/images/termite-difference-inspection.webp,Runtime image,28188
+public/images/termite-difference-plan-v2.webp,Runtime image,25158
+public/images/termite-difference-specialist-v2.webp,Runtime image,130444
+public/images/termite-difference-treatment-v2.webp,Runtime image,19780
+public/images/termite-macro.webp,Runtime image,137292
+public/images/termite-services-closeup-v2.webp,Runtime image,226990
+tsconfig.json,Root configuration/documentation,721

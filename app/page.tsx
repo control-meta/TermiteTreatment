@@ -10,9 +10,11 @@ import differenceStyles from '../components/TermiteDifference.module.css';
 import SiteFooter from '../components/SiteFooter';
 import ServicePicker from '../components/ServicePicker';
 import HeroAmbientBackground from '../components/HeroAmbientBackground';
+import HeroTrustCard from '../components/HeroTrustCard';
+import HeroQuickRating from '../components/HeroQuickRating';
 import PageAmbientBackground from '../components/PageAmbientBackground';
 import { useRef, useState, type FormEvent } from 'react';
-import { ArrowRight, ArrowUpRight, BadgeCheck, CheckCheck, ChevronDown, Home, Leaf, LockKeyhole, MessageCircle, Phone, Search, ShieldCheck, UserRound, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CheckCheck, ChevronDown, Leaf, LockKeyhole, MessageCircle, Phone, Search, ShieldCheck, UserRound, X } from 'lucide-react';
 
 const faqs = [
   ['What are the first signs of a termite problem?', 'Look for narrow mud tubes along walls, discarded wings near windows, wood that sounds hollow, or blistered paint. These signs can have other causes too, so an inspection is the best next step before choosing treatment.'],
@@ -66,55 +68,38 @@ export default function Page() {
         <div className="hero-foliage" aria-hidden="true"><img src="/images/hero-left-foliage.webp" alt="Decorative green foliage" width={320} height={480} /></div><div className="leaf-blur leaf-two" />
         <div className="hero-layout container">
           <div className="hero-copy">
-            <p className="eyebrow hero-eyebrow">
-              <ShieldCheck size={13} className="hero-eyebrow-icon" />
-              <span>PROTECT WHAT MATTERS MOST</span>
-              <span className="hero-eyebrow-line" />
-            </p>
             <h1 id="hero-title">Reliable Termite<br />Control for<br /><span>Homes &amp; Businesses</span></h1>
-            <p className="hero-description">Fast inspections, eco-friendly treatments, and guaranteed protection for your home and business.</p>
+            <p className="hero-description"><span className="hero-description-desktop">Protect your property from termites with expert inspections, proven treatments and preventive care. A safer, healthier space for your family, your business and a stronger tomorrow.</span><span className="hero-description-mobile">Expert inspections and proven termite care for your home or business.</span></p>
             <div className="hero-benefits">
               {[
-                { label: 'Safe for Families', Icon: ShieldCheck, photo: 'termiguard-family', alt: 'Safe for families' },
-                { label: 'Expert Inspection', Icon: Search, photo: 'home-inspection', alt: 'Expert inspection' },
-                { label: 'Preventive Care', Icon: Leaf, photo: 'commercial-care', alt: 'Preventive care' },
-                { label: 'Guaranteed Protection', Icon: BadgeCheck, photo: 'termiguard-family', alt: 'Guaranteed protection' },
-              ].map(({ label, Icon, photo, alt }) => (
-                <div className="benefit" key={label}>
-                  <span className="benefit-icon">
-                    <img src={`/images/${photo}.webp`} alt={alt} width={60} height={60} className="benefit-img" />
-                    <Icon size={16} className="benefit-svg" />
-                  </span>
-                  <span className="benefit-label">{label}</span>
-                </div>
-              ))}
+                ['termiguard-family', 'A family at home', 'Safe for', 'Families'],
+                ['home-inspection', 'A specialist inspecting a home', 'Expert', 'Inspection'],
+                ['commercial-care', 'Professional property care', 'Preventive', 'Care'],
+                ['termiguard-family', 'A protected family home', 'Guaranteed', 'Protection'],
+              ].map(([photo, alt, one, two]) => <div className="benefit" key={one}><span className="benefit-icon"><img src={`/images/${photo}.webp`} alt={alt} width={60} height={60} /></span><span>{one}<br />{two}</span></div>)}
             </div>
             <div className="hero-actions"><button className="button button-primary" onClick={() => inspect()}>Get a Free Inspection <ArrowRight size={21} /></button><a href="/services" className="button button-outline">View Our Services</a></div>
             <div className="mobile-photo"><span><ShieldCheck size={15} /> Your home. In caring hands.</span></div>
           </div>
 
-          <div className="quote-card" id="contact">
-            <div className="quote-heading"><span className="quote-termite"><img src="/images/booking-termite.webp" alt="Termite inspection icon" width={48} height={48} /></span><div><h2>Quick Connect</h2><p>Get a Free Inspection &amp; Quote</p></div></div>
-            <form onSubmit={submit}>
-              <label className="input-wrap"><UserRound size={21} /><span className="sr-only">Your name</span><input ref={nameInput} name="name" placeholder="Your Name" autoComplete="name" required minLength={2} maxLength={80} pattern=".*\S.*" /></label>
-              <label className="input-wrap"><Phone size={20} /><span className="sr-only">Phone number</span><input name="phone" type="tel" placeholder="Phone Number" autoComplete="tel" required pattern={String.raw`[+0-9 \(\)\-]{10,18}`} title="Enter a phone number with 10 to 18 characters, using digits, spaces, +, parentheses or hyphens." /></label>
-              <ServicePicker value={service} onChange={value => { setService(value); setServiceError(false); }} invalid={serviceError} triggerRef={serviceTrigger} />
-              <button type="submit" className="button button-primary quote-submit">Book NOW <ArrowRight size={21} /></button>
-              <p className="privacy-note"><LockKeyhole size={14} /> No spam. Your information is safe with us.</p>
-            </form>
+          <div className="quote-column">
+            <div className="quote-card" id="contact">
+              <div className="quote-heading"><span className="quote-termite"><img src="/images/booking-termite-3d-v3.webp" alt="Realistic 3D render of a termite" width={48} height={48} /></span><div><h2>Quick Connect</h2><p>Get a Free Inspection &amp; Quote</p></div></div>
+              <form onSubmit={submit}>
+                <label className="input-wrap"><UserRound size={21} /><span className="sr-only">Your name</span><input ref={nameInput} name="name" placeholder="Your Name" autoComplete="name" required minLength={2} maxLength={80} pattern=".*\S.*" /></label>
+                <label className="input-wrap"><Phone size={20} /><span className="sr-only">Phone number</span><input name="phone" type="tel" placeholder="Phone Number" autoComplete="tel" required pattern={String.raw`[+0-9 \(\)\-]{10,18}`} title="Enter a phone number with 10 to 18 characters, using digits, spaces, +, parentheses or hyphens." /></label>
+                <ServicePicker value={service} onChange={value => { setService(value); setServiceError(false); }} invalid={serviceError} triggerRef={serviceTrigger} />
+                <button type="submit" className="button button-primary quote-submit"><span>Book Free Inspection</span><span className="quote-btn-arrow"><ArrowRight size={18} /></span></button>
+                <p className="privacy-note"><LockKeyhole size={14} /> No spam. Your information is safe with us.</p>
+              </form>
+            </div>
+            <HeroQuickRating />
           </div>
         </div>
-        <div className="trust-strip container">
-          <div className="hero-review">
-            <div className="avatar-family"><img src="/images/customer-family.webp" alt="A family enjoying time together at home" width={112} height={112} /><span className="avatar-verified"><BadgeCheck size={14} /></span></div>
-            <div className="hero-review-copy"><div className="review-meta"><div className="stars" aria-label="5 out of 5 stars">★★★★★</div><span className="verified-pill"><BadgeCheck size={12} /> Verified customer</span></div><blockquote>“TermiteTreatment gave us complete peace of mind. Professional, reliable and truly care about our home.”</blockquote><cite>Priya S. — Homeowner, Bengaluru</cite></div>
-          </div>
-          <div className="trust-stat"><span className="stat-icon trust-symbol" aria-hidden="true"><svg viewBox="0 0 48 48" fill="currentColor"><circle cx="24" cy="12" r="6" /><circle cx="10" cy="17" r="4.5" /><circle cx="38" cy="17" r="4.5" /><path d="M14 40V30a10 10 0 0 1 20 0v10H14ZM3 36v-8a7 7 0 0 1 10-6 14 14 0 0 0-3 9v5H3ZM38 36v-5a14 14 0 0 0-3-9 7 7 0 0 1 10 6v8h-7Z" /></svg></span><div><strong>5000+</strong><span>Happy Customers</span></div></div>
-          <div className="trust-stat"><span className="stat-icon trust-symbol" aria-hidden="true"><ShieldCheck strokeWidth={2.2} /></span><div><strong>10+</strong><span>Years of Experience</span></div></div>
-          <div className="trust-stat"><span className="stat-icon trust-symbol" aria-hidden="true"><Home strokeWidth={2.2} /></span><div><strong>100%</strong><span>Satisfaction Guarantee</span></div></div>
-          <a className="termite-note" href="#spaces"><span className="bug-circle"><img src="/images/termite-macro.webp" alt="A close-up of termites on wood" width={224} height={224} /><span className="bug-badge"><span className="bug-dot" /> Live infestation</span></span><span className="termite-copy"><strong>Stop termite damage before it starts.</strong><small>See what we inspect</small></span><span className="note-arrow"><ArrowRight size={14} /></span></a>
+        <div className="hero-trust-desktop">
+          <HeroTrustCard />
         </div>
-        <div className="hero-bottom"><span /><a href="#services">A LITTLE CARE. A LOT OF PEACE OF MIND. <ChevronDown size={15} /></a><span /></div>
+        <div className="hero-bottom hero-bottom-desktop"><span /><a href="#services">A LITTLE CARE. A LOT OF PEACE OF MIND. <ChevronDown size={15} /></a><span /></div>
       </section>
 
       <HomeCareOverview onInspect={() => inspect()} />
@@ -128,7 +113,7 @@ export default function Page() {
 
       <ProtectedSpaces onInspect={inspect} />
 
-      <section className="faq-section section container" id="faq"><div className="faq-intro reveal"><p className="eyebrow"><span className="tiny-line" /> A LITTLE CLARITY</p><h2>Good questions.<br /><span>Honest answers.</span></h2><p>Because feeling confident starts with<br className="desktop-break" /> knowing what to expect.</p><a className="faq-contact" href="tel:+919220312345"><span className="stat-icon"><Phone size={23} /></span><span>Still have a question?<strong>Let’s talk <ArrowUpRight size={16} /></strong></span></a></div><div className="faq-list reveal">{faqs.map(([question, answer], i) => <details key={question} name="faqs" open={i === 0 ? true : undefined}><summary>{question}<span><ChevronDown size={18} /></span></summary><p>{answer}</p></details>)}</div></section>
+      <section className="faq-section section container" id="faq"><div className="faq-intro reveal"><p className="eyebrow"><span className="tiny-line" /> A LITTLE CLARITY</p><h2>Good questions.<br /><span>Honest answers.</span></h2><p>Because feeling confident starts with<br className="desktop-break" /> knowing what to expect.</p><a className="faq-contact faq-contact-desktop" href="tel:+919220312345"><span className="stat-icon"><Phone size={23} /></span><span>Still have a question?<strong>Let’s talk <ArrowUpRight size={16} /></strong></span></a></div><div className="faq-list reveal">{faqs.map(([question, answer], i) => <details key={question} name="faqs" open={i === 0 ? true : undefined}><summary>{question}<span><ChevronDown size={18} /></span></summary><p>{answer}</p></details>)}<a className="faq-contact faq-contact-mobile" href="tel:+919220312345"><span className="stat-icon"><Phone size={23} /></span><span>Still have a question?<strong>Let’s talk <ArrowUpRight size={16} /></strong></span></a></div></section>
 
       <ReviewMarquee onInspect={() => inspect()} />
 

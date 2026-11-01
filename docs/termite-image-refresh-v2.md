@@ -1,6 +1,6 @@
 # Termite image refresh — version 2
 
-Generated with the built-in imagegen tool. These are illustrative images, not photographs of actual customer visits. PNG originals and optimized WebP versions are saved in this workspace.
+Generated with the built-in imagegen tool. These are illustrative images, not photographs of actual customer visits. The paths below record the original outputs. The 31 October 2026 cleanup removed the unused PNG originals; the optimized WebP versions remain in use.
 
 ## services
 

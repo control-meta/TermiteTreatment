@@ -40,12 +40,12 @@
   .photoBadge { left: 18px; font-size: 9px; padding-inline: 11px; }
 }
 @media (max-width: 760px) {
-  .section { padding-block: 49px; scroll-margin-top: 95px; }
+  .section { padding-block: 25px 49px; scroll-margin-top: 95px; }
   .heading { margin-bottom: 26px; }
   .heading h2 { font-size: clamp(24px, 8vw, 34px); letter-spacing: -1.4px; margin-top: 13px; }
   .singleLine { white-space: normal; }
   .content { grid-template-columns: 1fr; gap: 25px; }
-  .photo { height: 265px; border-radius: 18px 55px 18px 18px; }
+  .photo { height: 210px; border-radius: 8px; }
   .photo > img { object-position: 50% 42%; }
   .photoBadge { top: 18px; left: 18px; padding: 8px 11px; font-size: 9px; }
   .photoCaption { bottom: 22px; left: 23px; }
@@ -63,5 +63,8 @@
   .footer p strong { font-size: 11px; }
   .footer p > span { font-size: 10px; line-height: 1.7; }
   .inspectionButton { font-size: 11px; padding: 7px 0 0 33px; gap: 12px; }
+}
+@media (min-width: 761px) {
+  .section { padding-top: 32px; }
 }
 @media (prefers-reduced-motion: reduce) { .row, .arrow { transition: none; } }

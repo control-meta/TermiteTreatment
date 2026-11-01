@@ -3,33 +3,33 @@
 @media (max-width: 1100px) {
   .headerInner { position: relative; z-index: 2; }
   .backdrop { display: block; position: fixed; inset: 0; z-index: 0; padding: 0; border: 0; background: #142a204d; cursor: default; animation: veil-in .18s ease-out; }
-  .mobileNav { display: flex; flex-direction: column; position: fixed; z-index: 3; top: 80px; left: 16px; right: 16px; width: min(430px, calc(100% - 32px)); margin-left: auto; max-height: calc(100dvh - 96px); overflow: hidden; border: 1px solid #e0e9d8; border-radius: 23px; background: #fff; box-shadow: 0 20px 55px #0b291e24; animation: menu-in .22s cubic-bezier(.2,.75,.3,1); }
-  .menuScroll { overflow-y: auto; overscroll-behavior: contain; min-height: 0; padding: 16px 14px 12px; scrollbar-width: thin; scrollbar-color: #b3c8a6 transparent; }
-  .menuHeading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 3px 12px; color: #7b8979; font-size: 10px; line-height: 1.4; }
+  .mobileNav { display: flex; flex-direction: column; position: fixed; z-index: 3; top: 80px; left: 16px; right: 16px; width: min(430px, calc(100% - 32px)); margin-left: auto; max-height: calc(100dvh - 96px); overflow: hidden; border: 1px solid #dbe7d2; border-radius: 23px; background: linear-gradient(180deg, #fdfff9 0%, #f3f7ec 100%); box-shadow: 0 20px 55px rgba(20, 55, 27, .14); animation: menu-in .22s cubic-bezier(.2,.75,.3,1); }
+  .menuScroll { overflow-y: auto; overscroll-behavior: contain; min-height: 0; padding: 16px 14px 12px; scrollbar-width: thin; scrollbar-color: #9db894 transparent; }
+  .menuHeading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 3px 12px; color: #6f7f68; font-size: 10px; line-height: 1.4; }
   .menuHeading > span:first-child { font-size: 8px; font-weight: 700; letter-spacing: 2px; color: #4b7454; }
   .pageLinks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .pageLink { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 65px; border: 1px solid #e8eee2; border-radius: 14px; background: #fcfdf9; color: #50634e; font-size: 12px; line-height: 1.2; font-weight: 550; transition: background .15s, border-color .15s; }
-  .pageLink[aria-current='page'] { background: #eaf3e2; border-color: #d8e7cc; color: #0c5c2c; }
-  .pageLink:hover { background: #f0f6e9; border-color: #cbdcbe; }
-  .servicesSection { margin-top: 12px; border: 1px solid #e4ebdd; border-radius: 16px; overflow: hidden; background: #f8faf4; }
-  .servicesTrigger { display: flex; align-items: center; gap: 10px; width: 100%; padding: 11px; background: transparent; text-align: left; color: #254c30; }
-  .servicesIcon { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; border: 1px solid #e0ead6; border-radius: 11px; background: #eaf2e2; color: #216034; }
+  .pageLink { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 65px; border: 1px solid #dfe8d5; border-radius: 12px; background: #ffffffd9; color: #243528; font-size: 12px; line-height: 1.2; font-weight: 550; transition: background .15s, border-color .15s; }
+  .pageLink[aria-current='page'] { background: #e7f0dd; border-color: #cddcbd; color: #0c3d1c; }
+  .pageLink:hover { background: #e7f0dd; border-color: #cddcbd; }
+  .servicesSection { margin-top: 12px; border: 1px solid #dbe7d2; border-radius: 12px; overflow: hidden; background: #ffffffa6; }
+  .servicesTrigger { display: flex; align-items: center; gap: 10px; width: 100%; padding: 11px; background: transparent; text-align: left; color: #243528; }
+  .servicesIcon { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; border: 1px solid #d8e4cd; border-radius: 10px; background: #eaf2e0; color: #1e5a2e; }
   .servicesTrigger > span:nth-child(2) { flex: 1; min-width: 0; }
   .servicesTrigger strong { display: block; font-size: 14px; line-height: 1.35; font-weight: 650; }
-  .servicesTrigger small { display: block; margin-top: 3px; font-size: 10px; line-height: 1.35; color: #7a8875; }
-  .servicesTrigger > svg { transition: transform .2s; }
+  .servicesTrigger small { display: block; margin-top: 3px; font-size: 10px; line-height: 1.35; color: #6f7f68; }
+  .servicesTrigger > svg { transition: transform .2s; color: #5f7a57; }
   .servicesTrigger[aria-expanded='true'] > svg { transform: rotate(180deg); }
   .serviceLinks { display: grid; gap: 5px; padding: 0 8px 8px; }
   .serviceLinks[hidden] { display: none; }
-  .overviewLink { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 7px; color: #176334; font-size: 11px; font-weight: 600; }
-  .serviceLink { display: flex; align-items: center; gap: 9px; min-height: 53px; padding: 8px; border: 1px solid #e8ede3; border-radius: 11px; background: #fff; color: #345638; transition: background .15s, border-color .15s; }
-  .serviceLink:hover, .serviceLink[aria-current='page'] { background: #edf5e7; border-color: #c7dbba; }
-  .serviceIcon { display: grid; place-items: center; flex: 0 0 31px; height: 31px; border-radius: 9px; background: #f2f6ec; color: #5b7d4c; }
+  .overviewLink { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 7px; color: #0c5c2c; font-size: 11px; font-weight: 600; }
+  .serviceLink { display: flex; align-items: center; gap: 9px; min-height: 53px; padding: 8px; border: 1px solid #e0e8d5; border-radius: 10px; background: #fff; color: #243528; transition: background .15s, border-color .15s; }
+  .serviceLink:hover, .serviceLink[aria-current='page'] { background: #e7f0dd; border-color: #cddcbd; }
+  .serviceIcon { display: grid; place-items: center; flex: 0 0 31px; height: 31px; border: 1px solid #d8e4cd; border-radius: 8px; background: #eaf2e0; color: #1e5a2e; }
   .serviceCopy { min-width: 0; flex: 1; }
-  .serviceCopy strong { display: block; color: #293e2e; font-size: 12px; font-weight: 600; line-height: 1.35; }
-  .serviceCopy small { display: block; color: #7a8773; font-size: 9px; margin-top: 3px; line-height: 1.35; }
-  .serviceLink > svg { color: #8a9c80; }
-  .menuContact { flex-shrink: 0; padding: 11px 14px 14px; border-top: 1px solid #eaf0e4; background: #fff; }
+  .serviceCopy strong { display: block; color: #243528; font-size: 12px; font-weight: 600; line-height: 1.35; }
+  .serviceCopy small { display: block; color: #6f7f68; font-size: 9px; margin-top: 3px; line-height: 1.35; }
+  .serviceLink > svg { color: #93a58a; }
+  .menuContact { flex-shrink: 0; padding: 11px 14px 14px; border-top: 1px solid #dfe8d5; background: transparent; }
   .menuContact > a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 57px; padding: 10px 13px; border-radius: 14px; background: #0d5b2e; color: #fff; }
   .contactIcon { display: grid; place-items: center; flex: 0 0 34px; height: 34px; border-radius: 10px; background: #ffffff16; }
   .menuContact > a > span:nth-child(2) { flex: 1; }

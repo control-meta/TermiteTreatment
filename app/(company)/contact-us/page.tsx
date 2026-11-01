@@ -3,6 +3,7 @@ import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import SiteHeader from '../../../components/SiteHeader';
 import SiteFooter from '../../../components/SiteFooter';
 import ContactForm from '../../../components/ContactForm';
+import PageAmbientBackground from '../../../components/PageAmbientBackground';
 import { company, offices, regions } from '../../../lib/company';
 
 export const metadata: Metadata = {
@@ -110,6 +111,7 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <PageAmbientBackground variant="contact" />
       <SiteHeader />
       <main id="main" className="inner-page contact-page">
         <section className="page-container contact-heading">
@@ -217,50 +219,102 @@ export default function ContactPage() {
           <div className="page-container">
             <div className="office-heading">
               <div>
-                <p className="eyebrow">CLOSER THAN YOU THINK</p>
+                <p className="eyebrow">
+                  <span className="tiny-line" /> CLOSER THAN YOU THINK
+                </p>
                 <h2>
-                  Your city.<br />
+                  Your city.
+                  <br />
                   <span>Our local teams.</span>
                 </h2>
               </div>
-              <p>Get in touch with our central team to arrange a visit or discuss service in your area.</p>
+              <div className="office-heading-side">
+                <p>Get in touch with our central team to arrange a visit or discuss service in your area.</p>
+                <a className="office-helpline" href={company.telephone}>
+                  <span className="office-helpline-icon">
+                    <Phone size={18} />
+                  </span>
+                  <span className="office-helpline-text">
+                    <small>Central helpline</small>
+                    <strong>{company.phone}</strong>
+                  </span>
+                  <span className="office-helpline-arrow">
+                    <ArrowUpRight size={17} />
+                  </span>
+                </a>
+              </div>
             </div>
             <div className="offices-grid">
               {offices.map((office, index) => (
                 <article className="office-card" key={office.city}>
-                  <span className="office-index">0{index + 1} / OFFICE</span>
-                  <h3>
-                    <MapPin size={21} />
-                    {office.city}
-                  </h3>
-                  <p>{office.address}</p>
+                  <div className="office-top">
+                    <span className="office-index">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="office-pin" aria-hidden="true">
+                      <MapPin size={19} />
+                    </span>
+                  </div>
+                  <p className="office-label">OFFICE &mdash; {office.city.toUpperCase()}</p>
+                  <h3>{office.city}</h3>
+                  <p className="office-address">{office.address}</p>
+                  <div className="office-foot">
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                        `${office.city} ${office.address}`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="office-map-link"
+                      aria-label={`View ${office.city} office on Google Maps`}
+                    >
+                      View on map <ArrowUpRight size={16} />
+                    </a>
+                    <a
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                        `${office.city} ${office.address}`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="office-directions"
+                      aria-label={`Get directions to ${office.city} office`}
+                    >
+                      <ArrowUpRight size={17} />
+                    </a>
+                  </div>
+                </article>
+              ))}
+              <article className="office-card office-cta">
+                <div className="office-top">
+                  <span className="office-index office-index-light">+{regions.length}</span>
+                  <span className="office-pin office-pin-light" aria-hidden="true">
+                    <MessageCircle size={19} />
+                  </span>
+                </div>
+                <p className="office-label office-label-light">WIDER COVERAGE</p>
+                <h3>
+                  Outside
+                  <br />
+                  these cities?
+                </h3>
+                <p className="office-address office-address-light">
+                  We arrange visits across neighbouring areas. Tell us where you are and we&rsquo;ll confirm
+                  the fastest option.
+                </p>
+                <div className="office-cta-actions">
+                  <a href="#enquiry" className="office-cta-primary">
+                    Check your area <ArrowUpRight size={16} />
+                  </a>
                   <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                      office.address
+                    href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+                      'Hello, I want to check service availability in my area.'
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-link"
-                    aria-label={`View ${office.city} office on Google Maps`}
+                    className="office-cta-secondary"
                   >
-                    View on map <ArrowUpRight size={16} />
+                    WhatsApp us
                   </a>
-                </article>
-              ))}
-            </div>
-            <div className="contact-regions">
-              <span>ALSO SERVING</span>
-              {regions
-                .filter(city => !offices.some(office => office.city === city))
-                .map(city => (
-                  <a
-                    key={city}
-                    href={`/contact-us?city=${encodeURIComponent(city)}#enquiry`}
-                  >
-                    {city}
-                    <ArrowUpRight size={14} />
-                  </a>
-                ))}
+                </div>
+              </article>
             </div>
           </div>
         </section>

@@ -3,6 +3,7 @@ import { ArrowRight, ShieldCheck, Search, HeartHandshake } from 'lucide-react';
 import SiteHeader from '../../../components/SiteHeader';
 import SiteFooter from '../../../components/SiteFooter';
 import Coverage from '../../../components/Coverage';
+import PageAmbientBackground from '../../../components/PageAmbientBackground';
 
 export const metadata: Metadata = {
   title: 'About Us | Dedicated Termite Control Specialists in India',
@@ -58,6 +59,7 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <PageAmbientBackground variant="about" />
       <SiteHeader />
       <main id="main" className="inner-page about-page">
         <section className="page-container about-hero-redesign">
