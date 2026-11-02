@@ -7,7 +7,7 @@
   .menuScroll { overflow-y: auto; overscroll-behavior: contain; min-height: 0; padding: 16px 14px 12px; scrollbar-width: thin; scrollbar-color: #9db894 transparent; }
   .menuHeading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 3px 12px; color: #6f7f68; font-size: 10px; line-height: 1.4; }
   .menuHeading > span:first-child { font-size: 8px; font-weight: 700; letter-spacing: 2px; color: #4b7454; }
-  .pageLinks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .pageLinks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .pageLink { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 65px; border: 1px solid #dfe8d5; border-radius: 12px; background: #ffffffd9; color: #243528; font-size: 12px; line-height: 1.2; font-weight: 550; transition: background .15s, border-color .15s; }
   .pageLink[aria-current='page'] { background: #e7f0dd; border-color: #cddcbd; color: #0c3d1c; }
   .pageLink:hover { background: #e7f0dd; border-color: #cddcbd; }

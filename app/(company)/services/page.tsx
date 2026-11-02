@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, ChevronRight, ClipboardCheck, MapPin, Phone, 
 import SiteHeader from '../../../components/SiteHeader';
 import SiteFooter from '../../../components/SiteFooter';
 import ServicesExplorer from '../../../components/ServicesExplorer';
+import PageAmbientBackground from '../../../components/PageAmbientBackground';
 import { company, regions, termiteServices } from '../../../lib/company';
 import { serviceVisuals } from '../../../lib/service-presentation';
 import styles from './services.module.css';
@@ -80,8 +81,9 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <SiteHeader />
+      <PageAmbientBackground variant="services" />
       <main id="main" className={`${styles.page} services-page`}>
-        <div className={styles.ambient} aria-hidden="true"><span /><span /></div>
+        <div className={styles.ambient} aria-hidden="true"><span className={styles.orbOne} /><span className={styles.orbTwo} /><span className={styles.orbThree} /><span className={styles.orbFour} /><span className={styles.heroSheen} /></div>
         <div className={styles.shell}>
           <nav className={styles.breadcrumb} aria-label="Breadcrumb"><a href="/">Home</a><ChevronRight size={12} aria-hidden="true" /><span aria-current="page">Our services</span></nav>
           <section className={styles.hero} aria-labelledby="services-hero-title">

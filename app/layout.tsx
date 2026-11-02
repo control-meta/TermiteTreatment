@@ -99,10 +99,8 @@ const organizationSchema = {
   areaServed: offices.map(o => o.city),
   address: {
     '@type': 'PostalAddress',
-    streetAddress: offices[0].address,
     addressLocality: 'Mumbai',
     addressRegion: 'Maharashtra',
-    postalCode: '400042',
     addressCountry: 'IN',
   },
   sameAs: [`https://wa.me/${company.whatsapp}`],
@@ -112,7 +110,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
-        <link rel="preload" as="image" href="/images/termiguard-family.webp" media="(min-width: 761px)" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

@@ -788,8 +788,8 @@ html { scroll-padding-top: 88px; }
   .home-page .hero-eyebrow { gap: 8px; margin-bottom: 16px; font-size: clamp(8px, 2vw, 11px); letter-spacing: .15em; color: #4c5b53; }
   .home-page .hero-eyebrow::before { content: ''; width: 3px; height: 12px; background: #08632d; border-radius: 2px; }
   .home-page .hero-eyebrow > span { display: none; }
-  .home-page .hero h1 { font-size: clamp(27px, 7.6vw, 52px); line-height: 1.08; letter-spacing: -.045em; color: #091014; text-shadow: none; }
-  .home-page .hero h1 > span { display: block; width: max-content; max-width: 100%; margin-top: 2px; font-size: .92em; color: #075c2a; }
+  .home-page .hero h1 { font-size: clamp(27px, 7.6vw, 52px); line-height: 1.08; letter-spacing: -.045em; color: #091014; text-shadow: none; font-weight: 800; }
+  .home-page .hero h1 > span { display: block; width: max-content; max-width: 100%; margin-top: 2px; font-size: .92em; color: #075c2a; font-weight: 800; }
   .home-page .hero-description { max-width: 59%; margin-top: 16px; padding: 0; border-radius: 0; background: transparent; font-size: clamp(13px, 3.3vw, 18px); line-height: 1.55; font-weight: 450; color: #43584b; text-wrap: pretty; }
   .home-page .hero-description-desktop { display: none; }
   .home-page .hero-description-mobile { display: inline; }

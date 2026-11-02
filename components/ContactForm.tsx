@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArrowRight, ArrowUpRight, CheckCheck, Mail, MessageCircle, X } from 'lucide-react';
+import PhoneInput from './PhoneInput';
 import { company, regions, termiteServices } from '../lib/company';
 
 type Enquiry = { name: string; phone: string; city: string; service: string; property: string; message: string };
@@ -16,7 +17,8 @@ export default function ContactForm() {
     const requested = termiteServices.find(item => item.slug === query.get('service'));
     if (requested) setService(requested.title);
     const requestedCity = query.get('city');
-    if (requestedCity && regions.includes(requestedCity)) setCity(requestedCity);
+    const requestedArea = query.get('area')?.trim().slice(0, 80);
+    if (requestedCity && regions.includes(requestedCity)) setCity(requestedArea ? `${requestedArea}, ${requestedCity}` : requestedCity);
   }, []);
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,7 +30,7 @@ export default function ContactForm() {
   return <>
     <form className="contact-form" id="enquiry" onSubmit={submit}>
       <p className="eyebrow">LET’S TAKE THE FIRST STEP</p><h2>Tell us a little<br />about your space.</h2><p className="form-intro">Request a free inspection. We’ll help you understand what your property needs.</p>
-      <div className="form-two"><label>Full name <span>*</span><input name="name" autoComplete="name" placeholder="Your full name" required minLength={2} maxLength={80} pattern=".*\S.*" /></label><label>Phone number <span>*</span><input name="phone" type="tel" autoComplete="tel" placeholder="Your mobile number" required pattern={String.raw`[+0-9 \(\)\-]{10,18}`} title="Enter a phone number with 10 to 18 characters." /></label></div>
+      <div className="form-two"><label>Full name <span>*</span><input name="name" autoComplete="name" placeholder="Your full name" required minLength={2} maxLength={80} pattern=".*\S.*" /></label><label>Phone number <span>*</span><PhoneInput name="phone" autoComplete="tel" placeholder="Your mobile number" required /></label></div>
       <div className="form-two"><label>City or area <span>*</span><input name="city" autoComplete="address-level2" placeholder="Where is your property?" list="service-cities" required maxLength={100} pattern=".*\S.*" value={city} onChange={event => setCity(event.target.value)} /><datalist id="service-cities">{regions.map(region => <option key={region} value={region} />)}</datalist></label><label>Property type <span>*</span><select name="property" required defaultValue=""><option value="" disabled>Select property type</option><option>Home / apartment</option><option>Office / commercial</option><option>New construction</option><option>Housing society / other</option></select></label></div>
       <label>How can we help? <span>*</span><select name="service" value={service} onChange={event => setService(event.target.value)} required><option value="" disabled>Select a service</option>{termiteServices.map(item => <option key={item.slug}>{item.title}</option>)}<option>Not sure — I need an inspection</option></select></label>
       <label>A little more detail <small>(optional)</small><textarea name="message" rows={3} maxLength={1200} placeholder="Tell us about any termite signs, your property or your construction stage." /></label>

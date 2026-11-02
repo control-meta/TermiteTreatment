@@ -1,0 +1,11 @@
+.page { isolation: isolate; }
+.cityContext { padding-block: 15px; border-bottom: 1px solid #dfe7d8; background: #f0f6e8; }
+.cityContext > div { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 22px; }
+.cityContext a { display: inline-flex; align-items: center; gap: 9px; min-height: 32px; color: #245e37; font-size: 13px; font-weight: 750; line-height: 1.6; }
+.cityContext p { color: #536b4e; font-size: 12px; line-height: 1.7; }
+@media(max-width:760px) {
+  .cityContext { padding-block: 16px; }
+  .cityContext > div { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .cityContext a { font-size: 12px; }
+  .cityContext p { font-size: 11px; }
+}

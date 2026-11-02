@@ -8,7 +8,7 @@ import { company, offices, regions } from '../../../lib/company';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Book Free Termite Inspection',
-  description: 'Call +91 92203 12345 or schedule a free termite inspection. Connect with our dedicated pest control offices in Mumbai, Bengaluru, Pune, Delhi NCR, and Goa.',
+  description: `Call ${company.phone} or schedule a free termite inspection. Connect with our dedicated pest control offices in Mumbai, Bengaluru, Pune, Delhi NCR, Goa, and Noida.`,
   alternates: {
     canonical: '/contact-us',
   },
@@ -255,50 +255,31 @@ export default function ContactPage() {
                   </div>
                   <p className="office-label">OFFICE &mdash; {office.city.toUpperCase()}</p>
                   <h3>{office.city}</h3>
-                  <p className="office-address">{office.address}</p>
+                  <p className="office-address">
+                    {office.location}. Contact our team for office details.
+                  </p>
                   <div className="office-foot">
-                    <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        `${office.city} ${office.address}`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="office-map-link"
-                      aria-label={`View ${office.city} office on Google Maps`}
-                    >
-                      View on map <ArrowUpRight size={16} />
-                    </a>
-                    <a
-                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-                        `${office.city} ${office.address}`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="office-directions"
-                      aria-label={`Get directions to ${office.city} office`}
-                    >
-                      <ArrowUpRight size={17} />
+                    <a className="office-map-link" href={company.telephone}>
+                      Contact {office.city} team <ArrowUpRight size={16} />
                     </a>
                   </div>
                 </article>
               ))}
               <article className="office-card office-cta">
-                <div className="office-top">
+                <div className="office-top office-cta-badge">
                   <span className="office-index office-index-light">+{regions.length}</span>
                   <span className="office-pin office-pin-light" aria-hidden="true">
                     <MessageCircle size={19} />
                   </span>
                 </div>
-                <p className="office-label office-label-light">WIDER COVERAGE</p>
-                <h3>
-                  Outside
-                  <br />
-                  these cities?
-                </h3>
-                <p className="office-address office-address-light">
-                  We arrange visits across neighbouring areas. Tell us where you are and we&rsquo;ll confirm
-                  the fastest option.
-                </p>
+                <div className="office-cta-copy">
+                  <p className="office-label office-label-light">WIDER COVERAGE</p>
+                  <h3>Outside these cities?</h3>
+                  <p className="office-address office-address-light">
+                    We arrange visits across neighbouring areas. Tell us where you are and we&rsquo;ll confirm
+                    the fastest option.
+                  </p>
+                </div>
                 <div className="office-cta-actions">
                   <a href="#enquiry" className="office-cta-primary">
                     Check your area <ArrowUpRight size={16} />
@@ -319,7 +300,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="page-container contact-faq">
+        <section className="page-container contact-faq" id="contact-faq">
           <div>
             <p className="eyebrow">BEFORE WE SAY HELLO</p>
             <h2>A little clarity.</h2>

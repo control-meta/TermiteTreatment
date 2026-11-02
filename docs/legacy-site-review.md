@@ -21,7 +21,7 @@ The redesign gives each service an individual page with suitable property types,
 
 ## Company and contact facts
 
-- Central phone and WhatsApp: +91 92203 12345.
+- Current central phone and WhatsApp: +91 99452 42545 (updated at the user's request on 2 November 2026).
 - Email: support@termitepestcontrol.co.in.
 - Listed offices: Mumbai, Bengaluru, Pune, Delhi NCR and Goa. Full addresses are transcribed into `lib/company.ts`, with punctuation normalised. Map buttons search the actual address; they do not claim a separately verified business listing.
 - Nine main coverage regions: Mumbai, Delhi NCR, Bengaluru, Hyderabad, Chennai, Pune, Kolkata, Ahmedabad and Goa. Coverage is distinguished from physical offices.

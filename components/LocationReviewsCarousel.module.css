@@ -1,0 +1,35 @@
+.card { min-width: 0; overflow: hidden; border: 1px solid #d6e4cf; border-radius: 15px; background: linear-gradient(130deg, #f1f7eb, #fbfdf8); }
+.card > header { padding: 22px 24px 0; }
+.card h2 { color: #1d4230; font-size: 24px; }
+.preview { margin-top: 7px; color: #607358; font-size: 10px; }
+.stage { position: relative; min-width: 0; margin-top: 12px; }
+.viewport { width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.viewport::-webkit-scrollbar { display: none; }
+.track { display: flex; width: 100%; }
+.slide { display: flex; flex: 0 0 100%; flex-direction: column; min-width: 0; box-sizing: border-box; padding: 7px 62px 19px; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+.stars { display: flex; gap: 4px; color: #d89700; }
+.slide blockquote { min-height: 3.5em; margin: 12px 0 16px; color: #254631; font-size: 15px; line-height: 1.75; font-style: italic; }
+.slide figcaption { display: flex; align-items: center; gap: 11px; margin-top: auto; }
+.avatar { display: grid; place-items: center; flex: 0 0 40px; height: 40px; border-radius: 50%; color: #355c39; background: #e1ecd8; font-size: 13px; font-weight: 750; }
+.avatar[data-tone='1'] { color: #486348; background: #dfebdb; }
+.avatar[data-tone='2'] { color: #6b5840; background: #eee4d4; }
+.slide figcaption strong { display: block; color: #254631; font-size: 13px; }
+.slide figcaption div > span { display: block; margin-top: 4px; color: #607358; font-size: 11px; line-height: 1.5; }
+.arrow { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #d3e1cb; border-radius: 50%; color: #245c38; background: #fff; box-shadow: 0 3px 10px #284d240d; }
+.previous { left: 15px; }
+.next { right: 15px; }
+.arrow:hover { color: #fff; background: #1d5431; border-color: #1d5431; }
+.arrow:focus-visible, .viewport:focus-visible, .card a:focus-visible { outline: 3px solid #4c7c41; outline-offset: -3px; }
+.card > footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 10px 24px; border-top: 1px solid #d8e4d1; }
+.counter { flex-shrink: 0; color: #607358; font-size: 11px; font-variant-numeric: tabular-nums; }
+.card footer a { display: inline-flex; align-items: center; gap: 10px; min-height: 36px; color: #245c38; font-size: 12px; font-weight: 700; }
+@media(max-width:760px) {
+  .card > header { padding: 22px 20px 0; }
+  .slide { padding-inline: 51px; }
+  .slide blockquote { min-height: 7em; font-size: 14px; }
+  .previous { left: 10px; }
+  .next { right: 10px; }
+  .arrow { width: 31px; height: 31px; }
+  .card > footer { padding-inline: 20px; }
+  .slide figcaption div > span { font-size: 10px; }
+}

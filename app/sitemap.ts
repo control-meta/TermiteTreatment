@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { termiteServices } from '../lib/company';
+import { locations, locationServiceUrl } from '../lib/locations';
 
 export const dynamic = 'force-static';
 
@@ -29,6 +30,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...serviceUrls,
     {
+      url: `${baseUrl}/locations`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    ...locations.flatMap(city => [
+      { url: `${baseUrl}/locations/${city.slug}`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+      ...termiteServices.map(service => ({ url: `${baseUrl}${locationServiceUrl(city, service.slug)}`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.7 })),
+    ]),
+    {
       url: `${baseUrl}/about-us`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
@@ -39,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/faqs`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     },
   ];
 }

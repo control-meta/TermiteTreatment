@@ -2,14 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { ArrowRight, Building2, CalendarCheck, ChevronDown, ChevronRight, Hammer, Home, Info, Layers3, Menu, MessageCircle, Phone, ShieldCheck, X } from 'lucide-react';
+import { ArrowRight, Building2, CalendarCheck, ChevronDown, ChevronRight, CircleHelp, Hammer, Home, Info, Layers3, Menu, MessageCircle, Phone, ShieldCheck, X } from 'lucide-react';
 import Brand from './Brand';
+import LocationsMenu from './LocationsMenu';
 import { company, termiteServices } from '../lib/company';
 import styles from './SiteHeader.module.css';
 
-const navigation = [['Home', 'home'], ['Services', 'services'], ['About', 'about'], ['Contact', 'contact']];
-const pages: Record<string, string> = { services: '/services', about: '/about-us', contact: '/contact-us' };
-const mobilePageIcons = { home: Home, about: Info, contact: MessageCircle };
+const navigation = [['Home', 'home'], ['Services', 'services'], ['Locations', 'locations'], ['About', 'about'], ['FAQs', 'faqs'], ['Contact', 'contact']];
+const pages: Record<string, string> = { services: '/services', about: '/about-us', faqs: '/faqs', contact: '/contact-us' };
+const mobilePageIcons = { home: Home, about: Info, faqs: CircleHelp, contact: MessageCircle };
 const mobileServiceIcons = [Home, Building2, Layers3, Hammer, CalendarCheck];
 const mobileServiceLabels = ['Residential care', 'Commercial care', 'Pre-construction', 'Post-construction', 'Annual maintenance'];
 const mobileServiceDetails = ['Homes & apartments', 'Offices & businesses', 'Protection before you build', 'Care for existing properties', 'Ongoing termite protection'];
@@ -20,6 +21,8 @@ type HeaderProps = { menuOpen?: boolean; onMenuChange?: (open: boolean) => void 
 export default function SiteHeader({ menuOpen, onMenuChange }: HeaderProps) {
   const path = usePathname();
   const isHome = path === '/';
+  const serviceDestination = (slug: string) => `/services/${slug}`;
+  const serviceOverview = '/services';
   const [localMenuOpen, setLocalMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
@@ -28,7 +31,7 @@ export default function SiteHeader({ menuOpen, onMenuChange }: HeaderProps) {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const open = menuOpen ?? localMenuOpen;
   const setOpen = onMenuChange ?? setLocalMenuOpen;
-  const active = isHome ? 'home' : path.startsWith('/services') ? 'services' : path === '/about-us' ? 'about' : path === '/contact-us' ? 'contact' : '';
+  const active = isHome ? 'home' : path.startsWith('/locations') ? 'locations' : path.startsWith('/services') ? 'services' : path === '/about-us' ? 'about' : path === '/faqs' ? 'faqs' : path === '/contact-us' ? 'contact' : '';
   const destination = (id: string) => pages[id] || `${isHome ? '' : '/'}#${id}`;
   useEffect(() => {
     function close(event: KeyboardEvent) {
@@ -87,7 +90,7 @@ export default function SiteHeader({ menuOpen, onMenuChange }: HeaderProps) {
           const Icon = mobileServiceIcons[index];
           return (
             <li key={service.slug}>
-              <a href={`/services/${service.slug}`} onClick={closeMenus} aria-current={path === `/services/${service.slug}` ? 'page' : undefined}>
+              <a href={serviceDestination(service.slug)} onClick={closeMenus} aria-current={path === serviceDestination(service.slug) ? 'page' : undefined}>
                 <span className="services-dropdown-icon"><Icon size={15} aria-hidden="true" /></span>
                 <span>{service.title}</span><ChevronRight size={14} aria-hidden="true" />
               </a>
@@ -95,14 +98,14 @@ export default function SiteHeader({ menuOpen, onMenuChange }: HeaderProps) {
           );
         })}
       </ul>
-      <a href="/services" className="services-dropdown-all" onClick={closeMenus}>View all services <ArrowRight size={14} aria-hidden="true" /></a>
+      <a href={serviceOverview} className="services-dropdown-all" onClick={closeMenus}>View all services <ArrowRight size={14} aria-hidden="true" /></a>
     </div>
   );
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header" ref={headerRef}><div className={`header-inner ${styles.headerInner}`}>
       <Brand href={isHome ? '#home' : '/#home'} />
-      <nav className="desktop-nav" aria-label="Main navigation">{navigation.map(([label, id]) => id === 'services' ? <div className="nav-service-group" key={id} ref={setServicesMenuRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
+      <nav className="desktop-nav" aria-label="Main navigation">{navigation.map(([label, id]) => id === 'locations' ? <LocationsMenu key={id} /> : id === 'services' ? <div className="nav-service-group" key={id} ref={setServicesMenuRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
         <button type="button" className={`nav-service-trigger ${active === id ? 'active' : ''}`} aria-expanded={servicesOpen} aria-haspopup="true" aria-controls="services-dropdown" aria-current={active === id ? 'location' : undefined} onClick={() => setServicesOpen(value => !value)} onFocus={() => setServicesOpen(true)}>{label}<ChevronDown size={14} /></button>
         {servicesOpen && <div className="services-dropdown" id="services-dropdown" role="menu" aria-label="Service pages">{serviceLinks}</div>}
       </div> : <a key={id} className={active === id ? 'active' : ''} href={destination(id)} aria-current={active === id ? 'location' : undefined}>{label}</a>)}</nav>
@@ -114,7 +117,7 @@ export default function SiteHeader({ menuOpen, onMenuChange }: HeaderProps) {
       <nav className={styles.mobileNav} id="mobile-nav" aria-label="Mobile navigation">
         <div className={styles.menuScroll}>
           <div className={styles.menuHeading}><span>EXPLORE</span><span>Care for every space</span></div>
-          <div className={styles.pageLinks}>{navigation.filter(([, id]) => id !== 'services').map(([label, id]) => {
+          <div className={styles.pageLinks}>{navigation.filter(([, id]) => id !== 'services' && id !== 'locations').map(([label, id]) => {
             const Icon = mobilePageIcons[id as keyof typeof mobilePageIcons];
             return <a className={styles.pageLink} key={id} href={destination(id)} aria-current={active === id ? 'page' : undefined} onClick={closeMenus}><Icon size={20} /><span>{label}</span></a>;
           })}</div>
@@ -123,15 +126,16 @@ export default function SiteHeader({ menuOpen, onMenuChange }: HeaderProps) {
               <span className={styles.servicesIcon}><ShieldCheck size={21} /></span><span><strong>Termite services</strong><small>Find the right protection</small></span><ChevronDown size={18} />
             </button>
             <div id="mobile-service-links" className={styles.serviceLinks} hidden={!mobileServicesOpen}>
-              <a className={styles.overviewLink} href="/services" onClick={closeMenus}>Explore all services <ArrowRight size={15} /></a>
+              <a className={styles.overviewLink} href={serviceOverview} onClick={closeMenus}>Explore all services <ArrowRight size={15} /></a>
               {termiteServices.map((service, index) => {
                 const Icon = mobileServiceIcons[index];
-                return <a className={styles.serviceLink} key={service.slug} href={`/services/${service.slug}`} aria-label={service.title} aria-current={path === `/services/${service.slug}` ? 'page' : undefined} onClick={closeMenus}>
+                return <a className={styles.serviceLink} key={service.slug} href={serviceDestination(service.slug)} aria-label={service.title} aria-current={path === serviceDestination(service.slug) ? 'page' : undefined} onClick={closeMenus}>
                   <span className={styles.serviceIcon}><Icon size={18} /></span><span className={styles.serviceCopy}><strong>{mobileServiceLabels[index]}</strong><small>{mobileServiceDetails[index]}</small></span><ChevronRight size={15} />
                 </a>;
               })}
             </div>
           </section>
+          <LocationsMenu mobile onNavigate={closeMenus} />
         </div>
         <div className={styles.menuContact}><a href={company.telephone}><span className={styles.contactIcon}><Phone size={19} /></span><span><small>Talk to our team</small><strong>{company.phone}</strong></span><ArrowRight size={19} /></a></div>
       </nav>

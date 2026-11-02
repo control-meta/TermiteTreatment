@@ -64,8 +64,25 @@ const CONTACT_MOTES: Mote[] = [
   { id: 214, top: 85, left: 60, size: 5, tone: 'white', duration: 35, delay: -19, drift: 22 },
 ];
 
+const SERVICES_MOTES: Mote[] = [
+  { id: 301, top: 7, left: 18, size: 5, tone: 'gold', duration: 24, delay: -3, drift: 17 },
+  { id: 302, top: 13, left: 80, size: 4, tone: 'emerald', duration: 29, delay: -9, drift: -17 },
+  { id: 303, top: 23, left: 30, size: 5, tone: 'white', duration: 27, delay: -6, drift: 21 },
+  { id: 304, top: 31, left: 90, size: 4, tone: 'gold', duration: 32, delay: -14, drift: -15 },
+  { id: 305, top: 40, left: 10, size: 4, tone: 'emerald', duration: 25, delay: -5, drift: 19 },
+  { id: 306, top: 48, left: 74, size: 5, tone: 'gold', duration: 30, delay: -17, drift: -13 },
+  { id: 307, top: 56, left: 24, size: 4, tone: 'white', duration: 28, delay: -8, drift: 16 },
+  { id: 308, top: 65, left: 86, size: 5, tone: 'emerald', duration: 33, delay: -12, drift: -21 },
+  { id: 309, top: 73, left: 40, size: 4, tone: 'gold', duration: 26, delay: -7, drift: 15 },
+  { id: 310, top: 82, left: 68, size: 5, tone: 'white', duration: 31, delay: -16, drift: -14 },
+  { id: 311, top: 90, left: 22, size: 4, tone: 'emerald', duration: 24, delay: -4, drift: 18 },
+  { id: 312, top: 19, left: 55, size: 3, tone: 'gold', duration: 34, delay: -11, drift: -12 },
+  { id: 313, top: 52, left: 50, size: 4, tone: 'white', duration: 27, delay: -13, drift: 13 },
+  { id: 314, top: 87, left: 82, size: 5, tone: 'gold', duration: 29, delay: -2, drift: -19 },
+];
+
 interface PageAmbientProps {
-  variant?: 'home' | 'about' | 'contact';
+  variant?: 'home' | 'about' | 'contact' | 'services';
 }
 
 export default function PageAmbientBackground({ variant = 'home' }: PageAmbientProps) {
@@ -114,7 +131,7 @@ export default function PageAmbientBackground({ variant = 'home' }: PageAmbientP
     };
   }, []);
 
-  const motes = variant === 'about' ? ABOUT_MOTES : variant === 'contact' ? CONTACT_MOTES : HOME_MOTES;
+  const motes = variant === 'about' ? ABOUT_MOTES : variant === 'contact' ? CONTACT_MOTES : variant === 'services' ? SERVICES_MOTES : HOME_MOTES;
 
   return (
     <div
@@ -195,10 +212,20 @@ export default function PageAmbientBackground({ variant = 'home' }: PageAmbientP
             <span className="page-orb page-orb-contact-faq" />
           </>
         )}
+
+        {variant === 'services' && (
+          <>
+            <span className="page-orb page-orb-services-sage" />
+            <span className="page-orb page-orb-services-sunlight" />
+            <span className="page-orb page-orb-services-emerald" />
+            <span className="page-orb page-orb-services-honey" />
+            <span className="page-orb page-orb-services-halo" />
+          </>
+        )}
       </div>
 
-      {/* Layer 1: Komorebi Dappled Sunlight Rays (Visible on About & Contact) */}
-      {(variant === 'about' || variant === 'contact') && (
+      {/* Layer 1: Komorebi Dappled Sunlight Rays (Visible on About, Contact & Services) */}
+      {(variant === 'about' || variant === 'contact' || variant === 'services') && (
         <svg
           className={`page-ambient-komorebi ${interactive ? 'page-ambient-interactive' : ''}`}
           viewBox="0 0 1440 900"
@@ -257,7 +284,7 @@ export default function PageAmbientBackground({ variant = 'home' }: PageAmbientP
             <path d="M20 6C20 24 20 42 20 57" stroke="rgba(255,255,255,.35)" strokeWidth="1.2" strokeLinecap="round" />
           </svg>
         </span>
-        {(variant === 'about' || variant === 'contact') && (
+        {(variant === 'about' || variant === 'contact' || variant === 'services') && (
           <>
             <span className="page-leaf page-leaf-5">
               <svg viewBox="0 0 32 64" fill="none">

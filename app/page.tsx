@@ -1,126 +1,101 @@
-'use client';
-
-import TermiteField from '../components/TermiteField';
+import type { Metadata } from 'next';
+import { ArrowRight, Building2, Check, CircleHelp, ClipboardCheck, House, Leaf, Phone, Search, ShieldCheck, SprayCan } from 'lucide-react';
+import { company } from '../lib/company';
+import { locations } from '../lib/locations';
+import { Home2Enquiry, Home2Projects } from './home2/Home2Client';
+import { home2Faqs, home2Services } from './home2/content';
+import SheetImage from './home2/SheetImage';
 import SiteHeader from '../components/SiteHeader';
-import HomeCareOverview from '../components/HomeCareOverview';
-import ReviewMarquee from '../components/ReviewMarquee';
-import ProcessSteps from '../components/ProcessSteps';
-import ProtectedSpaces from '../components/ProtectedSpaces';
-import differenceStyles from '../components/TermiteDifference.module.css';
 import SiteFooter from '../components/SiteFooter';
-import ServicePicker from '../components/ServicePicker';
-import HeroAmbientBackground from '../components/HeroAmbientBackground';
-import HeroTrustCard from '../components/HeroTrustCard';
-import HeroQuickRating from '../components/HeroQuickRating';
 import PageAmbientBackground from '../components/PageAmbientBackground';
-import { useRef, useState, type FormEvent } from 'react';
-import { ArrowRight, ArrowUpRight, CheckCheck, ChevronDown, Leaf, LockKeyhole, MessageCircle, Phone, Search, ShieldCheck, UserRound, X } from 'lucide-react';
+import ReviewsCarousel from './home2/ReviewsCarousel';
+import styles from './home2/home2.module.css';
 
-const faqs = [
-  ['What are the first signs of a termite problem?', 'Look for narrow mud tubes along walls, discarded wings near windows, wood that sounds hollow, or blistered paint. These signs can have other causes too, so an inspection is the best next step before choosing treatment.'],
-  ['Do I need to leave my home during treatment?', 'It depends on the treatment, the products used and the areas being treated. Your technician should explain preparation, ventilation and re-entry instructions before any work begins. Let us know about children, pets or sensitivities when requesting an inspection.'],
-  ['How much does termite treatment cost?', 'The right plan and price depend on the size of your property, the construction and the extent of termite activity. Request an inspection so the proposed work, price and any warranty terms can be explained before you decide.'],
-  ['Can I book an inspection for my business?', 'Yes. Select Commercial pest care in the enquiry form and share your location with the team. You can discuss access requirements and suitable service times with the team before confirming a visit.'],
-  ['How can I help prevent termites from returning?', 'Fix persistent leaks, reduce damp areas, avoid storing wood against walls and keep soil or mulch away from timber where possible. Regular checks can help spot new activity early. Ask for guidance specific to your property.'],
+const title = 'Termite Pest Control in Bangalore | Free Inspection';
+const description = 'Professional termite control in Bangalore for homes and businesses. Explore pre-construction treatment, post-construction care and AMC plans. Book a free inspection.';
+const heroAlt = 'Modern two-storey villa with a landscaped green lawn, glass balcony and bright blue sky';
+
+export const metadata: Metadata = {
+  title: { absolute: title },
+  description,
+  keywords: ['termite control Bangalore', 'termite pest control Bengaluru', 'anti-termite treatment', 'pre-construction termite control', 'post-construction termite treatment', 'residential termite control', 'commercial termite control', 'termite AMC'],
+  alternates: { canonical: '/' },
+  openGraph: { type: 'website', locale: 'en_IN', url: '/', title, description, siteName: 'Termite Pest Control', images: [{ url: '/images/home2/hero-v1.webp', width: 1536, height: 1024, alt: heroAlt }] },
+  twitter: { card: 'summary_large_image', title, description, images: [{ url: '/images/home2/hero-v1.webp', alt: heroAlt }] },
+};
+
+const process = [
+  { title: 'Inspection', text: 'Detailed inspection of your property', icon: Search },
+  { title: 'Customized Treatment', text: 'Tailored to your needs', icon: SprayCan },
+  { title: 'Safety Assurance', text: 'Safe & effective methods', icon: ShieldCheck },
+  { title: 'Ongoing Protection', text: 'Regular monitoring', icon: ClipboardCheck },
 ];
+const reasons = ['Experienced & Trained Technicians', 'Safe & Eco-Friendly Treatment', 'Long-Lasting Protection', 'Affordable Pricing', 'Timely Service & Support'];
+const serviceIcons = [House, ShieldCheck, Building2, Leaf];
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebPage', '@id': 'https://termitepestcontrol.co.in/#webpage', url: 'https://termitepestcontrol.co.in/', name: title, description, inLanguage: 'en-IN', primaryImageOfPage: { '@type': 'ImageObject', url: 'https://termitepestcontrol.co.in/images/home2/hero-v1.webp', width: 1536, height: 1024, caption: heroAlt }, about: { '@type': 'Service', name: 'Termite Pest Control', areaServed: 'Bangalore', provider: { '@type': 'HomeAndConstructionBusiness', name: 'Termite Pest Control', telephone: company.phone, email: company.email, url: 'https://termitepestcontrol.co.in' } } },
+    { '@type': 'FAQPage', mainEntity: home2Faqs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
+  ],
+};
 
-export default function Page() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [service, setService] = useState('');
-  const [serviceError, setServiceError] = useState(false);
-  const serviceTrigger = useRef<HTMLButtonElement>(null);
-  const [enquiry, setEnquiry] = useState<{ name: string; phone: string; service: string } | null>(null);
-  const enquiryDialog = useRef<HTMLDialogElement>(null);
-  const nameInput = useRef<HTMLInputElement>(null);
-
-  function inspect(chosen?: string) { if (chosen) { setService(({ 'Home pest protection': 'Residential Termite Control', 'Commercial pest care': 'Commercial Termite Control', 'Preventive inspection': 'Not sure — I need an inspection', 'Termite control': 'Post-Construction Termite Treatment' } as Record<string, string>)[chosen] || chosen); setServiceError(false); } setMenuOpen(false); const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; document.getElementById('contact')?.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'center' }); window.setTimeout(() => nameInput.current?.focus({ preventScroll: true }), reducedMotion ? 0 : 450); }
-  function submit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); if (!service) { setServiceError(true); serviceTrigger.current?.focus(); return; } const data = new FormData(e.currentTarget); setEnquiry({ name: String(data.get('name')).trim(), phone: String(data.get('phone')).trim(), service }); enquiryDialog.current?.showModal(); }
-  const message = enquiry ? `Hello TermiteTreatment! I would like to request a free inspection.\nName: ${enquiry.name}\nPhone: ${enquiry.phone}\nService: ${enquiry.service}\nPlease share available times and a quote.` : '';
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map(([question, answer]) => ({
-      '@type': 'Question',
-      name: question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: answer,
-      },
-    })),
-  };
-
-  return <>
-    <link rel="preload" as="image" href="/images/mobile-hero-family.webp" media="(max-width: 760px)" />
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-    />
-    <TermiteField />
-    <PageAmbientBackground />
-    <SiteHeader menuOpen={menuOpen} onMenuChange={setMenuOpen} />
-
-    <main id="main" className="home-page">
-      <section className="hero" id="home" aria-labelledby="hero-title">
-        <div className="hero-background" role="img" aria-label="A family speaking with a friendly TermiteTreatment technician outside their home"><img className="hero-scene" src="/images/termiguard-family.webp" alt="Professional pest control technician consulting with a family outside their protected home" width={1672} height={941} /></div>
-        <div className="hero-wash" />
-        <HeroAmbientBackground />
-        <div className="hero-foliage" aria-hidden="true"><img src="/images/hero-left-foliage.webp" alt="Decorative green foliage" width={320} height={480} /></div><div className="leaf-blur leaf-two" />
-        <div className="hero-layout container">
-          <div className="hero-copy">
-            <h1 id="hero-title">Reliable Termite<br />Control for<br /><span>Homes &amp; Businesses</span></h1>
-            <p className="hero-description"><span className="hero-description-desktop">Protect your property from termites with expert inspections, proven treatments and preventive care. A safer, healthier space for your family, your business and a stronger tomorrow.</span><span className="hero-description-mobile">Expert inspections and proven termite care for your home or business.</span></p>
-            <div className="hero-benefits">
-              {[
-                ['termiguard-family', 'A family at home', 'Safe for', 'Families'],
-                ['home-inspection', 'A specialist inspecting a home', 'Expert', 'Inspection'],
-                ['commercial-care', 'Professional property care', 'Preventive', 'Care'],
-                ['termiguard-family', 'A protected family home', 'Guaranteed', 'Protection'],
-              ].map(([photo, alt, one, two]) => <div className="benefit" key={one}><span className="benefit-icon"><img src={`/images/${photo}.webp`} alt={alt} width={60} height={60} /></span><span>{one}<br />{two}</span></div>)}
-            </div>
-            <div className="hero-actions"><button className="button button-primary" onClick={() => inspect()}>Get a Free Inspection <ArrowRight size={21} /></button><a href="/services" className="button button-outline">View Our Services</a></div>
-            <div className="mobile-photo"><span><ShieldCheck size={15} /> Your home. In caring hands.</span></div>
-          </div>
-
-          <div className="quote-column">
-            <div className="quote-card" id="contact">
-              <div className="quote-heading"><span className="quote-termite"><img src="/images/booking-termite-3d-v3.webp" alt="Realistic 3D render of a termite" width={48} height={48} /></span><div><h2>Quick Connect</h2><p>Get a Free Inspection &amp; Quote</p></div></div>
-              <form onSubmit={submit}>
-                <label className="input-wrap"><UserRound size={21} /><span className="sr-only">Your name</span><input ref={nameInput} name="name" placeholder="Your Name" autoComplete="name" required minLength={2} maxLength={80} pattern=".*\S.*" /></label>
-                <label className="input-wrap"><Phone size={20} /><span className="sr-only">Phone number</span><input name="phone" type="tel" placeholder="Phone Number" autoComplete="tel" required pattern={String.raw`[+0-9 \(\)\-]{10,18}`} title="Enter a phone number with 10 to 18 characters, using digits, spaces, +, parentheses or hyphens." /></label>
-                <ServicePicker value={service} onChange={value => { setService(value); setServiceError(false); }} invalid={serviceError} triggerRef={serviceTrigger} />
-                <button type="submit" className="button button-primary quote-submit"><span>Book Free Inspection</span><span className="quote-btn-arrow"><ArrowRight size={18} /></span></button>
-                <p className="privacy-note"><LockKeyhole size={14} /> No spam. Your information is safe with us.</p>
-              </form>
-            </div>
-            <HeroQuickRating />
-          </div>
-        </div>
-        <div className="hero-trust-desktop">
-          <HeroTrustCard />
-        </div>
-        <div className="hero-bottom hero-bottom-desktop"><span /><a href="#services">A LITTLE CARE. A LOT OF PEACE OF MIND. <ChevronDown size={15} /></a><span /></div>
+export default function HomePage() {
+  return <div className={styles.experience}><PageAmbientBackground /><div className={styles.page}>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <SiteHeader />
+    <main id="main">
+      <section className={styles.hero} id="home" aria-labelledby="home2-title">
+        <img className={styles.heroImage} src="/images/home2/hero-v1.webp" alt={heroAlt} width={1536} height={1024} fetchPriority="high" />
+        <div className={styles.heroWash} aria-hidden="true" />
+        <div className={styles.shell}><div className={styles.heroCopy}>
+          <h1 id="home2-title">Complete Termite<br className={styles.desktopBreak} /> Control Solutions <span>for Your Property</span></h1>
+          <p className={styles.heroTagline}>Prevent. Protect. Peace of Mind.</p>
+          <div className={styles.heroBenefits}><span><ShieldCheck size={30} strokeWidth={2.2} aria-hidden="true" /><strong>Expert<br />Team</strong></span><span><Leaf size={30} strokeWidth={2.2} aria-hidden="true" /><strong>Safe &<br />Eco-Friendly</strong></span><span><House size={30} strokeWidth={2.2} aria-hidden="true" /><strong>Long-Lasting<br />Protection</strong></span></div>
+          <div className={styles.heroActions}><a className={styles.accentButton} href="#home2-enquiry">Get a Free Inspection <ArrowRight size={18} aria-hidden="true" /></a><a className={styles.primaryButton} href={company.telephone}><Phone size={17} fill="currentColor" aria-hidden="true" />Call Now</a></div>
+        </div></div>
+        <div className={styles.pestBadge} role="img" aria-label="Termites inside a red exclusion symbol"><SheetImage src="/images/home2/termites-v1.webp" index={0} columns={2} alt="" /><span aria-hidden="true" /></div>
       </section>
 
-      <HomeCareOverview onInspect={() => inspect()} />
+      <div className={styles.content}>
+        <div className={`${styles.shell} ${styles.introGrid}`}>
+          <section className={styles.about} id="about" aria-labelledby="home2-about-title"><h2 id="home2-about-title">About Our Company</h2><p>Termite Pest Control is a trusted provider of professional termite treatment services in Bangalore. We use advanced, odorless and safe methods to eliminate termites and protect your home and business for the long term.</p><a className={styles.textLink} href="/about-us">Know More About Us <ArrowRight size={16} aria-hidden="true" /></a></section>
+          <section className={styles.services} id="services" aria-labelledby="home2-services-title"><h2 className={styles.ruledTitle} id="home2-services-title"><span>Our Termite Control Services</span></h2><div className={styles.serviceGrid}>{home2Services.map((service, index) => { const Icon = serviceIcons[index]; return <article className={styles.serviceCard} key={service.slug}><SheetImage src="/images/home2/termites-v1.webp" index={service.image} columns={2} alt={service.alt} className={styles.serviceImage} /><div className={styles.serviceCardBody}><div><Icon size={26} strokeWidth={1.8} aria-hidden="true" /><h3>{service.title}</h3></div><a className={styles.smallAccentButton} href={`/services/${service.slug}`} aria-label={`Know more about ${service.title}`}>Know More <ArrowRight size={14} aria-hidden="true" /></a></div></article>; })}</div></section>
+        </div>
 
-      <section className={`why-section ${differenceStyles.section}`} id="why-us"><div className="container why-layout">
-        <div className="why-visual reveal"><div className="why-photo" role="img" aria-label="A specialist inspecting a termite mud tube on a wooden door frame" /><div className="image-top-tag"><span className="status-dot" /> REAL CARE. RIGHT AT YOUR DOOR.</div><div className="image-bottom-card"><span className="stat-icon photo-stat"><img src="/images/termite-difference-identification-v2.webp" alt="Pest care technician inspecting timber fittings" width={60} height={60} /></span><div><strong>Peace of mind comes home.</strong><span>With a team that cares as much as you do.</span></div></div><div className="photo-accent"><Leaf size={29} /><span>A thoughtful<br />approach to care</span></div></div>
-        <div className="why-copy reveal"><p className="eyebrow"><span className="tiny-line" /> THE TERMITETREATMENT DIFFERENCE</p><h2>Your home is personal.<br /><span>We treat it that way.</span></h2><p className="section-intro">It’s more than four walls. It’s where your life happens. Our approach brings expertise, attention and a little extra care to every visit.</p><div className="why-points">{[[Search, 'We look a little closer.', 'A thorough inspection helps us understand the cause, so we can recommend care that makes sense.'], [Leaf, 'Care with your family in mind.', 'Clear preparation and aftercare guidance, with your household’s needs considered at every step.'], [CheckCheck, 'Clarity, from start to finish.', 'Understand the plan, the price and the next steps before treatment begins. No guesswork.']].map(([Icon, title, text], i) => { const PointIcon = Icon as typeof Search; return <div className="why-point" key={i}><span className="point-photo"><img src={`/images/${["termite-difference-identification-v2", "termite-difference-treatment-v2", "termite-difference-plan-v2"][i]}.webp`} alt={["A close-up of a termite on a green leaf", "Targeted treatment at a termite mud tube", "A termite inspection plan beside damaged timber"][i]} width={72} height={72} loading="lazy" /></span><div><h3>{String(title)}</h3><p>{String(text)}</p></div></div>; })}</div><a href="/about-us" className="text-link">A little more about us <ArrowRight size={19} /></a></div>
-      </div></section>
+        <section className={`${styles.shell} ${styles.process}`} aria-labelledby="home2-process-title"><h2 className={styles.ruledTitle} id="home2-process-title"><span>Our Treatment Process</span></h2><ol>{process.map((step, index) => { const Icon = step.icon; return <li key={step.title}><div className={styles.processTop}><span>{index + 1}</span><ArrowRight size={21} strokeWidth={1.3} aria-hidden="true" /><Icon size={34} strokeWidth={2} aria-hidden="true" /></div><h3>{step.title}</h3><p>{step.text}</p>{index < 3 && <ArrowRight className={styles.processArrow} size={24} strokeWidth={1.5} aria-hidden="true" />}</li>; })}</ol></section>
 
-      <ProcessSteps onInspect={() => inspect()} />
+        <section className={`${styles.shell} ${styles.solutions}`} aria-label="Residential and commercial termite solutions">
+          <article className={styles.solution}><SheetImage src="/images/services/property-types-v4.webp" index={0} alt="Contemporary independent villa with a green garden" className={styles.solutionImage} /><div><h2>Residential{' '}<br />Termite Solutions</h2><ul>{['Apartments & Villas', 'Individual Houses', 'Rental Properties'].map(item => <li key={item}><Check size={14} strokeWidth={3} aria-hidden="true" />{item}</li>)}</ul><a className={styles.smallAccentButton} href="/services/residential-termite-control">Know More <ArrowRight size={15} aria-hidden="true" /></a></div></article>
+          <article className={styles.solution}><SheetImage src="/images/services/property-types-v4.webp" index={2} alt="Modern glass-fronted commercial office building" className={styles.solutionImage} /><div><h2>Commercial{' '}<br />Termite Solutions</h2><ul>{['Offices & IT Parks', 'Retail Stores', 'Warehouses'].map(item => <li key={item}><Check size={14} strokeWidth={3} aria-hidden="true" />{item}</li>)}</ul><a className={styles.smallAccentButton} href="/services/commercial-termite-control">Know More <ArrowRight size={15} aria-hidden="true" /></a></div></article>
+        </section>
 
-      <ProtectedSpaces onInspect={inspect} />
+        <div className={`${styles.shell} ${styles.proofGrid}`}>
+          <section className={styles.why} id="why-us" aria-labelledby="home2-why-title"><img src="/images/home2/technician-v1.webp" alt="Protected technician in navy workwear carefully treating a timber door frame" width={1536} height={1024} loading="lazy" /><div><h2 id="home2-why-title">Why Choose Us?</h2><ul>{reasons.map(item => <li key={item}><Check size={14} strokeWidth={3} aria-hidden="true" />{item}</li>)}</ul></div></section>
+          <Home2Projects />
+        </div>
 
-      <section className="faq-section section container" id="faq"><div className="faq-intro reveal"><p className="eyebrow"><span className="tiny-line" /> A LITTLE CLARITY</p><h2>Good questions.<br /><span>Honest answers.</span></h2><p>Because feeling confident starts with<br className="desktop-break" /> knowing what to expect.</p><a className="faq-contact faq-contact-desktop" href="tel:+919220312345"><span className="stat-icon"><Phone size={23} /></span><span>Still have a question?<strong>Let’s talk <ArrowUpRight size={16} /></strong></span></a></div><div className="faq-list reveal">{faqs.map(([question, answer], i) => <details key={question} name="faqs" open={i === 0 ? true : undefined}><summary>{question}<span><ChevronDown size={18} /></span></summary><p>{answer}</p></details>)}<a className="faq-contact faq-contact-mobile" href="tel:+919220312345"><span className="stat-icon"><Phone size={23} /></span><span>Still have a question?<strong>Let’s talk <ArrowUpRight size={16} /></strong></span></a></div></section>
+        <section className={`${styles.shell} ${styles.locationsSection}`} id="locations" aria-labelledby="home2-locations-title">
+          <h2 className={styles.ruledTitle} id="home2-locations-title"><span>Our Locations</span></h2>
+          <div className={styles.locationGrid}>{locations.map(city => <a className={styles.locationCard} href={`/locations/${city.slug}`} key={city.slug} aria-label={`Explore termite control in ${city.name}`}>
+            <img src={city.image} alt={city.imageAlt} width={1536} height={1024} loading="lazy" />
+            <div><span><strong>{city.name}</strong><small>{city.state}</small></span><ArrowRight size={17} aria-hidden="true" /></div>
+          </a>)}</div>
+        </section>
 
-      <ReviewMarquee onInspect={() => inspect()} />
+        <ReviewsCarousel />
 
+        <div className={`${styles.shell} ${styles.faqSection}`}>
+          <section className={styles.faqs} id="faqs" aria-labelledby="home2-faq-title"><h2 id="home2-faq-title"><CircleHelp size={25} fill="#e3edda" aria-hidden="true" />FAQs</h2><div>{home2Faqs.map(faq => <details key={faq.question} name="home2-faqs"><summary>{faq.question}<ChevronDownIcon /></summary><p>{faq.answer}</p></details>)}</div><a className={styles.textLink} href="/faqs">View More FAQs <ArrowRight size={15} aria-hidden="true" /></a></section>
+        </div>
+      </div>
+
+      <section className={styles.ctaSection} aria-labelledby="home2-cta-title"><div className={`${styles.shell} ${styles.ctaGrid}`}><div className={styles.ctaCopy}><ShieldCheck size={58} strokeWidth={2.2} aria-hidden="true" /><div><h2 id="home2-cta-title">Don’t Let Termites Damage Your Property!</h2><p>Get a free quote today and keep your home or business safe.</p></div><a className={styles.accentButton} href="#home2-enquiry">Get a Free Quote <ArrowRight size={17} aria-hidden="true" /></a></div><Home2Enquiry /></div></section>
     </main>
 
-    <SiteFooter onInspect={() => inspect()} />
+  </div><SiteFooter enquiryHref="#home2-enquiry" /></div>;
+}
 
-    <dialog ref={enquiryDialog} aria-label="Review your enquiry" className="detail-dialog enquiry-dialog" onClick={e => { if (e.target === e.currentTarget) enquiryDialog.current?.close(); }}><button className="dialog-close" aria-label="Close enquiry" onClick={() => enquiryDialog.current?.close()}><X /></button><span className="dialog-icon"><CheckCheck size={33} /></span><p className="eyebrow">ONE MORE LITTLE STEP</p><h2>Your enquiry is ready.</h2><p>Thanks, {enquiry?.name}. Review your details below, then open WhatsApp to send your request to the team. Your booking is confirmed only after the team replies.</p><dl className="enquiry-summary"><div><dt>Service</dt><dd>{enquiry?.service}</dd></div><div><dt>Phone</dt><dd>{enquiry?.phone}</dd></div></dl><a className="button button-primary" href={`https://wa.me/919220312345?text=${encodeURIComponent(message)}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={20} /> Continue in WhatsApp <ArrowUpRight size={18} /></a><button className="edit-enquiry" onClick={() => enquiryDialog.current?.close()}>Edit my details</button></dialog>
-  </>;
+function ChevronDownIcon() {
+  return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>;
 }

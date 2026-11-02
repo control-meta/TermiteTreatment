@@ -1,0 +1,203 @@
+.page { position: relative; isolation: isolate; --forest: #173d2d; --green: #0d5b2e; --pale: #f1f6e9; --lime: #ddebab; padding-top: 94px; overflow: clip; background: linear-gradient(#fff, #f7faf3 62%, #fff); color: #253b2b; }
+.shell { position: relative; width: min(1260px, calc(100% - 64px)); margin-inline: auto; }
+.page :is(h1, h2, h3) { font-family: var(--font-heading); text-wrap: pretty; }
+.page h2 { font-size: clamp(24px, 2.15vw, 30px); line-height: 1.2; font-weight: 800; letter-spacing: -.8px; }
+.page h3 { font-size: 15px; line-height: 1.4; font-weight: 750; letter-spacing: -.25px; }
+.page p { line-height: 1.75; }
+.page :is(section[id], div[id]) { scroll-margin-top: 110px; }
+.hero { position: relative; isolation: isolate; overflow: hidden; min-height: 525px; background: #f3f7ed; }
+.heroImage { position: absolute; z-index: -3; inset: 0 0 0 24%; width: 76%; height: 100%; object-fit: cover; object-position: 63% 0%; }
+.heroVeil { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, #fcfdfafc 0%, #fafcf8f5 22%, #f8faf6dc 33%, #f4f8f06b 47%, #f7faf400 70%); }
+.heroCopy { width: min(600px, 48%); padding-block: 27px 37px; }
+.breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; color: #22743e; font-size: 11px; line-height: 1.6; }
+.breadcrumb a { display: inline-flex; align-items: center; min-height: 28px; }
+.breadcrumb a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.page .hero h1 { max-width: 600px; color: #173d2d; font-size: clamp(36px, 4.1vw, 57px); font-weight: 800; line-height: 1.06; letter-spacing: -1.7px; white-space: normal; }
+.page .hero h1 > span { color: #0d5b2e; white-space: normal; }
+.heroLead { max-width: 460px; margin-top: 19px; color: #19572e; font-size: 18px; font-weight: 750; line-height: 1.55 !important; }
+.heroChecks { display: grid; gap: 10px; padding: 0; margin: 22px 0 26px; list-style: none; }
+.heroChecks li { display: flex; align-items: center; gap: 9px; color: #1b5f32; font-size: 14px; line-height: 1.55; }
+.heroChecks svg { padding: 3px; box-sizing: content-box; border-radius: 50%; color: #fff; background: #0d5b2e; }
+.accentButton, .primaryButton { display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-height: 47px; padding: 12px 20px; border: 1px solid transparent; border-radius: 100px; font-size: 13px; font-weight: 800; line-height: 1.5; text-align: center; transition: background .2s, transform .2s; }
+.accentButton { background: var(--lime); color: #173d2d; border-color: #ddebab; }
+.accentButton:hover { background: #edf5cf; transform: translateY(-2px); }
+.primaryButton { background: #0d5b2e; color: #fff; font-size: 12px; }
+.primaryButton:hover { background: #174c2c; }
+.cityBadge { position: absolute; top: 35px; right: max(32px, calc((100vw - 1260px) / 2)); display: flex; align-items: center; gap: 8px; max-width: calc(100% - 40px); padding: 11px 20px; border: 1px solid #e0ead7; border-radius: 100px; color: #ddebab; background: #173d2ded; font-size: 20px; font-weight: 800; box-shadow: 0 4px 13px #1f6a3816; }
+.aboutServices { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.65fr); align-items: start; gap: 34px; padding-block: 41px 31px; }
+.about p { margin-top: 16px; color: #1e6636; font-size: 14px; line-height: 1.85; }
+.about .primaryButton { margin-top: 18px; }
+.servicesPanel { min-width: 0; padding: 22px 17px 17px; border: 1px solid #e0e9d6; border-radius: 17px; background: linear-gradient(140deg, #f2f6ed, #f8faf5); }
+.servicesPanel > h2 { margin: 0 6px 19px; font-size: 25px; }
+.serviceGrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 9px; }
+.serviceCard { display: flex; flex-direction: column; align-items: center; min-width: 0; padding: 18px 10px 13px; border: 1px solid #e0ead7; border-radius: 12px; background: #fdfefccf; text-align: center; transition: transform .2s, background .2s; }
+.serviceCard:hover { transform: translateY(-3px); background: #fff; }
+.serviceCard > svg { margin-bottom: 15px; color: #206f3b; }
+.serviceCard h3 { color: #1b5f32; font-size: 13px; line-height: 1.5; }
+.serviceCard p { margin-top: 10px; color: #268145; font-size: 11px; line-height: 1.7; }
+.serviceCard > span { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: auto; padding-top: 14px; color: #247c42; font-size: 10px; font-weight: 750; line-height: 1.5; }
+.whyStrip { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 2.65fr); gap: 23px; padding: 25px 26px; border: 1px solid #dee8d4; border-radius: 17px; background: linear-gradient(115deg, #f6f9f3, #f0f6eb); box-shadow: 0 5px 17px #26814506; }
+.whyStrip h2 { font-size: 24px; }
+.whyStrip > div:first-child > p { margin-top: 14px; color: #1b5c31; font-size: 13px; font-weight: 600; line-height: 1.6; }
+.reasons { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; }
+.reasons article { display: flex; flex-direction: column; align-items: center; gap: 17px; padding: 10px 16px; text-align: center; }
+.reasons article + article { border-left: 1px solid #cadab9; }
+.reasons svg { color: #22743e; }
+.reasons article:nth-child(2) svg { color: #2c733a; }
+.reasons h3 { max-width: 140px; color: #19572e; font-size: 12px; font-weight: 650; line-height: 1.65; }
+.coverageProjects { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); align-items: start; gap: 22px; margin-top: 30px; }
+.coverage { position: relative; isolation: isolate; overflow: hidden; padding: 0 22px 23px; border: 1px solid #dee8d4; border-radius: 15px; background: #f8fbf6; }
+.coverage > h2 { padding: 15px 20px; margin-inline: -22px; color: #fff; background: #173d2d; font-size: 23px; }
+.coverage ul { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px 14px; padding: 0; margin: 22px 0; list-style: none; }
+.coverage li { display: flex; align-items: center; gap: 7px; color: #1b5f32; font-size: 12px; font-weight: 550; line-height: 1.55; }
+.coverage li svg { width: 12px; height: 12px; padding: 3px; box-sizing: content-box; border-radius: 50%; color: #173d2d; background: #ddebab; }
+.coverage .accentButton { position: relative; z-index: 1; display: flex; width: fit-content; margin-inline: auto; min-height: 42px; padding: 9px 20px; font-size: 12px; }
+.skyline { position: absolute; z-index: -1; display: flex; align-items: flex-end; justify-content: space-around; left: 5px; right: 5px; bottom: -10px; height: 95px; color: #d0dec288; }
+.skyline svg { width: 65px; height: 80px; stroke-width: .7; }
+.skyline svg:nth-child(even) { height: 110px; }
+.projectPanel { padding: 0; min-width: 0; }
+.projectHeading { margin-bottom: 17px; }
+.projectHeading h2 { font-size: 26px; }
+.projectHeading > span { display: block; margin-top: 7px; color: #688a58; font-size: 10px; letter-spacing: .3px; }
+.projectGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
+.projectGrid figure { min-width: 0; margin: 0; overflow: hidden; border: 1px solid #dae5ce; border-radius: 11px; background: #173d2d; }
+.projectImage { height: 190px; background-image: url('/images/services/property-types-v4.webp'); background-size: 300% auto; background-repeat: no-repeat; background-color: #f0f5ea; }
+.projectGrid figcaption { padding: 11px 10px; color: #fff; font-size: 11px; font-weight: 650; line-height: 1.6; text-align: center; }
+.supportGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; gap: 24px; margin-top: 31px; }
+.supportStack { display: flex; flex-direction: column; min-width: 0; gap: 24px; }
+.supportStack .faqs { flex: 1; }
+.faqs { border: 1px solid #e2ebd9; border-radius: 14px; overflow: hidden; background: #f7faf3; }
+.faqs h2 { padding: 16px; color: #fff; background: #173d2d; font-size: 23px; }
+.faqs > div { padding: 10px 13px 0; }
+.faqs details { margin-bottom: 8px; border: 1px solid #dbe6d0; border-radius: 7px; background: #fff; }
+.faqs summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 48px; padding: 10px; color: #1d6636; font-size: 12px; font-weight: 650; line-height: 1.6; list-style: none; cursor: pointer; }
+.faqs summary::-webkit-details-marker { display: none; }
+.faqs details[open] summary svg { transform: rotate(180deg); }
+.faqs details > p { padding: 0 12px 14px; color: #5e7c50; font-size: 12px; line-height: 1.85; }
+.textLink { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin: 0 14px 8px; color: #22753e; font-size: 11px; font-weight: 750; }
+.formAnchor { display: flex; min-width: 0; }
+.formAnchor > form { display: flex; flex-direction: column; width: 100%; }
+.formAnchor > form > button { margin-top: auto; }
+.formAnchor > form > div { margin-bottom: 20px; }
+@media(min-width:761px) {
+ .formAnchor > form > div { flex: 1; grid-template-rows: auto auto auto minmax(120px, 1fr); }
+ .formAnchor > form > div > label:last-child { display: flex; flex-direction: column; }
+ .formAnchor textarea { flex: 1; }
+}
+.otherCities { display: flex; justify-content: space-between; align-items: center; gap: 22px; padding-block: 30px; margin-top: 17px; border-top: 1px solid #e8f0e0; }
+.otherCities > span { color: #678857; font-size: 9px; font-weight: 750; letter-spacing: 1.5px; }
+.otherCities > div { display: flex; flex-wrap: wrap; gap: 7px 23px; }
+.otherCities a { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; color: #237840; font-size: 12px; font-weight: 650; }
+.indexIntro { padding-block: 32px 42px; max-width: 760px; }
+.indexIntro .breadcrumb { margin-bottom: 24px; }
+.page .indexIntro h1 { font-size: clamp(37px, 4.5vw, 62px); font-weight: 800; letter-spacing: -2px; line-height: 1.12; }
+.indexIntro > p { margin-top: 20px; color: #2b9650; font-size: 17px; line-height: 1.8; }
+.cityGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-bottom: 55px; }
+.cityCard { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid #e0e9d6; border-radius: 17px; background: #fff; box-shadow: 0 9px 28px #206e3b10; }
+.cityCard > img { width: 100%; height: 215px; object-fit: cover; object-position: 65% 50%; }
+.cityCard > div { padding: 23px; display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
+.cityCard small { display: flex; gap: 6px; align-items: center; margin-bottom: 9px; color: #668757; font-size: 10px; letter-spacing: .7px; }
+.cityCard h2 { color: #1c5f33; font-size: 27px; }
+.cityCard p { margin-top: 12px; color: #607f52; font-size: 13px; line-height: 1.8; }
+.cityCard a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 18px; color: #247b42; font-size: 13px; font-weight: 750; }
+.indexNote { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; padding: 25px; margin-bottom: 50px; border: 1px solid #dce7d2; border-radius: 15px; background: #f4f8f1; }
+.indexNote h2 { font-size: 25px; }
+.indexNote p { margin-top: 9px; color: #2d9952; font-size: 14px; }
+@media(max-width:1100px) {
+ .shell { width: calc(100% - 48px); }
+ .heroCopy { width: 55%; }
+ .page .hero h1 { font-size: 46px; }
+ .aboutServices { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+ .about { max-width: 850px; }
+ .about h2 br { display: none; }
+ .serviceGrid { gap: 13px; }
+ .serviceCard { padding: 22px 15px; }
+ .serviceCard h3 { font-size: 15px; }
+ .whyStrip { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+ .whyStrip h2 br { display: none; }
+ .whyStrip > div:first-child > p br { display: none; }
+ .reasons article:first-child { padding-left: 0; }
+ .coverageProjects { grid-template-columns: 1fr 1.35fr; }
+ .projectImage { height: 170px; }
+ .supportGrid { gap: 20px; }
+ .supportStack { gap: 20px; }
+ .cityGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:760px) {
+ .page { padding-top: 78px; }
+ .shell { width: calc(100% - 40px); }
+ .hero { min-height: 0; }
+ .heroImage { position: relative; inset: auto; display: block; width: 100%; height: 250px; object-position: 70% 50%; }
+ .heroVeil { top: 185px; bottom: auto; height: 70px; background: linear-gradient(180deg, #fafbf800, #fafbf8); }
+ .heroCopy { width: 100%; padding-block: 13px 32px; }
+ .page .hero h1 { font-size: clamp(35px,9vw,45px); line-height: 1.1; letter-spacing: -1.3px; }
+ .breadcrumb { margin-bottom: 16px; font-size: 10px; }
+ .heroLead { font-size: 17px; line-height: 1.6 !important; margin-top: 17px; }
+ .heroLead br { display: none; }
+ .heroChecks { margin-block: 20px 23px; gap: 11px; }
+ .heroChecks li { font-size: 13px; }
+ .hero .accentButton { width: 100%; min-height: 49px; }
+ .cityBadge { top: 18px; right: 20px; max-width: calc(100% - 40px); padding: 8px 13px; font-size: 15px; }
+ .cityBadge svg { width: 16px; height: 16px; }
+ .aboutServices { padding-block: 32px; gap: 26px; }
+ .page h2 { font-size: 25px; line-height: 1.25; letter-spacing: -.65px; }
+ .about p { font-size: 14px; line-height: 1.85; }
+ .servicesPanel { padding: 22px 15px 15px; border-radius: 15px; }
+ .servicesPanel > h2 { font-size: 23px; margin: 0 4px 20px; }
+ .serviceGrid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+ .serviceCard { padding: 20px 11px 16px; }
+ .serviceCard:last-child { grid-column: 1 / -1; }
+ .serviceCard h3 { max-width: 240px; font-size: 14px; }
+ .serviceCard p { font-size: 12px; }
+ .serviceCard > span { font-size: 11px; padding-top: 13px; }
+ .whyStrip { padding: 23px 20px; gap: 24px; }
+ .whyStrip h2 { font-size: 24px; }
+ .whyStrip > div:first-child > p { font-size: 13px; }
+ .reasons { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 24px 15px; }
+ .reasons article { padding: 0 8px; gap: 12px; }
+ .reasons article + article { border-left: 0; }
+ .reasons article:first-child { padding-left: 8px; }
+ .reasons article:last-child { grid-column: 1/-1; }
+ .reasons h3 { font-size: 12px; }
+ .reasons article:last-child h3 { max-width: 240px; }
+ .coverageProjects { grid-template-columns: minmax(0,1fr); gap: 28px; margin-top: 29px; }
+ .coverage { padding-inline: 19px; }
+ .coverage > h2 { margin-inline: -19px; padding: 16px 19px; font-size: 22px; }
+ .coverage ul { gap: 14px 11px; }
+ .coverage li { font-size: 12px; align-items: flex-start; }
+ .coverage li svg { margin-top: 1px; }
+ .projectHeading h2 { font-size: 24px; }
+ .projectGrid { grid-template-columns: minmax(0,1fr); gap: 15px; }
+ .projectImage { height: auto; aspect-ratio: 1.8; }
+ .projectGrid figcaption { font-size: 13px; padding: 12px; }
+ .supportGrid { grid-template-columns: minmax(0,1fr); gap: 23px; margin-top: 30px; }
+ .supportStack { gap: 23px; }
+ .faqs h2 { font-size: 23px; padding: 18px; }
+ .faqs summary { font-size: 13px; padding: 12px; min-height: 52px; }
+ .faqs details > p { font-size: 13px; }
+ .textLink { font-size: 12px; }
+ .otherCities { flex-direction: column; align-items: flex-start; gap: 13px; margin-top: 25px; }
+ .otherCities > div { width: 100%; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5px 20px; }
+ .otherCities a { justify-content: space-between; border-bottom: 1px solid #e8f0df; padding-block: 9px; font-size: 12px; }
+ .indexIntro { padding-block: 25px 34px; }
+ .page .indexIntro h1 { font-size: 39px; letter-spacing: -1.3px; }
+ .indexIntro > p { font-size: 15px; }
+ .cityGrid { grid-template-columns: minmax(0,1fr); gap: 22px; padding-bottom: 35px; }
+ .cityCard > img { height: auto; aspect-ratio: 1.65; }
+ .cityCard h2 { font-size: 27px; }
+ .indexNote { padding: 23px 20px; margin-bottom: 35px; gap: 20px; }
+ .indexNote h2 { font-size: 24px; }
+}
+@media(max-width:350px) {
+ .shell { width: calc(100% - 32px); }
+ .heroImage { height: 215px; }
+ .heroVeil { top: 150px; }
+ .page .hero h1 { font-size: 33px; }
+ .servicesPanel { padding-inline: 12px; }
+ .serviceCard h3 { font-size: 13px; }
+ .serviceCard { padding-inline: 8px; }
+ .coverage li { font-size: 11px; }
+}
+@media(prefers-reduced-motion:reduce) { .accentButton, .primaryButton, .serviceCard { transition: none; } }
+
+.page :is(a, button, summary):focus-visible { outline: 3px solid #557c3c; outline-offset: 4px; }

@@ -1,9 +1,13 @@
+import ServiceBackground from '../../../../components/ServiceBackground';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowRight, ArrowUpRight, Building2, CalendarCheck2, Check, ChevronRight, Drill, HardHat, House, Phone, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BadgeCheck, CalendarCheck2, Check, ChevronDown, ChevronRight, ClipboardCheck, Handshake, HardHat, Headphones, MapPin, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import SiteHeader from '../../../../components/SiteHeader';
 import SiteFooter from '../../../../components/SiteFooter';
+import ServiceEnquiryForm from '../../../../components/ServiceEnquiryForm';
+import ServiceBenefitGrid from '../../../../components/ServiceBenefitGrid';
 import { company, termiteServices } from '../../../../lib/company';
+import { serviceDetails } from '../../../../lib/service-details';
 import { serviceVisuals } from '../../../../lib/service-presentation';
 import styles from './service-detail.module.css';
 
@@ -15,187 +19,122 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const service = termiteServices.find(item => item.slug === slug);
-  if (!service) return { title: 'Service Not Found' };
-
-  const title = service.title;
-  const description = `${service.headline} ${service.text} Suited for: ${service.suited}`;
-  const visual = serviceVisuals[service.slug];
-
+  const detail = serviceDetails[slug];
+  if (!service || !detail) return { title: 'Service Not Found' };
   return {
-    title,
-    description,
-    alternates: {
-      canonical: `/services/${slug}`,
-    },
+    title: service.title,
+    description: detail.intro,
+    alternates: { canonical: `/services/${slug}` },
     openGraph: {
-      title,
-      description,
+      title: service.title,
+      description: detail.intro,
       url: `https://termitepestcontrol.co.in/services/${slug}`,
       siteName: 'TermiteTreatment',
-      images: [
-        {
-          url: visual.src,
-          width: 900,
-          height: 600,
-          alt: visual.alt,
-        },
-      ],
+      images: [{ url: detail.hero, width: 1536, height: 1024, alt: detail.heroAlt }],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [visual.src],
-    },
+    twitter: { card: 'summary_large_image', title: service.title, description: detail.intro, images: [detail.hero] },
   };
 }
+
+const pointPositions = [
+  { left: '23%', top: '58%' },
+  { left: '39%', top: '49%' },
+  { left: '55%', top: '42%' },
+  { left: '82%', top: '53%' },
+  { left: '94%', top: '36%' },
+];
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = termiteServices.find(item => item.slug === slug);
-  if (!service) notFound();
-  const visual = serviceVisuals[service.slug];
-  const enquiryHref = `/contact-us?service=${service.slug}#enquiry`;
-
-  const ServiceIcon =
-    service.slug === 'residential-termite-control'
-      ? House
-      : service.slug === 'commercial-termite-control'
-      ? Building2
-      : service.slug === 'pre-construction-termite-treatment'
-      ? HardHat
-      : service.slug === 'post-construction-termite-treatment'
-      ? Drill
-      : CalendarCheck2;
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: service.title,
-    description: `${service.headline} ${service.detail}`,
-    serviceType: 'Pest Control - Termite Treatment',
-    provider: {
-      '@type': 'HomeAndConstructionBusiness',
-      name: 'TermiteTreatment',
-      telephone: company.phone,
-      url: 'https://termitepestcontrol.co.in',
+  const detail = serviceDetails[slug];
+  if (!service || !detail) notFound();
+  const preconstruction = slug === 'pre-construction-termite-treatment';
+  const maintenance = slug === 'annual-maintenance-contract';
+  const trustLabels = detail.heroTrust || ['Inspection-led protection', 'A plan for your property', 'Clear advice & aftercare'];
+  const trustIcons = preconstruction ? [ShieldCheck, Handshake, BadgeCheck] : [ShieldCheck, HardHat, ClipboardCheck];
+  const visual = serviceVisuals[slug];
+  const whatsappHref = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(`Hello, I would like to discuss ${service.title} for my property.`)}`;
+  const schema = [
+    {
+      '@context': 'https://schema.org', '@type': 'Service', name: service.title, description: detail.definition,
+      serviceType: 'Termite inspection and treatment', areaServed: 'India',
+      provider: { '@type': 'HomeAndConstructionBusiness', name: 'TermiteTreatment', telephone: company.phone, url: 'https://termitepestcontrol.co.in' },
     },
-    areaServed: 'India',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'INR',
-      description: 'Free Initial Termite Inspection and Custom Quote',
+    {
+      '@context': 'https://schema.org', '@type': 'FAQPage',
+      mainEntity: detail.faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
     },
-  };
+    {
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: [['Home', '/'], ['Services', '/services'], [service.title, `/services/${slug}`]].map(([name, path], index) => ({ '@type': 'ListItem', position: index + 1, name, item: `https://termitepestcontrol.co.in${path}` })),
+    },
+  ];
 
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://termitepestcontrol.co.in/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Services',
-        item: 'https://termitepestcontrol.co.in/services',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: service.title,
-        item: `https://termitepestcontrol.co.in/services/${service.slug}`,
-      },
-    ],
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <SiteHeader />
-      <main id="main" className={styles.page}>
-        <div className={styles.ambient} aria-hidden="true"><span /><span /><i /></div>
+  return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <SiteHeader />
+    <main id="main" className={styles.page}>
+      <ServiceBackground />
+      <section className={styles.hero} aria-labelledby="service-title">
+        <img className={styles.heroImage} src={detail.hero} alt={detail.heroAlt} width={1536} height={1024} fetchPriority="high" style={{ objectPosition: detail.heroPosition || (preconstruction ? '65% 50%' : '65% 20%') }} />
+        <div className={styles.heroOverlay} aria-hidden="true" />
+        <ServiceBackground hero />
         <div className={styles.shell}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-            <a href="/">Home</a><ChevronRight size={12} aria-hidden="true" />
-            <a href="/services">Services</a><ChevronRight size={12} aria-hidden="true" />
-            <span aria-current="page">{service.shortTitle}</span>
-          </nav>
-
-          <section className={styles.hero} aria-labelledby="service-title">
-            <div className={styles.heroCopy}>
-              <div className={styles.serviceLabel}>
-                <span className={styles.serviceIcon}><ServiceIcon size={18} strokeWidth={1.6} aria-hidden="true" /></span>
-                <p>{service.label}</p>
-              </div>
-              <h1 id="service-title">{service.title}</h1>
-              <p className={styles.lead}>{service.text}</p>
-              <div className={styles.tags}>{service.tags.map(tag => <span key={tag}><Check size={12} aria-hidden="true" />{tag}</span>)}</div>
-              <div className={styles.heroActions}>
-                <a href={enquiryHref} className={styles.primaryButton}>Book a free inspection <ArrowUpRight size={17} aria-hidden="true" /></a>
-                <a className={styles.callLink} href={company.telephone}><Phone size={14} aria-hidden="true" />Talk to our team</a>
-              </div>
-            </div>
-            <figure className={styles.heroVisual}>
-              <img src={visual.src} alt={visual.alt} width={900} height={600} fetchPriority="high" style={{ objectPosition: visual.position }} />
-              <figcaption><ShieldCheck size={16} aria-hidden="true" /><span>Care starts with a closer look.</span></figcaption>
-            </figure>
-          </section>
-
-          <section className={styles.plan} aria-labelledby="plan-title">
-            <header className={styles.sectionHeading}>
-              <p className={styles.kicker}>PROPERTY-FIRST PROTECTION</p>
-              <h2 id="plan-title">{service.headline}</h2>
-              <p className={styles.sectionDescription}>{service.detail}</p>
-            </header>
-            <div className={styles.planGrid}>
-              <article className={styles.includesCard}>
-                <span className={styles.cardLabel}>WHAT’S INCLUDED</span>
-                <h3>A clear, considered plan.</h3>
-                <ul className={styles.inclusions}>{service.includes.map(item => <li key={item}><Check size={15} aria-hidden="true" /><span>{item}</span></li>)}</ul>
-              </article>
-              <aside className={styles.fitCard}>
-                <div className={styles.fitHeading}><span className={styles.fitIcon}><ServiceIcon size={20} aria-hidden="true" /></span><span className={styles.cardLabel}>MADE FOR YOUR SPACE</span></div>
-                <h3>A good fit for</h3>
-                <p>{service.suited}</p>
-                <a href={company.telephone}>Discuss your property <ArrowUpRight size={16} aria-hidden="true" /></a>
-              </aside>
-            </div>
-          </section>
-
-          <section className={styles.journey} aria-labelledby="journey-title">
-            <header className={styles.inlineHeading}><div><p className={styles.kicker}>HOW IT WORKS</p><h2 id="journey-title">Simple steps. Thoughtful care.</h2></div><span>From first visit to follow-up.</span></header>
-            <ol className={styles.steps}>{service.steps.map(([title, text], index) => <li key={title}><span className={styles.stepNumber}>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
-          </section>
-
-          <section className={styles.related} aria-labelledby="related-title">
-            <header className={styles.inlineHeading}><div><p className={styles.kicker}>ALSO EXPLORE</p><h2 id="related-title">Care for every stage.</h2></div><a href="/services">All services <ArrowRight size={15} aria-hidden="true" /></a></header>
-            <div className={styles.relatedGrid}>{termiteServices.filter(item => item.slug !== slug).map(item => {
-              const relatedVisual = serviceVisuals[item.slug];
-              return <a className={styles.relatedCard} href={`/services/${item.slug}`} key={item.slug}><img src={relatedVisual.src} alt={relatedVisual.alt} width={64} height={64} loading="lazy" style={{ objectPosition: relatedVisual.position }} /><span><small>{item.shortTitle}</small><strong>{item.title}</strong></span><ArrowUpRight size={17} aria-hidden="true" /></a>;
-            })}</div>
-          </section>
-
-          <section className={styles.closing} aria-labelledby="inspection-title">
-            <span className={styles.closingIcon}><ShieldCheck size={24} strokeWidth={1.5} aria-hidden="true" /></span>
-            <div><p className={styles.kicker}>LET’S TAKE A CLOSER LOOK</p><h2 id="inspection-title">The right care starts here.</h2><p>A free inspection. A clear next step.</p></div>
-            <a className={styles.primaryButton} href={enquiryHref}>Plan an inspection <ArrowUpRight size={17} aria-hidden="true" /></a>
-          </section>
+          <div className={styles.heroCopy}>
+            <nav className={styles.breadcrumb} aria-label="Breadcrumb"><a href="/">Home</a><ChevronRight size={12} aria-hidden="true" /><a href="/services">Services</a><ChevronRight size={12} aria-hidden="true" /><span aria-current="page">{service.shortTitle}</span></nav>
+            {!preconstruction && <p className={styles.heroEyebrow}><span /> SPECIALIST TERMITE CARE</p>}
+            <h1 id="service-title">{detail.title}{' '}<span>{detail.accent}</span></h1>
+            <p className={styles.heroLead}>{detail.intro}</p>
+            <div className={styles.heroTrust}>{trustLabels.map((label, index) => { const Icon = trustIcons[index]; return <span key={label}><Icon size={22} aria-hidden="true" /><span className={styles.heroTrustText}>{label}</span></span>; })}</div>
+            <div className={styles.heroActions}><a className={styles.primaryButton} href="#service-enquiry"><CalendarCheck2 size={17} aria-hidden="true" />{preconstruction ? 'Get a Free Site Inspection' : 'Get a free site inspection'}<ArrowUpRight size={17} aria-hidden="true" /></a><a className={styles.outlineButton} href={company.telephone}><Phone size={17} aria-hidden="true" />{preconstruction ? 'Call Now' : 'Call now'}</a></div>
+          </div>
         </div>
-      </main>
-      <SiteFooter />
-    </>
-  );
+        {!preconstruction && <div className={styles.heroCaption}><span />Thoughtful protection. Built around your space.</div>}
+      </section>
+
+      <div className={styles.sectionNav}><div className={styles.shell}><a href="#overview">Overview</a><a href="#treatment-process">Our process</a><a href="#property-types">Property types</a><a href="#service-faqs">FAQs</a><a href="#service-enquiry">Get in touch <ArrowUpRight size={14} aria-hidden="true" /></a></div></div>
+
+      <section className={`${styles.shell} ${styles.overview}`} id="overview" aria-labelledby="overview-title">
+        <div className={styles.definition}>{!preconstruction && <p className={styles.kicker}>UNDERSTAND THE TREATMENT</p>}<h2 id="overview-title">{detail.definitionTitle}</h2><p>{detail.definition}</p><a className={styles.textLink} href="#treatment-process">See how it works <ArrowRight size={17} aria-hidden="true" /></a></div>
+        <div className={styles.benefits}><h2>{detail.benefitTitle}</h2><ServiceBenefitGrid benefits={detail.benefits} numbered={preconstruction} /></div>
+      </section>
+
+      <section className={styles.processSection} id="treatment-process" aria-labelledby="process-title"><div className={styles.shell}>
+        <header className={styles.sectionHeading}>{!preconstruction && <p className={styles.kicker}>A CLEAR PLAN, STEP BY STEP</p>}<h2 id="process-title">{detail.processTitle}</h2><p>{detail.processIntro}</p></header>
+        <div className={styles.processGrid}>
+          <figure className={`${styles.processVisual} ${preconstruction ? styles.cutaway : ''}`}>
+            <div className={styles.processImageWrap}><img src={preconstruction ? '/images/services/foundation-cutaway-v4.webp' : visual.src} alt={preconstruction ? 'Illustration of foundation footings, plinth soil, service entry and external soil around a new building' : visual.alt} width={900} height={600} loading="lazy" />
+              {preconstruction && <div className={styles.diagramMarkers} aria-hidden="true">{pointPositions.map((position, index) => <span style={position} key={index}>{index + 1}</span>)}</div>}
+              <span className={styles.imageLabel}><ShieldCheck size={17} aria-hidden="true" />{preconstruction ? 'Protection starts below the surface.' : 'The right care starts with a closer look.'}</span>
+            </div>
+            <figcaption>{preconstruction ? 'Illustrative treatment zones. The application plan is agreed after assessing your site.' : 'The treatment method and scope are based on your property assessment.'}</figcaption>
+          </figure>
+          <ol className={styles.processSteps}>{detail.steps.map(([title, text], index) => <li key={title}><span className={styles.stepNumber}>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
+        </div>
+      </div></section>
+
+      <section className={`${styles.shell} ${styles.projectsSection}`} id="property-types" aria-labelledby="projects-title">
+        <header className={styles.inlineHeading}><div>{!preconstruction && <p className={styles.kicker}>PLANNED FOR YOUR PROPERTY</p>}<h2 id="projects-title">{detail.projectsTitle}</h2></div>{!preconstruction && <p>Different spaces. The same attention to detail.</p>}</header>
+        <div className={styles.projects}>{detail.projects.map(([title, image], index) => <article className={styles.projectCard} key={title}><div className={styles.projectPhoto} role="img" aria-label={`${title} — architectural illustration`} style={{ backgroundPosition: `${(image % 3) * 50}% ${image < 3 ? 0 : 100}%` }} /><div className={styles.projectLabel}><span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3></div></article>)}</div>
+      </section>
+
+      <section className={styles.assuranceSection} id="service-faqs"><div className={`${styles.shell} ${styles.assuranceGrid}`}>
+        <div className={styles.whyCard}>{!preconstruction && <p className={styles.kicker}>CARE WITH A CLEAR PURPOSE</p>}<h2>{detail.whyTitle || <>Why choose<br />TermiteTreatment?</>}</h2>{!preconstruction && <p>A considered approach to your property, from the first conversation to the next step.</p>}<ul>{(detail.whyItems || ['Assessment before recommendations', 'Treatment planned for your property', 'Clear scope, quotation and preparation', 'Service information and aftercare guidance']).map(item => <li key={item}><span><Check size={15} strokeWidth={2.7} aria-hidden="true" /></span>{item}</li>)}</ul><a href={company.telephone}><span className={styles.supportIcon}><Headphones size={22} aria-hidden="true" /></span><span><small>LET’S TALK ABOUT YOUR PROPERTY</small><strong>{company.phone}</strong></span><ArrowUpRight size={20} aria-hidden="true" /></a></div>
+        <div className={styles.faqs}>{!preconstruction && <p className={styles.kicker}>GOOD QUESTIONS. CLEAR ANSWERS.</p>}<h2>{preconstruction ? 'Frequently Asked Questions' : 'Frequently asked questions'}</h2><div className={styles.faqList}>{detail.faqs.map(([question, answer], index) => <details key={question} name={`service-faq-${slug}`} open={!preconstruction && index === 0}><summary>{question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div>{preconstruction && <a className={styles.textLink} href="/contact-us#contact-faq">View all FAQs <ArrowRight size={16} aria-hidden="true" /></a>}</div>
+      </div></section>
+
+      <section className={styles.enquirySection} id="service-enquiry" aria-labelledby="enquiry-title">
+        <img className={styles.enquiryBackground} src={detail.hero} alt="" width={1536} height={1024} loading="lazy" />
+        <div className={`${styles.shell} ${styles.enquiryGrid}`}>
+          <div className={styles.enquiryCopy}>{!preconstruction && <p className={styles.heroEyebrow}><span /> YOUR NEXT STEP STARTS HERE</p>}<h2 id="enquiry-title">{detail.closingTitle}{' '}<span>{detail.closingAccent}</span></h2><p>{detail.closingText}</p><div className={styles.enquiryActions}><a className={styles.outlineButton} href={company.telephone}><Phone size={17} aria-hidden="true" />{preconstruction ? 'Call Now' : company.phone}</a><a className={styles.whatsappButton} href={whatsappHref} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true" />WhatsApp us <ArrowUpRight size={16} aria-hidden="true" /></a></div>{!preconstruction && <div className={styles.enquiryNote}><CalendarCheck2 size={18} aria-hidden="true" /><span>A free inspection. A clear proposal.<br />A next step you understand.</span></div>}</div>
+          <ServiceEnquiryForm serviceTitle={service.title} construction={preconstruction} maintenance={maintenance} />
+        </div>
+      </section>
+
+      <aside className={`${styles.shell} ${styles.related}`} aria-label="Other termite services"><span>EXPLORE OTHER SERVICES</span><div>{termiteServices.filter(item => item.slug !== slug).map(item => <a key={item.slug} href={`/services/${item.slug}`}>{item.shortTitle}<ArrowUpRight size={15} aria-hidden="true" /></a>)}</div></aside>
+      <div className={styles.trustStrip}><div className={styles.shell}><span><ShieldCheck size={22} aria-hidden="true" />{preconstruction ? 'Licensed & Insured' : 'Property-specific plans'}</span><span><ClipboardCheck size={22} aria-hidden="true" />{preconstruction ? 'Safe & Eco-Friendly Solutions' : 'Clear service information'}</span><span><Headphones size={22} aria-hidden="true" />{preconstruction ? 'Prompt Service' : 'A team you can talk to'}</span><span><MapPin size={22} aria-hidden="true" />{preconstruction ? 'Serving Bengaluru & Beyond' : 'Local teams. Wider coverage.'}</span></div></div>
+    </main>
+    <SiteFooter />
+  </>;
 }

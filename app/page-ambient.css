@@ -161,6 +161,52 @@
   animation: pageOrbA 38s -18s ease-in-out infinite alternate;
 }
 
+/* Services page tailored orbs --------------------------------------------- */
+.page-orb-services-sage {
+  top: -10%;
+  left: -7%;
+  width: clamp(400px, 50vw, 720px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 44% 44%, rgba(188, 230, 170, 0.58) 0%, rgba(222, 244, 208, 0.26) 55%, transparent 74%);
+  animation: pageOrbA 30s ease-in-out infinite alternate;
+}
+
+.page-orb-services-sunlight {
+  top: 2%;
+  right: -11%;
+  width: clamp(360px, 46vw, 660px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 50%, rgba(252, 234, 175, 0.52) 0%, rgba(240, 245, 212, 0.24) 58%, transparent 75%);
+  animation: pageOrbB 36s -7s ease-in-out infinite alternate;
+}
+
+.page-orb-services-emerald {
+  top: 34%;
+  left: -9%;
+  width: clamp(340px, 42vw, 620px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 48% 48%, rgba(165, 223, 180, 0.46) 0%, rgba(214, 242, 220, 0.22) 56%, transparent 75%);
+  animation: pageOrbC 33s -11s ease-in-out infinite alternate;
+}
+
+.page-orb-services-honey {
+  top: 55%;
+  right: -9%;
+  width: clamp(360px, 44vw, 640px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 48% 48%, rgba(249, 230, 178, 0.48) 0%, rgba(236, 245, 220, 0.22) 56%, transparent 75%);
+  animation: pageOrbD 38s -6s ease-in-out infinite alternate;
+}
+
+.page-orb-services-halo {
+  bottom: -8%;
+  left: 18%;
+  width: clamp(380px, 48vw, 680px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 45%, rgba(197, 234, 180, 0.5) 0%, rgba(232, 246, 224, 0.24) 55%, transparent 74%);
+  animation: pageOrbA 34s -15s ease-in-out infinite alternate;
+}
+
 /* Komorebi dappled sunlight rays ------------------------------------------ */
 .page-ambient-komorebi {
   position: absolute;
@@ -725,6 +771,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .page-orb,
+  .page-ambient-komorebi,
   .page-ambient-contours,
   .page-leaf,
   .page-mote,

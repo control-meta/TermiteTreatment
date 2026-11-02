@@ -1,0 +1,23 @@
+.form { padding: 25px; border: 1px solid #285e3e; border-radius: 17px; background: #173d2d; color: #fff; box-shadow: 0 9px 25px #1b5c3115; }
+.form h2 { margin: 0; color: #fff; font-size: 25px; font-weight: 800; line-height: 1.3; letter-spacing: -.7px; }
+.form > p { margin-top: 8px; color: #f0f6eb; font-size: 12px; line-height: 1.65; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px 12px; margin-top: 20px; }
+.fields label { display: block; min-width: 0; }
+.fields label > span { display: block; margin-bottom: 6px; color: #fbfcf9; font-size: 11px; font-weight: 650; line-height: 1.5; }
+.fields b { color: #b9d57b; }
+.fields small { color: #e7efdf; font-size: 10px; font-weight: 400; }
+.fields :is(input, select, textarea) { display: block; width: 100%; min-width: 0; min-height: 43px; padding: 10px 11px; border: 1px solid #d0dec2; border-radius: 7px; color: #253b2b; background: #fff; font: inherit; font-size: 13px; line-height: 1.5; }
+.fields :is(input, textarea)::placeholder { color: #698c59; opacity: 1; }
+.fields textarea { min-height: 77px; resize: vertical; }
+.fields :is(input, select, textarea):focus-visible { outline: 3px solid #b9d57b; outline-offset: 2px; }
+.wide { grid-column: 1 / -1; }
+.form button { display: flex; justify-content: center; align-items: center; gap: 9px; width: 100%; min-height: 47px; margin-top: 16px; padding: 12px 14px; border: 1px solid #ddebab; border-radius: 8px; background: #ddebab; color: #173d2d; font-size: 14px; font-weight: 800; }
+.form button:hover { background: #edf5cf; }
+.note { display: block; margin-top: 11px; color: #ebf2e4; font-size: 10px; line-height: 1.65; text-align: center; }
+@media(max-width: 600px) {
+  .form { padding: 25px 20px; border-radius: 15px; }
+  .fields { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+  .fields label > span { font-size: 12px; }
+  .fields :is(input, select, textarea) { min-height: 48px; font-size: 16px; }
+  .form > p { font-size: 13px; }
+}

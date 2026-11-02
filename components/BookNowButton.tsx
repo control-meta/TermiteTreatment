@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArrowRight, CheckCircle2, FileText, LockKeyhole, MessageCircle, Phone, Sparkles, User, X } from 'lucide-react';
+import PhoneInput from './PhoneInput';
 import { company, termiteServices } from '../lib/company';
 import styles from './BookNowButton.module.css';
 
@@ -143,14 +144,11 @@ export default function BookNowButton() {
                     <span className={styles.inputIcon}>
                       <Phone size={15} />
                     </span>
-                    <input
+                    <PhoneInput
                       id="quick-book-phone"
                       name="phone"
-                      type="tel"
-                      placeholder="e.g. 98765 43210"
+                      placeholder="e.g. 9876543210"
                       required
-                      pattern={String.raw`[+0-9 \(\)\-]{10,18}`}
-                      title="Enter a valid phone number with 10 to 18 digits."
                       autoComplete="tel"
                       className={styles.input}
                     />

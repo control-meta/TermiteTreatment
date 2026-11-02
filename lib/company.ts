@@ -1,18 +1,19 @@
 export const company = {
-  phone: '+91 92203 12345',
-  telephone: 'tel:+919220312345',
-  whatsapp: '919220312345',
+  phone: '+91 99452 42545',
+  telephone: 'tel:+919945242545',
+  whatsapp: '919945242545',
   email: 'support@termitepestcontrol.co.in',
 };
 
 export const regions = ['Mumbai', 'Delhi NCR', 'Bengaluru', 'Hyderabad', 'Chennai', 'Pune', 'Kolkata', 'Ahmedabad', 'Goa'];
 
 export const offices = [
-  { city: 'Mumbai', address: 'Building No. 1/B, Shop No. 9, MMRDA Complex, Vikhroli Jogeshwari Link Road, Karve Nagar, Near Mhada Colony, Kanjurmarg East, Mumbai – 400042.' },
-  { city: 'Bengaluru', address: '4/36, Tavarekere Main Road, Opp. Forum Mall, Chikkaadugodi, Baswanagudi, Bengaluru – 560029, India.' },
-  { city: 'Pune', address: 'A1, Graficon Arcade, 23 Sassoon Road, Opp. Jehangir Nursing Home, Pune – 411001, Maharashtra.' },
-  { city: 'Delhi NCR', address: 'A-13 (Dot House), 2nd Portion Hanuman Mandir, Pandav Nagar Complex, Block A, Ganesh Nagar, Delhi – 110092, India.' },
-  { city: 'Goa', address: 'Shop No. 2, near Communidade Building, Ambre Colony, Defence Colony, Alto, Porvorim, Aradi Socorro, Goa – 403521.' },
+  { city: 'Mumbai', location: 'Mumbai, Maharashtra' },
+  { city: 'Bengaluru', location: 'Bengaluru, Karnataka' },
+  { city: 'Pune', location: 'Pune, Maharashtra' },
+  { city: 'Delhi NCR', location: 'Delhi NCR, India' },
+  { city: 'Goa', location: 'Goa, India' },
+  { city: 'Noida', location: 'Noida, Uttar Pradesh' },
 ];
 
 export const termiteServices = [
