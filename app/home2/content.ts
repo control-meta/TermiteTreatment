@@ -24,7 +24,7 @@ export const home2Locations = ['Indiranagar', 'Jayanagar', 'Koramangala', 'White
 
 export const home2Projects = [
   { title: 'Independent house and villa', image: 0 },
-  { title: 'Residential apartment complex', image: 1 },
+  { title: 'Residential apartment', image: 1 },
   { title: 'Commercial office building', image: 2 },
   { title: 'Family home and garden', image: 0 },
   { title: 'Industrial warehouse', image: 3 },

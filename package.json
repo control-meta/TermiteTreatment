@@ -7,10 +7,12 @@
     "build": "next build --webpack",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "db:seed": "node scripts/seed-mongodb.mjs",
     "postinstall": "node scripts/patch-next.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
+    "mongodb": "^7.8.0",
     "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

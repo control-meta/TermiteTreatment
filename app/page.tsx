@@ -86,7 +86,27 @@ export default function HomePage() {
         <ReviewsCarousel />
 
         <div className={`${styles.shell} ${styles.faqSection}`}>
-          <section className={styles.faqs} id="faqs" aria-labelledby="home2-faq-title"><h2 id="home2-faq-title"><CircleHelp size={25} fill="#e3edda" aria-hidden="true" />FAQs</h2><div>{home2Faqs.map(faq => <details key={faq.question} name="home2-faqs"><summary>{faq.question}<ChevronDownIcon /></summary><p>{faq.answer}</p></details>)}</div><a className={styles.textLink} href="/faqs">View More FAQs <ArrowRight size={15} aria-hidden="true" /></a></section>
+          <section className={styles.faqPanel} id="faqs" aria-labelledby="home2-faq-title">
+            <div className={styles.faqIntro}>
+              <p className={styles.faqKicker}><CircleHelp size={17} fill="#e3edda" aria-hidden="true" />Help without the guesswork</p>
+              <h2 id="home2-faq-title">Termite questions,<br /><span>answered clearly.</span></h2>
+              <p>Straight answers about treatment, safety and the care that follows. If your question is not here, our team is one conversation away.</p>
+              <div className={styles.faqSupport}>
+                <span className={styles.faqSupportIcon}><Phone size={19} aria-hidden="true" /></span>
+                <div><small>Prefer to talk it through?</small><strong>Talk to a specialist</strong><a href={company.telephone}>{company.phone}</a></div>
+              </div>
+              <a className={styles.faqLink} href="/faqs">Browse all FAQs <ArrowRight size={15} aria-hidden="true" /></a>
+            </div>
+            <div className={styles.faqColumn}>
+              <div className={styles.faqList}>
+                {home2Faqs.map((faq, index) => <details key={faq.question} name="home2-faqs" open={index === 0}>
+                  <summary><span className={styles.faqNumber}>0{index + 1}</span><span className={styles.faqQuestion}>{faq.question}</span><span className={styles.faqToggle} aria-hidden="true"><ChevronDownIcon /></span></summary>
+                  <p>{faq.answer}</p>
+                </details>)}
+              </div>
+              <div className={styles.faqFootnote}><ShieldCheck size={18} aria-hidden="true" /><p><strong>Not sure where to start?</strong> A free inspection is the simplest next step.</p><a href="#home2-enquiry">Book one <ArrowRight size={14} aria-hidden="true" /></a></div>
+            </div>
+          </section>
         </div>
       </div>
 

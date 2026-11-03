@@ -72,8 +72,8 @@ export default function ServiceBenefitGrid({ benefits, numbered = false }: { ben
       const Icon = icons[index];
       return <article className={styles.benefit} key={heading}>
         <span className={styles.benefitIcon}><Icon size={24} strokeWidth={1.7} aria-hidden="true" /></span>
-        <h3>{numbered ? `${index + 1}. ${heading}` : heading}</h3>
-        <p>{balanced?.[index] ? balanced[index].map((line, row) => <span className={styles.benefitLine} key={row}>{line}{row < balanced[index].length - 1 ? ' ' : ''}</span>) : text}</p>
+        <h3 data-edit-benefit-index={index} data-edit-benefit-part="title">{numbered ? `${index + 1}. ${heading}` : heading}</h3>
+        <p data-edit-benefit-index={index} data-edit-benefit-part="description">{balanced?.[index] ? balanced[index].map((line, row) => <span className={styles.benefitLine} key={row}>{line}{row < balanced[index].length - 1 ? ' ' : ''}</span>) : text}</p>
       </article>;
     })}
   </div>;

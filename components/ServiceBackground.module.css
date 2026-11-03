@@ -30,10 +30,37 @@
   animation: sway 30s ease-in-out infinite alternate;
 }
 
+/* Keep hero decoration behind the photo (-3) and its readability overlay (-2). */
+.hero { z-index: -4; }
 .hero .wash { top: -40%; left: -15%; background: radial-gradient(circle, #ddecaa2b, transparent 68%); }
 .hero .secondWash { top: 20%; right: -15%; background: radial-gradient(circle, #b6d7a826, transparent 70%); }
 .hero .thirdWash { display: none; }
 .hero .contour { top: -80px; right: -90px; width: min(48vw, 500px); stroke: #dcebb92b; }
+
+.serviceBackdrop { position: fixed; }
+.serviceBackdrop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#326a4729 .8px, transparent .8px), linear-gradient(125deg, #e6f0dd70, transparent 40%, #dceee260);
+  background-size: 26px 26px, 100% 100%;
+  mask-image: linear-gradient(90deg, #000, #0009 45%, #000);
+}
+.serviceBackdrop .wash { top: 9%; left: -17%; width: min(78vw, 850px); background: radial-gradient(circle, #b9d99475, #deedcb28 48%, transparent 70%); animation-duration: 18s; }
+.serviceBackdrop .secondWash { top: 25%; right: -17%; width: min(70vw, 780px); background: radial-gradient(circle, #9ad7c452, #cde7cf20 48%, transparent 70%); animation-duration: 23s; }
+.serviceBackdrop .thirdWash { bottom: -45%; left: 25%; background: radial-gradient(circle, #e4d9a64d, transparent 68%); }
+.serviceBackdrop .contour { top: 7%; right: -8%; width: min(54vw, 650px); stroke: #4f85522b; }
+.mote { position: absolute; width: 5px; height: 5px; border: 1px solid #7ca06180; border-radius: 50%; background: #b9d58b80; animation: serviceMote 16s ease-in-out infinite; }
+.mote:nth-of-type(4) { top: 20%; left: 8%; }
+.mote:nth-of-type(5) { top: 42%; right: 12%; animation-delay: -5s; width: 7px; height: 7px; }
+.mote:nth-of-type(6) { top: 78%; left: 17%; animation-delay: -9s; }
+.mote:nth-of-type(7) { top: 68%; right: 7%; animation-delay: -13s; }
+.flowLine { position: absolute; top: 45%; left: -10%; width: 75vw; height: 1px; background: linear-gradient(90deg, transparent, #80aa792b, transparent); transform: rotate(-28deg); }
+.flowLine:last-child { top: 80%; left: 46%; transform: rotate(-28deg); }
+.flowLine::after { content: ''; position: absolute; top: 0; left: 0; width: 90px; height: 1px; background: linear-gradient(90deg, transparent, #7aa76c80, transparent); animation: serviceLightSweep 14s ease-in-out infinite; }
+.flowLine:last-child::after { animation-delay: -7s; }
+@keyframes serviceMote { 0%, 100% { transform: translate3d(0, 0, 0); opacity: .3; } 50% { transform: translate3d(20px, -40px, 0); opacity: .7; } }
+@keyframes serviceLightSweep { from { transform: translateX(-90px); opacity: 0; } 20%, 70% { opacity: .7; } to { transform: translateX(75vw); opacity: 0; } }
 
 @keyframes drift {
   from { transform: translate3d(0, -20px, 0) scale(.94); }
@@ -53,5 +80,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wash, .secondWash, .thirdWash, .contour { animation: none; }
+  .wash, .secondWash, .thirdWash, .contour, .mote, .flowLine::after { animation: none; }
 }

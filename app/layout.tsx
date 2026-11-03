@@ -7,6 +7,7 @@ import './mobile-motion.css';
 import ScrollMotion from '../components/ScrollMotion';
 import FloatingContactButtons from '../components/FloatingContactButtons';
 import BookNowButton from '../components/BookNowButton';
+import AdminPreviewGuard from '../components/AdminPreviewGuard';
 import { company, offices } from '../lib/company';
 
 export const viewport: Viewport = {
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body>
+        <AdminPreviewGuard />
         {children}
         <ScrollMotion />
         <BookNowButton />

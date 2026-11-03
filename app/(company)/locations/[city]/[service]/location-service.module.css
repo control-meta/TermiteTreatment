@@ -9,3 +9,20 @@
   .cityContext a { font-size: 12px; }
   .cityContext p { font-size: 11px; }
 }
+
+.otherServices { padding-block: 38px 12px; }
+.otherServices header > p:last-child { margin-top: 12px; color: #53675b; font-size: 15px; line-height: 1.7; }
+.serviceCards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+.serviceCard { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #dce6d4; border-radius: 16px; background: #f7faf2; transition: border-color .2s, box-shadow .2s; }
+.serviceCard:hover { border-color: #81a570; box-shadow: 0 8px 22px #173b2b12; }
+.serviceCard:focus-visible { outline: 3px solid #185a37; outline-offset: 4px; }
+.serviceCard > img { display: block; width: 100%; height: auto; flex-shrink: 0; }
+.serviceCard > div { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 20px; }
+.serviceCard h3 { color: #173b2b; font-size: 18px; font-weight: 750; }
+.serviceCard p { margin-top: 10px; color: #53675b; font-size: 14px; line-height: 1.7; }
+.serviceCard span { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; margin-top: auto; padding-top: 20px; color: #185a37; font-size: 14px; font-weight: 750; }
+.serviceCard svg { flex-shrink: 0; }
+@media (max-width: 1100px) { .serviceCards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .otherServices { padding-top: 30px; } .serviceCards { gap: 14px; } .serviceCard > div { padding: 16px; } }
+@media (max-width: 520px) { .serviceCards { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .serviceCard { transition: none; } }

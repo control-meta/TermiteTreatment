@@ -1,7 +1,7 @@
 import ServiceBackground from '../../../../components/ServiceBackground';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowRight, BadgeCheck, Building2, CalendarCheck2, Check, ChevronDown, ChevronRight, Clock3, Drill, HardHat, Headphones, House, Leaf, MapPin, Phone, ShieldCheck, ThumbsUp } from 'lucide-react';
+import { ArrowRight, BadgeCheck, Building2, CalendarCheck2, Check, ChevronDown, Clock3, Drill, HardHat, Headphones, House, Leaf, MapPin, Phone, ShieldCheck, ThumbsUp } from 'lucide-react';
 import SiteHeader from '../../../../components/SiteHeader';
 import SiteFooter from '../../../../components/SiteFooter';
 import LocationEnquiryForm from '../../../../components/LocationEnquiryForm';
@@ -9,6 +9,7 @@ import LocationReviewsCarousel from '../../../../components/LocationReviewsCarou
 import { company, termiteServices } from '../../../../lib/company';
 import { getLocation, locations, locationServiceLabels, locationServiceUrl } from '../../../../lib/locations';
 import { locationFaqs } from '../../../../lib/location-faqs';
+import { getPageContent } from '../../../../lib/content-service';
 import styles from '../locations.module.css';
 
 export const dynamicParams = false;
@@ -30,10 +31,20 @@ export default async function CityLocationPage({ params }: { params: Promise<{ c
   const { city: slug } = await params;
   const city = getLocation(slug);
   if (!city) notFound();
-  const faqs = locationFaqs(city);
+
+  const content = await getPageContent('location', slug);
+  const rawFaqs = content?.faqs;
+  const faqs: [string, string][] = Array.isArray(rawFaqs) && rawFaqs.length > 0
+    ? rawFaqs.map((item: any): [string, string] => (Array.isArray(item) ? [String(item[0] || ''), String(item[1] || '')] : [String(item.question || ''), String(item.answer || '')]))
+    : locationFaqs(city);
+
+  const heroLead = content?.heroLead || 'Protect Your Home & Business with Expert Termite Control Services';
+  const aboutText = content?.about || city.about;
+  const areas = content?.areas && Array.isArray(content.areas) && content.areas.length > 0 ? content.areas : city.areas;
+
   const url = `https://termitepestcontrol.co.in/locations/${city.slug}`;
   const schema = [
-    { '@context': 'https://schema.org', '@type': 'WebPage', name: `Termite Treatment in ${city.name}`, description: city.about, url, primaryImageOfPage: { '@type': 'ImageObject', url: `https://termitepestcontrol.co.in${city.image}`, caption: city.imageAlt } },
+    { '@context': 'https://schema.org', '@type': 'WebPage', name: `Termite Treatment in ${city.name}`, description: aboutText, url, primaryImageOfPage: { '@type': 'ImageObject', url: `https://termitepestcontrol.co.in${city.image}`, caption: city.imageAlt } },
     { '@context': 'https://schema.org', '@type': 'Service', name: `Termite Control in ${city.name}`, areaServed: { '@type': 'City', name: city.officialName }, provider: { '@type': 'HomeAndConstructionBusiness', name: 'TermiteTreatment', telephone: company.phone, url: 'https://termitepestcontrol.co.in' }, hasOfferCatalog: { '@type': 'OfferCatalog', name: `Termite services in ${city.name}`, itemListElement: termiteServices.map(service => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: `${service.title} in ${city.name}`, url: `https://termitepestcontrol.co.in${locationServiceUrl(city, service.slug)}` } })) } },
     { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [['Home', '/'], ['Our Locations', '/locations'], [city.name, `/locations/${city.slug}`]].map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `https://termitepestcontrol.co.in${path}` })) },
@@ -48,9 +59,8 @@ export default async function CityLocationPage({ params }: { params: Promise<{ c
         <div className={styles.heroVeil} aria-hidden="true" />
         <ServiceBackground hero />
         <div className={styles.shell}><div className={styles.heroCopy}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb"><a href="/">Home</a><ChevronRight size={12} aria-hidden="true" /><a href="/locations">Our Locations</a><ChevronRight size={12} aria-hidden="true" /><span aria-current="page">{city.name}</span></nav>
-          <h1 id="location-title">Termite Treatment<br />in <span>{city.name}</span></h1>
-          <p className={styles.heroLead}>Protect Your Home &amp; Business with{' '}<br />Expert Termite Control Services</p>
+          <h1 id="location-title" data-edit-field="heroTitle">{content?.heroTitle ? content.heroTitle : <>Termite Treatment<br />in <span>{city.name}</span></>}</h1>
+          <p className={styles.heroLead} data-edit-field="heroLead">{heroLead}</p>
           <ul className={styles.heroChecks}>{['Safe & Effective Treatment', 'Odorless & Eco-Friendly Solution', 'Experienced Local Experts'].map(text => <li key={text}><Check size={15} strokeWidth={3} aria-hidden="true" />{text}</li>)}</ul>
           <a className={styles.accentButton} href="#local-enquiry"><CalendarCheck2 size={18} aria-hidden="true" />Book a Free Inspection <ArrowRight size={17} aria-hidden="true" /></a>
         </div></div>
@@ -59,21 +69,21 @@ export default async function CityLocationPage({ params }: { params: Promise<{ c
 
       <div className={styles.shell}>
         <section className={styles.aboutServices} aria-labelledby="about-city-title" id="local-services">
-          <div className={styles.about}><h2 id="about-city-title">About Termite Control{' '}<br />in {city.name}</h2><p>{city.about}</p><a className={styles.primaryButton} href="/about-us">Know More About Us <ArrowRight size={16} aria-hidden="true" /></a></div>
+          <div className={styles.about}><h2 id="about-city-title">About Termite Control{' '}<br />in {city.name}</h2><p data-edit-field="about">{aboutText}</p><a className={styles.primaryButton} href="/about-us">Know More About Us <ArrowRight size={16} aria-hidden="true" /></a></div>
           <div className={styles.servicesPanel}><h2>Our Termite Control Services in {city.name}</h2><div className={styles.serviceGrid}>{termiteServices.map((service, index) => { const Icon = serviceIcons[index]; const [title, sub] = locationServiceLabels[service.slug]; return <a className={styles.serviceCard} href={locationServiceUrl(city, service.slug)} key={service.slug}><Icon size={35} strokeWidth={1.7} aria-hidden="true" /><h3>{title}</h3><p>{sub}</p><span>Explore service <ArrowRight size={14} aria-hidden="true" /></span></a>; })}</div></div>
         </section>
 
         <section className={styles.whyStrip} aria-labelledby="why-city-title"><div><h2 id="why-city-title">Why Choose Our{' '}<br />Termite Pest Control{' '}<br />in {city.name}?</h2><p>Because your property deserves{' '}<br />the best care!</p></div><div className={styles.reasons}>{reasons.map(([Icon, title]) => <article key={title}><Icon size={34} strokeWidth={1.7} aria-hidden="true" /><h3>{title}</h3></article>)}</div></section>
 
         <section className={styles.coverageProjects} aria-labelledby="coverage-title">
-          <div className={styles.coverage}><h2 id="coverage-title">Areas We Cover in {city.name}</h2><ul>{city.areas.map(area => <li key={area}><Check size={12} strokeWidth={3} aria-hidden="true" />{area}</li>)}</ul><a className={styles.accentButton} href="#local-enquiry">Check Your Area <ArrowRight size={17} aria-hidden="true" /></a><div className={styles.skyline} aria-hidden="true"><Building2 /><Building2 /><House /><Building2 /><House /><Building2 /></div></div>
+          <div className={styles.coverage}><h2 id="coverage-title">Areas We Cover in {city.name}</h2><ul>{areas.map((area, index) => <li key={area}><Check size={12} strokeWidth={3} aria-hidden="true" /><span data-edit-area-index={index}>{area}</span></li>)}</ul><a className={styles.accentButton} href="#local-enquiry">Check Your Area <ArrowRight size={17} aria-hidden="true" /></a><div className={styles.skyline} aria-hidden="true"><Building2 /><Building2 /><House /><Building2 /><House /><Building2 /></div></div>
           <div className={styles.projectPanel}><div className={styles.projectHeading}><h2>Our Recent Termite Control Projects<br />in {city.name}</h2><span>Illustrative property gallery</span></div><div className={styles.projectGrid}>{[[1, `Apartment – ${city.areas[1]}`], [0, `Villa – ${city.areas[5]}`], [2, `Office – ${city.areas[0]}`]].map(([image, title]) => <figure key={title}><div role="img" aria-label={`${title}, illustrative architectural image`} className={styles.projectImage} style={{ backgroundPosition: `${Number(image) * 50}% 0%` }} /><figcaption>{title}</figcaption></figure>)}</div></div>
         </section>
 
         <section className={styles.supportGrid} aria-label={`Enquiries and frequently asked questions for ${city.name}`}>
           <div className={styles.supportStack}>
             <LocationReviewsCarousel />
-          <div className={styles.faqs} id="local-faqs"><h2>Frequently Asked Questions</h2><div>{faqs.map(([q, a]) => <details name={`faq-${city.slug}`} key={q}><summary>{q}<ChevronDown size={15} aria-hidden="true" /></summary><p>{a}</p></details>)}</div><a className={styles.textLink} href="/faqs">View More FAQs <ArrowRight size={15} aria-hidden="true" /></a></div>
+          <div className={styles.faqs} id="local-faqs"><h2>Frequently Asked Questions</h2><div>{faqs.map(([q, a], index) => <details name={`faq-${city.slug}`} key={q}><summary data-edit-faq-index={index} data-edit-faq-part="question">{q}<ChevronDown size={15} aria-hidden="true" /></summary><p data-edit-faq-index={index} data-edit-faq-part="answer">{a}</p></details>)}</div><a className={styles.textLink} href="/faqs">View More FAQs <ArrowRight size={15} aria-hidden="true" /></a></div>
           </div>
           <div id="local-enquiry" className={styles.formAnchor}><LocationEnquiryForm citySlug={city.slug} /></div>
         </section>

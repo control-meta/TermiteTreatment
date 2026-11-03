@@ -1,3 +1,11 @@
+export const serviceHeroPositions: Record<string, { desktop: string; mobile: string }> = {
+  'residential-termite-control': { desktop: '68% 45%', mobile: '68% 48%' },
+  'commercial-termite-control': { desktop: '66% 48%', mobile: '66% 50%' },
+  'pre-construction-termite-treatment': { desktop: '78% 50%', mobile: '78% 52%' },
+  'post-construction-termite-treatment': { desktop: '72% 55%', mobile: '72% 55%' },
+  'annual-maintenance-contract': { desktop: '68% 45%', mobile: '68% 48%' },
+};
+
 export const serviceVisuals: Record<string, { src: string; alt: string; position: string }> = {
   'residential-termite-control': {
     src: '/images/services/residential-v3.webp',

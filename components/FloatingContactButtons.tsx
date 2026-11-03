@@ -1,10 +1,18 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { Phone } from 'lucide-react';
 import { company } from '../lib/company';
 import styles from './FloatingContactButtons.module.css';
 
 export default function FloatingContactButtons() {
+  const pathname = usePathname();
+
+  // Hide on all admin routes
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   const whatsappUrl = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
     'Hello! I would like to know more about your termite pest control services.'
   )}`;

@@ -1,0 +1,27 @@
+{
+  "key": "homepage",
+  "title": "Complete Termite Control Solutions for Your Property",
+  "tagline": "Prevent. Protect. Peace of Mind.",
+  "about": "Termite Pest Control is a trusted provider of professional termite treatment services in Bangalore. We use advanced, odorless and safe methods to eliminate termites and protect your home and business for the long term.",
+  "reasons": [
+    "Experienced & Trained Technicians",
+    "Safe & Eco-Friendly Treatment",
+    "Long-Lasting Protection",
+    "Affordable Pricing",
+    "Timely Service & Support"
+  ],
+  "faqs": [
+    {
+      "question": "How long does termite treatment last?",
+      "answer": "Treatment duration and ongoing protection depend on the method, building conditions and the agreed service plan. Our team will explain aftercare, inspection needs and any applicable warranty terms for your property."
+    },
+    {
+      "question": "Is the treatment safe for my family?",
+      "answer": "Preparation, ventilation and re-entry instructions depend on the treatment and products selected. Tell the team about children, pets or sensitivities so they can explain the requirements before your visit."
+    },
+    {
+      "question": "Do you offer warranty?",
+      "answer": "Ask the team about the warranty available for your proposed treatment. Coverage, duration, exclusions and any inspection requirements are confirmed in the written service terms."
+    }
+  ]
+}

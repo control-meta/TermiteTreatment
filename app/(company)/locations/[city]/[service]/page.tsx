@@ -1,14 +1,17 @@
+import ServiceHero from '../../../../../components/ServiceHero';
 import ServiceBackground from '../../../../../components/ServiceBackground';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowRight, ArrowUpRight, CalendarCheck2, Check, ChevronDown, ChevronRight, ClipboardCheck, Headphones, MapPin, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, ClipboardCheck, Headphones, MapPin, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import SiteHeader from '../../../../../components/SiteHeader';
 import SiteFooter from '../../../../../components/SiteFooter';
-import LocationEnquiryForm from '../../../../../components/LocationEnquiryForm';
+import ServiceEnquiryForm from '../../../../../components/ServiceEnquiryForm';
 import ServiceBenefitGrid from '../../../../../components/ServiceBenefitGrid';
 import { company, termiteServices } from '../../../../../lib/company';
 import { getLocation, locations, locationServiceUrl } from '../../../../../lib/locations';
 import { getLocalizedService } from '../../../../../lib/location-services';
+import type { ServiceDetail } from '../../../../../lib/service-details';
+import { getLocalizedServiceContent } from '../../../../../lib/content-service';
 import { serviceVisuals } from '../../../../../lib/service-presentation';
 import styles from '../../../services/[slug]/service-detail.module.css';
 import localStyles from './location-service.module.css';
@@ -35,7 +38,32 @@ export default async function LocalServicePage({ params }: { params: Promise<Rou
   const city = getLocation(citySlug);
   const service = termiteServices.find(item => item.slug === serviceSlug);
   if (!city || !service) notFound();
-  const detail = getLocalizedService(city, serviceSlug)!;
+
+  const baseDetail = getLocalizedService(city, serviceSlug);
+  if (!baseDetail) notFound();
+
+  const localContent = (await getLocalizedServiceContent(citySlug, serviceSlug)) as any;
+  const normalizedFaqs: [string, string][] = localContent?.faqs
+    ? (localContent.faqs as any[]).map((f: any): [string, string] =>
+        Array.isArray(f) ? [String(f[0] || ''), String(f[1] || '')] : [String(f.question || ''), String(f.answer || '')]
+      )
+    : baseDetail.faqs;
+
+  const detail: ServiceDetail = localContent
+    ? {
+        ...baseDetail,
+        title: localContent.title || baseDetail.title,
+        accent: localContent.accent || baseDetail.accent,
+        intro: localContent.intro || baseDetail.intro,
+        definitionTitle: localContent.definitionTitle || baseDetail.definitionTitle,
+        definition: localContent.definition || baseDetail.definition,
+        benefitTitle: localContent.benefitTitle || baseDetail.benefitTitle,
+        benefits: (localContent.benefits as [string, string][]) || baseDetail.benefits,
+        steps: (localContent.steps as [string, string][]) || baseDetail.steps,
+        faqs: normalizedFaqs,
+      }
+    : baseDetail;
+
   const construction = serviceSlug === 'pre-construction-termite-treatment';
   const visual = serviceVisuals[serviceSlug];
   const title = `${service.title} in ${city.name}`;
@@ -50,33 +78,28 @@ export default async function LocalServicePage({ params }: { params: Promise<Rou
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <SiteHeader />
     <main id="main" className={`${styles.page} ${localStyles.page}`}>
-      <ServiceBackground />
-      <section className={styles.hero} aria-labelledby="local-service-title">
-        <img className={styles.heroImage} src={detail.hero} alt={detail.heroAlt} width={1536} height={1024} fetchPriority="high" style={{ objectPosition: detail.heroPosition || (construction ? '65% 50%' : '65% 20%') }} />
-        <div className={styles.heroOverlay} aria-hidden="true" />
-        <ServiceBackground hero />
-        <div className={styles.shell}><div className={styles.heroCopy}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb"><a href="/">Home</a><ChevronRight size={12} aria-hidden="true" /><a href="/locations">Locations</a><ChevronRight size={12} aria-hidden="true" /><a href={`/locations/${city.slug}`}>{city.name}</a><ChevronRight size={12} aria-hidden="true" /><span aria-current="page">{service.shortTitle}</span></nav>
-          <p className={styles.heroEyebrow}><MapPin size={14} aria-hidden="true" />LOCAL TERMITE CARE IN {city.name.toUpperCase()}</p>
-          <h1 id="local-service-title">{detail.title}{' '}<span>{detail.accent}</span></h1>
-          <p className={styles.heroLead}>{detail.intro}</p>
-          <div className={styles.heroTrust}>{detail.heroTrust!.map((text, index) => { const Icon = [MapPin, ShieldCheck, ClipboardCheck][index]; return <span key={text}><Icon size={22} aria-hidden="true" /><span className={styles.heroTrustText}>{text}</span></span>; })}</div>
-          <div className={styles.heroActions}><a className={styles.primaryButton} href="#local-service-enquiry"><CalendarCheck2 size={17} aria-hidden="true" />Book a Free Inspection<ArrowUpRight size={17} aria-hidden="true" /></a><a className={styles.outlineButton} href={company.telephone}><Phone size={17} aria-hidden="true" />Call Now</a></div>
-        </div></div>
-      </section>
+      <ServiceBackground variant="service" />
+      <ServiceHero service={service} detail={detail} city={city} />
       <div className={localStyles.cityContext}><div className={styles.shell}><a href={`/locations/${city.slug}`}><MapPin size={17} aria-hidden="true" />Termite treatment in {city.name}<ArrowRight size={16} aria-hidden="true" /></a><p>{city.areas.slice(0, 4).join(' · ')} &amp; nearby areas</p></div></div>
 
-      <section className={`${styles.shell} ${styles.overview}`} id="local-overview" aria-labelledby="local-overview-title"><div className={styles.definition}><p className={styles.kicker}>PLANNED FOR YOUR CITY</p><h2 id="local-overview-title">{detail.definitionTitle}</h2><p>{detail.definition}</p><a className={styles.textLink} href="#local-process">See how it works <ArrowRight size={17} aria-hidden="true" /></a></div><div className={styles.benefits}><h2>{detail.benefitTitle}</h2><ServiceBenefitGrid benefits={detail.benefits} /></div></section>
+      <section className={`${styles.shell} ${styles.overview}`} id="local-overview" aria-labelledby="local-overview-title"><div className={styles.definition}><p className={styles.kicker}>PLANNED FOR YOUR CITY</p><h2 id="local-overview-title" data-edit-field="definitionTitle">{detail.definitionTitle}</h2><p data-edit-field="definition">{detail.definition}</p><a className={styles.textLink} href="#local-process">See how it works <ArrowRight size={17} aria-hidden="true" /></a></div><div className={styles.benefits}><h2 data-edit-field="benefitTitle">{detail.benefitTitle}</h2><ServiceBenefitGrid benefits={detail.benefits} /></div></section>
 
-      <section className={styles.processSection} id="local-process" aria-labelledby="local-process-title"><div className={styles.shell}><header className={styles.sectionHeading}><p className={styles.kicker}>LOCAL SERVICE, STEP BY STEP</p><h2 id="local-process-title">{detail.processTitle}</h2><p>{detail.processIntro}</p></header><div className={styles.processGrid}><figure className={styles.processVisual}><div className={styles.processImageWrap}><img src={construction ? '/images/services/foundation-cutaway-v4.webp' : visual.src} alt={construction ? `Illustration of pre-construction soil treatment zones for a new building in ${city.name}` : `Illustrative ${service.title.toLowerCase()} inspection for a ${city.name} property`} width={900} height={600} loading="lazy" /><span className={styles.imageLabel}><MapPin size={17} aria-hidden="true" />Care planned around your {city.name} property.</span></div><figcaption>Illustrative service image. Your treatment scope follows the local property assessment.</figcaption></figure><ol className={styles.processSteps}>{detail.steps.map(([heading, text], index) => <li key={heading}><span className={styles.stepNumber}>0{index + 1}</span><div><h3>{heading}</h3><p>{text}</p></div></li>)}</ol></div></div></section>
+      <section className={styles.processSection} id="local-process" aria-labelledby="local-process-title"><div className={styles.shell}><header className={styles.sectionHeading}><p className={styles.kicker}>LOCAL SERVICE, STEP BY STEP</p><h2 id="local-process-title" data-edit-field="processTitle">{detail.processTitle}</h2><p data-edit-field="processIntro">{detail.processIntro}</p></header><div className={styles.processGrid}><figure className={styles.processVisual}><div className={styles.processImageWrap}><img src={construction ? '/images/services/foundation-cutaway-v4.webp' : visual.src} alt={construction ? `Illustration of pre-construction soil treatment zones for a new building in ${city.name}` : `Illustrative ${service.title.toLowerCase()} inspection for a ${city.name} property`} width={900} height={600} loading="lazy" /><span className={styles.imageLabel}><MapPin size={17} aria-hidden="true" />Care planned around your {city.name} property.</span></div><figcaption>Illustrative service image. Your treatment scope follows the local property assessment.</figcaption></figure><ol className={styles.processSteps}>{detail.steps.map(([heading, text], index) => <li key={heading}><span className={styles.stepNumber}>0{index + 1}</span><div><h3 data-edit-step-index={index} data-edit-step-part="title">{heading}</h3><p data-edit-step-index={index} data-edit-step-part="description">{text}</p></div></li>)}</ol></div></div></section>
+
+      <section className={`${styles.shell} ${localStyles.otherServices}`} aria-labelledby="other-local-services-title">
+        <header><p className={styles.kicker}>EXPLORE LOCAL SERVICES</p><h2 id="other-local-services-title">Other termite services in {city.name}</h2><p>Find the right care for your property, all from our {city.name} team.</p></header>
+        <div className={localStyles.serviceCards}>{termiteServices.filter(item => item.slug !== serviceSlug).map(item => <a className={localStyles.serviceCard} href={locationServiceUrl(city, item.slug)} key={item.slug}>
+          <img src={serviceVisuals[item.slug].src} alt="" width={900} height={600} loading="lazy" />
+          <div><h3>{item.title}</h3><p>{item.text}</p><span>Explore in {city.name}<ArrowUpRight size={17} aria-hidden="true" /></span></div>
+        </a>)}</div>
+      </section>
 
       <section className={`${styles.shell} ${styles.projectsSection}`} aria-labelledby="local-properties-title"><header className={styles.inlineHeading}><div><p className={styles.kicker}>FOR HOMES, BUSINESSES & NEW BUILDS</p><h2 id="local-properties-title">{detail.projectsTitle}</h2></div></header><div className={styles.projects}>{detail.projects.map(([heading, image], index) => <article className={styles.projectCard} key={heading}><div className={styles.projectPhoto} role="img" aria-label={`${heading}, illustrative architectural image`} style={{ backgroundPosition: `${(image % 3) * 50}% ${image < 3 ? 0 : 100}%` }} /><div className={styles.projectLabel}><span>0{index + 1}</span><h3>{heading}</h3></div></article>)}</div></section>
 
-      <section className={styles.assuranceSection} id="local-service-faqs"><div className={`${styles.shell} ${styles.assuranceGrid}`}><div className={styles.whyCard}><p className={styles.kicker}>LOCAL CARE. CLEAR INFORMATION.</p><h2>{detail.whyTitle}</h2><p>{city.context}</p><ul>{detail.whyItems!.map(item => <li key={item}><span><Check size={15} aria-hidden="true" /></span>{item}</li>)}</ul><a href={company.telephone}><span className={styles.supportIcon}><Headphones size={22} aria-hidden="true" /></span><span><small>DISCUSS YOUR {city.name.toUpperCase()} PROPERTY</small><strong>{company.phone}</strong></span><ArrowUpRight size={20} aria-hidden="true" /></a></div><div className={styles.faqs}><p className={styles.kicker}>QUESTIONS FROM YOUR CITY</p><h2>{service.title} in {city.name}: FAQs</h2><div className={styles.faqList}>{detail.faqs.map(([question, answer]) => <details name={`local-${city.slug}-${serviceSlug}`} key={question}><summary>{question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div></div></div></section>
+      <section className={styles.assuranceSection} id="local-service-faqs"><div className={`${styles.shell} ${styles.assuranceGrid}`}><div className={styles.whyCard}><p className={styles.kicker}>LOCAL CARE. CLEAR INFORMATION.</p><h2>{detail.whyTitle}</h2><p>{city.context}</p><ul>{detail.whyItems!.map(item => <li key={item}><span><Check size={15} aria-hidden="true" /></span>{item}</li>)}</ul><a href={company.telephone}><span className={styles.supportIcon}><Headphones size={22} aria-hidden="true" /></span><span><small>DISCUSS YOUR {city.name.toUpperCase()} PROPERTY</small><strong>{company.phone}</strong></span><ArrowUpRight size={20} aria-hidden="true" /></a></div><div className={styles.faqs}><p className={styles.kicker}>QUESTIONS FROM YOUR CITY</p><h2>{service.title} in {city.name}: FAQs</h2><div className={styles.faqList}>{detail.faqs.map(([question, answer], index) => <details name={`local-${city.slug}-${serviceSlug}`} key={question}><summary data-edit-faq-index={index} data-edit-faq-part="question">{question}<ChevronDown size={18} aria-hidden="true" /></summary><p data-edit-faq-index={index} data-edit-faq-part="answer">{answer}</p></details>)}</div></div></div></section>
 
-      <section className={styles.enquirySection} id="local-service-enquiry" aria-labelledby="local-enquiry-title"><img className={styles.enquiryBackground} src={city.image} alt="" width={1536} height={1024} loading="lazy" /><div className={`${styles.shell} ${styles.enquiryGrid}`}><div className={styles.enquiryCopy}><p className={styles.heroEyebrow}><MapPin size={14} aria-hidden="true" />{city.name.toUpperCase()} SERVICE ENQUIRY</p><h2 id="local-enquiry-title">{detail.closingTitle}{' '}<span>{detail.closingAccent}</span></h2><p>{detail.closingText}</p><div className={styles.enquiryActions}><a className={styles.outlineButton} href={company.telephone}><Phone size={17} aria-hidden="true" />{company.phone}</a><a className={styles.whatsappButton} href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true" />WhatsApp us <ArrowUpRight size={16} aria-hidden="true" /></a></div></div><LocationEnquiryForm citySlug={city.slug} serviceSlug={serviceSlug} /></div></section>
+      <section className={styles.enquirySection} id="local-service-enquiry" aria-labelledby="local-enquiry-title"><img className={styles.enquiryBackground} src={city.image} alt="" width={1536} height={1024} loading="lazy" /><div className={`${styles.shell} ${styles.enquiryGrid}`}><div className={styles.enquiryCopy}><p className={styles.heroEyebrow}><MapPin size={14} aria-hidden="true" />{city.name.toUpperCase()} SERVICE ENQUIRY</p><h2 id="local-enquiry-title">{detail.closingTitle}{' '}<span>{detail.closingAccent}</span></h2><p>{detail.closingText}</p><div className={styles.enquiryActions}><a className={styles.outlineButton} href={company.telephone}><Phone size={17} aria-hidden="true" />{company.phone}</a><a className={styles.whatsappButton} href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true" />WhatsApp us <ArrowUpRight size={16} aria-hidden="true" /></a></div></div><ServiceEnquiryForm key={`${city.slug}-${serviceSlug}`} serviceTitle={service.title} city={city.name} /></div></section>
 
-      <aside className={`${styles.shell} ${styles.related}`} aria-label={`Other services in ${city.name}`}><span>MORE SERVICES IN {city.name.toUpperCase()}</span><div>{termiteServices.filter(item => item.slug !== serviceSlug).map(item => <a href={locationServiceUrl(city, item.slug)} key={item.slug}>{item.shortTitle}<ArrowUpRight size={15} aria-hidden="true" /></a>)}</div></aside>
       <div className={styles.trustStrip}><div className={styles.shell}><span><MapPin size={22} aria-hidden="true" />Local {city.name} support</span><span><ShieldCheck size={22} aria-hidden="true" />Property-specific plans</span><span><ClipboardCheck size={22} aria-hidden="true" />Clear service information</span><span><Headphones size={22} aria-hidden="true" />{company.phone}</span></div></div>
     </main><SiteFooter locationName={`${city.name}, India`} servicesHref={`/locations/${city.slug}#local-services`} enquiryHref="#local-service-enquiry" />
   </>;

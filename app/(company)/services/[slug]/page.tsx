@@ -1,7 +1,8 @@
+import ServiceHero from '../../../../components/ServiceHero';
 import ServiceBackground from '../../../../components/ServiceBackground';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowRight, ArrowUpRight, BadgeCheck, CalendarCheck2, Check, ChevronDown, ChevronRight, ClipboardCheck, Handshake, HardHat, Headphones, MapPin, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CalendarCheck2, Check, ChevronDown, ClipboardCheck, Headphones, MapPin, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import SiteHeader from '../../../../components/SiteHeader';
 import SiteFooter from '../../../../components/SiteFooter';
 import ServiceEnquiryForm from '../../../../components/ServiceEnquiryForm';
@@ -9,6 +10,7 @@ import ServiceBenefitGrid from '../../../../components/ServiceBenefitGrid';
 import { company, termiteServices } from '../../../../lib/company';
 import { serviceDetails } from '../../../../lib/service-details';
 import { serviceVisuals } from '../../../../lib/service-presentation';
+import { getPageContent } from '../../../../lib/content-service';
 import styles from './service-detail.module.css';
 
 export const dynamicParams = false;
@@ -47,12 +49,31 @@ const pointPositions = [
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = termiteServices.find(item => item.slug === slug);
-  const detail = serviceDetails[slug];
-  if (!service || !detail) notFound();
+  const baseDetail = serviceDetails[slug];
+  if (!service || !baseDetail) notFound();
+
+  const content = await getPageContent('service', slug);
+  const normalizedFaqs: [string, string][] = content?.faqs
+    ? (content.faqs as any[]).map((f: any): [string, string] =>
+        Array.isArray(f) ? [String(f[0] || ''), String(f[1] || '')] : [String(f.question || ''), String(f.answer || '')]
+      )
+    : baseDetail.faqs;
+
+  const detail = content
+    ? {
+        ...baseDetail,
+        title: content.title || baseDetail.title,
+        accent: content.accent || baseDetail.accent,
+        intro: content.intro || baseDetail.intro,
+        definitionTitle: content.definitionTitle || baseDetail.definitionTitle,
+        definition: content.definition || baseDetail.definition,
+        benefitTitle: content.benefitTitle || baseDetail.benefitTitle,
+        benefits: (content.benefits as [string, string][]) || baseDetail.benefits,
+        faqs: normalizedFaqs,
+      }
+    : baseDetail;
+
   const preconstruction = slug === 'pre-construction-termite-treatment';
-  const maintenance = slug === 'annual-maintenance-contract';
-  const trustLabels = detail.heroTrust || ['Inspection-led protection', 'A plan for your property', 'Clear advice & aftercare'];
-  const trustIcons = preconstruction ? [ShieldCheck, Handshake, BadgeCheck] : [ShieldCheck, HardHat, ClipboardCheck];
   const visual = serviceVisuals[slug];
   const whatsappHref = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(`Hello, I would like to discuss ${service.title} for my property.`)}`;
   const schema = [
@@ -75,33 +96,18 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <SiteHeader />
     <main id="main" className={styles.page}>
-      <ServiceBackground />
-      <section className={styles.hero} aria-labelledby="service-title">
-        <img className={styles.heroImage} src={detail.hero} alt={detail.heroAlt} width={1536} height={1024} fetchPriority="high" style={{ objectPosition: detail.heroPosition || (preconstruction ? '65% 50%' : '65% 20%') }} />
-        <div className={styles.heroOverlay} aria-hidden="true" />
-        <ServiceBackground hero />
-        <div className={styles.shell}>
-          <div className={styles.heroCopy}>
-            <nav className={styles.breadcrumb} aria-label="Breadcrumb"><a href="/">Home</a><ChevronRight size={12} aria-hidden="true" /><a href="/services">Services</a><ChevronRight size={12} aria-hidden="true" /><span aria-current="page">{service.shortTitle}</span></nav>
-            {!preconstruction && <p className={styles.heroEyebrow}><span /> SPECIALIST TERMITE CARE</p>}
-            <h1 id="service-title">{detail.title}{' '}<span>{detail.accent}</span></h1>
-            <p className={styles.heroLead}>{detail.intro}</p>
-            <div className={styles.heroTrust}>{trustLabels.map((label, index) => { const Icon = trustIcons[index]; return <span key={label}><Icon size={22} aria-hidden="true" /><span className={styles.heroTrustText}>{label}</span></span>; })}</div>
-            <div className={styles.heroActions}><a className={styles.primaryButton} href="#service-enquiry"><CalendarCheck2 size={17} aria-hidden="true" />{preconstruction ? 'Get a Free Site Inspection' : 'Get a free site inspection'}<ArrowUpRight size={17} aria-hidden="true" /></a><a className={styles.outlineButton} href={company.telephone}><Phone size={17} aria-hidden="true" />{preconstruction ? 'Call Now' : 'Call now'}</a></div>
-          </div>
-        </div>
-        {!preconstruction && <div className={styles.heroCaption}><span />Thoughtful protection. Built around your space.</div>}
-      </section>
+      <ServiceBackground variant="service" />
+      <ServiceHero service={service} detail={detail} />
 
       <div className={styles.sectionNav}><div className={styles.shell}><a href="#overview">Overview</a><a href="#treatment-process">Our process</a><a href="#property-types">Property types</a><a href="#service-faqs">FAQs</a><a href="#service-enquiry">Get in touch <ArrowUpRight size={14} aria-hidden="true" /></a></div></div>
 
       <section className={`${styles.shell} ${styles.overview}`} id="overview" aria-labelledby="overview-title">
-        <div className={styles.definition}>{!preconstruction && <p className={styles.kicker}>UNDERSTAND THE TREATMENT</p>}<h2 id="overview-title">{detail.definitionTitle}</h2><p>{detail.definition}</p><a className={styles.textLink} href="#treatment-process">See how it works <ArrowRight size={17} aria-hidden="true" /></a></div>
-        <div className={styles.benefits}><h2>{detail.benefitTitle}</h2><ServiceBenefitGrid benefits={detail.benefits} numbered={preconstruction} /></div>
+        <div className={styles.definition}>{!preconstruction && <p className={styles.kicker}>UNDERSTAND THE TREATMENT</p>}<h2 id="overview-title" data-edit-field="definitionTitle">{detail.definitionTitle}</h2><p data-edit-field="definition">{detail.definition}</p><a className={styles.textLink} href="#treatment-process">See how it works <ArrowRight size={17} aria-hidden="true" /></a></div>
+        <div className={styles.benefits}><h2 data-edit-field="benefitTitle">{detail.benefitTitle}</h2><ServiceBenefitGrid benefits={detail.benefits} numbered={preconstruction} /></div>
       </section>
 
       <section className={styles.processSection} id="treatment-process" aria-labelledby="process-title"><div className={styles.shell}>
-        <header className={styles.sectionHeading}>{!preconstruction && <p className={styles.kicker}>A CLEAR PLAN, STEP BY STEP</p>}<h2 id="process-title">{detail.processTitle}</h2><p>{detail.processIntro}</p></header>
+        <header className={styles.sectionHeading}>{!preconstruction && <p className={styles.kicker}>A CLEAR PLAN, STEP BY STEP</p>}<h2 id="process-title" data-edit-field="processTitle">{detail.processTitle}</h2><p data-edit-field="processIntro">{detail.processIntro}</p></header>
         <div className={styles.processGrid}>
           <figure className={`${styles.processVisual} ${preconstruction ? styles.cutaway : ''}`}>
             <div className={styles.processImageWrap}><img src={preconstruction ? '/images/services/foundation-cutaway-v4.webp' : visual.src} alt={preconstruction ? 'Illustration of foundation footings, plinth soil, service entry and external soil around a new building' : visual.alt} width={900} height={600} loading="lazy" />
@@ -110,7 +116,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
             <figcaption>{preconstruction ? 'Illustrative treatment zones. The application plan is agreed after assessing your site.' : 'The treatment method and scope are based on your property assessment.'}</figcaption>
           </figure>
-          <ol className={styles.processSteps}>{detail.steps.map(([title, text], index) => <li key={title}><span className={styles.stepNumber}>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
+          <ol className={styles.processSteps}>{detail.steps.map(([title, text], index) => <li key={title}><span className={styles.stepNumber}>{String(index + 1).padStart(2, '0')}</span><div><h3 data-edit-step-index={index} data-edit-step-part="title">{title}</h3><p data-edit-step-index={index} data-edit-step-part="description">{text}</p></div></li>)}</ol>
         </div>
       </div></section>
 
@@ -121,14 +127,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <section className={styles.assuranceSection} id="service-faqs"><div className={`${styles.shell} ${styles.assuranceGrid}`}>
         <div className={styles.whyCard}>{!preconstruction && <p className={styles.kicker}>CARE WITH A CLEAR PURPOSE</p>}<h2>{detail.whyTitle || <>Why choose<br />TermiteTreatment?</>}</h2>{!preconstruction && <p>A considered approach to your property, from the first conversation to the next step.</p>}<ul>{(detail.whyItems || ['Assessment before recommendations', 'Treatment planned for your property', 'Clear scope, quotation and preparation', 'Service information and aftercare guidance']).map(item => <li key={item}><span><Check size={15} strokeWidth={2.7} aria-hidden="true" /></span>{item}</li>)}</ul><a href={company.telephone}><span className={styles.supportIcon}><Headphones size={22} aria-hidden="true" /></span><span><small>LET’S TALK ABOUT YOUR PROPERTY</small><strong>{company.phone}</strong></span><ArrowUpRight size={20} aria-hidden="true" /></a></div>
-        <div className={styles.faqs}>{!preconstruction && <p className={styles.kicker}>GOOD QUESTIONS. CLEAR ANSWERS.</p>}<h2>{preconstruction ? 'Frequently Asked Questions' : 'Frequently asked questions'}</h2><div className={styles.faqList}>{detail.faqs.map(([question, answer], index) => <details key={question} name={`service-faq-${slug}`} open={!preconstruction && index === 0}><summary>{question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div>{preconstruction && <a className={styles.textLink} href="/contact-us#contact-faq">View all FAQs <ArrowRight size={16} aria-hidden="true" /></a>}</div>
+        <div className={styles.faqs}>{!preconstruction && <p className={styles.kicker}>GOOD QUESTIONS. CLEAR ANSWERS.</p>}<h2>{preconstruction ? 'Frequently Asked Questions' : 'Frequently asked questions'}</h2><div className={styles.faqList}>{detail.faqs.map(([question, answer], index) => <details key={question} name={`service-faq-${slug}`} open={!preconstruction && index === 0}><summary data-edit-faq-index={index} data-edit-faq-part="question">{question}<ChevronDown size={18} aria-hidden="true" /></summary><p data-edit-faq-index={index} data-edit-faq-part="answer">{answer}</p></details>)}</div>{preconstruction && <a className={styles.textLink} href="/contact-us#contact-faq">View all FAQs <ArrowRight size={16} aria-hidden="true" /></a>}</div>
       </div></section>
 
       <section className={styles.enquirySection} id="service-enquiry" aria-labelledby="enquiry-title">
         <img className={styles.enquiryBackground} src={detail.hero} alt="" width={1536} height={1024} loading="lazy" />
         <div className={`${styles.shell} ${styles.enquiryGrid}`}>
           <div className={styles.enquiryCopy}>{!preconstruction && <p className={styles.heroEyebrow}><span /> YOUR NEXT STEP STARTS HERE</p>}<h2 id="enquiry-title">{detail.closingTitle}{' '}<span>{detail.closingAccent}</span></h2><p>{detail.closingText}</p><div className={styles.enquiryActions}><a className={styles.outlineButton} href={company.telephone}><Phone size={17} aria-hidden="true" />{preconstruction ? 'Call Now' : company.phone}</a><a className={styles.whatsappButton} href={whatsappHref} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true" />WhatsApp us <ArrowUpRight size={16} aria-hidden="true" /></a></div>{!preconstruction && <div className={styles.enquiryNote}><CalendarCheck2 size={18} aria-hidden="true" /><span>A free inspection. A clear proposal.<br />A next step you understand.</span></div>}</div>
-          <ServiceEnquiryForm serviceTitle={service.title} construction={preconstruction} maintenance={maintenance} />
+          <ServiceEnquiryForm key={slug} serviceTitle={service.title} />
         </div>
       </section>
 

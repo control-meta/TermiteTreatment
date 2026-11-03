@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ArrowRight, ArrowUpRight, ChevronRight, ClipboardCheck, MapPin, Phone, Search, ShieldCheck, Sprout } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ClipboardCheck, MapPin, Phone, Search, ShieldCheck, Sprout } from 'lucide-react';
 import SiteHeader from '../../../components/SiteHeader';
 import SiteFooter from '../../../components/SiteFooter';
 import ServicesExplorer from '../../../components/ServicesExplorer';
@@ -85,7 +85,6 @@ export default function ServicesPage() {
       <main id="main" className={`${styles.page} services-page`}>
         <div className={styles.ambient} aria-hidden="true"><span className={styles.orbOne} /><span className={styles.orbTwo} /><span className={styles.orbThree} /><span className={styles.orbFour} /><span className={styles.heroSheen} /></div>
         <div className={styles.shell}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb"><a href="/">Home</a><ChevronRight size={12} aria-hidden="true" /><span aria-current="page">Our services</span></nav>
           <section className={styles.hero} aria-labelledby="services-hero-title">
             <div className={styles.heroCopy}>
               <p className={styles.heroPill}><span /> SPECIALIST TERMITE SERVICES</p>

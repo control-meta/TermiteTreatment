@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { usePathname } from 'next/navigation';
 import { ArrowRight, CheckCircle2, FileText, LockKeyhole, MessageCircle, Phone, Sparkles, User, X } from 'lucide-react';
 import PhoneInput from './PhoneInput';
 import { company, termiteServices } from '../lib/company';
@@ -13,6 +14,7 @@ type BookingData = {
 };
 
 export default function BookNowButton() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [booking, setBooking] = useState<BookingData | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -76,6 +78,11 @@ export default function BookNowButton() {
   const whatsappMessage = booking
     ? `Hello TermiteTreatment, I would like to book an inspection.\n\nName: ${booking.name}\nPhone: ${booking.phone}\nService: ${booking.service}\n\nPlease confirm availability.`
     : '';
+
+  // Hide on all admin routes
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   return (
     <div ref={containerRef} className={styles.container} aria-label="Quick booking">
