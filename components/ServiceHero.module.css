@@ -1,10 +1,10 @@
 .hero { position: relative; padding: clamp(80px, 9vh, 90px) clamp(10px, 1.4vw, 22px) clamp(16px, 2vh, 24px); background: #071f19; }
-.frame { position: relative; isolation: isolate; width: min(1440px, 100%); height: min(720px, calc(100svh - 104px)); min-height: 560px; container-type: inline-size; margin-inline: auto; overflow: hidden; border-radius: clamp(20px, 2.2vw, 32px); background: #0b3028; box-shadow: 0 32px 85px -30px #001b12, 0 0 0 1px #ffffff12; }
+.frame { position: relative; isolation: isolate; width: min(1440px, 100%); min-height: clamp(560px, calc(100svh - 104px), 720px); container-type: inline-size; margin-inline: auto; overflow: hidden; border-radius: clamp(20px, 2.2vw, 32px); background: #0b3028; box-shadow: 0 32px 85px -30px #001b12, 0 0 0 1px #ffffff12; }
 .heroImage { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: var(--hero-image-position); transform-origin: var(--hero-image-position); transform: scale(1.015); animation: heroDrift 26s ease-in-out infinite alternate; }
 .scrim { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, #051a14f7 0%, #051a14ed 34%, #051a14a8 54%, #051a142e 74%, #051a1445 100%), linear-gradient(0deg, #051a14c9 0%, #051a1433 27%, transparent 52%, #051a1433 100%); pointer-events: none; }
 .texture { position: absolute; inset: 0; z-index: -1; background-image: radial-gradient(#e4f2c02b .8px, transparent .8px); background-size: 26px 26px; -webkit-mask-image: linear-gradient(90deg, #000, #0008 42%, transparent 78%); mask-image: linear-gradient(90deg, #000, #0008 42%, transparent 78%); opacity: .55; pointer-events: none; }
 .frame::after { content: ''; position: absolute; z-index: 3; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px #ffffff1f, inset 0 70px 100px -80px #0000008c; pointer-events: none; }
-.inner { position: relative; z-index: 2; display: grid; grid-template-rows: auto 1fr auto; height: 100%; min-height: 0; padding: clamp(20px, 2.6vw, 36px) clamp(24px, 3.6vw, 52px) clamp(18px, 2vw, 26px); }
+.inner { position: relative; z-index: 2; display: grid; grid-template-rows: auto 1fr auto; min-height: inherit; padding: clamp(20px, 2.6vw, 36px) clamp(24px, 3.6vw, 52px) clamp(18px, 2vw, 26px); }
 .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0; padding: 9px 15px 9px 13px; border: 1px solid #e6f2c747; border-radius: 999px; background: #071f1966; backdrop-filter: blur(14px); color: #eaf3d8; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; line-height: 1.4; text-transform: uppercase; }
 .eyebrow > svg { flex-shrink: 0; color: #ddebae; }
@@ -28,7 +28,8 @@
 .processLink { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; margin-top: clamp(10px, 1.4vh, 14px); color: #dce8d4; font-size: 13px; font-weight: 600; text-shadow: 0 1px 12px #00140f66; }
 .processLink:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
 .hero a:focus-visible { outline: 3px solid #ddebab; outline-offset: 4px; }
-.journey { display: grid; grid-template-columns: 1.05fr repeat(3, minmax(0, 1fr)); align-items: stretch; width: 100%; flex-shrink: 0; overflow: hidden; border: 1px solid #e5f0c93d; border-radius: 18px; background: linear-gradient(90deg, #071f19ad, #071f1966); backdrop-filter: blur(18px) saturate(1.1); box-shadow: 0 16px 40px -26px #00140f; }
+/* Keep the care card between the fixed booking and contact controls. */
+.journey { display: grid; grid-template-columns: 1.05fr repeat(3, minmax(0, 1fr)); align-items: stretch; width: calc(100% - 112px); max-width: calc(100vw - 280px); margin-inline: auto; flex-shrink: 0; overflow: hidden; border: 1px solid #e5f0c93d; border-radius: 18px; background: linear-gradient(90deg, #071f19ad, #071f1966); backdrop-filter: blur(18px) saturate(1.1); box-shadow: 0 16px 40px -26px #00140f; }
 .journeyIntro { display: flex; flex-direction: column; justify-content: center; padding: clamp(11px, 1.5vh, 16px) clamp(14px, 1.4vw, 20px); background: #ffffff06; }
 .journeyIntro > span { display: block; margin-bottom: 4px; color: #c7d9b5; font-size: 8px; font-weight: 700; letter-spacing: 1.5px; line-height: 1.5; text-transform: uppercase; }
 .journeyIntro > strong { display: block; color: #f1f6e8; font-family: var(--font-heading); font-size: 14.5px; font-weight: 600; letter-spacing: -.3px; line-height: 1.3; }
@@ -52,7 +53,6 @@
 }
 @media (max-width: 1000px) {
   .copy { max-width: 66%; }
-  .inner { min-height: 0; }
   .lead { font-size: 15px; }
   .highlights { gap: 9px 15px; }
   .highlights li { font-size: 12px; }
@@ -61,33 +61,60 @@
   .journeyStep:first-of-type { border-left: 0; }
 }
 @media (max-width: 760px) {
-  .hero { padding: clamp(72px, 9.5vh, 82px) 10px 16px; }
-  .frame { height: auto; min-height: 0; border-radius: clamp(18px, 4.5vw, 24px); }
+  .hero { padding: 68px 10px 14px; }
+  .frame { height: auto; min-height: 0; border-radius: clamp(16px, 4vw, 22px); }
   .heroImage { object-position: var(--hero-mobile-image-position); transform-origin: var(--hero-mobile-image-position); }
   .scrim { background: linear-gradient(180deg, #051a14b8 0%, #051a14d9 38%, #051a14f2 72%, #051a14fa 100%); }
   .texture { -webkit-mask-image: linear-gradient(0deg, #000, transparent 78%); mask-image: linear-gradient(0deg, #000, transparent 78%); }
-  .inner { display: flex; flex-direction: column; height: auto; min-height: 0; gap: 0; padding: clamp(16px, 4vw, 22px) clamp(14px, 3.8vw, 20px) clamp(14px, 3.5vw, 18px); }
+  .inner { display: flex; flex-direction: column; height: auto; min-height: 0; gap: 0; padding: 16px 14px 14px; }
   .topbar { gap: 10px; }
-  .eyebrow { padding: 7px 12px; font-size: 9px; letter-spacing: 1.4px; }
+  .eyebrow { padding: 6px 12px; font-size: 8.5px; letter-spacing: 1.2px; }
   .place { display: none; }
-  .copy { width: 100%; max-width: 100%; margin: clamp(14px, 2.4vh, 20px) 0 clamp(16px, 2.6vh, 22px); padding: 0; }
-  .hero .heading { max-width: 100%; font-size: clamp(29px, 7.8vw, 40px); line-height: 1.12; letter-spacing: -1.3px; text-wrap: balance; white-space: normal; }
+  .copy { width: 100%; max-width: 100%; margin: 12px 0 14px; padding: 0; }
+  .hero .heading { max-width: 100%; font-size: clamp(26px, 7.5vw, 36px); line-height: 1.12; letter-spacing: -1.2px; text-wrap: balance; white-space: normal; }
   .hero .heading > span,
   .hero .heading span { display: inline; white-space: normal !important; word-break: normal; overflow-wrap: break-word; }
-  .lead { max-width: 100%; margin-top: clamp(10px, 1.8vh, 14px); font-size: clamp(14px, 3.6vw, 15.5px); line-height: 1.65; }
-  .highlights { gap: 7px 14px; margin-top: clamp(12px, 2vh, 16px); }
-  .highlights li { font-size: clamp(11.5px, 3vw, 12.5px); }
-  .highlights svg { width: 15px; height: 15px; }
-  .actions { gap: 10px; margin-top: clamp(16px, 2.4vh, 22px); }
-  .primary, .call { min-height: 48px; padding: 12px 18px; font-size: 13px; font-weight: 750; }
-  .processLink { min-height: 28px; margin-top: clamp(8px, 1.4vh, 12px); font-size: 12px; }
-  .journey { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; width: 100%; border-radius: 14px; background: linear-gradient(90deg, #071f19d9, #071f19b3); backdrop-filter: blur(14px); border: 1px solid #e5f0c92e; overflow: hidden; }
+  .lead { max-width: 100%; margin-top: 10px; font-size: 14px; line-height: 1.55; }
+  .highlights { gap: 6px 14px; margin-top: 12px; }
+  .highlights li { font-size: 12px; }
+  .highlights svg { width: 14px; height: 14px; }
+  .actions { gap: 8px; margin-top: 14px; }
+  .primary, .call { min-height: 44px; padding: 10px 16px; font-size: 13px; font-weight: 700; }
+  .processLink { min-height: 24px; margin-top: 8px; font-size: 11.5px; }
+  /* Horizontal 3-column journey card spanning full width */
+  .journey {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    margin: 12px 0 0;
+    position: static;
+    left: auto;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #071f19f2, #0b2b22d9);
+    backdrop-filter: blur(14px);
+    border: 1px solid #e5f0c92e;
+    overflow: hidden;
+  }
   .journeyIntro { display: none; }
-  .journeyStep { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 4px; padding: 9px 6px; border-left: 1px solid #dce4d11f; border-top: 0; min-width: 0; }
+  .journeyStep {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 3px;
+    padding: 8px 4px;
+    border-top: 0;
+    border-left: 1px solid #dce4d11f;
+    min-width: 0;
+  }
   .journeyStep:first-of-type { border-left: 0; }
-  .stepIcon { width: 28px; height: 28px; border-radius: 8px; }
-  .stepIcon svg { width: 15px; height: 15px; }
-  .stepNumber { display: block; margin-bottom: 1px; color: #d3e3ba; font-size: 8px; font-weight: 700; line-height: 1.1; letter-spacing: 0.5px; }
+  .stepIcon { width: 26px; height: 26px; border-radius: 7px; }
+  .stepIcon svg { width: 14px; height: 14px; }
+  .stepNumber { display: block; margin-bottom: 1px; color: #d3e3ba; font-size: 8px; font-weight: 700; line-height: 1.1; }
   .journeyStep strong { font-size: 10.5px; font-weight: 650; line-height: 1.25; color: #f5f8ef; text-wrap: balance; }
   .journeyStep p { display: none; }
   .stepArrow { display: none; }
@@ -95,13 +122,20 @@
 @media (max-width: 420px) {
   .hero { padding-inline: 8px; }
   .inner { padding-inline: 12px; }
-  .hero .heading { font-size: clamp(26px, 7.2vw, 32px); line-height: 1.14; }
+  .hero .heading { font-size: clamp(24px, 7vw, 30px); line-height: 1.14; }
   .actions { display: grid; grid-template-columns: minmax(0, 1fr); }
   .primary, .call { width: 100%; }
-  .frame { border-radius: 18px; }
-  .journeyStep { padding: 8px 4px; gap: 3px; }
+  .frame { border-radius: 16px; }
+  .journeyStep { padding: 7px 3px; gap: 2px; }
   .journeyStep strong { font-size: 9.5px; }
-  .stepIcon { width: 24px; height: 24px; border-radius: 7px; }
+  .stepIcon { width: 22px; height: 22px; border-radius: 6px; }
+  .stepIcon svg { width: 12px; height: 12px; }
+}
+@media (max-width: 360px) {
+  .journeyStep { justify-content: center; text-align: center; padding: 6px 2px; }
+  .stepIcon { width: 20px; height: 20px; border-radius: 5px; }
+  .stepIcon svg { width: 11px; height: 11px; }
+  .journeyStep strong { font-size: 8.5px; }
 }
 @media (min-width: 761px) and (max-height: 640px) {
   .frame { min-height: 480px; }

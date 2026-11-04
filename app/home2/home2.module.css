@@ -42,7 +42,14 @@
 .sheetImage > img { position: absolute; top: 50%; display: block; max-width: none; height: auto; }
 .content { padding-block: 25px 40px; }
 .introGrid { display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.65fr); align-items: start; gap: 24px; }
-.about { padding: 19px 21px 18px; border: 1px solid #e3f3e8; border-radius: 14px; background: linear-gradient(130deg, #fff, #f7fdf9); box-shadow: 0 3px 12px #205e3307; }
+.about {
+  margin-top: 28px;
+  padding: 19px 21px 18px;
+  border: 1px solid #e3f3e8;
+  border-radius: 14px;
+  background: linear-gradient(130deg, #fff, #f7fdf9);
+  box-shadow: 0 3px 12px #205e3307;
+}
 .about h2 { display: inline-block; border-bottom: 2px solid #b2dec0; padding-bottom: 4px; font-size: 25px; }
 .about p { margin-top: 15px; color: #1f3d28; font-size: 14px; line-height: 1.85; }
 .textLink { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; color: #196430; font-size: 13px; font-weight: 800; line-height: 1.5; }
@@ -52,14 +59,35 @@
 .ruledTitle::before, .ruledTitle::after { content: ''; height: 1px; flex: 1; min-width: 10px; background: linear-gradient(90deg, transparent, #6fb786); }
 .ruledTitle::after { transform: rotate(180deg); }
 .page .ruledTitle > span { color: var(--deep-green); }
+.services { min-width: 0; overflow: hidden; }
 .services h2 { font-size: 25px; }
-.serviceGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.serviceMarquee {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  container-type: inline-size;
+  --service-gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+.serviceMarquee:active { cursor: grabbing; }
+.serviceMarquee::-webkit-scrollbar { display: none; }
+.serviceTrack { display: flex; width: max-content; }
+.serviceGroup { display: flex; flex-shrink: 0; gap: var(--service-gap); padding-right: var(--service-gap); }
+.serviceGroup .serviceCard { flex: 0 0 calc((100cqw - 3 * var(--service-gap)) / 4); width: calc((100cqw - 3 * var(--service-gap)) / 4); min-width: calc((100cqw - 3 * var(--service-gap)) / 4); box-sizing: border-box; }
+
 .serviceCard { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #deece2; border-radius: 13px; box-shadow: 0 4px 9px #1f5c320d; background: #17552a; }
-.serviceImage { height: 105px; flex-shrink: 0; }
-.serviceCardBody { display: flex; flex: 1; flex-direction: column; align-items: center; padding: 14px 10px 12px; background: linear-gradient(145deg, #24733c, #134723); }
-.serviceCardBody > div { display: flex; align-items: center; gap: 9px; width: 100%; flex: 1; margin-bottom: 13px; color: #fff; }
+.serviceImage { display: block; width: 100%; height: 105px; flex-shrink: 0; object-fit: cover; }
+.serviceCardBody { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: space-between; padding: 14px 10px 12px; background: linear-gradient(145deg, #24733c, #134723); text-align: center; }
+.serviceCardBody > div { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; min-height: 42px; margin-bottom: 12px; color: #fff; }
 .serviceCardBody h3 { color: #fff; font-size: 13px; font-weight: 800; line-height: 1.35; }
-.serviceCardBody > div > svg { width: 24px; }
+.serviceCardBody > div > svg { flex-shrink: 0; width: 24px; color: #ddebab; }
 .smallAccentButton { gap: 8px; min-height: 34px; padding: 6px 15px; font-size: 11px; }
 .process { position: relative; margin-top: 32px; padding: 22px 22px 25px; border: 1px solid #c1e6cc; border-radius: 15px; background: linear-gradient(160deg, #f4fdf7, #e4f7ea); box-shadow: 0 3px 10px #1d603207; }
 .process > h2 { width: min(560px, 90%); margin: -39px auto 20px; font-size: 25px; }
@@ -206,7 +234,8 @@
   .about { padding: 19px 17px; }
   .about h2, .services h2 { font-size: 23px; }
   .about p { font-size: 13px; }
-  .serviceGrid { gap: 9px; }
+  .serviceMarquee { --service-gap: 9px; }
+  .serviceGroup { gap: 9px; padding-right: 9px; }
   .serviceCardBody > div { flex-direction: column; gap: 6px; text-align: center; }
   .serviceCardBody h3 { font-size: 12px; }
   .smallAccentButton { padding-inline: 11px; font-size: 10px; }
@@ -237,7 +266,7 @@
   .heroTagline { font-size: 17px; }
   .accentButton, .primaryButton { padding-inline: 17px; font-size: 12px; }
   .introGrid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .about { padding: 23px; }
+  .about { align-self: auto; margin-top: 0; padding: 23px; }
   .about p { max-width: 750px; font-size: 14px; }
   .about .textLink { margin-top: 9px; }
   .serviceCardBody > div { flex-direction: row; text-align: left; }
@@ -303,13 +332,18 @@
   .pestBadge > span:last-child { height: 7px; top: calc(50% - 3.5px); }
   .content { padding-block: 26px 30px; }
   .introGrid { gap: 28px; }
-  .about { padding: 22px 20px; }
+  .about { align-self: auto; margin-top: 0; padding: 22px 20px; margin-bottom: 0; border-radius: 14px; }
   .about h2 { font-size: 25px; }
   .about p { font-size: 14px; line-height: 1.85; }
   .services h2 { font-size: 24px; }
   .ruledTitle { gap: 9px; margin-bottom: 20px; }
   .ruledTitle::before, .ruledTitle::after { min-width: 7px; }
-  .serviceGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+  .serviceMarquee { --service-gap: 12px; }
+  .serviceGroup .serviceCard {
+    flex: 0 0 calc((100cqw - var(--service-gap)) / 2);
+    width: calc((100cqw - var(--service-gap)) / 2);
+    min-width: calc((100cqw - var(--service-gap)) / 2);
+  }
   .serviceImage { height: 110px; }
   .serviceCardBody { padding: 15px 12px; }
   .serviceCardBody > div { flex-direction: column; align-items: center; gap: 9px; margin-bottom: 15px; text-align: center; }
@@ -448,10 +482,12 @@
   @keyframes home2ProjectScroll { to { transform: translateX(-200%); } }
 }
 @media (prefers-reduced-motion: reduce) {
-  .projectTrack { animation: none; }
-  .projectDuplicate { display: none; }
+  .projectTrack, .serviceTrack { animation: none; }
+  .projectDuplicate, .serviceDuplicate { display: none; }
   .projectGroup { flex-basis: 100%; padding-right: 0; }
   .projectGroup { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .serviceMarquee { overflow-x: auto; scrollbar-width: thin; }
+  .serviceGroup { padding-right: 0; }
 }
 @media (prefers-reduced-motion: reduce) and (max-width: 760px) {
   .projectGroup { grid-template-columns: repeat(2, minmax(0, 1fr)); }

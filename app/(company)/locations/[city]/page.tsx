@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { ArrowRight, BadgeCheck, Building2, CalendarCheck2, Check, ChevronDown, Clock3, Drill, HardHat, Headphones, House, Leaf, MapPin, Phone, ShieldCheck, ThumbsUp } from 'lucide-react';
 import SiteHeader from '../../../../components/SiteHeader';
 import SiteFooter from '../../../../components/SiteFooter';
-import LocationEnquiryForm from '../../../../components/LocationEnquiryForm';
+import ServiceEnquiryForm from '../../../../components/ServiceEnquiryForm';
 import LocationReviewsCarousel from '../../../../components/LocationReviewsCarousel';
 import { company, termiteServices } from '../../../../lib/company';
 import { getLocation, locations, locationServiceLabels, locationServiceUrl } from '../../../../lib/locations';
@@ -83,12 +83,25 @@ export default async function CityLocationPage({ params }: { params: Promise<{ c
           <div className={styles.projectPanel}><div className={styles.projectHeading}><h2>Our Recent Termite Control Projects<br />in {city.name}</h2><span>Illustrative property gallery</span></div><div className={styles.projectGrid}>{[[1, `Apartment – ${city.areas[1]}`], [0, `Villa – ${city.areas[5]}`], [2, `Office – ${city.areas[0]}`]].map(([image, title]) => <figure key={title}><div role="img" aria-label={`${title}, illustrative architectural image`} className={styles.projectImage} style={{ backgroundPosition: `${Number(image) * 50}% 0%` }} /><figcaption>{title}</figcaption></figure>)}</div></div>
         </section>
 
-        <section className={styles.supportGrid} aria-label={`Enquiries and frequently asked questions for ${city.name}`}>
-          <div className={styles.supportStack}>
-            <LocationReviewsCarousel />
-          <div className={styles.faqs} id="local-faqs"><h2>Frequently Asked Questions</h2><div>{faqs.map(([q, a], index) => <details name={`faq-${city.slug}`} key={q}><summary data-edit-faq-index={index} data-edit-faq-part="question">{q}<ChevronDown size={15} aria-hidden="true" /></summary><p data-edit-faq-index={index} data-edit-faq-part="answer">{a}</p></details>)}</div><a className={styles.textLink} href="/faqs">View More FAQs <ArrowRight size={15} aria-hidden="true" /></a></div>
+        <section className={styles.reviewsFaqsGrid} aria-label={`Frequently asked questions and reviews for ${city.name}`}>
+          <div className={styles.faqs} id="local-faqs">
+            <h2>Frequently Asked Questions</h2>
+            <div>{faqs.map(([q, a], index) => <details name={`faq-${city.slug}`} key={q}><summary data-edit-faq-index={index} data-edit-faq-part="question">{q}<ChevronDown size={15} aria-hidden="true" /></summary><p data-edit-faq-index={index} data-edit-faq-part="answer">{a}</p></details>)}</div>
+            <a className={styles.textLink} href="/faqs">View More FAQs <ArrowRight size={15} aria-hidden="true" /></a>
           </div>
-          <div id="local-enquiry" className={styles.formAnchor}><LocationEnquiryForm citySlug={city.slug} /></div>
+          <LocationReviewsCarousel />
+        </section>
+
+        <section id="local-enquiry" className={styles.ctaBanner} aria-labelledby="local-cta-title">
+          <div className={styles.ctaCopy}>
+            <ShieldCheck size={52} strokeWidth={2.2} aria-hidden="true" />
+            <div>
+              <h2 id="local-cta-title">Don’t Let Termites Damage Your Property!</h2>
+              <p>Get a free quote today and keep your home or business in {city.name} safe.</p>
+            </div>
+            <a className={styles.accentButton} href="#local-enquiry-form">Get a Free Quote <ArrowRight size={17} aria-hidden="true" /></a>
+          </div>
+          <ServiceEnquiryForm id="local-enquiry-form" city={city.name} suggestedLocations={city.areas} />
         </section>
         <aside className={styles.otherCities} aria-label="Other locations"><span>EXPLORE OUR OTHER LOCATIONS</span><div>{locations.filter(item => item.slug !== city.slug).map(item => <a href={`/locations/${item.slug}`} key={item.slug}>{item.name}<ArrowRight size={14} aria-hidden="true" /></a>)}</div></aside>
       </div>

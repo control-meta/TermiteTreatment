@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { ArrowRight, Building2, Check, CircleHelp, ClipboardCheck, House, Leaf, Phone, Search, ShieldCheck, SprayCan } from 'lucide-react';
+import { ArrowRight, Building2, Check, CircleHelp, ClipboardCheck, HardHat, House, Leaf, Phone, Search, ShieldCheck, SprayCan } from 'lucide-react';
 import { company } from '../lib/company';
 import { locations } from '../lib/locations';
-import { Home2Enquiry, Home2Projects } from './home2/Home2Client';
+import { Home2Enquiry, Home2Projects, Home2ServicesMarquee } from './home2/Home2Client';
 import { home2Faqs, home2Services } from './home2/content';
 import SheetImage from './home2/SheetImage';
 import SiteHeader from '../components/SiteHeader';
@@ -31,7 +31,6 @@ const process = [
   { title: 'Ongoing Protection', text: 'Regular monitoring', icon: ClipboardCheck },
 ];
 const reasons = ['Experienced & Trained Technicians', 'Safe & Eco-Friendly Treatment', 'Long-Lasting Protection', 'Affordable Pricing', 'Timely Service & Support'];
-const serviceIcons = [House, ShieldCheck, Building2, Leaf];
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -59,8 +58,15 @@ export default function HomePage() {
 
       <div className={styles.content}>
         <div className={`${styles.shell} ${styles.introGrid}`}>
-          <section className={styles.about} id="about" aria-labelledby="home2-about-title"><h2 id="home2-about-title">About Our Company</h2><p>Termite Pest Control is a trusted provider of professional termite treatment services in Bangalore. We use advanced, odorless and safe methods to eliminate termites and protect your home and business for the long term.</p><a className={styles.textLink} href="/about-us">Know More About Us <ArrowRight size={16} aria-hidden="true" /></a></section>
-          <section className={styles.services} id="services" aria-labelledby="home2-services-title"><h2 className={styles.ruledTitle} id="home2-services-title"><span>Our Termite Control Services</span></h2><div className={styles.serviceGrid}>{home2Services.map((service, index) => { const Icon = serviceIcons[index]; return <article className={styles.serviceCard} key={service.slug}><SheetImage src="/images/home2/termites-v1.webp" index={service.image} columns={2} alt={service.alt} className={styles.serviceImage} /><div className={styles.serviceCardBody}><div><Icon size={26} strokeWidth={1.8} aria-hidden="true" /><h3>{service.title}</h3></div><a className={styles.smallAccentButton} href={`/services/${service.slug}`} aria-label={`Know more about ${service.title}`}>Know More <ArrowRight size={14} aria-hidden="true" /></a></div></article>; })}</div></section>
+          <section className={styles.about} id="about" aria-labelledby="home2-about-title">
+            <h2 id="home2-about-title">About Our Company</h2>
+            <p>Termite Pest Control is a trusted provider of professional termite treatment services in Bangalore. We use advanced, odorless and safe methods to eliminate termites and protect your home and business for the long term.</p>
+            <a className={styles.textLink} href="/about-us">Know More About Us <ArrowRight size={16} aria-hidden="true" /></a>
+          </section>
+          <section className={styles.services} id="services" aria-labelledby="home2-services-title">
+            <h2 className={styles.ruledTitle} id="home2-services-title"><span>Our Termite Control Services</span></h2>
+            <Home2ServicesMarquee />
+          </section>
         </div>
 
         <section className={`${styles.shell} ${styles.process}`} aria-labelledby="home2-process-title"><h2 className={styles.ruledTitle} id="home2-process-title"><span>Our Treatment Process</span></h2><ol>{process.map((step, index) => { const Icon = step.icon; return <li key={step.title}><div className={styles.processTop}><span>{index + 1}</span><ArrowRight size={21} strokeWidth={1.3} aria-hidden="true" /><Icon size={34} strokeWidth={2} aria-hidden="true" /></div><h3>{step.title}</h3><p>{step.text}</p>{index < 3 && <ArrowRight className={styles.processArrow} size={24} strokeWidth={1.5} aria-hidden="true" />}</li>; })}</ol></section>
