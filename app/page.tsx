@@ -54,7 +54,7 @@ export default function HomePage() {
           <div className={styles.heroBenefits}><span><ShieldCheck size={30} strokeWidth={2.2} aria-hidden="true" /><strong>Expert<br />Team</strong></span><span><Leaf size={30} strokeWidth={2.2} aria-hidden="true" /><strong>Safe &<br />Eco-Friendly</strong></span><span><House size={30} strokeWidth={2.2} aria-hidden="true" /><strong>Long-Lasting<br />Protection</strong></span></div>
           <div className={styles.heroActions}><a className={styles.accentButton} href="#home2-enquiry">Get a Free Inspection <ArrowRight size={18} aria-hidden="true" /></a><a className={styles.primaryButton} href={company.telephone}><Phone size={17} fill="currentColor" aria-hidden="true" />Call Now</a></div>
         </div></div>
-        <div className={styles.pestBadge} role="img" aria-label="Termites inside a red exclusion symbol"><SheetImage src="/images/home2/termites-v1.webp" index={0} columns={2} alt="" /><span aria-hidden="true" /></div>
+        <div className={styles.pestBadge} role="img" aria-label="Termites inside a red exclusion symbol"><SheetImage src="/images/home2/termites-v1.webp" index={0} columns={2} alt="Termite pest exclusion symbol" /><span aria-hidden="true" /></div>
       </section>
 
       <div className={styles.content}>

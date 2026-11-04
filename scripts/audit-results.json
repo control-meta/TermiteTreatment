@@ -1,0 +1,6262 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "title": "Termite Pest Control in Bangalore | Free Inspection",
+    "titleLength": 51,
+    "description": "Professional termite control in Bangalore for homes and businesses. Explore pre-construction treatment, post-construction care and AMC plans. Book a free inspection.",
+    "descLength": 165,
+    "canonical": "https://termitepestcontrol.co.in",
+    "ogTitle": "Termite Pest Control in Bangalore | Free Inspection",
+    "ogDesc": "Professional termite control in Bangalore for homes and businesses. Explore pre-construction treatment, post-construction care and AMC plans. Book a free inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/home2/hero-v1.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Complete Termite Control Solutions for Your Property"
+    ],
+    "h2Count": 12,
+    "h3Count": 8,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 23,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Complete Termite Control Solutions for Your Property"
+      },
+      {
+        "tag": "h2",
+        "text": "About Our Company"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Termite Control Services"
+      },
+      {
+        "tag": "h3",
+        "text": "Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Plan (AMC)"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Treatment Process"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspection"
+      },
+      {
+        "tag": "h3",
+        "text": "Customized Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Safety Assurance"
+      },
+      {
+        "tag": "h3",
+        "text": "Ongoing Protection"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Solutions"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Solutions"
+      },
+      {
+        "tag": "h2",
+        "text": "Why Choose Us?"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Recent Projects"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Locations"
+      },
+      {
+        "tag": "h2",
+        "text": "What Our Customers Say"
+      },
+      {
+        "tag": "h2",
+        "text": "Termite questions,answered clearly."
+      },
+      {
+        "tag": "h2",
+        "text": "Don’t Let Termites Damage Your Property!"
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/services",
+    "status": 200,
+    "title": "Termite Control Services | Residential, Commercial & Construction Protection | TermiteTreatment",
+    "titleLength": 95,
+    "description": "Explore 5 specialist termite control and prevention services: residential pest care, commercial protection, pre-construction soil treatment, post-construction drilling, and annual maintenance plans (AMC) across India.",
+    "descLength": 217,
+    "canonical": "https://termitepestcontrol.co.in/services",
+    "ogTitle": "Termite Control Services | Dedicated Property Protection",
+    "ogDesc": "Explore 5 specialist termite care services for homes, businesses, and buildings under construction across India.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/residential-v3.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Care for your space.A plan that fits."
+    ],
+    "h2Count": 4,
+    "h3Count": 8,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "ItemList",
+      "BreadcrumbList"
+    ],
+    "imageCount": 6,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Care for your space.A plan that fits."
+      },
+      {
+        "tag": "h2",
+        "text": "What does your space need?"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Considered care.Three simple steps."
+      },
+      {
+        "tag": "h3",
+        "text": "First, we look closer."
+      },
+      {
+        "tag": "h3",
+        "text": "Then, a plan for you."
+      },
+      {
+        "tag": "h3",
+        "text": "Care beyond the visit."
+      },
+      {
+        "tag": "h2",
+        "text": "A wider reach.A personal approach."
+      },
+      {
+        "tag": "h2",
+        "text": "A little clarity.A good next step."
+      }
+    ]
+  },
+  {
+    "route": "/services/residential-termite-control",
+    "status": 200,
+    "title": "Residential Termite Control | TermiteTreatment",
+    "titleLength": 46,
+    "description": "Make room for living. Keep termites out. Get an inspection-led treatment plan for your home, wooden furniture and the hidden places that need attention.",
+    "descLength": 152,
+    "canonical": "https://termitepestcontrol.co.in/services/residential-termite-control",
+    "ogTitle": "Residential Termite Control",
+    "ogDesc": "Make room for living. Keep termites out. Get an inspection-led treatment plan for your home, wooden furniture and the hidden places that need attention.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/residential-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Residential Termite Control"
+    ],
+    "h2Count": 8,
+    "h3Count": 17,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 3,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h2",
+        "text": "What is residential termite control?"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to give your home a closer look"
+      },
+      {
+        "tag": "h3",
+        "text": "Early identification"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "A plan for your home"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear preparation"
+      },
+      {
+        "tag": "h3",
+        "text": "Practical aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Our residential termite care process"
+      },
+      {
+        "tag": "h3",
+        "text": "Listen & inspect"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify activity & access"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree a treatment plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Treat the agreed areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Explain care & follow-up"
+      },
+      {
+        "tag": "h2",
+        "text": "Thoughtful care for the places you call home"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent houses & villas"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & flats"
+      },
+      {
+        "tag": "h3",
+        "text": "Bungalows & family homes"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential complexes"
+      },
+      {
+        "tag": "h3",
+        "text": "Rental homes"
+      },
+      {
+        "tag": "h3",
+        "text": "Housing societies"
+      },
+      {
+        "tag": "h2",
+        "text": "Why chooseTermiteTreatment?"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently asked questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Noticed something in the woodwork? Let’s take care of your home."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/services/commercial-termite-control",
+    "status": 200,
+    "title": "Commercial Termite Control | TermiteTreatment",
+    "titleLength": 45,
+    "description": "Protect your premises. Keep business moving. Plan termite inspections and treatment around your building, operating hours and access requirements.",
+    "descLength": 146,
+    "canonical": "https://termitepestcontrol.co.in/services/commercial-termite-control",
+    "ogTitle": "Commercial Termite Control",
+    "ogDesc": "Protect your premises. Keep business moving. Plan termite inspections and treatment around your building, operating hours and access requirements.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/commercial-hero-v5.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Commercial Termite Control"
+    ],
+    "h2Count": 8,
+    "h3Count": 17,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 3,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h2",
+        "text": "What is commercial termite control?"
+      },
+      {
+        "tag": "h2",
+        "text": "6 ways a planned approach supports your business"
+      },
+      {
+        "tag": "h3",
+        "text": "Premises assessment"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Flexible planning"
+      },
+      {
+        "tag": "h3",
+        "text": "Site-specific scope"
+      },
+      {
+        "tag": "h3",
+        "text": "Service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing care"
+      },
+      {
+        "tag": "h2",
+        "text": "Our commercial termite protection process"
+      },
+      {
+        "tag": "h3",
+        "text": "Understand the premises"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect priority areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Plan access & treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Carry out the work"
+      },
+      {
+        "tag": "h3",
+        "text": "Report & review"
+      },
+      {
+        "tag": "h2",
+        "text": "A considered plan for different business spaces"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business parks"
+      },
+      {
+        "tag": "h3",
+        "text": "Retail & commercial spaces"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & industrial sites"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & hospitality"
+      },
+      {
+        "tag": "h3",
+        "text": "Hospitals & healthcare"
+      },
+      {
+        "tag": "h3",
+        "text": "Schools & institutions"
+      },
+      {
+        "tag": "h2",
+        "text": "Why chooseTermiteTreatment?"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently asked questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Your premises deserve a plan. Let’s protect the place you do business."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/services/pre-construction-termite-treatment",
+    "status": 200,
+    "title": "Pre-Construction Termite Treatment | TermiteTreatment",
+    "titleLength": 53,
+    "description": "Protect your new building from termite infestation with professional pre-construction anti-termite treatment.",
+    "descLength": 109,
+    "canonical": "https://termitepestcontrol.co.in/services/pre-construction-termite-treatment",
+    "ogTitle": "Pre-Construction Termite Treatment",
+    "ogDesc": "Protect your new building from termite infestation with professional pre-construction anti-termite treatment.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/preconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Pre-Construction Termite Treatment"
+    ],
+    "h2Count": 8,
+    "h3Count": 17,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 3,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "What Is Pre-Construction Anti-Termite Treatment?"
+      },
+      {
+        "tag": "h2",
+        "text": "6 Reasons to Protect Your Building Before Construction Is Completed"
+      },
+      {
+        "tag": "h3",
+        "text": "1. Foundation Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "2. Under-floor Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "3. Preventive Approach"
+      },
+      {
+        "tag": "h3",
+        "text": "4. Entry-Point Attention"
+      },
+      {
+        "tag": "h3",
+        "text": "5. Suitable for All Projects"
+      },
+      {
+        "tag": "h3",
+        "text": "6. Planned Application"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Pre-Construction Termite Treatment Process"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Trench Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Backfill Soil Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Plinth Filling Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Service Entry & Junction Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "External Perimeter Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Termite Protection for Different Construction Projects"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent Houses & Villas"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & Residential Complexes"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Buildings"
+      },
+      {
+        "tag": "h3",
+        "text": "Industrial Buildings & Warehouses"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels, Hospitals & Educational Institutions"
+      },
+      {
+        "tag": "h3",
+        "text": "Real Estate & Builder Projects"
+      },
+      {
+        "tag": "h2",
+        "text": "Why Choose Termite Pest Control?"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Planning a New Building? Protect It Against Termites from the Beginning."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/services/post-construction-termite-treatment",
+    "status": 200,
+    "title": "Post-Construction Termite Treatment | TermiteTreatment",
+    "titleLength": 54,
+    "description": "An existing building. A fresh layer of protection. Address termite activity around floors, walls and vulnerable woodwork with a property-specific treatment plan.",
+    "descLength": 161,
+    "canonical": "https://termitepestcontrol.co.in/services/post-construction-termite-treatment",
+    "ogTitle": "Post-Construction Termite Treatment",
+    "ogDesc": "An existing building. A fresh layer of protection. Address termite activity around floors, walls and vulnerable woodwork with a property-specific treatment plan.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/postconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Post-Construction Termite Treatment"
+    ],
+    "h2Count": 8,
+    "h3Count": 17,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 3,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "What is post-construction anti-termite treatment?"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to act on signs in an existing building"
+      },
+      {
+        "tag": "h3",
+        "text": "Find the activity"
+      },
+      {
+        "tag": "h3",
+        "text": "Address entry routes"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted application"
+      },
+      {
+        "tag": "h3",
+        "text": "Existing-building care"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear scope of work"
+      },
+      {
+        "tag": "h3",
+        "text": "Aftercare guidance"
+      },
+      {
+        "tag": "h2",
+        "text": "Our post-construction treatment process"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect the building"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify suitable access points"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree preparation & method"
+      },
+      {
+        "tag": "h3",
+        "text": "Apply targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Review aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Protection for buildings already in use"
+      },
+      {
+        "tag": "h3",
+        "text": "Occupied houses & villas"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & commercial buildings"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & storage spaces"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions"
+      },
+      {
+        "tag": "h3",
+        "text": "Renovation projects"
+      },
+      {
+        "tag": "h2",
+        "text": "Why chooseTermiteTreatment?"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently asked questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Seeing signs of termites? Get to the source of the problem."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/services/annual-maintenance-contract",
+    "status": 200,
+    "title": "Annual Termite Maintenance | TermiteTreatment",
+    "titleLength": 45,
+    "description": "Protection needs attention, not guesswork. Keep termite care on the calendar with scheduled inspections, service records and support under an agreed plan.",
+    "descLength": 154,
+    "canonical": "https://termitepestcontrol.co.in/services/annual-maintenance-contract",
+    "ogTitle": "Annual Termite Maintenance",
+    "ogDesc": "Protection needs attention, not guesswork. Keep termite care on the calendar with scheduled inspections, service records and support under an agreed plan.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/maintenance-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Annual Termite Maintenance"
+    ],
+    "h2Count": 8,
+    "h3Count": 17,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 3,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Annual Termite Maintenance"
+      },
+      {
+        "tag": "h2",
+        "text": "What is a termite maintenance contract?"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to keep termite care on your calendar"
+      },
+      {
+        "tag": "h3",
+        "text": "Scheduled inspections"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing attention"
+      },
+      {
+        "tag": "h3",
+        "text": "A property-specific plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Prevention guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Defined support"
+      },
+      {
+        "tag": "h2",
+        "text": "How your annual maintenance plan works"
+      },
+      {
+        "tag": "h3",
+        "text": "Assess your property"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree your coverage"
+      },
+      {
+        "tag": "h3",
+        "text": "Schedule inspection visits"
+      },
+      {
+        "tag": "h3",
+        "text": "Record & act on findings"
+      },
+      {
+        "tag": "h3",
+        "text": "Review your next year"
+      },
+      {
+        "tag": "h2",
+        "text": "Ongoing care for homes and working spaces"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent homes & villas"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business premises"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & managed sites"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions"
+      },
+      {
+        "tag": "h3",
+        "text": "Previously treated properties"
+      },
+      {
+        "tag": "h2",
+        "text": "Why chooseTermiteTreatment?"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently asked questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Keep care on the calendar. Plan for peace of mind throughout the year."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations",
+    "status": 200,
+    "title": "Our Locations | Termite Control in Six Cities | TermiteTreatment",
+    "titleLength": 64,
+    "description": "Find termite treatment in Mumbai, Bangalore, Pune, Delhi NCR, Goa and Noida. Explore five local services in each city and enquire about a free inspection.",
+    "descLength": 154,
+    "canonical": "https://termitepestcontrol.co.in/locations",
+    "ogTitle": "Our Locations | TermiteTreatment",
+    "ogDesc": "Local termite control for homes, businesses and new construction in six Indian cities.",
+    "ogImage": "https://termitepestcontrol.co.in/images/locations/bangalore-hero.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Termite Treatmentin Your City"
+    ],
+    "h2Count": 7,
+    "h3Count": 0,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "ItemList"
+    ],
+    "imageCount": 6,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Termite Treatmentin Your City"
+      },
+      {
+        "tag": "h2",
+        "text": "Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Can’t find your area?"
+      }
+    ]
+  },
+  {
+    "route": "/locations/mumbai",
+    "status": 200,
+    "title": "Termite Treatment in Mumbai | TermiteTreatment",
+    "titleLength": 46,
+    "description": "Professional termite treatment in Mumbai: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "descLength": 164,
+    "canonical": "https://termitepestcontrol.co.in/locations/mumbai",
+    "ogTitle": "Termite Treatment in Mumbai",
+    "ogDesc": "Professional termite treatment in Mumbai: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/locations/mumbai-hero.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Termite Treatment in Mumbai"
+    ],
+    "h2Count": 8,
+    "h3Count": 10,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 1,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Termite Treatment in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "About Termite Control in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Termite Control Services in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Plan (AMC)"
+      },
+      {
+        "tag": "h2",
+        "text": "Why Choose Our Termite Pest Control in Mumbai?"
+      },
+      {
+        "tag": "h3",
+        "text": "Trained & Certified Technicians"
+      },
+      {
+        "tag": "h3",
+        "text": "Safe & Eco-Friendly Products"
+      },
+      {
+        "tag": "h3",
+        "text": "Long-Lasting Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Affordable Pricing"
+      },
+      {
+        "tag": "h3",
+        "text": "Prompt & Reliable Service"
+      },
+      {
+        "tag": "h2",
+        "text": "Areas We Cover in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Recent Termite Control Projectsin Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "What Our Customers Say"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Get a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/bangalore",
+    "status": 200,
+    "title": "Termite Treatment in Bangalore | TermiteTreatment",
+    "titleLength": 49,
+    "description": "Professional termite treatment in Bangalore: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "descLength": 167,
+    "canonical": "https://termitepestcontrol.co.in/locations/bangalore",
+    "ogTitle": "Termite Treatment in Bangalore",
+    "ogDesc": "Professional termite treatment in Bangalore: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/locations/bangalore-hero.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Termite Treatment in Bangalore"
+    ],
+    "h2Count": 8,
+    "h3Count": 10,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 1,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Termite Treatment in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "About Termite Control in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Termite Control Services in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Plan (AMC)"
+      },
+      {
+        "tag": "h2",
+        "text": "Why Choose Our Termite Pest Control in Bangalore?"
+      },
+      {
+        "tag": "h3",
+        "text": "Trained & Certified Technicians"
+      },
+      {
+        "tag": "h3",
+        "text": "Safe & Eco-Friendly Products"
+      },
+      {
+        "tag": "h3",
+        "text": "Long-Lasting Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Affordable Pricing"
+      },
+      {
+        "tag": "h3",
+        "text": "Prompt & Reliable Service"
+      },
+      {
+        "tag": "h2",
+        "text": "Areas We Cover in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Recent Termite Control Projectsin Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "What Our Customers Say"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Get a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/pune",
+    "status": 200,
+    "title": "Termite Treatment in Pune | TermiteTreatment",
+    "titleLength": 44,
+    "description": "Professional termite treatment in Pune: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "descLength": 162,
+    "canonical": "https://termitepestcontrol.co.in/locations/pune",
+    "ogTitle": "Termite Treatment in Pune",
+    "ogDesc": "Professional termite treatment in Pune: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/locations/pune-hero.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Termite Treatment in Pune"
+    ],
+    "h2Count": 8,
+    "h3Count": 10,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 1,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Termite Treatment in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "About Termite Control in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Termite Control Services in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Plan (AMC)"
+      },
+      {
+        "tag": "h2",
+        "text": "Why Choose Our Termite Pest Control in Pune?"
+      },
+      {
+        "tag": "h3",
+        "text": "Trained & Certified Technicians"
+      },
+      {
+        "tag": "h3",
+        "text": "Safe & Eco-Friendly Products"
+      },
+      {
+        "tag": "h3",
+        "text": "Long-Lasting Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Affordable Pricing"
+      },
+      {
+        "tag": "h3",
+        "text": "Prompt & Reliable Service"
+      },
+      {
+        "tag": "h2",
+        "text": "Areas We Cover in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Recent Termite Control Projectsin Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "What Our Customers Say"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Get a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/delhi-ncr",
+    "status": 200,
+    "title": "Termite Treatment in Delhi NCR | TermiteTreatment",
+    "titleLength": 49,
+    "description": "Professional termite treatment in Delhi NCR: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "descLength": 167,
+    "canonical": "https://termitepestcontrol.co.in/locations/delhi-ncr",
+    "ogTitle": "Termite Treatment in Delhi NCR",
+    "ogDesc": "Professional termite treatment in Delhi NCR: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/locations/delhi-ncr-hero.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Termite Treatment in Delhi NCR"
+    ],
+    "h2Count": 8,
+    "h3Count": 10,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 1,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Termite Treatment in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "About Termite Control in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Termite Control Services in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Plan (AMC)"
+      },
+      {
+        "tag": "h2",
+        "text": "Why Choose Our Termite Pest Control in Delhi NCR?"
+      },
+      {
+        "tag": "h3",
+        "text": "Trained & Certified Technicians"
+      },
+      {
+        "tag": "h3",
+        "text": "Safe & Eco-Friendly Products"
+      },
+      {
+        "tag": "h3",
+        "text": "Long-Lasting Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Affordable Pricing"
+      },
+      {
+        "tag": "h3",
+        "text": "Prompt & Reliable Service"
+      },
+      {
+        "tag": "h2",
+        "text": "Areas We Cover in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Recent Termite Control Projectsin Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "What Our Customers Say"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Get a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/goa",
+    "status": 200,
+    "title": "Termite Treatment in Goa | TermiteTreatment",
+    "titleLength": 43,
+    "description": "Professional termite treatment in Goa: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "descLength": 161,
+    "canonical": "https://termitepestcontrol.co.in/locations/goa",
+    "ogTitle": "Termite Treatment in Goa",
+    "ogDesc": "Professional termite treatment in Goa: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/locations/goa-hero.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Termite Treatment in Goa"
+    ],
+    "h2Count": 8,
+    "h3Count": 10,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 1,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Termite Treatment in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "About Termite Control in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Termite Control Services in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Plan (AMC)"
+      },
+      {
+        "tag": "h2",
+        "text": "Why Choose Our Termite Pest Control in Goa?"
+      },
+      {
+        "tag": "h3",
+        "text": "Trained & Certified Technicians"
+      },
+      {
+        "tag": "h3",
+        "text": "Safe & Eco-Friendly Products"
+      },
+      {
+        "tag": "h3",
+        "text": "Long-Lasting Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Affordable Pricing"
+      },
+      {
+        "tag": "h3",
+        "text": "Prompt & Reliable Service"
+      },
+      {
+        "tag": "h2",
+        "text": "Areas We Cover in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Recent Termite Control Projectsin Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "What Our Customers Say"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Get a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/noida",
+    "status": 200,
+    "title": "Termite Treatment in Noida | TermiteTreatment",
+    "titleLength": 45,
+    "description": "Professional termite treatment in Noida: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "descLength": 163,
+    "canonical": "https://termitepestcontrol.co.in/locations/noida",
+    "ogTitle": "Termite Treatment in Noida",
+    "ogDesc": "Professional termite treatment in Noida: residential, commercial, pre-construction, post-construction and AMC services. Call +91 99452 42545 for a free inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/locations/noida-hero.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Termite Treatment in Noida"
+    ],
+    "h2Count": 8,
+    "h3Count": 10,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 1,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Termite Treatment in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "About Termite Control in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Termite Control Services in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Plan (AMC)"
+      },
+      {
+        "tag": "h2",
+        "text": "Why Choose Our Termite Pest Control in Noida?"
+      },
+      {
+        "tag": "h3",
+        "text": "Trained & Certified Technicians"
+      },
+      {
+        "tag": "h3",
+        "text": "Safe & Eco-Friendly Products"
+      },
+      {
+        "tag": "h3",
+        "text": "Long-Lasting Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Affordable Pricing"
+      },
+      {
+        "tag": "h3",
+        "text": "Prompt & Reliable Service"
+      },
+      {
+        "tag": "h2",
+        "text": "Areas We Cover in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Our Recent Termite Control Projectsin Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "What Our Customers Say"
+      },
+      {
+        "tag": "h2",
+        "text": "Frequently Asked Questions"
+      },
+      {
+        "tag": "h2",
+        "text": "Get a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/about-us",
+    "status": 200,
+    "title": "About Us | Dedicated Termite Control Specialists in India | TermiteTreatment",
+    "titleLength": 76,
+    "description": "Meet TermiteTreatment, India’s specialist termite inspection and pest control team. Proactive treatments, targeted protection, and trusted care for homes, businesses, and buildings across 9 major cities.",
+    "descLength": 203,
+    "canonical": "https://termitepestcontrol.co.in/about-us",
+    "ogTitle": "About Us | Dedicated Termite Control Specialists",
+    "ogDesc": "Learn about our inspection-first termite care approach for homes, offices, and buildings under construction across India.",
+    "ogImage": "https://termitepestcontrol.co.in/images/protected-home.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "We think about termites.So you don't have to."
+    ],
+    "h2Count": 4,
+    "h3Count": 3,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "BreadcrumbList"
+    ],
+    "imageCount": 2,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "We think about termites.So you don't have to."
+      },
+      {
+        "tag": "h2",
+        "text": "Small signs deserveour full attention."
+      },
+      {
+        "tag": "h2",
+        "text": "Good care startswith doing things properly."
+      },
+      {
+        "tag": "h3",
+        "text": "Understand first."
+      },
+      {
+        "tag": "h3",
+        "text": "Keep it clear."
+      },
+      {
+        "tag": "h3",
+        "text": "Look ahead."
+      },
+      {
+        "tag": "h2",
+        "text": "Across cities.Close to your home."
+      },
+      {
+        "tag": "h2",
+        "text": "A little care today.A more confident tomorrow."
+      }
+    ]
+  },
+  {
+    "route": "/faqs",
+    "status": 200,
+    "title": "Termite Control FAQs | 30 Questions Answered | TermiteTreatment",
+    "titleLength": 63,
+    "description": "Find answers to 30 common termite-control questions about inspections, treatment, preparation, aftercare, pricing, warranties and booking a visit.",
+    "descLength": 146,
+    "canonical": "https://termitepestcontrol.co.in/faqs",
+    "ogTitle": "Termite Control FAQs | 30 Questions Answered",
+    "ogDesc": "Find answers to 30 common termite-control questions about inspections, treatment, preparation, aftercare, pricing, warranties and booking a visit.",
+    "ogImage": "https://termitepestcontrol.co.in/images/protected-home.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Good questions.Clear answers."
+    ],
+    "h2Count": 2,
+    "h3Count": 6,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 1,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Good questions.Clear answers."
+      },
+      {
+        "tag": "h2",
+        "text": "A little clarity goes a long way."
+      },
+      {
+        "tag": "h3",
+        "text": "Getting started"
+      },
+      {
+        "tag": "h3",
+        "text": "Treatment options"
+      },
+      {
+        "tag": "h3",
+        "text": "Preparing for a visit"
+      },
+      {
+        "tag": "h3",
+        "text": "Aftercare & prevention"
+      },
+      {
+        "tag": "h3",
+        "text": "Pricing & warranties"
+      },
+      {
+        "tag": "h3",
+        "text": "Booking & support"
+      },
+      {
+        "tag": "h2",
+        "text": "Still have a question?"
+      }
+    ]
+  },
+  {
+    "route": "/contact-us",
+    "status": 200,
+    "title": "Contact Us | Book Free Termite Inspection | TermiteTreatment",
+    "titleLength": 60,
+    "description": "Call +91 99452 42545 or schedule a free termite inspection. Connect with our dedicated pest control offices in Mumbai, Bengaluru, Pune, Delhi NCR, Goa, and Noida.",
+    "descLength": 162,
+    "canonical": "https://termitepestcontrol.co.in/contact-us",
+    "ogTitle": "Contact Us | Book a Free Inspection | TermiteTreatment",
+    "ogDesc": "Get in touch with our specialist termite control team across India. Free inspection, expert guidance, and custom treatment quotes.",
+    "ogImage": "https://termitepestcontrol.co.in/images/termiguard-family.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Let’s take care of your space."
+    ],
+    "h2Count": 5,
+    "h3Count": 7,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "ContactPage",
+      "FAQPage",
+      "BreadcrumbList"
+    ],
+    "imageCount": 0,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Let’s take care of your space."
+      },
+      {
+        "tag": "h2",
+        "text": "A little help.Just a call away."
+      },
+      {
+        "tag": "h2",
+        "text": "Tell us a littleabout your space."
+      },
+      {
+        "tag": "h2",
+        "text": "Your request,ready to send."
+      },
+      {
+        "tag": "h2",
+        "text": "Your city.Our local teams."
+      },
+      {
+        "tag": "h3",
+        "text": "Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Bengaluru"
+      },
+      {
+        "tag": "h3",
+        "text": "Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Outside these cities?"
+      },
+      {
+        "tag": "h2",
+        "text": "A little clarity."
+      }
+    ]
+  },
+  {
+    "route": "/home2",
+    "error": "HTTP 308"
+  },
+  {
+    "route": "/locations/mumbai/residential-termite-control",
+    "status": 200,
+    "title": "Residential Termite Control in Mumbai | TermiteTreatment",
+    "titleLength": 56,
+    "description": "Protect your Mumbai home from termites with an inspection-led plan for apartments, independent houses and villas. For Mumbai flats, independent homes and housing societies, the assessment considers fixed cupboards, door frames, skirting and shared building access. Tell us about damp areas and any earlier treatment.",
+    "descLength": 316,
+    "canonical": "https://termitepestcontrol.co.in/locations/mumbai/residential-termite-control",
+    "ogTitle": "Residential Termite Control in Mumbai",
+    "ogDesc": "Protect your Mumbai home from termites with an inspection-led plan for apartments, independent houses and villas. For Mumbai flats, independent homes and housing societies, the assessment considers fixed cupboards, door frames, skirting and shared building access. Tell us about damp areas and any earlier treatment.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/residential-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Residential Termite Control in Mumbai"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Residential Termite Control in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose residential termite control in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Early identification"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "A plan for your home"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear preparation"
+      },
+      {
+        "tag": "h3",
+        "text": "Practical aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Our residential termite control process in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Listen & inspect"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify activity & access"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree a treatment plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Treat the agreed areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Explain care & follow-up"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control for different properties in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent houses & villas in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & flats in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Bungalows & family homes in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential complexes in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Rental homes in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Housing societies in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Mumbai?"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Mumbai: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need residential termite control in Mumbai? Let’s plan the right care for your Mumbai property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/mumbai/commercial-termite-control",
+    "status": 200,
+    "title": "Commercial Termite Control in Mumbai | TermiteTreatment",
+    "titleLength": 55,
+    "description": "Commercial termite control in Mumbai, planned around your premises and operating needs. For Mumbai offices, retail units and managed premises, we discuss access with your facilities contact and plan the agreed work around the areas in use and your operating hours.",
+    "descLength": 264,
+    "canonical": "https://termitepestcontrol.co.in/locations/mumbai/commercial-termite-control",
+    "ogTitle": "Commercial Termite Control in Mumbai",
+    "ogDesc": "Commercial termite control in Mumbai, planned around your premises and operating needs. For Mumbai offices, retail units and managed premises, we discuss access with your facilities contact and plan the agreed work around the areas in use and your operating hours.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/commercial-hero-v5.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Commercial Termite Control in Mumbai"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Commercial Termite Control in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose commercial termite control in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Premises assessment"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Flexible planning"
+      },
+      {
+        "tag": "h3",
+        "text": "Site-specific scope"
+      },
+      {
+        "tag": "h3",
+        "text": "Service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing care"
+      },
+      {
+        "tag": "h2",
+        "text": "Our commercial termite control process in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Understand the premises"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect priority areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Plan access & treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Carry out the work"
+      },
+      {
+        "tag": "h3",
+        "text": "Report & review"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control for different properties in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business parks in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Retail & commercial spaces in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & industrial sites in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & hospitality in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Hospitals & healthcare in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Schools & institutions in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Mumbai?"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Mumbai: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need commercial termite control in Mumbai? Let’s plan the right care for your Mumbai property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/mumbai/pre-construction-termite-treatment",
+    "status": 200,
+    "title": "Pre-Construction Termite Treatment in Mumbai | TermiteTreatment",
+    "titleLength": 63,
+    "description": "Protect your new building in Mumbai from termite infestation with professional pre-construction anti-termite treatment. For a new Mumbai home or commercial project, share the foundation plans, site access and the builder’s schedule so soil treatment can be coordinated before the relevant areas are covered.",
+    "descLength": 307,
+    "canonical": "https://termitepestcontrol.co.in/locations/mumbai/pre-construction-termite-treatment",
+    "ogTitle": "Pre-Construction Termite Treatment in Mumbai",
+    "ogDesc": "Protect your new building in Mumbai from termite infestation with professional pre-construction anti-termite treatment. For a new Mumbai home or commercial project, share the foundation plans, site access and the builder’s schedule so soil treatment can be coordinated before the relevant areas are covered.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/preconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Pre-Construction Termite Treatment in Mumbai"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Pre-Construction Termite Treatment in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose pre-construction termite treatment in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Under-floor Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Preventive Approach"
+      },
+      {
+        "tag": "h3",
+        "text": "Entry-Point Attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Suitable for All Projects"
+      },
+      {
+        "tag": "h3",
+        "text": "Planned Application"
+      },
+      {
+        "tag": "h2",
+        "text": "Our pre-construction termite treatment process in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Trench Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Backfill Soil Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Plinth Filling Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Service Entry & Junction Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "External Perimeter Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment for different properties in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent Houses & Villas in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & Residential Complexes in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Buildings in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Industrial Buildings & Warehouses in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels, Hospitals & Educational Institutions in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Real Estate & Builder Projects in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Mumbai?"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Mumbai: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need pre-construction termite treatment in Mumbai? Let’s plan the right care for your Mumbai property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/mumbai/post-construction-termite-treatment",
+    "status": 200,
+    "title": "Post-Construction Termite Treatment in Mumbai | TermiteTreatment",
+    "titleLength": 64,
+    "description": "Address termite activity in your completed Mumbai property with targeted inspection and treatment. For Mumbai flats, independent homes and housing societies, the assessment considers fixed cupboards, door frames, skirting and shared building access. Tell us about damp areas and any earlier treatment.",
+    "descLength": 301,
+    "canonical": "https://termitepestcontrol.co.in/locations/mumbai/post-construction-termite-treatment",
+    "ogTitle": "Post-Construction Termite Treatment in Mumbai",
+    "ogDesc": "Address termite activity in your completed Mumbai property with targeted inspection and treatment. For Mumbai flats, independent homes and housing societies, the assessment considers fixed cupboards, door frames, skirting and shared building access. Tell us about damp areas and any earlier treatment.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/postconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Post-Construction Termite Treatment in Mumbai"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Post-Construction Termite Treatment in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose post-construction termite treatment in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Find the activity"
+      },
+      {
+        "tag": "h3",
+        "text": "Address entry routes"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted application"
+      },
+      {
+        "tag": "h3",
+        "text": "Existing-building care"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear scope of work"
+      },
+      {
+        "tag": "h3",
+        "text": "Aftercare guidance"
+      },
+      {
+        "tag": "h2",
+        "text": "Our post-construction termite treatment process in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect the building"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify suitable access points"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree preparation & method"
+      },
+      {
+        "tag": "h3",
+        "text": "Apply targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Review aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment for different properties in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Occupied houses & villas in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & commercial buildings in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & storage spaces in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Renovation projects in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Mumbai?"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Mumbai: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need post-construction termite treatment in Mumbai? Let’s plan the right care for your Mumbai property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/mumbai/annual-maintenance-contract",
+    "status": 200,
+    "title": "Annual Termite Maintenance in Mumbai | TermiteTreatment",
+    "titleLength": 55,
+    "description": "Keep termite care on the calendar with an annual maintenance plan in Mumbai. For Mumbai homes and managed buildings, an annual plan can bring inspections and service records together, with access coordinated through your household or society representative.",
+    "descLength": 257,
+    "canonical": "https://termitepestcontrol.co.in/locations/mumbai/annual-maintenance-contract",
+    "ogTitle": "Annual Termite Maintenance in Mumbai",
+    "ogDesc": "Keep termite care on the calendar with an annual maintenance plan in Mumbai. For Mumbai homes and managed buildings, an annual plan can bring inspections and service records together, with access coordinated through your household or society representative.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/maintenance-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Annual Termite Maintenance in Mumbai"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Annual Termite Maintenance in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose annual maintenance contract in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Scheduled inspections"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing attention"
+      },
+      {
+        "tag": "h3",
+        "text": "A property-specific plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Prevention guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Defined support"
+      },
+      {
+        "tag": "h2",
+        "text": "Our annual maintenance contract process in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Assess your property"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree your coverage"
+      },
+      {
+        "tag": "h3",
+        "text": "Schedule inspection visits"
+      },
+      {
+        "tag": "h3",
+        "text": "Record & act on findings"
+      },
+      {
+        "tag": "h3",
+        "text": "Review your next year"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract for different properties in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent homes & villas in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business premises in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & managed sites in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Mumbai"
+      },
+      {
+        "tag": "h3",
+        "text": "Previously treated properties in Mumbai"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Mumbai?"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Mumbai: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need annual maintenance contract in Mumbai? Let’s plan the right care for your Mumbai property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/bangalore/residential-termite-control",
+    "status": 200,
+    "title": "Residential Termite Control in Bangalore | TermiteTreatment",
+    "titleLength": 59,
+    "description": "Protect your Bangalore home from termites with an inspection-led plan for apartments, independent houses and villas. For Bangalore apartments, villas and rental properties, inspections focus on accessible furniture, built-in cabinets, door frames and the areas where activity has been noticed. We discuss access with occupants or the property manager.",
+    "descLength": 351,
+    "canonical": "https://termitepestcontrol.co.in/locations/bangalore/residential-termite-control",
+    "ogTitle": "Residential Termite Control in Bangalore",
+    "ogDesc": "Protect your Bangalore home from termites with an inspection-led plan for apartments, independent houses and villas. For Bangalore apartments, villas and rental properties, inspections focus on accessible furniture, built-in cabinets, door frames and the areas where activity has been noticed. We discuss access with occupants or the property manager.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/residential-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Residential Termite Control in Bangalore"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Residential Termite Control in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose residential termite control in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Early identification"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "A plan for your home"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear preparation"
+      },
+      {
+        "tag": "h3",
+        "text": "Practical aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Our residential termite control process in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Listen & inspect"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify activity & access"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree a treatment plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Treat the agreed areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Explain care & follow-up"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control for different properties in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent houses & villas in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & flats in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Bungalows & family homes in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential complexes in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Rental homes in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Housing societies in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Bangalore?"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Bangalore: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need residential termite control in Bangalore? Let’s plan the right care for your Bangalore property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/bangalore/commercial-termite-control",
+    "status": 200,
+    "title": "Commercial Termite Control in Bangalore | TermiteTreatment",
+    "titleLength": 58,
+    "description": "Commercial termite control in Bangalore, planned around your premises and operating needs. For Bangalore offices, IT parks, shops and managed workplaces, we consider your site rules and operating schedule before agreeing inspection access and treatment timing.",
+    "descLength": 260,
+    "canonical": "https://termitepestcontrol.co.in/locations/bangalore/commercial-termite-control",
+    "ogTitle": "Commercial Termite Control in Bangalore",
+    "ogDesc": "Commercial termite control in Bangalore, planned around your premises and operating needs. For Bangalore offices, IT parks, shops and managed workplaces, we consider your site rules and operating schedule before agreeing inspection access and treatment timing.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/commercial-hero-v5.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Commercial Termite Control in Bangalore"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Commercial Termite Control in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose commercial termite control in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Premises assessment"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Flexible planning"
+      },
+      {
+        "tag": "h3",
+        "text": "Site-specific scope"
+      },
+      {
+        "tag": "h3",
+        "text": "Service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing care"
+      },
+      {
+        "tag": "h2",
+        "text": "Our commercial termite control process in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Understand the premises"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect priority areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Plan access & treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Carry out the work"
+      },
+      {
+        "tag": "h3",
+        "text": "Report & review"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control for different properties in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business parks in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Retail & commercial spaces in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & industrial sites in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & hospitality in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Hospitals & healthcare in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Schools & institutions in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Bangalore?"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Bangalore: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need commercial termite control in Bangalore? Let’s plan the right care for your Bangalore property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/bangalore/pre-construction-termite-treatment",
+    "status": 200,
+    "title": "Pre-Construction Termite Treatment in Bangalore | TermiteTreatment",
+    "titleLength": 66,
+    "description": "Protect your new building in Bangalore from termite infestation with professional pre-construction anti-termite treatment. For Bangalore residential developments and commercial builds, share your current construction stage and builder’s contact. Foundation, backfill, plinth and service-entry visits are planned around site progress.",
+    "descLength": 333,
+    "canonical": "https://termitepestcontrol.co.in/locations/bangalore/pre-construction-termite-treatment",
+    "ogTitle": "Pre-Construction Termite Treatment in Bangalore",
+    "ogDesc": "Protect your new building in Bangalore from termite infestation with professional pre-construction anti-termite treatment. For Bangalore residential developments and commercial builds, share your current construction stage and builder’s contact. Foundation, backfill, plinth and service-entry visits are planned around site progress.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/preconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Pre-Construction Termite Treatment in Bangalore"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Pre-Construction Termite Treatment in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose pre-construction termite treatment in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Under-floor Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Preventive Approach"
+      },
+      {
+        "tag": "h3",
+        "text": "Entry-Point Attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Suitable for All Projects"
+      },
+      {
+        "tag": "h3",
+        "text": "Planned Application"
+      },
+      {
+        "tag": "h2",
+        "text": "Our pre-construction termite treatment process in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Trench Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Backfill Soil Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Plinth Filling Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Service Entry & Junction Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "External Perimeter Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment for different properties in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent Houses & Villas in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & Residential Complexes in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Buildings in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Industrial Buildings & Warehouses in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels, Hospitals & Educational Institutions in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Real Estate & Builder Projects in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Bangalore?"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Bangalore: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need pre-construction termite treatment in Bangalore? Let’s plan the right care for your Bangalore property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/bangalore/post-construction-termite-treatment",
+    "status": 200,
+    "title": "Post-Construction Termite Treatment in Bangalore | TermiteTreatment",
+    "titleLength": 67,
+    "description": "Address termite activity in your completed Bangalore property with targeted inspection and treatment. For Bangalore apartments, villas and rental properties, inspections focus on accessible furniture, built-in cabinets, door frames and the areas where activity has been noticed. We discuss access with occupants or the property manager.",
+    "descLength": 336,
+    "canonical": "https://termitepestcontrol.co.in/locations/bangalore/post-construction-termite-treatment",
+    "ogTitle": "Post-Construction Termite Treatment in Bangalore",
+    "ogDesc": "Address termite activity in your completed Bangalore property with targeted inspection and treatment. For Bangalore apartments, villas and rental properties, inspections focus on accessible furniture, built-in cabinets, door frames and the areas where activity has been noticed. We discuss access with occupants or the property manager.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/postconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Post-Construction Termite Treatment in Bangalore"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Post-Construction Termite Treatment in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose post-construction termite treatment in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Find the activity"
+      },
+      {
+        "tag": "h3",
+        "text": "Address entry routes"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted application"
+      },
+      {
+        "tag": "h3",
+        "text": "Existing-building care"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear scope of work"
+      },
+      {
+        "tag": "h3",
+        "text": "Aftercare guidance"
+      },
+      {
+        "tag": "h2",
+        "text": "Our post-construction termite treatment process in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect the building"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify suitable access points"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree preparation & method"
+      },
+      {
+        "tag": "h3",
+        "text": "Apply targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Review aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment for different properties in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Occupied houses & villas in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & commercial buildings in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & storage spaces in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Renovation projects in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Bangalore?"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Bangalore: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need post-construction termite treatment in Bangalore? Let’s plan the right care for your Bangalore property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/bangalore/annual-maintenance-contract",
+    "status": 200,
+    "title": "Annual Termite Maintenance in Bangalore | TermiteTreatment",
+    "titleLength": 58,
+    "description": "Keep termite care on the calendar with an annual maintenance plan in Bangalore. For Bangalore homes, housing societies and workplaces, a maintenance agreement sets out the inspection schedule, included areas and support available between agreed visits.",
+    "descLength": 252,
+    "canonical": "https://termitepestcontrol.co.in/locations/bangalore/annual-maintenance-contract",
+    "ogTitle": "Annual Termite Maintenance in Bangalore",
+    "ogDesc": "Keep termite care on the calendar with an annual maintenance plan in Bangalore. For Bangalore homes, housing societies and workplaces, a maintenance agreement sets out the inspection schedule, included areas and support available between agreed visits.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/maintenance-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Annual Termite Maintenance in Bangalore"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Annual Termite Maintenance in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose annual maintenance contract in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Scheduled inspections"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing attention"
+      },
+      {
+        "tag": "h3",
+        "text": "A property-specific plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Prevention guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Defined support"
+      },
+      {
+        "tag": "h2",
+        "text": "Our annual maintenance contract process in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Assess your property"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree your coverage"
+      },
+      {
+        "tag": "h3",
+        "text": "Schedule inspection visits"
+      },
+      {
+        "tag": "h3",
+        "text": "Record & act on findings"
+      },
+      {
+        "tag": "h3",
+        "text": "Review your next year"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract for different properties in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent homes & villas in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business premises in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & managed sites in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Bangalore"
+      },
+      {
+        "tag": "h3",
+        "text": "Previously treated properties in Bangalore"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Bangalore?"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Bangalore: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need annual maintenance contract in Bangalore? Let’s plan the right care for your Bangalore property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/pune/residential-termite-control",
+    "status": 200,
+    "title": "Residential Termite Control in Pune | TermiteTreatment",
+    "titleLength": 54,
+    "description": "Protect your Pune home from termites with an inspection-led plan for apartments, independent houses and villas. For Pune houses, apartments and housing societies, we review visible signs, fixed woodwork and accessible junctions. Share any renovation plans so the inspection can include the areas that will become accessible.",
+    "descLength": 324,
+    "canonical": "https://termitepestcontrol.co.in/locations/pune/residential-termite-control",
+    "ogTitle": "Residential Termite Control in Pune",
+    "ogDesc": "Protect your Pune home from termites with an inspection-led plan for apartments, independent houses and villas. For Pune houses, apartments and housing societies, we review visible signs, fixed woodwork and accessible junctions. Share any renovation plans so the inspection can include the areas that will become accessible.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/residential-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Residential Termite Control in Pune"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Residential Termite Control in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose residential termite control in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Early identification"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "A plan for your home"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear preparation"
+      },
+      {
+        "tag": "h3",
+        "text": "Practical aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Our residential termite control process in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Listen & inspect"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify activity & access"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree a treatment plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Treat the agreed areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Explain care & follow-up"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control for different properties in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent houses & villas in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & flats in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Bungalows & family homes in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential complexes in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Rental homes in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Housing societies in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Pune?"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Pune: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need residential termite control in Pune? Let’s plan the right care for your Pune property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/pune/commercial-termite-control",
+    "status": 200,
+    "title": "Commercial Termite Control in Pune | TermiteTreatment",
+    "titleLength": 53,
+    "description": "Commercial termite control in Pune, planned around your premises and operating needs. For Pune offices, commercial units and industrial premises, we agree priority areas and site access with your representative before proposing work and reporting arrangements.",
+    "descLength": 260,
+    "canonical": "https://termitepestcontrol.co.in/locations/pune/commercial-termite-control",
+    "ogTitle": "Commercial Termite Control in Pune",
+    "ogDesc": "Commercial termite control in Pune, planned around your premises and operating needs. For Pune offices, commercial units and industrial premises, we agree priority areas and site access with your representative before proposing work and reporting arrangements.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/commercial-hero-v5.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Commercial Termite Control in Pune"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Commercial Termite Control in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose commercial termite control in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Premises assessment"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Flexible planning"
+      },
+      {
+        "tag": "h3",
+        "text": "Site-specific scope"
+      },
+      {
+        "tag": "h3",
+        "text": "Service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing care"
+      },
+      {
+        "tag": "h2",
+        "text": "Our commercial termite control process in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Understand the premises"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect priority areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Plan access & treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Carry out the work"
+      },
+      {
+        "tag": "h3",
+        "text": "Report & review"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control for different properties in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business parks in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Retail & commercial spaces in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & industrial sites in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & hospitality in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Hospitals & healthcare in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Schools & institutions in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Pune?"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Pune: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need commercial termite control in Pune? Let’s plan the right care for your Pune property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/pune/pre-construction-termite-treatment",
+    "status": 200,
+    "title": "Pre-Construction Termite Treatment in Pune | TermiteTreatment",
+    "titleLength": 61,
+    "description": "Protect your new building in Pune from termite infestation with professional pre-construction anti-termite treatment. For new Pune homes and development projects, preventive soil treatment is planned around foundation work, filling, flooring and accessible external areas in coordination with the builder.",
+    "descLength": 305,
+    "canonical": "https://termitepestcontrol.co.in/locations/pune/pre-construction-termite-treatment",
+    "ogTitle": "Pre-Construction Termite Treatment in Pune",
+    "ogDesc": "Protect your new building in Pune from termite infestation with professional pre-construction anti-termite treatment. For new Pune homes and development projects, preventive soil treatment is planned around foundation work, filling, flooring and accessible external areas in coordination with the builder.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/preconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Pre-Construction Termite Treatment in Pune"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Pre-Construction Termite Treatment in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose pre-construction termite treatment in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Under-floor Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Preventive Approach"
+      },
+      {
+        "tag": "h3",
+        "text": "Entry-Point Attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Suitable for All Projects"
+      },
+      {
+        "tag": "h3",
+        "text": "Planned Application"
+      },
+      {
+        "tag": "h2",
+        "text": "Our pre-construction termite treatment process in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Trench Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Backfill Soil Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Plinth Filling Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Service Entry & Junction Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "External Perimeter Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment for different properties in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent Houses & Villas in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & Residential Complexes in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Buildings in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Industrial Buildings & Warehouses in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels, Hospitals & Educational Institutions in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Real Estate & Builder Projects in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Pune?"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Pune: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need pre-construction termite treatment in Pune? Let’s plan the right care for your Pune property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/pune/post-construction-termite-treatment",
+    "status": 200,
+    "title": "Post-Construction Termite Treatment in Pune | TermiteTreatment",
+    "titleLength": 62,
+    "description": "Address termite activity in your completed Pune property with targeted inspection and treatment. For Pune houses, apartments and housing societies, we review visible signs, fixed woodwork and accessible junctions. Share any renovation plans so the inspection can include the areas that will become accessible.",
+    "descLength": 309,
+    "canonical": "https://termitepestcontrol.co.in/locations/pune/post-construction-termite-treatment",
+    "ogTitle": "Post-Construction Termite Treatment in Pune",
+    "ogDesc": "Address termite activity in your completed Pune property with targeted inspection and treatment. For Pune houses, apartments and housing societies, we review visible signs, fixed woodwork and accessible junctions. Share any renovation plans so the inspection can include the areas that will become accessible.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/postconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Post-Construction Termite Treatment in Pune"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Post-Construction Termite Treatment in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose post-construction termite treatment in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Find the activity"
+      },
+      {
+        "tag": "h3",
+        "text": "Address entry routes"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted application"
+      },
+      {
+        "tag": "h3",
+        "text": "Existing-building care"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear scope of work"
+      },
+      {
+        "tag": "h3",
+        "text": "Aftercare guidance"
+      },
+      {
+        "tag": "h2",
+        "text": "Our post-construction termite treatment process in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect the building"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify suitable access points"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree preparation & method"
+      },
+      {
+        "tag": "h3",
+        "text": "Apply targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Review aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment for different properties in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Occupied houses & villas in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & commercial buildings in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & storage spaces in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Renovation projects in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Pune?"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Pune: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need post-construction termite treatment in Pune? Let’s plan the right care for your Pune property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/pune/annual-maintenance-contract",
+    "status": 200,
+    "title": "Annual Termite Maintenance in Pune | TermiteTreatment",
+    "titleLength": 53,
+    "description": "Keep termite care on the calendar with an annual maintenance plan in Pune. For Pune homes and business properties, regular inspections can be organised under a written plan that explains visit frequency, covered areas and the process for reporting new concerns.",
+    "descLength": 261,
+    "canonical": "https://termitepestcontrol.co.in/locations/pune/annual-maintenance-contract",
+    "ogTitle": "Annual Termite Maintenance in Pune",
+    "ogDesc": "Keep termite care on the calendar with an annual maintenance plan in Pune. For Pune homes and business properties, regular inspections can be organised under a written plan that explains visit frequency, covered areas and the process for reporting new concerns.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/maintenance-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Annual Termite Maintenance in Pune"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Annual Termite Maintenance in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose annual maintenance contract in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Scheduled inspections"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing attention"
+      },
+      {
+        "tag": "h3",
+        "text": "A property-specific plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Prevention guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Defined support"
+      },
+      {
+        "tag": "h2",
+        "text": "Our annual maintenance contract process in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Assess your property"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree your coverage"
+      },
+      {
+        "tag": "h3",
+        "text": "Schedule inspection visits"
+      },
+      {
+        "tag": "h3",
+        "text": "Record & act on findings"
+      },
+      {
+        "tag": "h3",
+        "text": "Review your next year"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract for different properties in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent homes & villas in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business premises in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & managed sites in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Pune"
+      },
+      {
+        "tag": "h3",
+        "text": "Previously treated properties in Pune"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Pune?"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Pune: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need annual maintenance contract in Pune? Let’s plan the right care for your Pune property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/delhi-ncr/residential-termite-control",
+    "status": 200,
+    "title": "Residential Termite Control in Delhi NCR | TermiteTreatment",
+    "titleLength": 59,
+    "description": "Protect your Delhi NCR home from termites with an inspection-led plan for apartments, independent houses and villas. For Delhi NCR homes and apartments, we assess accessible woodwork, fitted storage and visible signs at wall-floor junctions. Mention earlier infestations or treatment when arranging your inspection.",
+    "descLength": 315,
+    "canonical": "https://termitepestcontrol.co.in/locations/delhi-ncr/residential-termite-control",
+    "ogTitle": "Residential Termite Control in Delhi NCR",
+    "ogDesc": "Protect your Delhi NCR home from termites with an inspection-led plan for apartments, independent houses and villas. For Delhi NCR homes and apartments, we assess accessible woodwork, fitted storage and visible signs at wall-floor junctions. Mention earlier infestations or treatment when arranging your inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/residential-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Residential Termite Control in Delhi NCR"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Residential Termite Control in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose residential termite control in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Early identification"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "A plan for your home"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear preparation"
+      },
+      {
+        "tag": "h3",
+        "text": "Practical aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Our residential termite control process in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Listen & inspect"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify activity & access"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree a treatment plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Treat the agreed areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Explain care & follow-up"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control for different properties in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent houses & villas in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & flats in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Bungalows & family homes in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential complexes in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Rental homes in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Housing societies in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Delhi NCR?"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Delhi NCR: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need residential termite control in Delhi NCR? Let’s plan the right care for your Delhi NCR property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/delhi-ncr/commercial-termite-control",
+    "status": 200,
+    "title": "Commercial Termite Control in Delhi NCR | TermiteTreatment",
+    "titleLength": 58,
+    "description": "Commercial termite control in Delhi NCR, planned around your premises and operating needs. For Delhi NCR offices, retail premises and institutions, the plan considers your site contact, operating hours and access restrictions, with the scope agreed after assessment.",
+    "descLength": 266,
+    "canonical": "https://termitepestcontrol.co.in/locations/delhi-ncr/commercial-termite-control",
+    "ogTitle": "Commercial Termite Control in Delhi NCR",
+    "ogDesc": "Commercial termite control in Delhi NCR, planned around your premises and operating needs. For Delhi NCR offices, retail premises and institutions, the plan considers your site contact, operating hours and access restrictions, with the scope agreed after assessment.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/commercial-hero-v5.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Commercial Termite Control in Delhi NCR"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Commercial Termite Control in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose commercial termite control in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Premises assessment"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Flexible planning"
+      },
+      {
+        "tag": "h3",
+        "text": "Site-specific scope"
+      },
+      {
+        "tag": "h3",
+        "text": "Service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing care"
+      },
+      {
+        "tag": "h2",
+        "text": "Our commercial termite control process in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Understand the premises"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect priority areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Plan access & treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Carry out the work"
+      },
+      {
+        "tag": "h3",
+        "text": "Report & review"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control for different properties in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business parks in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Retail & commercial spaces in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & industrial sites in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & hospitality in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Hospitals & healthcare in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Schools & institutions in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Delhi NCR?"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Delhi NCR: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need commercial termite control in Delhi NCR? Let’s plan the right care for your Delhi NCR property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/delhi-ncr/pre-construction-termite-treatment",
+    "status": 200,
+    "title": "Pre-Construction Termite Treatment in Delhi NCR | TermiteTreatment",
+    "titleLength": 66,
+    "description": "Protect your new building in Delhi NCR from termite infestation with professional pre-construction anti-termite treatment. For a new Delhi NCR building, early planning helps coordinate soil treatment with your contractor while foundation trenches, filling and service penetrations remain accessible.",
+    "descLength": 299,
+    "canonical": "https://termitepestcontrol.co.in/locations/delhi-ncr/pre-construction-termite-treatment",
+    "ogTitle": "Pre-Construction Termite Treatment in Delhi NCR",
+    "ogDesc": "Protect your new building in Delhi NCR from termite infestation with professional pre-construction anti-termite treatment. For a new Delhi NCR building, early planning helps coordinate soil treatment with your contractor while foundation trenches, filling and service penetrations remain accessible.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/preconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Pre-Construction Termite Treatment in Delhi NCR"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Pre-Construction Termite Treatment in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose pre-construction termite treatment in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Under-floor Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Preventive Approach"
+      },
+      {
+        "tag": "h3",
+        "text": "Entry-Point Attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Suitable for All Projects"
+      },
+      {
+        "tag": "h3",
+        "text": "Planned Application"
+      },
+      {
+        "tag": "h2",
+        "text": "Our pre-construction termite treatment process in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Trench Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Backfill Soil Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Plinth Filling Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Service Entry & Junction Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "External Perimeter Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment for different properties in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent Houses & Villas in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & Residential Complexes in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Buildings in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Industrial Buildings & Warehouses in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels, Hospitals & Educational Institutions in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Real Estate & Builder Projects in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Delhi NCR?"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Delhi NCR: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need pre-construction termite treatment in Delhi NCR? Let’s plan the right care for your Delhi NCR property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/delhi-ncr/post-construction-termite-treatment",
+    "status": 200,
+    "title": "Post-Construction Termite Treatment in Delhi NCR | TermiteTreatment",
+    "titleLength": 67,
+    "description": "Address termite activity in your completed Delhi NCR property with targeted inspection and treatment. For Delhi NCR homes and apartments, we assess accessible woodwork, fitted storage and visible signs at wall-floor junctions. Mention earlier infestations or treatment when arranging your inspection.",
+    "descLength": 300,
+    "canonical": "https://termitepestcontrol.co.in/locations/delhi-ncr/post-construction-termite-treatment",
+    "ogTitle": "Post-Construction Termite Treatment in Delhi NCR",
+    "ogDesc": "Address termite activity in your completed Delhi NCR property with targeted inspection and treatment. For Delhi NCR homes and apartments, we assess accessible woodwork, fitted storage and visible signs at wall-floor junctions. Mention earlier infestations or treatment when arranging your inspection.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/postconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Post-Construction Termite Treatment in Delhi NCR"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Post-Construction Termite Treatment in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose post-construction termite treatment in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Find the activity"
+      },
+      {
+        "tag": "h3",
+        "text": "Address entry routes"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted application"
+      },
+      {
+        "tag": "h3",
+        "text": "Existing-building care"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear scope of work"
+      },
+      {
+        "tag": "h3",
+        "text": "Aftercare guidance"
+      },
+      {
+        "tag": "h2",
+        "text": "Our post-construction termite treatment process in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect the building"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify suitable access points"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree preparation & method"
+      },
+      {
+        "tag": "h3",
+        "text": "Apply targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Review aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment for different properties in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Occupied houses & villas in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & commercial buildings in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & storage spaces in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Renovation projects in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Delhi NCR?"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Delhi NCR: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need post-construction termite treatment in Delhi NCR? Let’s plan the right care for your Delhi NCR property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/delhi-ncr/annual-maintenance-contract",
+    "status": 200,
+    "title": "Annual Termite Maintenance in Delhi NCR | TermiteTreatment",
+    "titleLength": 58,
+    "description": "Keep termite care on the calendar with an annual maintenance plan in Delhi NCR. For Delhi NCR homes and managed premises, an AMC sets out the agreed local service schedule, coverage and reporting process. Exact locality and travel access are confirmed before appointments.",
+    "descLength": 272,
+    "canonical": "https://termitepestcontrol.co.in/locations/delhi-ncr/annual-maintenance-contract",
+    "ogTitle": "Annual Termite Maintenance in Delhi NCR",
+    "ogDesc": "Keep termite care on the calendar with an annual maintenance plan in Delhi NCR. For Delhi NCR homes and managed premises, an AMC sets out the agreed local service schedule, coverage and reporting process. Exact locality and travel access are confirmed before appointments.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/maintenance-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Annual Termite Maintenance in Delhi NCR"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Annual Termite Maintenance in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose annual maintenance contract in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Scheduled inspections"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing attention"
+      },
+      {
+        "tag": "h3",
+        "text": "A property-specific plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Prevention guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Defined support"
+      },
+      {
+        "tag": "h2",
+        "text": "Our annual maintenance contract process in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Assess your property"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree your coverage"
+      },
+      {
+        "tag": "h3",
+        "text": "Schedule inspection visits"
+      },
+      {
+        "tag": "h3",
+        "text": "Record & act on findings"
+      },
+      {
+        "tag": "h3",
+        "text": "Review your next year"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract for different properties in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent homes & villas in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business premises in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & managed sites in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Delhi NCR"
+      },
+      {
+        "tag": "h3",
+        "text": "Previously treated properties in Delhi NCR"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Delhi NCR?"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Delhi NCR: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need annual maintenance contract in Delhi NCR? Let’s plan the right care for your Delhi NCR property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/goa/residential-termite-control",
+    "status": 200,
+    "title": "Residential Termite Control in Goa | TermiteTreatment",
+    "titleLength": 53,
+    "description": "Protect your Goa home from termites with an inspection-led plan for apartments, independent houses and villas. For Goa villas, apartments and family homes, we check accessible doors, frames, cabinetry and the areas where you have noticed signs. Tell us if the home is occupied, rented or visited periodically.",
+    "descLength": 309,
+    "canonical": "https://termitepestcontrol.co.in/locations/goa/residential-termite-control",
+    "ogTitle": "Residential Termite Control in Goa",
+    "ogDesc": "Protect your Goa home from termites with an inspection-led plan for apartments, independent houses and villas. For Goa villas, apartments and family homes, we check accessible doors, frames, cabinetry and the areas where you have noticed signs. Tell us if the home is occupied, rented or visited periodically.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/residential-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Residential Termite Control in Goa"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Residential Termite Control in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose residential termite control in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Early identification"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "A plan for your home"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear preparation"
+      },
+      {
+        "tag": "h3",
+        "text": "Practical aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Our residential termite control process in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Listen & inspect"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify activity & access"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree a treatment plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Treat the agreed areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Explain care & follow-up"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control for different properties in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent houses & villas in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & flats in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Bungalows & family homes in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential complexes in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Rental homes in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Housing societies in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Goa?"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Goa: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need residential termite control in Goa? Let’s plan the right care for your Goa property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/goa/commercial-termite-control",
+    "status": 200,
+    "title": "Commercial Termite Control in Goa | TermiteTreatment",
+    "titleLength": 52,
+    "description": "Commercial termite control in Goa, planned around your premises and operating needs. For Goa hotels, hospitality properties, offices and shops, we plan inspection access with the property team and discuss how agreed work can fit around guests, staff and daily operations.",
+    "descLength": 271,
+    "canonical": "https://termitepestcontrol.co.in/locations/goa/commercial-termite-control",
+    "ogTitle": "Commercial Termite Control in Goa",
+    "ogDesc": "Commercial termite control in Goa, planned around your premises and operating needs. For Goa hotels, hospitality properties, offices and shops, we plan inspection access with the property team and discuss how agreed work can fit around guests, staff and daily operations.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/commercial-hero-v5.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Commercial Termite Control in Goa"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Commercial Termite Control in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose commercial termite control in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Premises assessment"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Flexible planning"
+      },
+      {
+        "tag": "h3",
+        "text": "Site-specific scope"
+      },
+      {
+        "tag": "h3",
+        "text": "Service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing care"
+      },
+      {
+        "tag": "h2",
+        "text": "Our commercial termite control process in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Understand the premises"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect priority areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Plan access & treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Carry out the work"
+      },
+      {
+        "tag": "h3",
+        "text": "Report & review"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control for different properties in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business parks in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Retail & commercial spaces in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & industrial sites in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & hospitality in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Hospitals & healthcare in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Schools & institutions in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Goa?"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Goa: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need commercial termite control in Goa? Let’s plan the right care for your Goa property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/goa/pre-construction-termite-treatment",
+    "status": 200,
+    "title": "Pre-Construction Termite Treatment in Goa | TermiteTreatment",
+    "titleLength": 60,
+    "description": "Protect your new building in Goa from termite infestation with professional pre-construction anti-termite treatment. For a new Goa villa, apartment building or hospitality project, soil treatment visits are coordinated with the foundation and flooring schedule while the relevant zones remain accessible.",
+    "descLength": 304,
+    "canonical": "https://termitepestcontrol.co.in/locations/goa/pre-construction-termite-treatment",
+    "ogTitle": "Pre-Construction Termite Treatment in Goa",
+    "ogDesc": "Protect your new building in Goa from termite infestation with professional pre-construction anti-termite treatment. For a new Goa villa, apartment building or hospitality project, soil treatment visits are coordinated with the foundation and flooring schedule while the relevant zones remain accessible.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/preconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Pre-Construction Termite Treatment in Goa"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Pre-Construction Termite Treatment in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose pre-construction termite treatment in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Under-floor Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Preventive Approach"
+      },
+      {
+        "tag": "h3",
+        "text": "Entry-Point Attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Suitable for All Projects"
+      },
+      {
+        "tag": "h3",
+        "text": "Planned Application"
+      },
+      {
+        "tag": "h2",
+        "text": "Our pre-construction termite treatment process in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Trench Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Backfill Soil Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Plinth Filling Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Service Entry & Junction Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "External Perimeter Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment for different properties in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent Houses & Villas in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & Residential Complexes in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Buildings in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Industrial Buildings & Warehouses in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels, Hospitals & Educational Institutions in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Real Estate & Builder Projects in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Goa?"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Goa: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need pre-construction termite treatment in Goa? Let’s plan the right care for your Goa property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/goa/post-construction-termite-treatment",
+    "status": 200,
+    "title": "Post-Construction Termite Treatment in Goa | TermiteTreatment",
+    "titleLength": 61,
+    "description": "Address termite activity in your completed Goa property with targeted inspection and treatment. For Goa villas, apartments and family homes, we check accessible doors, frames, cabinetry and the areas where you have noticed signs. Tell us if the home is occupied, rented or visited periodically.",
+    "descLength": 294,
+    "canonical": "https://termitepestcontrol.co.in/locations/goa/post-construction-termite-treatment",
+    "ogTitle": "Post-Construction Termite Treatment in Goa",
+    "ogDesc": "Address termite activity in your completed Goa property with targeted inspection and treatment. For Goa villas, apartments and family homes, we check accessible doors, frames, cabinetry and the areas where you have noticed signs. Tell us if the home is occupied, rented or visited periodically.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/postconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Post-Construction Termite Treatment in Goa"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Post-Construction Termite Treatment in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose post-construction termite treatment in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Find the activity"
+      },
+      {
+        "tag": "h3",
+        "text": "Address entry routes"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted application"
+      },
+      {
+        "tag": "h3",
+        "text": "Existing-building care"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear scope of work"
+      },
+      {
+        "tag": "h3",
+        "text": "Aftercare guidance"
+      },
+      {
+        "tag": "h2",
+        "text": "Our post-construction termite treatment process in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect the building"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify suitable access points"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree preparation & method"
+      },
+      {
+        "tag": "h3",
+        "text": "Apply targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Review aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment for different properties in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Occupied houses & villas in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & commercial buildings in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & storage spaces in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Renovation projects in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Goa?"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Goa: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need post-construction termite treatment in Goa? Let’s plan the right care for your Goa property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/goa/annual-maintenance-contract",
+    "status": 200,
+    "title": "Annual Termite Maintenance in Goa | TermiteTreatment",
+    "titleLength": 52,
+    "description": "Keep termite care on the calendar with an annual maintenance plan in Goa. For Goa homes and hospitality premises, a maintenance plan can coordinate checks around occupancy and access. Visit frequency, covered buildings and included work are stated in the agreement.",
+    "descLength": 265,
+    "canonical": "https://termitepestcontrol.co.in/locations/goa/annual-maintenance-contract",
+    "ogTitle": "Annual Termite Maintenance in Goa",
+    "ogDesc": "Keep termite care on the calendar with an annual maintenance plan in Goa. For Goa homes and hospitality premises, a maintenance plan can coordinate checks around occupancy and access. Visit frequency, covered buildings and included work are stated in the agreement.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/maintenance-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Annual Termite Maintenance in Goa"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Annual Termite Maintenance in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose annual maintenance contract in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Scheduled inspections"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing attention"
+      },
+      {
+        "tag": "h3",
+        "text": "A property-specific plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Prevention guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Defined support"
+      },
+      {
+        "tag": "h2",
+        "text": "Our annual maintenance contract process in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Assess your property"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree your coverage"
+      },
+      {
+        "tag": "h3",
+        "text": "Schedule inspection visits"
+      },
+      {
+        "tag": "h3",
+        "text": "Record & act on findings"
+      },
+      {
+        "tag": "h3",
+        "text": "Review your next year"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract for different properties in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent homes & villas in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business premises in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & managed sites in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Goa"
+      },
+      {
+        "tag": "h3",
+        "text": "Previously treated properties in Goa"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Goa?"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Goa: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need annual maintenance contract in Goa? Let’s plan the right care for your Goa property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/noida/residential-termite-control",
+    "status": 200,
+    "title": "Residential Termite Control in Noida | TermiteTreatment",
+    "titleLength": 55,
+    "description": "Protect your Noida home from termites with an inspection-led plan for apartments, independent houses and villas. For Noida apartments and sector homes, the assessment considers fixed woodwork, cabinets and accessible junctions. Tell us about society access rules and any previous treatment in your flat or building.",
+    "descLength": 315,
+    "canonical": "https://termitepestcontrol.co.in/locations/noida/residential-termite-control",
+    "ogTitle": "Residential Termite Control in Noida",
+    "ogDesc": "Protect your Noida home from termites with an inspection-led plan for apartments, independent houses and villas. For Noida apartments and sector homes, the assessment considers fixed woodwork, cabinets and accessible junctions. Tell us about society access rules and any previous treatment in your flat or building.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/residential-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Residential Termite Control in Noida"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Residential Termite Control in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose residential termite control in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Early identification"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "A plan for your home"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear preparation"
+      },
+      {
+        "tag": "h3",
+        "text": "Practical aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Our residential termite control process in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Listen & inspect"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify activity & access"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree a treatment plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Treat the agreed areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Explain care & follow-up"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control for different properties in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent houses & villas in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & flats in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Bungalows & family homes in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential complexes in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Rental homes in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Housing societies in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Noida?"
+      },
+      {
+        "tag": "h2",
+        "text": "Residential Termite Control in Noida: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need residential termite control in Noida? Let’s plan the right care for your Noida property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/noida/commercial-termite-control",
+    "status": 200,
+    "title": "Commercial Termite Control in Noida | TermiteTreatment",
+    "titleLength": 54,
+    "description": "Commercial termite control in Noida, planned around your premises and operating needs. For Noida offices, IT premises and commercial buildings, inspections are coordinated with facilities contacts and security access, with treatment areas and timings agreed before work.",
+    "descLength": 270,
+    "canonical": "https://termitepestcontrol.co.in/locations/noida/commercial-termite-control",
+    "ogTitle": "Commercial Termite Control in Noida",
+    "ogDesc": "Commercial termite control in Noida, planned around your premises and operating needs. For Noida offices, IT premises and commercial buildings, inspections are coordinated with facilities contacts and security access, with treatment areas and timings agreed before work.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/commercial-hero-v5.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Commercial Termite Control in Noida"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Commercial Termite Control in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose commercial termite control in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Premises assessment"
+      },
+      {
+        "tag": "h3",
+        "text": "Timber protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Flexible planning"
+      },
+      {
+        "tag": "h3",
+        "text": "Site-specific scope"
+      },
+      {
+        "tag": "h3",
+        "text": "Service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing care"
+      },
+      {
+        "tag": "h2",
+        "text": "Our commercial termite control process in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Understand the premises"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect priority areas"
+      },
+      {
+        "tag": "h3",
+        "text": "Plan access & treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Carry out the work"
+      },
+      {
+        "tag": "h3",
+        "text": "Report & review"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control for different properties in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business parks in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Retail & commercial spaces in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & industrial sites in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & hospitality in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Hospitals & healthcare in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Schools & institutions in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Noida?"
+      },
+      {
+        "tag": "h2",
+        "text": "Commercial Termite Control in Noida: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need commercial termite control in Noida? Let’s plan the right care for your Noida property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/noida/pre-construction-termite-treatment",
+    "status": 200,
+    "title": "Pre-Construction Termite Treatment in Noida | TermiteTreatment",
+    "titleLength": 62,
+    "description": "Protect your new building in Noida from termite infestation with professional pre-construction anti-termite treatment. For new Noida homes and developments, share the sector, site plans and stage of work. Preventive treatment is aligned with foundation, filling, flooring and external-access milestones.",
+    "descLength": 303,
+    "canonical": "https://termitepestcontrol.co.in/locations/noida/pre-construction-termite-treatment",
+    "ogTitle": "Pre-Construction Termite Treatment in Noida",
+    "ogDesc": "Protect your new building in Noida from termite infestation with professional pre-construction anti-termite treatment. For new Noida homes and developments, share the sector, site plans and stage of work. Preventive treatment is aligned with foundation, filling, flooring and external-access milestones.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/preconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Pre-Construction Termite Treatment in Noida"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Pre-Construction Termite Treatment in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose pre-construction termite treatment in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Under-floor Protection"
+      },
+      {
+        "tag": "h3",
+        "text": "Preventive Approach"
+      },
+      {
+        "tag": "h3",
+        "text": "Entry-Point Attention"
+      },
+      {
+        "tag": "h3",
+        "text": "Suitable for All Projects"
+      },
+      {
+        "tag": "h3",
+        "text": "Planned Application"
+      },
+      {
+        "tag": "h2",
+        "text": "Our pre-construction termite treatment process in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Foundation Trench Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Backfill Soil Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Plinth Filling Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Service Entry & Junction Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "External Perimeter Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment for different properties in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent Houses & Villas in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & Residential Complexes in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Buildings in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Industrial Buildings & Warehouses in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels, Hospitals & Educational Institutions in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Real Estate & Builder Projects in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Noida?"
+      },
+      {
+        "tag": "h2",
+        "text": "Pre-Construction Termite Treatment in Noida: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need pre-construction termite treatment in Noida? Let’s plan the right care for your Noida property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/noida/post-construction-termite-treatment",
+    "status": 200,
+    "title": "Post-Construction Termite Treatment in Noida | TermiteTreatment",
+    "titleLength": 63,
+    "description": "Address termite activity in your completed Noida property with targeted inspection and treatment. For Noida apartments and sector homes, the assessment considers fixed woodwork, cabinets and accessible junctions. Tell us about society access rules and any previous treatment in your flat or building.",
+    "descLength": 300,
+    "canonical": "https://termitepestcontrol.co.in/locations/noida/post-construction-termite-treatment",
+    "ogTitle": "Post-Construction Termite Treatment in Noida",
+    "ogDesc": "Address termite activity in your completed Noida property with targeted inspection and treatment. For Noida apartments and sector homes, the assessment considers fixed woodwork, cabinets and accessible junctions. Tell us about society access rules and any previous treatment in your flat or building.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/postconstruction-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Post-Construction Termite Treatment in Noida"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Post-Construction Termite Treatment in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose post-construction termite treatment in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Find the activity"
+      },
+      {
+        "tag": "h3",
+        "text": "Address entry routes"
+      },
+      {
+        "tag": "h3",
+        "text": "Targeted application"
+      },
+      {
+        "tag": "h3",
+        "text": "Existing-building care"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear scope of work"
+      },
+      {
+        "tag": "h3",
+        "text": "Aftercare guidance"
+      },
+      {
+        "tag": "h2",
+        "text": "Our post-construction termite treatment process in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Inspect the building"
+      },
+      {
+        "tag": "h3",
+        "text": "Identify suitable access points"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree preparation & method"
+      },
+      {
+        "tag": "h3",
+        "text": "Apply targeted treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Review aftercare"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Annual Maintenance Contract"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment for different properties in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Occupied houses & villas in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & commercial buildings in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & storage spaces in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Renovation projects in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Noida?"
+      },
+      {
+        "tag": "h2",
+        "text": "Post-Construction Termite Treatment in Noida: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need post-construction termite treatment in Noida? Let’s plan the right care for your Noida property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  },
+  {
+    "route": "/locations/noida/annual-maintenance-contract",
+    "status": 200,
+    "title": "Annual Termite Maintenance in Noida | TermiteTreatment",
+    "titleLength": 54,
+    "description": "Keep termite care on the calendar with an annual maintenance plan in Noida. For Noida apartments, housing societies and offices, a maintenance plan records scheduled inspections and coverage, with building access and the contact for new concerns agreed in advance.",
+    "descLength": 264,
+    "canonical": "https://termitepestcontrol.co.in/locations/noida/annual-maintenance-contract",
+    "ogTitle": "Annual Termite Maintenance in Noida",
+    "ogDesc": "Keep termite care on the calendar with an annual maintenance plan in Noida. For Noida apartments, housing societies and offices, a maintenance plan records scheduled inspections and coverage, with building access and the contact for new concerns agreed in advance.",
+    "ogImage": "https://termitepestcontrol.co.in/images/services/maintenance-hero-v4.webp",
+    "h1Count": 1,
+    "h1Texts": [
+      "Annual Termite Maintenance in Noida"
+    ],
+    "h2Count": 9,
+    "h3Count": 21,
+    "jsonLdTypes": [
+      "HomeAndConstructionBusiness",
+      "JSON-LD"
+    ],
+    "imageCount": 7,
+    "missingAltCount": 0,
+    "missingAltImages": [],
+    "allHeadings": [
+      {
+        "tag": "h1",
+        "text": "Annual Termite Maintenance in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "6 reasons to choose annual maintenance contract in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Scheduled inspections"
+      },
+      {
+        "tag": "h3",
+        "text": "Continuing attention"
+      },
+      {
+        "tag": "h3",
+        "text": "A property-specific plan"
+      },
+      {
+        "tag": "h3",
+        "text": "Clear service records"
+      },
+      {
+        "tag": "h3",
+        "text": "Prevention guidance"
+      },
+      {
+        "tag": "h3",
+        "text": "Defined support"
+      },
+      {
+        "tag": "h2",
+        "text": "Our annual maintenance contract process in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Assess your property"
+      },
+      {
+        "tag": "h3",
+        "text": "Agree your coverage"
+      },
+      {
+        "tag": "h3",
+        "text": "Schedule inspection visits"
+      },
+      {
+        "tag": "h3",
+        "text": "Record & act on findings"
+      },
+      {
+        "tag": "h3",
+        "text": "Review your next year"
+      },
+      {
+        "tag": "h2",
+        "text": "Other termite services in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Residential Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Commercial Termite Control"
+      },
+      {
+        "tag": "h3",
+        "text": "Pre-Construction Termite Treatment"
+      },
+      {
+        "tag": "h3",
+        "text": "Post-Construction Termite Treatment"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract for different properties in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Independent homes & villas in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Apartments & housing societies in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Offices & business premises in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Warehouses & managed sites in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Hotels & institutions in Noida"
+      },
+      {
+        "tag": "h3",
+        "text": "Previously treated properties in Noida"
+      },
+      {
+        "tag": "h2",
+        "text": "Why choose our termite control team in Noida?"
+      },
+      {
+        "tag": "h2",
+        "text": "Annual Maintenance Contract in Noida: FAQs"
+      },
+      {
+        "tag": "h2",
+        "text": "Need annual maintenance contract in Noida? Let’s plan the right care for your Noida property."
+      },
+      {
+        "tag": "h2",
+        "text": "Request a Free Enquiry"
+      }
+    ]
+  }
+]

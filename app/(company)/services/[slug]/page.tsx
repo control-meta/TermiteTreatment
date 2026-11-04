@@ -139,7 +139,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       </div></section>
 
       <section className={styles.enquirySection} id="service-enquiry" aria-labelledby="enquiry-title">
-        <img className={styles.enquiryBackground} src={detail.hero} alt="" width={1536} height={1024} loading="lazy" />
+        <img className={styles.enquiryBackground} src={detail.hero} alt={`${service.title} consultation and inspection background`} width={1536} height={1024} loading="lazy" />
         <div className={`${styles.shell} ${styles.enquiryGrid}`}>
           <div className={styles.enquiryCopy}>{!preconstruction && <p className={styles.heroEyebrow}><span /> YOUR NEXT STEP STARTS HERE</p>}<h2 id="enquiry-title">{detail.closingTitle}{' '}<span>{detail.closingAccent}</span></h2><p>{detail.closingText}</p><div className={styles.enquiryActions}><a className={styles.outlineButton} href={company.telephone}><Phone size={17} aria-hidden="true" />{preconstruction ? 'Call Now' : company.phone}</a><a className={styles.whatsappButton} href={whatsappHref} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true" />WhatsApp us <ArrowUpRight size={16} aria-hidden="true" /></a></div>{!preconstruction && <div className={styles.enquiryNote}><CalendarCheck2 size={18} aria-hidden="true" /><span>A free inspection. A clear proposal.<br />A next step you understand.</span></div>}</div>
           <ServiceEnquiryForm key={slug} serviceTitle={service.title} />
