@@ -1,3 +1,4 @@
+import AdminPreviewGuard from '../../../../../components/AdminPreviewGuard';
 import ServiceHero from '../../../../../components/ServiceHero';
 import ServiceBackground from '../../../../../components/ServiceBackground';
 import type { Metadata } from 'next';
@@ -52,13 +53,15 @@ export default async function LocalServicePage({ params }: { params: Promise<Rou
   const detail: ServiceDetail = localContent
     ? {
         ...baseDetail,
-        title: localContent.title || baseDetail.title,
-        accent: localContent.accent || baseDetail.accent,
-        intro: localContent.intro || baseDetail.intro,
-        definitionTitle: localContent.definitionTitle || baseDetail.definitionTitle,
-        definition: localContent.definition || baseDetail.definition,
-        benefitTitle: localContent.benefitTitle || baseDetail.benefitTitle,
+        title: localContent.title ?? baseDetail.title,
+        accent: localContent.accent ?? baseDetail.accent,
+        intro: localContent.intro ?? baseDetail.intro,
+        definitionTitle: localContent.definitionTitle ?? baseDetail.definitionTitle,
+        definition: localContent.definition ?? baseDetail.definition,
+        benefitTitle: localContent.benefitTitle ?? baseDetail.benefitTitle,
         benefits: (localContent.benefits as [string, string][]) || baseDetail.benefits,
+        processTitle: localContent.processTitle ?? baseDetail.processTitle,
+        processIntro: localContent.processIntro ?? baseDetail.processIntro,
         steps: (localContent.steps as [string, string][]) || baseDetail.steps,
         faqs: normalizedFaqs,
       }
@@ -75,6 +78,7 @@ export default async function LocalServicePage({ params }: { params: Promise<Rou
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [['Home', '/'], ['Locations', '/locations'], [city.name, `/locations/${city.slug}`], [service.title, locationServiceUrl(city, serviceSlug)]].map(([name, path], index) => ({ '@type': 'ListItem', position: index + 1, name, item: `https://termitepestcontrol.co.in${path}` })) },
   ];
   return <>
+    <AdminPreviewGuard textOverrides={localContent?.textOverrides} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <SiteHeader />
     <main id="main" className={`${styles.page} ${localStyles.page}`}>

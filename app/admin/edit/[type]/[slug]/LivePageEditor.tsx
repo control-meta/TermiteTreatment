@@ -14,8 +14,14 @@ import {
   Plus,
   Trash2,
   LockKeyhole,
+  Maximize2,
+  Minimize2,
+  Type,
+  MousePointer2,
 } from 'lucide-react';
 import styles from './editor.module.css';
+import AllTextPanel from './AllTextPanel';
+import { validateTextOverrides, type PageTextEntry } from '../../../../../lib/page-text';
 
 type Props = {
   type: 'location' | 'service' | 'local_service';
@@ -28,10 +34,16 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [showFieldsSidebar, setShowFieldsSidebar] = useState(false);
   const [previewDevice, setPreviewDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
+  const [showTextSidebar, setShowTextSidebar] = useState(false);
+  const [textEntries, setTextEntries] = useState<PageTextEntry[]>([]);
+  const [useControls, setUseControls] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [canRetrySave, setCanRetrySave] = useState(false);
   const [clickBlockedNotice, setClickBlockedNotice] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const editorRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const targetUrl =
@@ -46,6 +58,24 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
   // Listen for click/submit block notifications and direct text edits from inside the preview iframe
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
+      if (event.origin !== window.location.origin || event.source !== iframeRef.current?.contentWindow) return;
+
+      if (event.data?.type === 'PREVIEW_TEXT_CATALOG' && Array.isArray(event.data.payload)) {
+        setTextEntries(event.data.payload);
+        return;
+      }
+      if (event.data?.type === 'PREVIEW_TEXT_OVERRIDES_CHANGED') {
+        try {
+          const textOverrides = validateTextOverrides(event.data.payload);
+          setData((previous: any) => ({ ...previous, textOverrides }));
+          setHasUnsavedChanges(true);
+        } catch { setErrorMessage('One of the text changes could not be read.'); }
+        return;
+      }
+      if (event.data?.type === 'PREVIEW_READY') {
+        iframeRef.current?.contentWindow?.postMessage({ type: 'PREVIEW_SET_EDITING', payload: !useControls }, window.location.origin);
+        return;
+      }
       if (event.data?.type === 'PREVIEW_CLICK_BLOCKED') {
         setClickBlockedNotice(true);
         const timer = setTimeout(() => setClickBlockedNotice(false), 2600);
@@ -157,57 +187,35 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
     }
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
-  }, [type]);
+  }, [type, useControls]);
 
-  function handleIframeLoad() {
+  useEffect(() => {
+    const updateFullscreen = () => setIsFullscreen(document.fullscreenElement === editorRef.current);
+    document.addEventListener('fullscreenchange', updateFullscreen);
+    return () => document.removeEventListener('fullscreenchange', updateFullscreen);
+  }, []);
+
+  async function toggleFullscreen() {
     try {
-      const iframe = iframeRef.current;
-      if (!iframe) return;
-      const doc = iframe.contentDocument || iframe.contentWindow?.document;
-      if (!doc) return;
-
-      // Inject disabled styling
-      const styleId = 'admin-preview-guards';
-      if (!doc.getElementById(styleId)) {
-        const style = doc.createElement('style');
-        style.id = styleId;
-        style.textContent = `
-          a, button:not([data-allow-preview]), input[type="submit"], input[type="button"], [role="button"]:not([data-allow-preview]) {
-            cursor: not-allowed !important;
-          }
-          summary {
-            cursor: pointer !important;
-          }
-        `;
-        doc.head.appendChild(style);
-      }
-
-      // Catch and disable any navigation clicks inside the iframe
-      const interceptAction = (e: Event) => {
-        const target = (e as MouseEvent).target as HTMLElement | null;
-        if (target?.closest('summary')) return;
-
-        const actionable = target?.closest(
-          'a, button, input[type="submit"], input[type="button"], [role="button"]'
-        );
-        if (actionable || e.type === 'submit') {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-          setClickBlockedNotice(true);
-          setTimeout(() => setClickBlockedNotice(false), 2600);
-        }
-      };
-
-      doc.addEventListener('click', interceptAction as EventListener, true);
-      doc.addEventListener('submit', interceptAction as EventListener, true);
-      if (iframe.contentWindow) {
-        iframe.contentWindow.addEventListener('click', interceptAction as EventListener, true);
-        iframe.contentWindow.open = () => null;
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else {
+        await editorRef.current?.requestFullscreen();
       }
     } catch {
-      // ignore
+      setErrorMessage('Full screen is unavailable in this browser. The editor still fills the page.');
     }
+  }
+
+  function updatePageText(key: string, value: string) {
+    setTextEntries(previous => previous.map(entry => entry.key === key ? { ...entry, value } : entry));
+    iframeRef.current?.contentWindow?.postMessage({ type: 'PREVIEW_SET_TEXT', payload: { key, value } }, window.location.origin);
+  }
+
+  function toggleControls() {
+    const next = !useControls;
+    setUseControls(next);
+    iframeRef.current?.contentWindow?.postMessage({ type: 'PREVIEW_SET_EDITING', payload: !next }, window.location.origin);
   }
 
   function refreshPreview() {
@@ -220,16 +228,25 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
     setSaving(true);
     setSaveSuccess(false);
     setErrorMessage('');
+    setCanRetrySave(false);
 
     // Scrape live DOM text from the iframe to ensure anything typed right before save is saved
-    const payloadData = { ...data };
+    const payloadData = {
+      ...data,
+      faqs: data.faqs ? [...data.faqs] : undefined,
+      benefits: data.benefits ? [...data.benefits] : undefined,
+      steps: data.steps ? [...data.steps] : undefined,
+      areas: data.areas ? [...data.areas] : undefined,
+    };
     try {
       const doc = iframeRef.current?.contentDocument;
       if (doc) {
-        doc.querySelectorAll('[data-edit-field]').forEach((el) => {
+        const draft = doc.getElementById('page-text-overrides-draft')?.textContent;
+        if (draft) payloadData.textOverrides = validateTextOverrides(JSON.parse(draft));
+        doc.querySelectorAll('[data-edit-field][data-preview-dirty]').forEach((el) => {
           const field = el.getAttribute('data-edit-field');
           const val = (el as HTMLElement).innerText.trim();
-          if (field && val) {
+          if (field) {
             if (field === 'titleMain') {
               payloadData.title = val;
             } else {
@@ -238,11 +255,11 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
           }
         });
 
-        doc.querySelectorAll('[data-edit-faq-index]').forEach((el) => {
+        doc.querySelectorAll('[data-edit-faq-index][data-preview-dirty]').forEach((el) => {
           const idx = parseInt(el.getAttribute('data-edit-faq-index') || '-1', 10);
           const part = el.getAttribute('data-edit-faq-part');
           const val = (el as HTMLElement).innerText.trim();
-          if (idx >= 0 && part && val && payloadData.faqs?.[idx]) {
+          if (idx >= 0 && part && payloadData.faqs?.[idx]) {
             if (Array.isArray(payloadData.faqs[idx])) {
               const tuple = [...payloadData.faqs[idx]];
               tuple[part === 'question' ? 0 : 1] = val;
@@ -253,11 +270,11 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
           }
         });
 
-        doc.querySelectorAll('[data-edit-benefit-index]').forEach((el) => {
+        doc.querySelectorAll('[data-edit-benefit-index][data-preview-dirty]').forEach((el) => {
           const idx = parseInt(el.getAttribute('data-edit-benefit-index') || '-1', 10);
           const part = el.getAttribute('data-edit-benefit-part');
           const val = (el as HTMLElement).innerText.trim();
-          if (idx >= 0 && part && val && payloadData.benefits?.[idx]) {
+          if (idx >= 0 && part && payloadData.benefits?.[idx]) {
             if (Array.isArray(payloadData.benefits[idx])) {
               const tuple = [...payloadData.benefits[idx]];
               tuple[part === 'title' ? 0 : 1] = val;
@@ -271,11 +288,11 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
           }
         });
 
-        doc.querySelectorAll('[data-edit-step-index]').forEach((el) => {
+        doc.querySelectorAll('[data-edit-step-index][data-preview-dirty]').forEach((el) => {
           const idx = parseInt(el.getAttribute('data-edit-step-index') || '-1', 10);
           const part = el.getAttribute('data-edit-step-part');
           const val = (el as HTMLElement).innerText.trim();
-          if (idx >= 0 && part && val && payloadData.steps?.[idx]) {
+          if (idx >= 0 && part && payloadData.steps?.[idx]) {
             if (Array.isArray(payloadData.steps[idx])) {
               const tuple = [...payloadData.steps[idx]];
               tuple[part === 'title' ? 0 : 1] = val;
@@ -289,16 +306,18 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
           }
         });
 
-        doc.querySelectorAll('[data-edit-area-index]').forEach((el) => {
+        doc.querySelectorAll('[data-edit-area-index][data-preview-dirty]').forEach((el) => {
           const idx = parseInt(el.getAttribute('data-edit-area-index') || '-1', 10);
           const val = (el as HTMLElement).innerText.trim();
-          if (idx >= 0 && val && payloadData.areas) {
+          if (idx >= 0 && payloadData.areas) {
             payloadData.areas[idx] = val;
           }
         });
       }
     } catch {
-      // ignore
+      setErrorMessage('The preview could not be read. Refresh it before saving.');
+      setSaving(false);
+      return;
     }
 
     try {
@@ -315,19 +334,27 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
       const result = await res.json();
 
       if (!res.ok) {
-        throw new Error(result.error || 'Failed to save');
+        setErrorMessage(result.error || 'Your changes could not be published. Please try saving again.');
+        setCanRetrySave(result.retryable !== false);
+        return;
       }
 
       setHasUnsavedChanges(false);
       setData(payloadData);
       setSaveSuccess(true);
+      docClearDirty();
       setTimeout(() => setSaveSuccess(false), 4500);
       refreshPreview();
     } catch (err: any) {
-      setErrorMessage(err.message || 'Failed to save changes');
+      setErrorMessage('The save request could not reach the server. Your edits are still on this page. Please try saving again.');
+      setCanRetrySave(true);
     } finally {
       setSaving(false);
     }
+  }
+
+  function docClearDirty() {
+    iframeRef.current?.contentDocument?.querySelectorAll('[data-preview-dirty]').forEach(element => element.removeAttribute('data-preview-dirty'));
   }
 
   // FAQ Handlers
@@ -341,6 +368,7 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
     } else {
       updated[index] = { ...updated[index], [field]: value };
     }
+    setHasUnsavedChanges(true);
     setData({ ...data, faqs: updated });
   }
 
@@ -348,16 +376,18 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
     const current = data.faqs || [];
     const isTuple = current.length > 0 && Array.isArray(current[0]);
     const newItem = isTuple ? ['New Question?', 'Answer details here...'] : { question: 'New Question?', answer: 'Answer details here...' };
+    setHasUnsavedChanges(true);
     setData({ ...data, faqs: [...current, newItem] });
   }
 
   function removeFaq(index: number) {
     const updated = (data.faqs || []).filter((_: any, i: number) => i !== index);
+    setHasUnsavedChanges(true);
     setData({ ...data, faqs: updated });
   }
 
   return (
-    <div className={styles.editorRoot}>
+    <div ref={editorRef} className={styles.editorRoot} data-page-editor>
       {/* Top Action Bar */}
       <header className={styles.editorNav}>
         <div className={styles.navLeft}>
@@ -369,9 +399,9 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
           <h1 className={styles.pageTitle}>
             Editing {type === 'location' ? 'Location' : type === 'service' ? 'Service' : 'Localized Service'}: <span>{data.name || data.title}</span>
           </h1>
-          <div className={styles.liveBadge} title="Direct in-place text editing is active! Click any headline, paragraph, card, or FAQ on the page to edit it.">
+          <div className={styles.liveBadge} title="Click highlighted text to edit, then save your changes.">
             <span className={styles.liveDot} />
-            <span>Click &amp; Edit Live</span>
+            <span>Click text to edit</span>
           </div>
         </div>
 
@@ -411,8 +441,20 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
 
           <button
             type="button"
+            onClick={toggleFullscreen}
+            className={styles.toggleFieldsBtn}
+            aria-label={isFullscreen ? 'Exit full screen' : 'Enter full screen'}
+            aria-pressed={isFullscreen}
+            title={isFullscreen ? 'Exit full screen (Esc)' : 'Edit in full screen'}
+          >
+            {isFullscreen ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+            <span>{isFullscreen ? 'Exit full screen' : 'Full screen'}</span>
+          </button>
+
+          <button
+            type="button"
             className={`${styles.toggleFieldsBtn} ${showFieldsSidebar ? styles.active : ''}`}
-            onClick={() => setShowFieldsSidebar(!showFieldsSidebar)}
+            onClick={() => { setShowFieldsSidebar(!showFieldsSidebar); setShowTextSidebar(false); }}
             title={showFieldsSidebar ? 'Hide Form Fields Panel' : 'Show Form Fields Panel'}
           >
             <span>{showFieldsSidebar ? '✕ Close Form' : '📋 Form Fields'}</span>
@@ -420,6 +462,7 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
         </div>
 
         <div className={styles.navRight}>
+          <button type="button" className={`${styles.toggleFieldsBtn} ${showTextSidebar ? styles.active : ''}`} aria-pressed={showTextSidebar} onClick={() => { setShowTextSidebar(!showTextSidebar); setShowFieldsSidebar(false); }} title="Edit every label, button, placeholder, and text on this page"><Type size={15} /><span>All text</span></button>
           <a href={targetUrl} target="_blank" rel="noopener noreferrer" className={styles.externalLink}>
             <span>View Live</span>
             <ExternalLink size={14} />
@@ -432,7 +475,7 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
             className={`${styles.publishBtn} ${hasUnsavedChanges ? styles.saveBtnHasUnsaved : ''}`}
           >
             <Save size={16} />
-            <span>{saving ? 'Publishing...' : hasUnsavedChanges ? 'Save to MongoDB *' : 'Save to MongoDB'}</span>
+            <span>{saving ? 'Publishing...' : hasUnsavedChanges ? 'Save changes *' : 'Save changes'}</span>
           </button>
         </div>
       </header>
@@ -441,21 +484,23 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
       {saveSuccess && (
         <div className={styles.successToast}>
           <CheckCircle2 size={18} />
-          <span>Content saved to MongoDB and published live with instant cache revalidation!</span>
+          <span>Changes saved and published.</span>
         </div>
       )}
       {errorMessage && (
-        <div className={styles.errorToast}>
+        <div className={styles.errorToast} role="alert">
           <AlertCircle size={18} />
           <span>{errorMessage}</span>
+          {canRetrySave && <button type="button" className={styles.retrySaveBtn} disabled={saving} onClick={handleSave}>Retry save</button>}
         </div>
       )}
 
       {/* Split Workspace */}
       <div className={styles.workspace}>
+        {showTextSidebar && <AllTextPanel entries={textEntries} onChange={updatePageText} onClose={() => setShowTextSidebar(false)} />}
         {/* Optional Form Panel (collapsed by default for pure visual editing) */}
         {showFieldsSidebar && (
-          <aside className={styles.formPanel}>
+          <aside className={styles.formPanel} onChange={() => setHasUnsavedChanges(true)}>
             <div className={styles.formScroll}>
             {type === 'location' ? (
               <div className={styles.formFields}>
@@ -689,7 +734,8 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
         {/* Right Live Preview Panel */}
         <main className={styles.previewPanel}>
           <div className={styles.visualHintBanner}>
-            <span>💡 <strong>Direct Live Editing:</strong> Click on any headline, paragraph, card, or FAQ directly on the webpage to edit it live. Changes save instantly to MongoDB.</span>
+            <span>{useControls ? 'Open menus, FAQs, and booking panels, then switch back to editing.' : <><strong>Click any text, label, or button to edit.</strong> All text includes placeholders and dropdown options. Save changes to publish.</>}</span>
+            <button type="button" className={styles.controlsToggle} onClick={toggleControls} aria-pressed={useControls}><MousePointer2 size={13} />{useControls ? 'Edit text' : 'Use controls'}</button>
           </div>
 
           <div className={`${styles.deviceFrame} ${styles[previewDevice]}`}>
@@ -704,17 +750,17 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
               </div>
               <div
                 className={styles.previewLockBadge}
-                title="Direct in-place text editing active. Click any text to edit."
+                title="Click highlighted text to edit, then select Save changes."
               >
                 <LockKeyhole size={11} />
-                <span>Text Editable</span>
+                <span>{useControls ? 'Using controls' : 'All text editable'}</span>
               </div>
             </div>
 
             <iframe
               ref={iframeRef}
               src={previewSrc}
-              onLoad={handleIframeLoad}
+              onLoad={() => { iframeRef.current?.contentWindow?.postMessage({ type: 'PREVIEW_REQUEST_TEXT_CATALOG' }, window.location.origin); }}
               title="Live Graphical Page Preview"
               className={styles.previewIframe}
             />
@@ -722,7 +768,7 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
             {clickBlockedNotice && (
               <div className={styles.previewToast} role="status">
                 <AlertCircle size={15} />
-                <span>Buttons &amp; links are disabled in Live Preview so you won&apos;t accidentally open another page.</span>
+                <span>Navigation and form submission are paused while editing. Select Use controls to open menus and panels.</span>
               </div>
             )}
           </div>

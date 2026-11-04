@@ -2,20 +2,24 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   background: #f4f7f2;
   font-family: var(--font-body);
-  zoom: 0.9; /* Reduced scale for comfortable live editing */
+  width: 100%;
+  min-width: 0;
 }
 
 .editorNav {
-  height: 64px;
+  min-height: 56px;
+  gap: 12px;
+  flex-wrap: wrap;
   background: #fff;
   border-bottom: 1px solid #dce6d6;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 8px 16px;
   flex-shrink: 0;
   z-index: 10;
 }
@@ -23,7 +27,9 @@
 .navLeft {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
 }
 
 .backBtn {
@@ -51,12 +57,22 @@
 }
 
 .pageTitle {
-  font-size: 15px;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  letter-spacing: normal;
+  font-size: 14px;
   font-weight: 600;
   color: #435b4b;
 }
 
 .pageTitle span {
+  font-size: inherit;
+  letter-spacing: normal;
   color: #173d2d;
   font-weight: 800;
 }
@@ -103,7 +119,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s;
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
 .toggleFieldsBtn:hover {
@@ -130,31 +146,17 @@
 
 .visualHintBanner {
   background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  border-bottom: 1px solid #bbf7d0;
   color: #166534;
   font-size: 12px;
-  padding: 8px 16px;
-  border-radius: 8px;
+  line-height: 1.5;
+  padding: 5px 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  justify-content: space-between;
+  gap: 12px;
   flex-shrink: 0;
   width: 100%;
-  max-width: 1200px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.previewPanel {
-  flex: 1;
-  background: #e9efe6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 20px 20px 20px;
-  overflow: hidden;
-  min-width: 0;
 }
 
 .deviceControls {
@@ -200,7 +202,8 @@
 .navRight {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .externalLink {
@@ -278,8 +281,9 @@
 }
 
 .formPanel {
-  width: 460px;
-  max-width: 42%;
+  width: 360px;
+  max-width: 36%;
+  flex-shrink: 0;
   background: #fff;
   border-right: 1px solid #dce6d6;
   display: flex;
@@ -427,16 +431,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  flex-direction: column;
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
   overflow: hidden;
 }
 
 .deviceFrame {
   position: relative;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
+  max-width: 100%;
   background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -456,7 +463,7 @@
 }
 
 .frameHeader {
-  height: 38px;
+  height: 30px;
   background: #f3f7f0;
   border-bottom: 1px solid #dbe6d5;
   display: flex;
@@ -498,7 +505,8 @@
 .previewIframe {
   flex: 1;
   width: 100%;
-  height: 100%;
+  min-height: 0;
+  display: block;
   border: none;
   background: #fff;
 }
@@ -559,3 +567,159 @@
 }
 
 
+
+@media (max-width: 1200px) {
+  .liveBadge, .divider, .externalLink {
+    display: none;
+  }
+
+  .navLeft {
+    flex-basis: 240px;
+  }
+}
+
+@media (max-width: 760px) {
+  .editorNav {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .navLeft {
+    flex: 1 1 180px;
+  }
+
+  .deviceControls {
+    order: 3;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .toggleFieldsBtn {
+    padding-inline: 8px;
+  }
+
+  .publishBtn {
+    padding: 9px 12px;
+  }
+
+  .formPanel {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: min(360px, 90%);
+    max-width: 90%;
+    z-index: 20;
+    box-shadow: 8px 0 24px #173d2d26;
+  }
+
+  .workspace {
+    position: relative;
+  }
+
+  .visualHintBanner, .frameHeader {
+    padding-inline: 8px;
+  }
+
+  .trafficLights {
+    display: none;
+  }
+}
+
+.controlsToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 5px 9px;
+  border: 1px solid #b9d8bd;
+  border-radius: 6px;
+  background: #fff;
+  color: #173d2d;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.textPanelHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 18px 12px;
+}
+
+.textPanelHeader h2 {
+  margin: 0 0 6px;
+  font: 700 18px/1.4 var(--font-body);
+  letter-spacing: normal;
+}
+
+.textPanelHeader h2 span {
+  color: #53705c;
+  font-weight: 500;
+}
+
+.textPanelHeader p, .textPanelNote {
+  color: #53705c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.textSearch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 18px 12px;
+  padding: 8px 10px;
+  border: 1px solid #c9d8c4;
+  border-radius: 8px;
+  color: #53705c;
+}
+
+.textSearch input {
+  border: 0;
+  background: transparent;
+  min-width: 0;
+  width: 100%;
+  outline: none;
+  font-size: 13px;
+  color: #173d2d;
+}
+
+.allTextFields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.textEntryLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textEntryLabel button:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.errorToast > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.retrySaveBtn {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border: 1px solid #f4aaa5;
+  border-radius: 6px;
+  color: #9b2018;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.retrySaveBtn:disabled {
+  opacity: .6;
+  cursor: wait;
+}

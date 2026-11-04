@@ -19,8 +19,8 @@ const journey = [
 
 export default function ServiceHero({ service, detail, city }: ServiceHeroProps) {
   const baseDetail = serviceDetails[service.slug];
-  const title = detail?.title || baseDetail?.title || service.title;
-  const accent = detail?.accent || baseDetail?.accent;
+  const title = detail?.title ?? baseDetail?.title ?? service.title;
+  const accent = detail?.accent ?? baseDetail?.accent;
   const enquiryHref = city ? '#local-service-enquiry' : '#service-enquiry';
   const processHref = city ? '#local-process' : '#treatment-process';
   const imagePosition = serviceHeroPositions[service.slug];
@@ -38,12 +38,12 @@ export default function ServiceHero({ service, detail, city }: ServiceHeroProps)
         </div>
 
         <div className={styles.copy}>
-          <h1 id="service-hero-title" data-edit-field="title">
+          <h1 id="service-hero-title">
             <span data-edit-field="titleMain">{title}</span>
             {accent && <span data-edit-field="accent">{accent}</span>}
             {city && <small>for {city.name} properties</small>}
           </h1>
-          <p className={styles.lead} data-edit-field="intro">{city ? (detail.intro || service.text) : detail.intro}</p>
+          <p className={styles.lead} data-edit-field="intro">{city ? (detail.intro ?? service.text) : detail.intro}</p>
           <ul className={styles.highlights}>{[...service.tags, 'Clear quotation'].map(text => <li key={text}><Check size={15} strokeWidth={2.6} aria-hidden="true" />{text}</li>)}</ul>
           <div className={styles.actions}>
             <a className={styles.primary} href={enquiryHref}><CalendarCheck2 size={19} aria-hidden="true" />Book a free inspection<ArrowUpRight size={18} aria-hidden="true" /></a>

@@ -1,56 +1,60 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-const uri = process.env.MONGODB_URI;
+type Connection = {
+  uri: string;
+  client: MongoClient;
+  promise: Promise<MongoClient>;
+};
 
-let client: MongoClient | null = null;
-let clientPromise: Promise<MongoClient> | null = null;
+let connection: Connection | undefined;
 
 declare global {
+  // Share the pool across development hot reloads, including its configuration.
   // eslint-disable-next-line no-var
-  var _mongoClientPromise: Promise<MongoClient> | undefined;
+  var _termiteMongoConnection: Connection | undefined;
 }
 
 export function isMongoConfigured(): boolean {
-  return Boolean(process.env.MONGODB_URI && process.env.MONGODB_URI.trim().length > 0);
+  return Boolean(process.env.MONGODB_URI?.trim());
+}
+
+function currentConnection(): Connection | undefined {
+  return process.env.NODE_ENV === 'development' ? global._termiteMongoConnection : connection;
+}
+
+function setConnection(value: Connection | undefined) {
+  if (process.env.NODE_ENV === 'development') global._termiteMongoConnection = value;
+  else connection = value;
 }
 
 export async function getMongoClient(): Promise<MongoClient | null> {
-  const currentUri = process.env.MONGODB_URI?.trim();
-  if (!currentUri) {
-    return null;
+  const uri = process.env.MONGODB_URI?.trim();
+  const cached = currentConnection();
+  if (cached && cached.uri !== uri) {
+    setConnection(undefined);
+    void cached.client.close().catch(() => {});
   }
+  if (!uri) return null;
+  const existing = currentConnection();
+  if (existing) return existing.promise;
 
-  if (process.env.NODE_ENV === 'development') {
-    if (!global._mongoClientPromise) {
-      client = new MongoClient(currentUri, {
-        serverApi: {
-          version: ServerApiVersion.v1,
-          strict: true,
-          deprecationErrors: true,
-        },
-      });
-      global._mongoClientPromise = client.connect();
-    }
-    return global._mongoClientPromise;
-  }
-
-  if (!clientPromise) {
-    client = new MongoClient(currentUri, {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      },
-    });
-    clientPromise = client.connect();
-  }
-
-  return clientPromise;
+  const client = new MongoClient(uri, {
+    serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true },
+    serverSelectionTimeoutMS: 10000,
+    connectTimeoutMS: 10000,
+  });
+  const next: Connection = { uri, client, promise: Promise.resolve(client) };
+  next.promise = client.connect().catch(async error => {
+    // A rejected promise must never poison future Save attempts.
+    if (currentConnection() === next) setConnection(undefined);
+    await client.close().catch(() => {});
+    throw error;
+  });
+  setConnection(next);
+  return next.promise;
 }
 
 export async function getDb(dbName = 'termite_pest_control') {
   const client = await getMongoClient();
-  if (!client) return null;
-  return client.db(dbName);
+  return client ? client.db(dbName) : null;
 }
-

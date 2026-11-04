@@ -8,7 +8,10 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "db:seed": "node scripts/seed-mongodb.mjs",
-    "postinstall": "node scripts/patch-next.cjs"
+    "postinstall": "node scripts/patch-next.cjs",
+    "test:page-text": "node scripts/test-page-text.cjs",
+    "test:save": "node scripts/test-mongodb.cjs && node scripts/test-page-text.cjs",
+    "db:check": "node scripts/check-mongodb.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
@@ -23,6 +26,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@types/three": "^0.186.0",
+    "jsdom": "^30.1.3",
     "qrcode-terminal": "^0.12.0",
     "typescript": "^5.9.0"
   },

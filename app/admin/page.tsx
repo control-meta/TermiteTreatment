@@ -43,7 +43,7 @@ export default async function AdminDashboardPage() {
           <p>
             {mongoReady ? (
               <span className={styles.statusTextGreen}>
-                <CheckCircle2 size={14} /> Connected to MongoDB. Total live pages: <strong>{locations.length + termiteServices.length + localServices.length}</strong>
+                <CheckCircle2 size={14} /> MongoDB configured. Managed pages: <strong>{locations.length + termiteServices.length + localServices.length}</strong>
               </span>
             ) : (
               <span className={styles.statusTextStandby}>

@@ -1,282 +1,266 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { textAttributes, type PageTextEntry, type PageTextOverride, type PageTextOverrides } from '../lib/page-text';
+import { applyPageTextOverrides, restorePageTextChanges, type AppliedTextChange, attributeTargets, isPageTextElement, mappedTextSelector, overrideForNode, pageTextSelector, textLabel, textOverrideKey } from '../lib/page-text-dom';
 
-export default function AdminPreviewGuard() {
+const emptyOverrides: PageTextOverrides = {};
+
+type Target = { entry: PageTextEntry; element: HTMLElement; node?: Text; override?: PageTextOverride; mapped?: boolean };
+
+export default function AdminPreviewGuard({ textOverrides = emptyOverrides }: { textOverrides?: PageTextOverrides }) {
+  const pathname = usePathname();
   useEffect(() => {
-    // Only activate if running inside an iframe or admin_preview parameter is present
-    const isInsideIframe = typeof window !== 'undefined' && window.self !== window.top;
-    const hasPreviewParam =
-      typeof window !== 'undefined' &&
-      (window.location.search.includes('admin_preview=1') ||
-        window.location.search.includes('preview=true'));
-
-    if (!isInsideIframe && !hasPreviewParam) {
-      return;
-    }
-
-    // 1. Inject styles for live inline visual editing & navigation prevention
-    const styleEl = document.createElement('style');
-    styleEl.id = 'admin-preview-guard-styles';
-    styleEl.textContent = `
-      /* Hide standard floating buttons inside preview so canvas is completely clear */
-      aside[aria-label="Quick contact buttons"],
-      div[aria-label="Quick booking"] {
-        display: none !important;
-      }
-
-      /* Non-text buttons & links: show disabled cursor and block navigation */
-      a:not([contenteditable="true"]),
-      button:not([contenteditable="true"]):not([data-allow-preview]),
-      input[type="submit"],
-      input[type="button"] {
-        cursor: not-allowed;
-      }
-
-      /* Hover highlight on all editable text elements */
-      h1, h2, h3, h4, h5, h6,
-      p,
-      summary,
-      figcaption,
-      [data-edit-field],
-      [data-edit-faq-part],
-      [data-edit-benefit-part],
-      [data-edit-step-part],
-      [data-edit-area-index],
-      [data-edit-area-text] {
-        position: relative;
-        cursor: text !important;
-        transition: outline 0.15s ease, background-color 0.15s ease;
-      }
-
-      h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover,
-      p:hover,
-      summary:hover,
-      figcaption:hover,
-      [data-edit-field]:hover,
-      [data-edit-faq-part]:hover,
-      [data-edit-benefit-part]:hover,
-      [data-edit-step-part]:hover,
-      [data-edit-area-index]:hover,
-      [data-edit-area-text]:hover {
-        outline: 2px dashed #16a34a !important;
-        outline-offset: 3px !important;
-        border-radius: 4px !important;
-        background-color: rgba(22, 163, 74, 0.04) !important;
-      }
-
-      /* Active element being edited */
-      [contenteditable="true"] {
-        outline: 2px solid #16a34a !important;
-        outline-offset: 3px !important;
-        border-radius: 4px !important;
-        background-color: rgba(22, 163, 74, 0.08) !important;
-        caret-color: #16a34a !important;
-        cursor: text !important;
-      }
-
-      /* Top visual editor banner */
-      #preview-visual-editor-banner {
-        position: fixed;
-        top: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #14532d;
-        color: #fff;
-        padding: 5px 14px;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-        z-index: 999999;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        pointer-events: none;
-        user-select: none;
-        opacity: 0.95;
-      }
-      #preview-visual-editor-banner span.dot {
-        width: 7px;
-        height: 7px;
-        background: #4ade80;
-        border-radius: 50%;
-        animation: pulseDot 1.5s infinite;
-      }
-      @keyframes pulseDot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(0.85); }
-      }
+    const params = new URLSearchParams(window.location.search);
+    const preview = window.self !== window.top || params.get('admin_preview') === '1' || params.get('preview') === 'true';
+    if (!preview && Object.keys(textOverrides).length === 0) return;
+    const draft = { ...textOverrides };
+    let editing = true;
+    let disposed = false;
+    let timer: ReturnType<typeof setTimeout>;
+    const applied = new Set<AppliedTextChange>();
+    const targets = new Map<string, Target>();
+    const mappedElements = new Map<HTMLElement, string | null>();
+    const knownNodes = new WeakSet<Text>();
+    let popover: HTMLElement | null = null;
+    const style = document.createElement('style');
+    style.setAttribute('data-text-editor-ignore', '');
+    style.textContent = `
+      [data-preview-editable], [data-preview-text-target] { cursor: text !important; caret-color: #15803d; }
+      [data-preview-editable]:hover, [data-preview-text-target]:hover { outline: 2px dashed #16a34a; outline-offset: 3px; }
+      [data-preview-editable]:focus { outline: 2px solid #16a34a; outline-offset: 3px; background-color: #16a34a0f; }
+      #page-text-editor-popover { position: fixed; z-index: 2147483647; width: min(360px, calc(100vw - 24px)); padding: 14px; max-height: calc(100dvh - 24px); overflow: auto; border: 1px solid #9ac7a5; border-radius: 12px; background: #fff; color: #173d2d; box-shadow: 0 10px 40px #173d2d40; font: 14px/1.5 Arial, sans-serif; }
+      #page-text-editor-popover label { display: block; font: 600 13px/1.5 Arial, sans-serif; }
+      #page-text-editor-popover textarea { display: block; width: 100%; min-height: 80px; max-height: 240px; margin: 8px 0; padding: 10px; border: 1px solid #a7c6ad; border-radius: 7px; color: #173d2d; background: #fff; font: 15px/1.5 Arial, sans-serif; resize: vertical; }
+      #page-text-editor-popover button { padding: 7px 14px; border: 0; border-radius: 6px; background: #173d2d; color: white; cursor: pointer; font: 600 13px/1.5 Arial, sans-serif; }
+      #page-text-editor-popover small { margin-left: 10px; color: #53705c; font: 12px/1.5 Arial, sans-serif; }
     `;
-    document.head.appendChild(styleEl);
-
-    // Add visual banner
-    const banner = document.createElement('div');
-    banner.id = 'preview-visual-editor-banner';
-    banner.innerHTML = '<span class="dot"></span> Live Click &amp; Edit Mode Active';
-    document.body.appendChild(banner);
-
-    let activeEditableEl: HTMLElement | null = null;
-
-    function sendUpdate(el: HTMLElement) {
-      const field = el.getAttribute('data-edit-field');
-      const faqIndex = el.getAttribute('data-edit-faq-index');
-      const faqPart = el.getAttribute('data-edit-faq-part');
-      const benefitIndex = el.getAttribute('data-edit-benefit-index');
-      const benefitPart = el.getAttribute('data-edit-benefit-part');
-      const stepIndex = el.getAttribute('data-edit-step-index');
-      const stepPart = el.getAttribute('data-edit-step-part');
-      const areaIndex = el.getAttribute('data-edit-area-index');
-
-      const text = el.innerText.trim();
-
-      try {
-        window.parent.postMessage(
-          {
-            type: 'PREVIEW_TEXT_CHANGED',
-            payload: {
-              field,
-              faqIndex: faqIndex !== null ? parseInt(faqIndex, 10) : null,
-              faqPart,
-              benefitIndex: benefitIndex !== null ? parseInt(benefitIndex, 10) : null,
-              benefitPart,
-              stepIndex: stepIndex !== null ? parseInt(stepIndex, 10) : null,
-              stepPart,
-              areaIndex: areaIndex !== null ? parseInt(areaIndex, 10) : null,
-              id: el.id || null,
-              tagName: el.tagName.toLowerCase(),
-              text,
-            },
-          },
-          '*'
-        );
-      } catch {
-        // ignore
-      }
+    const draftElement = document.createElement('script');
+    draftElement.type = 'application/json';
+    draftElement.id = 'page-text-overrides-draft';
+    draftElement.setAttribute('data-text-editor-ignore', '');
+    if (preview) {
+      document.head.appendChild(style);
+      document.body.appendChild(draftElement);
     }
 
-    // 2. Intercept click events
-    const handleCaptureClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-
-      // Find if clicking inside an editable text element
-      const editableTarget = target.closest(
-        'h1, h2, h3, h4, h5, h6, p, summary, figcaption, [data-edit-field], [data-edit-faq-part], [data-edit-benefit-part], [data-edit-step-part], [data-edit-area-index], [data-edit-area-text]'
-      ) as HTMLElement | null;
-
-      if (editableTarget) {
-        // Prevent parent links or buttons from navigating
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (activeEditableEl && activeEditableEl !== editableTarget) {
-          activeEditableEl.contentEditable = 'false';
-          sendUpdate(activeEditableEl);
-        }
-
-        activeEditableEl = editableTarget;
-        editableTarget.contentEditable = 'true';
-        editableTarget.focus();
-        return;
-      }
-
-      // If clicked outside active editable element, finish editing
-      if (activeEditableEl && !activeEditableEl.contains(target)) {
-        activeEditableEl.contentEditable = 'false';
-        sendUpdate(activeEditableEl);
-        activeEditableEl = null;
-      }
-
-      // If clicked on any other interactive element (buttons, forms, anchors without editable text)
-      const actionable = target.closest(
-        'a, button, input[type="submit"], input[type="button"], [role="button"]'
-      );
-      if (actionable) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-
-        try {
-          window.parent.postMessage({ type: 'PREVIEW_CLICK_BLOCKED' }, '*');
-        } catch {
-          // ignore error
-        }
-      }
+    const post = (type: string, payload: unknown) => window.parent.postMessage({ type, payload }, window.location.origin);
+    const publishDraft = () => {
+      draftElement.textContent = JSON.stringify(draft);
+      post('PREVIEW_TEXT_OVERRIDES_CHANGED', draft);
     };
-
-    // 3. Handle live input changes while typing
-    const handleInput = (e: Event) => {
-      const target = e.target as HTMLElement | null;
-      if (target && target.isContentEditable) {
-        sendUpdate(target);
-      }
+    const publishCatalog = () => {
+      const entries = Array.from(targets.values()).filter(target => target.element.isConnected).map(target => ({ ...target.entry, value: read(target) }));
+      post('PREVIEW_TEXT_CATALOG', entries);
     };
-
-    // 4. Handle blur (focus lost)
-    const handleBlur = (e: FocusEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (target && target.isContentEditable) {
-        target.contentEditable = 'false';
-        sendUpdate(target);
-        if (activeEditableEl === target) {
-          activeEditableEl = null;
-        }
+    function read(target: Target): string {
+      if (target.mapped) return (target.element.innerText ?? target.element.textContent ?? '').trim();
+      if (target.node) return target.node.data;
+      return target.element.getAttribute(target.override!.attribute!) || '';
+    }
+    function sendMapped(el: HTMLElement) {
+      const index = (name: string) => el.hasAttribute(name) ? Number(el.getAttribute(name)) : null;
+      post('PREVIEW_TEXT_CHANGED', {
+        field: el.getAttribute('data-edit-field'),
+        faqIndex: index('data-edit-faq-index'), faqPart: el.getAttribute('data-edit-faq-part'),
+        benefitIndex: index('data-edit-benefit-index'), benefitPart: el.getAttribute('data-edit-benefit-part'),
+        stepIndex: index('data-edit-step-index'), stepPart: el.getAttribute('data-edit-step-part'),
+        areaIndex: index('data-edit-area-index'), text: (el.innerText ?? el.textContent ?? '').trim(),
+      });
+    }
+    function write(target: Target, value: string) {
+      if (target.mapped) {
+        // Keep icons and existing inline elements intact when using the text panel.
+        const walker = document.createTreeWalker(target.element, NodeFilter.SHOW_TEXT);
+        const nodes: Text[] = [];
+        while (walker.nextNode()) if (walker.currentNode.parentElement && isPageTextElement(walker.currentNode.parentElement!)) nodes.push(walker.currentNode as Text);
+        if (nodes.length) { nodes[0].data = value; nodes.slice(1).forEach(node => { node.data = ''; }); }
+        else target.element.appendChild(document.createTextNode(value));
+        target.element.setAttribute('data-preview-dirty', '');
+        sendMapped(target.element);
+      } else {
+        if (target.node) {
+          if (target.element instanceof HTMLOptionElement && !target.element.hasAttribute('value')) target.element.value = target.element.value;
+          target.node.data = value;
+        } else target.element.setAttribute(target.override!.attribute!, value);
+        const override = { ...target.override!, value };
+        if (value === override.source) delete draft[target.entry.key];
+        else draft[target.entry.key] = override;
+        publishDraft();
       }
-    };
-
-    // 5. Intercept keydown (Enter on headings, Escape to blur)
-    const handleCaptureKeyDown = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (!target || !target.isContentEditable) return;
-
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        target.blur();
-        return;
-      }
-
-      // On headings and summaries, prevent Enter from inserting line breaks
-      if (
-        e.key === 'Enter' &&
-        ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SUMMARY', 'SPAN'].includes(target.tagName)
-      ) {
-        e.preventDefault();
-        target.blur();
-      }
-    };
-
-    // 6. Intercept form submit events
-    const handleCaptureSubmit = (e: SubmitEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-    };
-
-    // 7. Prevent window.open
-    try {
-      window.open = () => null;
-    } catch {
-      // ignore
+      target.entry.value = value;
+      publishCatalog();
     }
 
-    window.addEventListener('click', handleCaptureClick, true);
-    document.addEventListener('input', handleInput, true);
-    document.addEventListener('blur', handleBlur, true);
-    window.addEventListener('keydown', handleCaptureKeyDown, true);
-    document.addEventListener('submit', handleCaptureSubmit, true);
-
+    function scan() {
+      if (disposed) return;
+      applyPageTextOverrides(draft, change => { if (!preview) applied.add(change); });
+      if (!preview) return;
+      document.querySelectorAll<HTMLElement>(mappedTextSelector).forEach(el => {
+        if (!isPageTextElement(el) || mappedElements.has(el)) return;
+        mappedElements.set(el, el.getAttribute('contenteditable'));
+        el.contentEditable = editing ? 'plaintext-only' : 'false';
+        if (editing) el.setAttribute('data-preview-editable', '');
+        const key = `mapped:${pageTextSelector(el)}`;
+        targets.set(key, { element: el, mapped: true, entry: { key, label: textLabel(el), source: (el.innerText ?? el.textContent ?? '').trim(), value: (el.innerText ?? el.textContent ?? '').trim() } });
+      });
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      const nodes: Text[] = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode as Text);
+      for (const node of nodes) {
+        const el = node.parentElement;
+        if (!el || !isPageTextElement(el) || el.closest('textarea') || el.closest(mappedTextSelector) || knownNodes.has(node)) continue;
+        const raw = overrideForNode(node);
+        const key = textOverrideKey(raw);
+        if (!node.data.trim() && !draft[key]) continue;
+        knownNodes.add(node);
+        const saved = draft[key];
+        const override = saved && (node.data === saved.source || node.data === saved.value) ? saved : raw;
+        targets.set(key, { element: el, node, override, entry: { key, label: textLabel(el), source: override.source, value: node.data } });
+        if (editing && !(el instanceof HTMLOptionElement)) el.setAttribute('data-preview-text-target', '');
+      }
+      document.body.querySelectorAll('*').forEach(el => {
+        if (!isPageTextElement(el)) return;
+        for (const raw of attributeTargets(el)) {
+          const key = textOverrideKey(raw);
+          if (targets.has(key) && targets.get(key)!.element === el) continue;
+          const saved = draft[key];
+          const override = saved && (raw.value === saved.source || raw.value === saved.value) ? saved : raw;
+          targets.set(key, { element: el, override, entry: { key, label: textLabel(el, raw.attribute), attribute: raw.attribute, source: override.source, value: readAttribute(el, raw.attribute!) } });
+        }
+      });
+      publishCatalog();
+    }
+    function readAttribute(el: Element, attribute: string) { return el.getAttribute(attribute) || ''; }
+    function closePopover() { popover?.remove(); popover = null; }
+    function openPopover(target: Target) {
+      closePopover();
+      popover = document.createElement('div');
+      popover.id = 'page-text-editor-popover';
+      popover.setAttribute('data-text-editor-ignore', '');
+      popover.setAttribute('role', 'dialog');
+      popover.setAttribute('aria-label', `Edit ${target.entry.label.toLowerCase()}`);
+      const label = document.createElement('label');
+      label.textContent = `Edit ${target.entry.label.toLowerCase()}`;
+      const input = document.createElement('textarea');
+      input.value = read(target);
+      input.maxLength = 30000;
+      input.setAttribute('aria-label', 'Text content');
+      input.addEventListener('input', () => write(target, input.value));
+      label.appendChild(input);
+      const done = document.createElement('button');
+      done.textContent = 'Done';
+      done.type = 'button';
+      done.addEventListener('click', closePopover);
+      const hint = document.createElement('small');
+      hint.textContent = 'Save changes to publish.';
+      popover.append(label, done, hint);
+      const rect = target.element.getBoundingClientRect();
+      popover.style.left = `${Math.max(12, Math.min(rect.left, window.innerWidth - 372))}px`;
+      popover.style.top = `${Math.max(12, Math.min(rect.bottom + 8, window.innerHeight - 220))}px`;
+      document.body.appendChild(popover);
+      input.focus();
+      input.select();
+    }
+    function targetAtClick(element: Element, event: MouseEvent): Target | undefined {
+      const candidates = Array.from(targets.values()).filter(target => target.node && (target.element.contains(element) || element.contains(target.element)));
+      for (const target of candidates) {
+        const range = document.createRange();
+        range.selectNodeContents(target.node!);
+        if (Array.from(range.getClientRects()).some(rect => event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom)) return target;
+      }
+      return candidates[0];
+    }
+    function handleClick(e: MouseEvent) {
+      const el = e.target;
+      if (!(el instanceof Element) || el.closest('[data-text-editor-ignore]')) return;
+      if (editing && !(e.altKey && el.closest('button, summary'))) {
+        const mapped = el.closest<HTMLElement>(mappedTextSelector);
+        if (mapped) {
+          closePopover();
+          // Clicking an FAQ arrow toggles its answer; clicking its wording edits it.
+          if (el.closest('svg') && mapped.tagName === 'SUMMARY') { e.stopPropagation(); return; }
+          e.stopPropagation();
+          if (mapped.closest('summary, a, button')) {
+            e.preventDefault();
+            mapped.focus();
+            const doc = document as Document & { caretPositionFromPoint?: (x: number, y: number) => { offsetNode: Node; offset: number } | null; caretRangeFromPoint?: (x: number, y: number) => Range | null };
+            const position = doc.caretPositionFromPoint?.(e.clientX, e.clientY);
+            const range = doc.caretRangeFromPoint?.(e.clientX, e.clientY);
+            const node = position?.offsetNode ?? range?.startContainer;
+            const offset = position?.offset ?? range?.startOffset;
+            if (node && offset !== undefined && mapped.contains(node)) window.getSelection()?.collapse(node, offset);
+          }
+          return;
+        }
+        const target = targetAtClick(el, e) || Array.from(targets.values()).find(target => target.element === el && target.override?.attribute === 'placeholder');
+        if (target) {
+          e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
+          openPopover(target);
+          return;
+        }
+      }
+      closePopover();
+      if (el.closest('a, input[type="submit"], input[type="button"], button[type="submit"]') || (el.closest('button') && el.closest('form') && !el.closest('button[type="button"]'))) {
+        e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
+        post('PREVIEW_CLICK_BLOCKED', null);
+      }
+    }
+    function handleInput(e: Event) {
+      const el = e.target instanceof Element ? e.target.closest<HTMLElement>(mappedTextSelector) : null;
+      if (!el || el.closest('[data-text-editor-ignore]')) return;
+      el.setAttribute('data-preview-dirty', '');
+      sendMapped(el);
+      publishCatalog();
+    }
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape' && popover) { e.preventDefault(); closePopover(); return; }
+      if (!(e.target instanceof HTMLElement) || !e.target.isContentEditable) return;
+      if (e.key === 'Escape' || (e.key === 'Enter' && e.target.closest('h1, h2, h3, h4, h5, h6, summary'))) { e.preventDefault(); e.target.blur(); }
+    }
+    function handleSubmit(e: Event) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); }
+    function handleMessage(e: MessageEvent) {
+      if (e.origin !== window.location.origin || e.source !== window.parent) return;
+      if (e.data?.type === 'PREVIEW_SET_TEXT' && typeof e.data.payload?.key === 'string' && typeof e.data.payload?.value === 'string') {
+        const target = targets.get(e.data.payload.key);
+        if (target) write(target, e.data.payload.value);
+      }
+      if (e.data?.type === 'PREVIEW_SET_EDITING') {
+        editing = e.data.payload !== false;
+        closePopover();
+        mappedElements.forEach((_, el) => { el.contentEditable = editing ? 'plaintext-only' : 'false'; if (editing) el.setAttribute('data-preview-editable', ''); else el.removeAttribute('data-preview-editable'); });
+        targets.forEach(target => { if (target.node) { if (editing) target.element.setAttribute('data-preview-text-target', ''); else target.element.removeAttribute('data-preview-text-target'); } });
+      }
+      if (e.data?.type === 'PREVIEW_REQUEST_TEXT_CATALOG') { scan(); draftElement.textContent = JSON.stringify(draft); }
+    }
+    const observer = new MutationObserver(records => {
+      if (records.every(record => (record.target instanceof Element ? record.target : record.target.parentElement)?.closest('[data-text-editor-ignore]'))) return;
+      clearTimeout(timer);
+      timer = setTimeout(scan, 60);
+    });
+    scan();
+    if (preview) post('PREVIEW_READY', null);
+    draftElement.textContent = JSON.stringify(draft);
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: [...textAttributes, 'value'] });
+    if (preview) {
+      window.addEventListener('click', handleClick, true);
+      document.addEventListener('input', handleInput, true);
+      window.addEventListener('keydown', handleKeyDown, true);
+      document.addEventListener('submit', handleSubmit, true);
+      window.addEventListener('message', handleMessage);
+    }
     return () => {
-      styleEl.remove();
-      banner.remove();
-      window.removeEventListener('click', handleCaptureClick, true);
+      disposed = true; clearTimeout(timer); observer.disconnect(); restorePageTextChanges(applied.values()); closePopover(); style.remove(); draftElement.remove();
+      mappedElements.forEach((original, el) => { if (original === null) el.removeAttribute('contenteditable'); else el.setAttribute('contenteditable', original); el.removeAttribute('data-preview-editable'); });
+      targets.forEach(target => target.element.removeAttribute('data-preview-text-target'));
+      window.removeEventListener('click', handleClick, true);
       document.removeEventListener('input', handleInput, true);
-      document.removeEventListener('blur', handleBlur, true);
-      window.removeEventListener('keydown', handleCaptureKeyDown, true);
-      document.removeEventListener('submit', handleCaptureSubmit, true);
+      window.removeEventListener('keydown', handleKeyDown, true);
+      document.removeEventListener('submit', handleSubmit, true);
+      window.removeEventListener('message', handleMessage);
     };
-  }, []);
+  }, [pathname, textOverrides]);
 
   return null;
 }

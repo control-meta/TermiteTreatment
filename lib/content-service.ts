@@ -5,6 +5,7 @@ import { serviceDetails as staticServiceDetails } from './service-details';
 import { termiteServices as staticTermiteServices } from './company';
 import { getLocalizedService as staticGetLocalizedService } from './location-services';
 import { revalidatePath } from 'next/cache';
+import { validateTextOverrides } from './page-text';
 
 export type EditablePage = {
   type: 'location' | 'service' | 'local_service';
@@ -123,6 +124,8 @@ export async function getAllLocationServices() {
 }
 
 export async function getPageContent(type: 'location' | 'service' | 'local_service', slug: string) {
+  const fallback = getStaticPageContent(type, slug);
+  if (!fallback) return null;
   // Always query MongoDB first when configured
   if (isMongoConfigured()) {
     try {
@@ -132,7 +135,9 @@ export async function getPageContent(type: 'location' | 'service' | 'local_servi
           const doc = await db.collection('location_services').findOne({ key: slug });
           if (doc) {
             return {
+              ...fallback,
               ...doc,
+              textOverrides: validateTextOverrides(doc.textOverrides),
               _id: doc._id.toString(),
               _source: 'mongodb' as const,
             };
@@ -142,7 +147,9 @@ export async function getPageContent(type: 'location' | 'service' | 'local_servi
           const doc = await collection.findOne({ slug });
           if (doc) {
             return {
+              ...fallback,
               ...doc,
+              textOverrides: validateTextOverrides(doc.textOverrides),
               _id: doc._id.toString(),
               _source: 'mongodb' as const,
             };
@@ -154,10 +161,13 @@ export async function getPageContent(type: 'location' | 'service' | 'local_servi
     }
   }
 
-  // Fallback to static code files if DB not connected
+  return fallback;
+}
+
+function getStaticPageContent(type: 'location' | 'service' | 'local_service', slug: string) {
+  // Static content also fills fields missing from older MongoDB documents.
   if (type === 'local_service') {
     // slug is city-service e.g. bangalore-residential-termite-control
-    const parts = slug.split('-');
     // find matching city
     const city = staticLocations.find(l => slug.startsWith(l.slug));
     const serviceSlug = city ? slug.slice(city.slug.length + 1) : '';
@@ -184,6 +194,7 @@ export async function getPageContent(type: 'location' | 'service' | 'local_servi
       steps: detail.steps,
       faqs: detail.faqs.map(([q, a]) => ({ question: q, answer: a })),
       url: `/locations/${city.slug}/${serviceSlug}`,
+      textOverrides: {},
       _source: 'fallback' as const,
     };
   } else if (type === 'location') {
@@ -201,6 +212,7 @@ export async function getPageContent(type: 'location' | 'service' | 'local_servi
       context: loc.context,
       areas: loc.areas,
       faqs: faqs.map(([q, a]) => ({ question: q, answer: a })),
+      textOverrides: {},
       _source: 'fallback' as const,
     };
   } else {
@@ -216,7 +228,11 @@ export async function getPageContent(type: 'location' | 'service' | 'local_servi
       definition: detail.definition,
       benefitTitle: detail.benefitTitle,
       benefits: detail.benefits,
+      processTitle: detail.processTitle,
+      processIntro: detail.processIntro,
+      steps: detail.steps,
       faqs: detail.faqs.map(([q, a]) => ({ question: q, answer: a })),
+      textOverrides: {},
       _source: 'fallback' as const,
     };
   }
@@ -232,6 +248,7 @@ export async function getLocalizedServiceContent(citySlug: string, serviceSlug: 
         if (doc) {
           return {
             ...doc,
+            textOverrides: validateTextOverrides(doc.textOverrides),
             _id: doc._id.toString(),
             _source: 'mongodb' as const,
           };
@@ -258,8 +275,10 @@ export async function savePageContent(type: 'location' | 'service' | 'local_serv
     type === 'location' ? 'locations' : type === 'service' ? 'services' : 'location_services';
   const collection = db.collection(collectionName);
 
-  // Strip _id or system fields
-  const { _id, _source, ...cleanData } = data;
+  // Timestamps belong to the server. A loaded createdAt must never also enter
+  // $set, because MongoDB rejects paths shared with $setOnInsert.
+  const { _id, _source, createdAt, updatedAt, ...cleanData } = data;
+  const now = new Date().toISOString();
 
   const filter = type === 'local_service' ? { key: slug } : { slug };
 
@@ -268,10 +287,10 @@ export async function savePageContent(type: 'location' | 'service' | 'local_serv
     {
       $set: {
         ...cleanData,
-        updatedAt: new Date().toISOString(),
+        updatedAt: now,
       },
       $setOnInsert: {
-        createdAt: new Date().toISOString(),
+        createdAt: now,
       },
     },
     { upsert: true }
@@ -286,8 +305,8 @@ export async function savePageContent(type: 'location' | 'service' | 'local_serv
       revalidatePath(`/services/${slug}`);
       revalidatePath('/services');
     } else if (type === 'local_service') {
-      const [citySlug, serviceSlug] = slug.split('-');
-      revalidatePath(`/locations/${citySlug}/${serviceSlug}`);
+      const city = staticLocations.find(location => slug.startsWith(`${location.slug}-`));
+      if (city) revalidatePath(`/locations/${city.slug}/${slug.slice(city.slug.length + 1)}`);
     }
     revalidatePath('/');
   } catch (err) {

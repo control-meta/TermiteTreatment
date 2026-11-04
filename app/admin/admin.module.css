@@ -123,6 +123,22 @@
   flex: 1;
 }
 
+/* Give the visual editor the whole viewport without shrinking its iframe. */
+.adminRoot:has([data-page-editor]) {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  zoom: 1;
+}
+
+.adminRoot:has([data-page-editor]) > .header {
+  display: none;
+}
+
+.adminRoot:has([data-page-editor]) > .adminMain {
+  min-height: 0;
+}
+
 .container {
   max-width: 1400px;
   margin: 0 auto;

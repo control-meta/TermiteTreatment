@@ -1,3 +1,4 @@
+import AdminPreviewGuard from '../../../../components/AdminPreviewGuard';
 import ServiceBackground from '../../../../components/ServiceBackground';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -38,8 +39,8 @@ export default async function CityLocationPage({ params }: { params: Promise<{ c
     ? rawFaqs.map((item: any): [string, string] => (Array.isArray(item) ? [String(item[0] || ''), String(item[1] || '')] : [String(item.question || ''), String(item.answer || '')]))
     : locationFaqs(city);
 
-  const heroLead = content?.heroLead || 'Protect Your Home & Business with Expert Termite Control Services';
-  const aboutText = content?.about || city.about;
+  const heroLead = content?.heroLead ?? 'Protect Your Home & Business with Expert Termite Control Services';
+  const aboutText = content?.about ?? city.about;
   const areas = content?.areas && Array.isArray(content.areas) && content.areas.length > 0 ? content.areas : city.areas;
 
   const url = `https://termitepestcontrol.co.in/locations/${city.slug}`;
@@ -50,6 +51,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ c
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [['Home', '/'], ['Our Locations', '/locations'], [city.name, `/locations/${city.slug}`]].map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `https://termitepestcontrol.co.in${path}` })) },
   ];
   return <>
+    <AdminPreviewGuard textOverrides={content?.textOverrides} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <SiteHeader />
     <main className={styles.page} id="main">
@@ -59,7 +61,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ c
         <div className={styles.heroVeil} aria-hidden="true" />
         <ServiceBackground hero />
         <div className={styles.shell}><div className={styles.heroCopy}>
-          <h1 id="location-title" data-edit-field="heroTitle">{content?.heroTitle ? content.heroTitle : <>Termite Treatment<br />in <span>{city.name}</span></>}</h1>
+          <h1 id="location-title" data-edit-field="heroTitle">{content?.heroTitle != null ? content.heroTitle : <>Termite Treatment<br />in <span>{city.name}</span></>}</h1>
           <p className={styles.heroLead} data-edit-field="heroLead">{heroLead}</p>
           <ul className={styles.heroChecks}>{['Safe & Effective Treatment', 'Odorless & Eco-Friendly Solution', 'Experienced Local Experts'].map(text => <li key={text}><Check size={15} strokeWidth={3} aria-hidden="true" />{text}</li>)}</ul>
           <a className={styles.accentButton} href="#local-enquiry"><CalendarCheck2 size={18} aria-hidden="true" />Book a Free Inspection <ArrowRight size={17} aria-hidden="true" /></a>

@@ -1,3 +1,4 @@
+import AdminPreviewGuard from '../../../../components/AdminPreviewGuard';
 import ServiceHero from '../../../../components/ServiceHero';
 import ServiceBackground from '../../../../components/ServiceBackground';
 import type { Metadata } from 'next';
@@ -62,13 +63,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const detail = content
     ? {
         ...baseDetail,
-        title: content.title || baseDetail.title,
-        accent: content.accent || baseDetail.accent,
-        intro: content.intro || baseDetail.intro,
-        definitionTitle: content.definitionTitle || baseDetail.definitionTitle,
-        definition: content.definition || baseDetail.definition,
-        benefitTitle: content.benefitTitle || baseDetail.benefitTitle,
+        title: content.title ?? baseDetail.title,
+        accent: content.accent ?? baseDetail.accent,
+        intro: content.intro ?? baseDetail.intro,
+        definitionTitle: content.definitionTitle ?? baseDetail.definitionTitle,
+        definition: content.definition ?? baseDetail.definition,
+        benefitTitle: content.benefitTitle ?? baseDetail.benefitTitle,
         benefits: (content.benefits as [string, string][]) || baseDetail.benefits,
+        processTitle: content.processTitle ?? baseDetail.processTitle,
+        processIntro: content.processIntro ?? baseDetail.processIntro,
+        steps: (content.steps as [string, string][]) || baseDetail.steps,
         faqs: normalizedFaqs,
       }
     : baseDetail;
@@ -93,6 +97,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   ];
 
   return <>
+    <AdminPreviewGuard textOverrides={content?.textOverrides} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <SiteHeader />
     <main id="main" className={styles.page}>

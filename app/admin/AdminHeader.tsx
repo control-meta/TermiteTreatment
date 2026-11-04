@@ -24,7 +24,7 @@ export default function AdminHeader({ mongoConfigured }: { mongoConfigured: bool
 
           <div className={`${styles.statusBadge} ${mongoConfigured ? styles.statusActive : styles.statusStandby}`}>
             <Database size={14} />
-            <span>{mongoConfigured ? 'MongoDB: Live Connected' : 'MongoDB: Standby (Local Fallback)'}</span>
+            <span>{mongoConfigured ? 'MongoDB: Configured' : 'MongoDB: Standby (Local Fallback)'}</span>
           </div>
         </div>
 
