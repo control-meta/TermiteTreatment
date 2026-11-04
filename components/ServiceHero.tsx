@@ -1,8 +1,9 @@
 import type { CSSProperties } from 'react';
 import { ArrowDownRight, ArrowRight, ArrowUpRight, CalendarCheck2, Check, ClipboardCheck, MapPin, Phone, ScanSearch, ShieldCheck } from 'lucide-react';
 import { company, termiteServices } from '../lib/company';
-import { serviceDetails, type ServiceDetail } from '../lib/service-details';
+import { type ServiceDetail } from '../lib/service-details';
 import { serviceHeroPositions } from '../lib/service-presentation';
+import { serviceTitle } from '../lib/service-title';
 import styles from './ServiceHero.module.css';
 
 type ServiceHeroProps = {
@@ -18,9 +19,7 @@ const journey = [
 ];
 
 export default function ServiceHero({ service, detail, city }: ServiceHeroProps) {
-  const baseDetail = serviceDetails[service.slug];
-  const title = detail?.title ?? baseDetail?.title ?? service.title;
-  const accent = detail?.accent ?? baseDetail?.accent;
+  const title = serviceTitle(service.slug, detail.title, city?.name);
   const enquiryHref = city ? '#local-service-enquiry' : '#service-enquiry';
   const processHref = city ? '#local-process' : '#treatment-process';
   const imagePosition = serviceHeroPositions[service.slug];
@@ -38,10 +37,8 @@ export default function ServiceHero({ service, detail, city }: ServiceHeroProps)
         </div>
 
         <div className={styles.copy}>
-          <h1 id="service-hero-title">
+          <h1 id="service-hero-title" className={styles.heading}>
             <span data-edit-field="titleMain">{title}</span>
-            {accent && <span data-edit-field="accent">{accent}</span>}
-            {city && <small>for {city.name} properties</small>}
           </h1>
           <p className={styles.lead} data-edit-field="intro">{city ? (detail.intro ?? service.text) : detail.intro}</p>
           <ul className={styles.highlights}>{[...service.tags, 'Clear quotation'].map(text => <li key={text}><Check size={15} strokeWidth={2.6} aria-hidden="true" />{text}</li>)}</ul>

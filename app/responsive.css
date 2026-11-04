@@ -747,7 +747,7 @@
 
 /* Fixed header — stays visible on scroll. */
 .footer-links > .footer-inspection { display: flex; align-items: center; gap: 5px; }
-.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; }
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: transparent; }
 html { scroll-padding-top: 88px; }
 @media (max-width: 760px) {
   html { scroll-padding-top: 84px; }

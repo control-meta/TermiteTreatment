@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import styles from './editor.module.css';
 import AllTextPanel from './AllTextPanel';
+import { announcePublication } from '../../../../../lib/content-publication';
 import { validateTextOverrides, type PageTextEntry } from '../../../../../lib/page-text';
 
 type Props = {
@@ -342,6 +343,7 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
       setHasUnsavedChanges(false);
       setData(payloadData);
       setSaveSuccess(true);
+      announcePublication(targetUrl);
       docClearDirty();
       setTimeout(() => setSaveSuccess(false), 4500);
       refreshPreview();
@@ -630,15 +632,6 @@ export default function LivePageEditor({ type, slug, initialData }: Props) {
                       type="text"
                       value={data.title || ''}
                       onChange={e => setData({ ...data, title: e.target.value })}
-                    />
-                  </label>
-
-                  <label className={styles.fieldLabel}>
-                    <span>Accent Subtitle</span>
-                    <input
-                      type="text"
-                      value={data.accent || ''}
-                      onChange={e => setData({ ...data, accent: e.target.value })}
                     />
                   </label>
 

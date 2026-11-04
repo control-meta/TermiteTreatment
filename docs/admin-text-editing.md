@@ -14,6 +14,12 @@ Structured content remains in its existing document fields. Other copy is stored
 
 Each managed page supplies its overrides to `AdminPreviewGuard`. On public pages, overrides apply after client hydration and are reapplied when interactive content mounts or rerenders. Pages without overrides do not install a public observer. Generic overrides do not change server-rendered metadata or JSON-LD; existing structured fields continue to render on the server. If a template update moves/replaces the source wording, a mismatched override is skipped rather than applied to unrelated copy; reopen the editor to update it.
 
+Managed location, service and city-service routes read MongoDB at request time using `connection()`. They return private, no-store responses instead of serving content captured at build time. This also works when an editor on another deployment writes to the same database. Existing public tabs refresh when focused, restored from browser history, or notified of a save in another tab; preview drafts are excluded from this refresh behavior.
+
+Service heroes use one complete title, with the city included once. Old split title/accent documents are normalized when loaded, and the accent is no longer appended to the heading. Custom titles remain editable. Titles fit on one line at desktop/tablet widths and wrap on phones. Hero typography and image framing depend on width and content, so reducing iframe height does not shrink the page. Both editing panels overlay the preview without changing its width.
+
+Deploy this code to the actual Next.js host with the same MongoDB database configured. A separate CDN must respect the origin's private/no-store response; a CDN rule that forcibly caches HTML must be removed at the host. Local `revalidatePath` calls cannot purge an unrelated deployment or third-party CDN.
+
 Saving requires a working MongoDB connection. Connection failures remain visible as save errors; edits are never reported as published when saving fails.
 
 ## Verification

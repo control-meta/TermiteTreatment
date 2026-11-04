@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import PublishedContentRefresh from './PublishedContentRefresh';
 import { textAttributes, type PageTextEntry, type PageTextOverride, type PageTextOverrides } from '../lib/page-text';
 import { applyPageTextOverrides, restorePageTextChanges, type AppliedTextChange, attributeTargets, isPageTextElement, mappedTextSelector, overrideForNode, pageTextSelector, textLabel, textOverrideKey } from '../lib/page-text-dom';
 
@@ -167,10 +168,17 @@ export default function AdminPreviewGuard({ textOverrides = emptyOverrides }: { 
       const candidates = Array.from(targets.values()).filter(target => target.node && (target.element.contains(element) || element.contains(target.element)));
       for (const target of candidates) {
         const range = document.createRange();
-        range.selectNodeContents(target.node!);
-        if (Array.from(range.getClientRects()).some(rect => event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom)) return target;
+        const text = target.node!.data;
+        const start = text.length - text.trimStart().length;
+        const end = text.trimEnd().length;
+        if (start >= end) continue;
+        range.setStart(target.node!, start);
+        range.setEnd(target.node!, end);
+        if (Array.from(range.getClientRects()).some(rect => rect.width > 0 && rect.height > 0 && event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom)) return target;
       }
-      return candidates[0];
+      // A container may cover the entire hero or page. Only actual text bounds
+      // count as an edit target; padding, icons and background clicks do not.
+      return undefined;
     }
     function handleClick(e: MouseEvent) {
       const el = e.target;
@@ -194,7 +202,7 @@ export default function AdminPreviewGuard({ textOverrides = emptyOverrides }: { 
           }
           return;
         }
-        const target = targetAtClick(el, e) || Array.from(targets.values()).find(target => target.element === el && target.override?.attribute === 'placeholder');
+        const target = targetAtClick(el, e);
         if (target) {
           e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
           openPopover(target);
@@ -262,5 +270,5 @@ export default function AdminPreviewGuard({ textOverrides = emptyOverrides }: { 
     };
   }, [pathname, textOverrides]);
 
-  return null;
+  return <PublishedContentRefresh />;
 }

@@ -20,7 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const { city: slug } = await params;
   const city = getLocation(slug);
   if (!city) return { title: 'Location Not Found' };
-  const title = `Termite Treatment in ${city.name} | Local Pest Control Services`;
+  const content = await getPageContent('location', slug);
+  const title = content?.heroTitle ?? `Termite Treatment in ${city.name}`;
   const description = `Professional termite treatment in ${city.name}: residential, commercial, pre-construction, post-construction and AMC services. Call ${company.phone} for a free inspection.`;
   return { title, description, alternates: { canonical: `/locations/${city.slug}` }, openGraph: { title, description, url: `/locations/${city.slug}`, type: 'website', locale: 'en_IN', siteName: 'TermiteTreatment', images: [{ url: city.image, width: 1536, height: 1024, alt: city.imageAlt }] }, twitter: { card: 'summary_large_image', title, description, images: [{ url: city.image, alt: city.imageAlt }] } };
 }
@@ -41,7 +42,7 @@ export default async function CityLocationPage({ params }: { params: Promise<{ c
 
   const heroLead = content?.heroLead ?? 'Protect Your Home & Business with Expert Termite Control Services';
   const aboutText = content?.about ?? city.about;
-  const areas = content?.areas && Array.isArray(content.areas) && content.areas.length > 0 ? content.areas : city.areas;
+  const areas: string[] = content?.areas && Array.isArray(content.areas) && content.areas.length > 0 ? content.areas : city.areas;
 
   const url = `https://termitepestcontrol.co.in/locations/${city.slug}`;
   const schema = [

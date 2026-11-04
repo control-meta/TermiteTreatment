@@ -24,18 +24,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = termiteServices.find(item => item.slug === slug);
   const detail = serviceDetails[slug];
   if (!service || !detail) return { title: 'Service Not Found' };
+  const content = await getPageContent('service', slug);
+  const title = content?.title ?? detail.title;
+  const description = content?.intro ?? detail.intro;
   return {
-    title: service.title,
-    description: detail.intro,
+    title,
+    description,
     alternates: { canonical: `/services/${slug}` },
     openGraph: {
-      title: service.title,
-      description: detail.intro,
+      title,
+      description,
       url: `https://termitepestcontrol.co.in/services/${slug}`,
       siteName: 'TermiteTreatment',
       images: [{ url: detail.hero, width: 1536, height: 1024, alt: detail.heroAlt }],
     },
-    twitter: { card: 'summary_large_image', title: service.title, description: detail.intro, images: [detail.hero] },
+    twitter: { card: 'summary_large_image', title, description, images: [detail.hero] },
   };
 }
 
@@ -82,7 +85,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const whatsappHref = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(`Hello, I would like to discuss ${service.title} for my property.`)}`;
   const schema = [
     {
-      '@context': 'https://schema.org', '@type': 'Service', name: service.title, description: detail.definition,
+      '@context': 'https://schema.org', '@type': 'Service', name: detail.title, description: detail.definition,
       serviceType: 'Termite inspection and treatment', areaServed: 'India',
       provider: { '@type': 'HomeAndConstructionBusiness', name: 'TermiteTreatment', telephone: company.phone, url: 'https://termitepestcontrol.co.in' },
     },

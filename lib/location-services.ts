@@ -1,5 +1,6 @@
 import { serviceDetails, type ServiceDetail } from './service-details';
 import { termiteServices } from './company';
+import { serviceTitle } from './service-title';
 import type { Location } from './locations';
 
 const serviceIntroductions: Record<string, (city: Location) => string> = {
@@ -30,8 +31,8 @@ export function getLocalizedService(city: Location, slug: string): ServiceDetail
   ];
   return {
     ...base,
-    title: base.title,
-    accent: `${base.accent} in ${city.name}`,
+    title: serviceTitle(slug, undefined, city.name),
+    accent: '',
     intro: serviceIntroductions[slug](city),
     heroAlt: `${base.heroAlt}. Illustration of ${service.title.toLowerCase()} for properties in ${city.name}.`,
     heroTrust: [`Local ${city.name} Support`, 'Property-Specific Care', 'Clear Service Plan'],

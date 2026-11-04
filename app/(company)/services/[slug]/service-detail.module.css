@@ -1,4 +1,4 @@
-.page { position: relative; isolation: isolate; --service-ink: #173b2b; --service-green: #185a37; --service-lime: #deeea9; --service-muted: #53675b; padding-top: 100px; overflow: clip; background: #f7faf4; color: var(--service-ink); }
+.page { position: relative; isolation: isolate; --service-ink: #173b2b; --service-green: #185a37; --service-lime: #deeea9; --service-muted: #53675b; padding-top: 0; overflow: clip; background: #f7faf4; color: var(--service-ink); }
 .shell { position: relative; width: min(1260px, calc(100% - 80px)); margin-inline: auto; }
 .page :is(h1, h2, h3) { font-family: var(--font-heading); text-wrap: pretty; }
 .page h2 { font-size: clamp(26px, 2.6vw, 36px); font-weight: 750; line-height: 1.25; letter-spacing: -1px; }
@@ -105,7 +105,7 @@
 
 @media (max-width: 1100px) {
   .shell { width: calc(100% - 48px); }
-  .page { padding-top: 100px; }
+  .page { padding-top: 0; }
   .overview { gap: 28px; grid-template-columns: minmax(0, 1fr); }
   .benefits { padding: 22px; }
   .benefitGrid { gap: 20px 16px; }
@@ -120,7 +120,7 @@
   .related { align-items: flex-start; flex-direction: column; gap: 10px; }
 }
 @media (max-width: 760px) {
-  .page { padding-top: 78px; }
+  .page { padding-top: 0; }
   .shell { width: calc(100% - 40px); }
   .page h2 { font-size: 27px; letter-spacing: -.8px; }
   .heroEyebrow { font-size: 9px; letter-spacing: 1.6px; margin-bottom: 13px; }

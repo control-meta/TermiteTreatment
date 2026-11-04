@@ -1,9 +1,9 @@
 export const serviceHeroPositions: Record<string, { desktop: string; mobile: string }> = {
-  'residential-termite-control': { desktop: '68% 45%', mobile: '68% 48%' },
-  'commercial-termite-control': { desktop: '66% 48%', mobile: '66% 50%' },
-  'pre-construction-termite-treatment': { desktop: '78% 50%', mobile: '78% 52%' },
-  'post-construction-termite-treatment': { desktop: '72% 55%', mobile: '72% 55%' },
-  'annual-maintenance-contract': { desktop: '68% 45%', mobile: '68% 48%' },
+  'residential-termite-control': { desktop: '74% 14%', mobile: '74% 15%' },
+  'commercial-termite-control': { desktop: '68% 22%', mobile: '68% 24%' },
+  'pre-construction-termite-treatment': { desktop: '78% 22%', mobile: '78% 25%' },
+  'post-construction-termite-treatment': { desktop: '74% 16%', mobile: '74% 18%' },
+  'annual-maintenance-contract': { desktop: '74% 12%', mobile: '74% 14%' },
 };
 
 export const serviceVisuals: Record<string, { src: string; alt: string; position: string }> = {

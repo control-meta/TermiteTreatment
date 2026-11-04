@@ -5,6 +5,8 @@ import { serviceDetails as staticServiceDetails } from './service-details';
 import { termiteServices as staticTermiteServices } from './company';
 import { getLocalizedService as staticGetLocalizedService } from './location-services';
 import { revalidatePath } from 'next/cache';
+import { connection } from 'next/server';
+import { serviceTitle } from './service-title';
 import { validateTextOverrides } from './page-text';
 
 export type EditablePage = {
@@ -110,7 +112,7 @@ export async function getAllLocationServices() {
           cityName: city.name,
           serviceSlug: srv.slug,
           serviceTitle: srv.title,
-          title: `${srv.title} in ${city.name}`,
+          title: serviceTitle(srv.slug, undefined, city.name),
           accent: detail.accent,
           intro: detail.intro,
           hero: detail.hero,
@@ -124,6 +126,9 @@ export async function getAllLocationServices() {
 }
 
 export async function getPageContent(type: 'location' | 'service' | 'local_service', slug: string) {
+  // MongoDB edits must be read on the serving deployment, never baked into a build.
+  // Keep this outside the fallback catch: Next uses it to stop prerendering.
+  await connection();
   const fallback = getStaticPageContent(type, slug);
   if (!fallback) return null;
   // Always query MongoDB first when configured
@@ -134,25 +139,25 @@ export async function getPageContent(type: 'location' | 'service' | 'local_servi
         if (type === 'local_service') {
           const doc = await db.collection('location_services').findOne({ key: slug });
           if (doc) {
-            return {
+            return normalizeServiceContent(type, slug, {
               ...fallback,
               ...doc,
               textOverrides: validateTextOverrides(doc.textOverrides),
               _id: doc._id.toString(),
               _source: 'mongodb' as const,
-            };
+            });
           }
         } else {
           const collection = db.collection(type === 'location' ? 'locations' : 'services');
           const doc = await collection.findOne({ slug });
           if (doc) {
-            return {
+            return normalizeServiceContent(type, slug, {
               ...fallback,
               ...doc,
               textOverrides: validateTextOverrides(doc.textOverrides),
               _id: doc._id.toString(),
               _source: 'mongodb' as const,
-            };
+            });
           }
         }
       }
@@ -161,7 +166,14 @@ export async function getPageContent(type: 'location' | 'service' | 'local_servi
     }
   }
 
-  return fallback;
+  return normalizeServiceContent(type, slug, fallback);
+}
+
+function normalizeServiceContent(type: string, slug: string, content: any) {
+  if (type === 'location') return content;
+  const city = type === 'local_service' ? staticLocations.find(location => slug.startsWith(`${location.slug}-`)) : undefined;
+  const serviceSlug = city ? slug.slice(city.slug.length + 1) : slug;
+  return { ...content, title: serviceTitle(serviceSlug, content.title, city?.name), accent: '' };
 }
 
 function getStaticPageContent(type: 'location' | 'service' | 'local_service', slug: string) {
@@ -169,7 +181,7 @@ function getStaticPageContent(type: 'location' | 'service' | 'local_service', sl
   if (type === 'local_service') {
     // slug is city-service e.g. bangalore-residential-termite-control
     // find matching city
-    const city = staticLocations.find(l => slug.startsWith(l.slug));
+    const city = staticLocations.find(l => slug.startsWith(`${l.slug}-`));
     const serviceSlug = city ? slug.slice(city.slug.length + 1) : '';
     if (!city || !serviceSlug) return null;
     const detail = staticGetLocalizedService(city, serviceSlug);
@@ -179,8 +191,8 @@ function getStaticPageContent(type: 'location' | 'service' | 'local_service', sl
       citySlug: city.slug,
       cityName: city.name,
       serviceSlug,
-      serviceTitle: detail.title,
-      title: `${detail.title} in ${city.name}`,
+      serviceTitle: serviceTitle(serviceSlug),
+      title: detail.title,
       accent: detail.accent,
       intro: detail.intro,
       hero: detail.hero,
@@ -239,30 +251,7 @@ function getStaticPageContent(type: 'location' | 'service' | 'local_service', sl
 }
 
 export async function getLocalizedServiceContent(citySlug: string, serviceSlug: string) {
-  const key = `${citySlug}-${serviceSlug}`;
-  if (isMongoConfigured()) {
-    try {
-      const db = await getDb();
-      if (db) {
-        const doc = await db.collection('location_services').findOne({ key });
-        if (doc) {
-          return {
-            ...doc,
-            textOverrides: validateTextOverrides(doc.textOverrides),
-            _id: doc._id.toString(),
-            _source: 'mongodb' as const,
-          };
-        }
-      }
-    } catch (err) {
-      console.warn(`[ContentService] Failed to load location_service ${key} from MongoDB:`, err);
-    }
-  }
-
-  // Fallback
-  const city = staticLocations.find(l => l.slug === citySlug);
-  if (!city) return null;
-  return staticGetLocalizedService(city, serviceSlug);
+  return getPageContent('local_service', `${citySlug}-${serviceSlug}`);
 }
 
 export async function savePageContent(type: 'location' | 'service' | 'local_service', slug: string, data: any) {

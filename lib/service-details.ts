@@ -27,8 +27,8 @@ export type ServiceDetail = {
 
 export const serviceDetails: Record<string, ServiceDetail> = {
   'pre-construction-termite-treatment': {
-    title: 'Pre-Construction',
-    accent: 'Anti-Termite Treatment Services',
+    title: 'Pre-Construction Termite Treatment',
+    accent: '',
     intro: 'Protect your new building from termite infestation with professional pre-construction anti-termite treatment.',
     hero: '/images/services/preconstruction-hero-v4.webp',
     heroAlt: 'Site engineer reviewing plans beside a concrete building under construction',
@@ -60,8 +60,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     closingText: 'Contact our team to discuss your project and get a free site inspection.',
   },
   'residential-termite-control': {
-    title: 'Residential',
-    accent: 'Termite Control',
+    title: 'Residential Termite Control',
+    accent: '',
     intro: 'Make room for living. Keep termites out. Get an inspection-led treatment plan for your home, wooden furniture and the hidden places that need attention.',
     hero: '/images/services/residential-hero-v4.webp',
     heroAlt: 'Termite-care specialist inspecting a timber doorway at a garden villa',
@@ -91,8 +91,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     closingText: 'A small sign is a good reason to start a conversation. Tell us about your home and arrange a free termite inspection.',
   },
   'commercial-termite-control': {
-    title: 'Commercial',
-    accent: 'Termite Protection',
+    title: 'Commercial Termite Control',
+    accent: '',
     intro: 'Protect your premises. Keep business moving. Plan termite inspections and treatment around your building, operating hours and access requirements.',
     hero: '/images/services/commercial-hero-v5.webp',
     heroAlt: 'Termite-care specialist inspecting a timber entrance frame outside a modern glass office building',
@@ -123,8 +123,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     closingText: 'Tell us about your building, its use and a suitable time to visit. We’ll help you plan the next step.',
   },
   'post-construction-termite-treatment': {
-    title: 'Post-Construction',
-    accent: 'Anti-Termite Treatment',
+    title: 'Post-Construction Termite Treatment',
+    accent: '',
     intro: 'An existing building. A fresh layer of protection. Address termite activity around floors, walls and vulnerable woodwork with a property-specific treatment plan.',
     hero: '/images/services/postconstruction-hero-v4.webp',
     heroAlt: 'Protected technician applying precision treatment at a finished home’s wall-floor junction',
@@ -154,8 +154,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     closingText: 'Share what you have noticed and where. Start with a free inspection and understand the options for your building.',
   },
   'annual-maintenance-contract': {
-    title: 'Annual Termite',
-    accent: 'Maintenance Plans',
+    title: 'Annual Termite Maintenance',
+    accent: '',
     intro: 'Protection needs attention, not guesswork. Keep termite care on the calendar with scheduled inspections, service records and support under an agreed plan.',
     hero: '/images/services/maintenance-hero-v4.webp',
     heroAlt: 'Specialist recording a scheduled timber inspection on a tablet beside a garden veranda',

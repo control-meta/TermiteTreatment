@@ -27,8 +27,9 @@ export async function generateMetadata({ params }: { params: Promise<RouteParams
   const service = termiteServices.find(item => item.slug === serviceSlug);
   if (!city || !service) return { title: 'Service Not Found' };
   const detail = getLocalizedService(city, serviceSlug)!;
-  const title = `${service.title} in ${city.name}`;
-  const description = `${title} for local homes and businesses. Enquire about inspection, treatment and aftercare in ${city.areas[0]}, ${city.areas[1]} and nearby areas. Call ${company.phone}.`;
+  const content = await getLocalizedServiceContent(citySlug, serviceSlug);
+  const title = content?.title ?? detail.title;
+  const description = content?.intro ?? `${title} for local homes and businesses. Enquire about inspection, treatment and aftercare in ${city.areas[0]}, ${city.areas[1]} and nearby areas. Call ${company.phone}.`;
   const path = locationServiceUrl(city, serviceSlug);
   return { title, description, alternates: { canonical: path }, openGraph: { title, description, url: path, siteName: 'TermiteTreatment', type: 'website', locale: 'en_IN', images: [{ url: detail.hero, width: 1536, height: 1024, alt: detail.heroAlt }] }, twitter: { card: 'summary_large_image', title, description, images: [{ url: detail.hero, alt: detail.heroAlt }] } };
 }
@@ -69,7 +70,7 @@ export default async function LocalServicePage({ params }: { params: Promise<Rou
 
   const construction = serviceSlug === 'pre-construction-termite-treatment';
   const visual = serviceVisuals[serviceSlug];
-  const title = `${service.title} in ${city.name}`;
+  const title = detail.title;
   const url = `https://termitepestcontrol.co.in${locationServiceUrl(city, serviceSlug)}`;
   const whatsapp = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(`Hello, I would like to discuss ${service.title} in ${city.name}.`)}`;
   const schema = [

@@ -25,12 +25,14 @@ const db = { collection: () => ({
   },
   findOne: async () => server.document,
 }) };
+const router = { refresh: () => { router.refreshes++; }, refreshes: 0 };
 const originalLoad = Module._load;
 Module._load = function (request, parent, isMain) {
   if (server.enabled && request.endsWith('/lib/auth')) return { isAuthenticated: async () => server.authed };
   if (server.enabled && request === 'next/cache') return { revalidatePath: path => server.paths.push(path) };
   if (server.enabled && request === './mongodb' && parent.filename.endsWith('/lib/content-service.ts')) return { getDb: async () => { if (server.connectionError) throw server.connectionError; return db; }, isMongoConfigured: () => true };
-  if (request === 'next/navigation') return { usePathname: () => window.location.pathname };
+  if (server.enabled && request === 'next/server') return { ...originalLoad.call(this, request, parent, isMain), connection: async () => { server.connections = (server.connections || 0) + 1; } };
+  if (request === 'next/navigation') return { usePathname: () => window.location.pathname, useRouter: () => router };
   return originalLoad.call(this, request, parent, isMain);
 };
 const React = require('react');
@@ -59,11 +61,16 @@ const fixture = `
   <script id="jsonld" type="application/ld+json">{"name":"Do not edit"}</script>
   <div id="mount" data-text-editor-ignore></div>`;
 
+const geometryByDocument = new WeakMap();
+
 function environment(html = fixture, preview = true) {
   const dom = new JSDOM(`<!doctype html><html><head></head><body>${html}</body></html>`, { url: `http://localhost:3000/locations/mumbai${preview ? '?admin_preview=1' : ''}`, pretendToBeVisual: true });
   for (const key of ['window', 'document', 'Node', 'NodeFilter', 'Element', 'HTMLElement', 'HTMLInputElement', 'HTMLTextAreaElement', 'HTMLOptionElement', 'MutationObserver', 'Text', 'Event', 'MouseEvent', 'MessageEvent']) global[key] = dom.window[key];
   Object.defineProperty(global, 'navigator', { value: dom.window.navigator, configurable: true });
-  dom.window.Range.prototype.getClientRects = () => [];
+  const textRects = new WeakMap();
+  geometryByDocument.set(dom.window.document, textRects);
+  // jsdom has no layout; supply explicit text bounds for click-hit tests.
+  dom.window.Range.prototype.getClientRects = function () { return textRects.get(this.startContainer) || []; };
   const messages = [];
   dom.window.postMessage = message => messages.push(message);
   return { dom, messages };
@@ -80,6 +87,21 @@ async function unmount(root, dom) {
 function catalog(messages) { return messages.filter(message => message.type === 'PREVIEW_TEXT_CATALOG').at(-1).payload; }
 function parentMessage(type, payload) { window.dispatchEvent(new window.MessageEvent('message', { origin: window.location.origin, source: window.parent, data: { type, payload } })); }
 function edit(key, value) { parentMessage('PREVIEW_SET_TEXT', { key, value }); }
+function textNode(element, text) {
+  const walker = element.ownerDocument.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (node.data.trim() && (text === undefined || node.data.includes(text))) return node;
+  }
+  throw new Error('Test text node not found');
+}
+function textBounds(node, left = 20, top = 20, width = 180, height = 20) {
+  geometryByDocument.get(node.ownerDocument).set(node, [{ left, top, right: left + width, bottom: top + height, width, height }]);
+}
+function clickText(element, text) {
+  textBounds(textNode(element, text));
+  return element.dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true, clientX: 30, clientY: 30 }));
+}
 function savedDraft() { return validateTextOverrides(JSON.parse(document.getElementById('page-text-overrides-draft').textContent)); }
 
 test('catalog includes buttons, form labels, navigation, footer, dropdowns and input/textarea placeholders', async () => {
@@ -98,8 +120,7 @@ test('clicking a CTA edits its wording, preserves SVG icons and href, and surviv
   const { dom } = environment();
   const root = await mount();
   const cta = document.getElementById('cta');
-  const click = new window.MouseEvent('click', { bubbles: true, cancelable: true });
-  assert.equal(cta.dispatchEvent(click), false, 'CTA navigation must be prevented');
+  assert.equal(clickText(cta), false, 'CTA navigation must be prevented');
   const input = document.querySelector('#page-text-editor-popover textarea');
   assert.ok(input, 'Clicking the label must open its text editor');
   input.value = 'Schedule my inspection';
@@ -195,7 +216,7 @@ test('control mode opens menus, still blocks submissions, and discovers newly mo
   await React.act(async () => { await new Promise(resolve => setTimeout(resolve, 100)); });
   assert.ok(catalog(messages).some(entry => entry.value === 'New booking panel copy'));
   parentMessage('PREVIEW_SET_EDITING', true);
-  document.getElementById('menu').dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true }));
+  clickText(document.getElementById('menu'), 'Services');
   assert.ok(document.querySelector('#page-text-editor-popover textarea'));
   await unmount(root, dom);
 });
@@ -319,7 +340,83 @@ test('clicking Save keeps edits after failure and Retry save resends the same co
     assert.deepEqual(requests[1], requests[0]);
     assert.equal(document.querySelector('[role="alert"]'), null);
     assert.ok(button('Save changes'));
+    assert.equal(JSON.parse(window.localStorage.getItem('termite-treatment:content-published')).path, '/locations/mumbai');
   } finally { global.fetch = originalFetch; await React.act(async () => root.unmount()); dom.window.close(); }
+});
+
+test('every service and city has one complete hero title, including legacy MongoDB titles', () => {
+  require.extensions['.css'] = module => { module.exports = new Proxy({}, { get: (_, key) => key === '__esModule' ? false : String(key) }); };
+  const { renderToStaticMarkup } = require('react-dom/server');
+  const Hero = require('../components/ServiceHero.tsx').default;
+  const { termiteServices } = require('../lib/company.ts');
+  const { locations } = require('../lib/locations.ts');
+  const { serviceDetails } = require('../lib/service-details.ts');
+  const { getLocalizedService } = require('../lib/location-services.ts');
+  const { serviceTitle } = require('../lib/service-title.ts');
+  for (const service of termiteServices) {
+    for (const city of [undefined, ...locations]) {
+      const detail = city ? getLocalizedService(city, service.slug) : serviceDetails[service.slug];
+      const dom = new JSDOM(renderToStaticMarkup(React.createElement(Hero, { service, detail, city })));
+      const h1 = dom.window.document.querySelector('h1');
+      assert.equal(h1.textContent, serviceTitle(service.slug, undefined, city?.name));
+      assert.equal(h1.children.length, 1);
+      assert.equal(h1.querySelector('[data-edit-field="titleMain"]').textContent, h1.textContent);
+      assert.equal(h1.textContent.split(/termite/i).length - 1, 1);
+      dom.window.close();
+    }
+  }
+  for (const title of ['Commercial', 'Commercial in Pune', 'Commercial Termite Protection in Pune', 'Commercial Termite Control in PuneTermite Protection in Pune']) {
+    assert.equal(serviceTitle('commercial-termite-control', title, 'Pune'), 'Commercial Termite Control in Pune');
+  }
+  assert.equal(serviceTitle('commercial-termite-control', 'Custom care for your office', 'Pune'), 'Custom care for your office');
+  assert.equal(serviceTitle('commercial-termite-control', '', 'Pune'), '');
+});
+
+test('page reads wait for a request and read changed database content on consecutive visits', async () => {
+  server.enabled = true;
+  server.connectionError = null;
+  const { getPageContent, getLocalizedServiceContent } = require('../lib/content-service.ts');
+  const before = server.connections || 0;
+  try {
+    for (const [type, slug] of [['location', 'mumbai'], ['service', 'commercial-termite-control'], ['local_service', 'pune-commercial-termite-control']]) {
+      server.document = { _id: { toString: () => 'test-id' }, title: 'First revision', heroTitle: 'First revision' };
+      assert.equal((await getPageContent(type, slug)).title, 'First revision');
+      server.document.title = 'Newly published revision';
+      server.document.heroTitle = 'Newly published revision';
+      const content = type === 'local_service' ? await getLocalizedServiceContent('pune', 'commercial-termite-control') : await getPageContent(type, slug);
+      assert.equal(content.title, 'Newly published revision');
+    }
+    assert.equal(server.connections - before, 6);
+    server.document = { _id: { toString: () => 'test-id' }, title: 'Commercial', accent: 'Termite Protection in Puneee' };
+    const legacy = await getLocalizedServiceContent('pune', 'commercial-termite-control');
+    assert.equal(legacy.title, 'Commercial Termite Control in Pune');
+    assert.equal(legacy.accent, '');
+  } finally { server.enabled = false; server.document = null; }
+});
+
+test('public pages refresh after publishing and returning to the tab without refreshing editor drafts', async () => {
+  const { publicationStorageKey } = require('../lib/content-publication.ts');
+  for (const preview of [false, true]) {
+    const { dom } = environment(fixture, preview);
+    const root = await mount();
+    router.refreshes = 0;
+    const publish = path => window.dispatchEvent(new window.StorageEvent('storage', { key: publicationStorageKey, newValue: JSON.stringify({ path, at: Date.now() }) }));
+    try {
+      publish('/services/commercial-termite-control');
+      await new Promise(resolve => setTimeout(resolve, 130));
+      assert.equal(router.refreshes, 0);
+      publish('/locations/mumbai');
+      await new Promise(resolve => setTimeout(resolve, 130));
+      assert.equal(router.refreshes, preview ? 0 : 1);
+      window.dispatchEvent(new window.Event('focus'));
+      document.dispatchEvent(new window.Event('visibilitychange'));
+      await new Promise(resolve => setTimeout(resolve, 130));
+      assert.equal(router.refreshes, preview ? 0 : 2, 'focus and visibility events should coalesce into one request');
+    } finally { await unmount(root, dom); }
+    window.dispatchEvent(new window.Event('focus'));
+    await new Promise(resolve => setTimeout(resolve, 130));
+    assert.equal(router.refreshes, preview ? 0 : 2, 'listeners must be removed on navigation');
+  }
 });
 
 
@@ -353,4 +450,39 @@ test('saving loaded pages repeatedly preserves createdAt and ignores client-supp
       assert.notEqual(server.document.updatedAt, '1900-01-01T00:00:00.000Z');
     }
   } finally { server.enabled = false; }
+});
+
+
+test('blank page areas, images, icons and control padding never open a text popup', async () => {
+  const { dom, messages } = environment();
+  const root = await mount();
+  try {
+    const cta = document.getElementById('cta');
+    textBounds(textNode(cta), 20, 20, 180, 20);
+    const blankClick = element => element.dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true, clientX: 500, clientY: 300 }));
+    for (const element of [document.body, document.getElementById('main'), document.getElementById('nested'), document.getElementById('image'), cta, cta.querySelector('svg'), document.getElementById('name')]) {
+      blankClick(element);
+      assert.equal(document.getElementById('page-text-editor-popover'), null, `Unexpected popup for ${element.tagName}`);
+    }
+    clickText(cta);
+    assert.equal(document.querySelector('#page-text-editor-popover textarea').value, 'Book a Free Inspection');
+    blankClick(document.getElementById('main'));
+    assert.equal(document.getElementById('page-text-editor-popover'), null, 'A background click must close the popup');
+    assert.equal(messages.some(message => message.type === 'PREVIEW_TEXT_OVERRIDES_CHANGED'), false);
+  } finally { await unmount(root, dom); }
+});
+
+test('a click on one of several text fragments opens only that fragment, not the first text in its container', async () => {
+  const { dom } = environment();
+  const root = await mount();
+  try {
+    const paragraph = document.getElementById('nested');
+    textBounds(textNode(paragraph, 'Protect'), 20, 100, 60, 20);
+    textBounds(textNode(paragraph, 'your property'), 90, 100, 100, 20);
+    textBounds(textNode(paragraph, 'today.'), 200, 100, 60, 20);
+    paragraph.dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true, clientX: 220, clientY: 110 }));
+    assert.equal(document.querySelector('#page-text-editor-popover textarea').value, ' today.');
+    paragraph.dispatchEvent(new window.MouseEvent('click', { bubbles: true, cancelable: true, clientX: 150, clientY: 200 }));
+    assert.equal(document.getElementById('page-text-editor-popover'), null);
+  } finally { await unmount(root, dom); }
 });
